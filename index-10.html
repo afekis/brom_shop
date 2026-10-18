@@ -38,6 +38,8 @@ button,input,select{font:inherit;color:inherit}
 .nav button{background:none;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--head-muted);font-weight:500}
 .nav button:hover{color:var(--head-ink)}
 .nav button[aria-current="page"]{color:#FFFFFF;background:#1F5FE0}
+.nav .sn{display:none}
+@media (max-width:640px){.nav .sn{display:inline}}
 .chip{font-size:13px;padding:6px 10px;border:1px solid #2A3B5C;border-radius:999px;color:var(--head-ink);white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:10px;border:1px solid transparent;cursor:pointer;font-weight:600}
 .btn.primary{background:var(--grad);color:#FFFFFF;box-shadow:0 6px 18px -8px rgba(31,95,224,.7)}
@@ -103,7 +105,8 @@ section[data-screen]{display:flex;flex-direction:column;gap:28px}
 .check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent);flex:none}
 .check span{display:flex;flex-direction:column}
 .check small{color:var(--muted);font-size:12px}
-.styles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.catbar{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.catbar input{flex:1;min-width:200px}.maket .catno{position:absolute;left:8px;top:8px;background:rgba(8,14,28,.75);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:2px 6px}.maket{position:relative}
+.styles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.stgrp{grid-column:1/-1;font-weight:700;font-size:13px;color:var(--muted,#6b7280);margin-top:6px;text-transform:uppercase;letter-spacing:.04em}
 .stylecard{border:2px solid var(--line);border-radius:12px;padding:10px;background:var(--paper);cursor:pointer;display:flex;flex-direction:column;gap:8px;text-align:left}
 .stylecard[aria-pressed="true"]{border-color:var(--accent)}
 .stylecard svg{width:100%;height:auto;border-radius:8px;background:#E3ECF2}
@@ -140,6 +143,26 @@ section[data-screen]{display:flex;flex-direction:column;gap:28px}
 @keyframes aiSk{to{background-position:-100% 0}} @keyframes aiSp{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){ .aig-sk,.aig-sk i{animation:none} }
 .lbx{position:fixed;inset:0;z-index:100;background:rgba(5,9,18,.88);display:grid;place-items:center;padding:16px;cursor:zoom-out}.lbx img{max-width:100%;max-height:100%;border-radius:10px}
+.rooms{display:grid;gap:18px}
+.room{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
+.room header{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 14px;background:var(--card);border-bottom:1px solid var(--line)}.room header b{font-family:var(--f-display);font-size:15px}.room header span{font-size:13px;color:var(--muted);font-family:var(--f-mono)}
+.room-pages{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+@media (max-width:860px){ .room-pages{grid-template-columns:1fr} }
+.rp{margin:0;background:#FFFFFF;color:#1A1A1A;border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;box-shadow:0 6px 14px -12px rgba(0,0,0,.4)}
+.rp figcaption{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#1F5FE0;display:flex;gap:8px;align-items:center}
+.rp figcaption .aitag{position:static}
+.rp-svg svg{display:block;width:100%;height:auto;max-height:420px}
+.rp-img{position:relative;aspect-ratio:16/9;background:#E6EDF8;border-radius:8px;overflow:hidden}.rp-img img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.rp-spec{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:13px;color:#333}.rp-spec i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.25);margin-right:6px;vertical-align:-1px}
+.rp-ai{align-self:flex-start;color:#1A1A1A}
+.makets{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.maket{display:flex;flex-direction:column;gap:3px;text-align:left;padding:8px;border:2px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer}
+.maket[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.mk-svg{aspect-ratio:4/3;display:grid;place-items:center;background:linear-gradient(180deg,#EEF3FA,#DCE5F1);border-radius:8px;overflow:hidden}.mk-svg svg{width:92%;height:92%}
+.mk-auto{font-size:40px}.mk-svg.mk3d{background:#fff}.mk-svg img{width:100%;height:100%;object-fit:cover;display:block}.maket b{font-size:13px}.maket small{font-size:11.5px;color:var(--muted);line-height:1.3}
+.dlfab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;min-height:50px;padding:0 20px;border:0;border-radius:999px;background:var(--grad);color:#fff;font-weight:700;font-size:15px;box-shadow:0 10px 26px -8px rgba(31,95,224,.8);cursor:pointer}
+.dlfab:disabled{opacity:.7;cursor:progress}
+section[data-screen="result"][hidden] .dlfab{display:none}
 .morebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 10px}.morebar small{color:var(--muted)}
 .swatch{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 12px 0 8px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer}
 .swatch i{width:24px;height:24px;border-radius:6px;border:1px solid rgba(0,0,0,.25)}
@@ -307,6 +330,40 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   .panel{padding:18px}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+/* ===== Telefon uchun ===== */
+@media (max-width:640px){
+  .top .wrap{flex-wrap:nowrap;gap:8px;padding-block:8px}
+  .top .wrap>button:first-child{font-size:0;gap:0;flex:0 0 auto}
+  .nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:auto;width:auto;min-width:0;-webkit-overflow-scrolling:touch}
+  .nav::-webkit-scrollbar{display:none}
+  .nav button{padding:7px 11px;font-size:13.5px;white-space:nowrap}
+  .nav .ln{display:none}
+  #userChip{display:none}
+  .styles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .stylecard{padding:6px;gap:4px;border-radius:10px}
+  .stylecard b{font-size:12.5px;line-height:1.2}
+  .stylecard small{font-size:10.5px;line-height:1.25}
+  .makets{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .maket{padding:5px;border-radius:10px}
+  .maket b{font-size:12.5px;line-height:1.2}
+  .maket small{font-size:10.5px;line-height:1.25}
+  .navrow{position:sticky;bottom:0;z-index:15;background:var(--paper);margin:0 -18px -18px;padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);flex-wrap:nowrap}
+  .navrow .btn{flex:1;min-height:46px}
+  .viewer,.resgrid .viewer{aspect-ratio:auto;height:min(118vw,70vh);min-height:340px}
+  .hero .viewer{height:min(90vw,60vh)}
+  .viewer .vbar~*{max-width:100%}
+  .viewer .vbar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;left:6px;right:6px;bottom:6px;padding-bottom:2px}
+  .viewer .vbar::-webkit-scrollbar{display:none}
+  .viewer .vbtn{white-space:nowrap;flex:0 0 auto;font-size:12px;padding:7px 10px}
+  .stylesw,.seg{flex-wrap:wrap}
+  .tablebox{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .svgbox{overflow-x:auto}
+  .catbar input{min-width:0;width:100%}
+  h1{font-size:clamp(26px,7.5vw,34px)}
+  .dlfab{min-height:44px;padding:0 14px;font-size:13px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  input,select,textarea{font-size:16px}
+}
+
 </style>
 
 <div class="splash" id="splash" aria-hidden="true">
@@ -323,9 +380,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       UyChizma
     </button>
     <nav class="nav" aria-label="Asosiy menyu">
-      <button data-go="home" aria-current="page">Bosh sahifa</button>
-      <button data-go="start">Loyiha boshlash</button>
-      <button data-go="projects">Mening loyihalarim</button>
+      <button data-go="home" aria-current="page"><span class="ln">Bosh sahifa</span><span class="sn">Bosh</span></button>
+      <button data-go="start"><span class="ln">Loyiha boshlash</span><span class="sn">Boshlash</span></button>
+      <button data-go="projects"><span class="ln">Mening loyihalarim</span><span class="sn">Loyihalarim</span></button>
     </nav>
     <span class="chip" id="userChip" hidden></span>
   </div>
@@ -369,7 +426,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 
   <!-- REGISTER -->
   <section data-screen="register" hidden>
-    <form class="panel narrow" id="regForm" novalidate>
+    <div class="panel narrow" id="regForm" role="form">
       <div class="eyebrow">Ro'yxatdan o'tish</div>
       <h2 style="font-size:24px">Kim uchun loyiha qilamiz?</h2>
       <div class="gwrap">
@@ -386,9 +443,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
         </select>
       </div>
       <p class="err" id="regErr" role="alert"></p>
-      <button class="btn primary" type="submit">Davom etish</button>
+      <button class="btn primary" type="button" id="regGo">Davom etish</button>
       <p class="note">Ma'lumotlaringiz shu brauzerda saqlanadi.</p>
-    </form>
+    </div>
   </section>
 
   <!-- WIZARD -->
@@ -479,11 +536,16 @@ input[type=range]{width:100%;accent-color:var(--accent)}
             <button type="button" class="swatch" data-v="gisht"><i style="background:#B9674B"></i>G'isht rang</button>
             <label class="swatch" id="wallCustom"><input type="color" id="wallColor" value="#d6c2a4" aria-label="Boshqa devor rangi">Boshqa rang</label>
           </div></div>
-        <div class="field"><span class="flabel">Uy shakli (rejada)</span>
-          <div class="seg" id="layoutSeg"><button type="button" data-v="auto">Farqi yo'q</button><button type="button" data-v="ixcham">Ixcham</button><button type="button" data-v="erker">Erkerli</button><button type="button" data-v="L">L-shakl</button><button type="button" data-v="U">U-shakl</button><button type="button" data-v="orqaL">Orqa L</button><button type="button" data-v="orqaU">Orqa U</button><button type="button" data-v="darvoza">Darvozaxonali</button></div>
-          <small>Bitta shakl tanlasangiz, hamma variantlar shu shaklda, lekin har xil bo'ladi.</small></div>
+        <div class="field"><span class="flabel">Uy shakli: maketni tanlang</span>
+          <div class="makets" id="maketGrid"></div>
+          <small>Qaysi maketni bossangiz, uchala variant ham shu shaklda chiqadi, lekin o'lchami, uslubi va rangi har xil bo'ladi.</small>
+          <button type="button" class="btn primary" id="catBtn" style="margin-top:10px">📚 Katalog: 100 ta tayyor model</button>
+          <div id="catWrap" hidden><div class="catbar"><input id="catQ" placeholder="Qidirish: hi-tech, shale, L-shakl, 1 qavat…" aria-label="Katalogdan qidirish"><span class="note" id="catN"></span></div><div class="makets" id="catGrid"></div></div>
+          <div class="seg" id="layoutSeg" hidden><button type="button" data-v="auto">Farqi yo'q</button><button type="button" data-v="ixcham">Ixcham</button><button type="button" data-v="erker">Erkerli</button><button type="button" data-v="L">L-shakl</button><button type="button" data-v="U">U-shakl</button><button type="button" data-v="orqaL">Orqa L</button><button type="button" data-v="orqaU">Orqa U</button><button type="button" data-v="darvoza">Darvozaxonali</button></div>
+          </div>
         <div class="field"><span class="flabel">Tom shakli</span>
-          <div class="seg" id="roofShapeSeg"><button type="button" data-v="auto">Uslubga mos</button><button type="button" data-v="tekis">Tekis</button><button type="button" data-v="ikki">2 qiyalik</button><button type="button" data-v="tort">4 qiyalik</button></div></div>
+          <div class="makets" id="roofPics"></div>
+          <div class="seg" id="roofShapeSeg"><button type="button" data-v="auto">Uslubga mos</button><button type="button" data-v="tekis">Tekis</button><button type="button" data-v="ikki">2 qiyalik</button><button type="button" data-v="tort">4 qiyalik</button><button type="button" data-v="mansard">Mansard</button></div></div>
         <div class="field"><span class="flabel">Tom materiali</span>
           <div class="seg" id="roofMatSeg"><button type="button" data-v="auto">Farqi yo'q</button><button type="button" data-v="metall">Metallocherepitsa</button><button type="button" data-v="keramik">Keramik cherepitsa</button><button type="button" data-v="yumshoq">Yumshoq tom</button><button type="button" data-v="profnastil">Profnastil</button></div>
           <small id="roofMatNote"></small></div>
@@ -494,7 +556,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <div data-step="5" class="field" style="gap:16px" hidden>
         <h2 style="font-size:22px">Fasad va atrof-muhit</h2>
         <p class="note" style="margin:0">Dizayner birinchi navbatda shularni so'raydi: uy nimadan qoplanadi, oldida nima bor, atrofida nima ko'rinadi.</p>
-        <div class="field"><span class="flabel">Tashqi devor (fasad) nimadan bo'lsin?</span><div class="seg optseg" data-key="facade"><button type="button" data-v="auto">Uslubga mos</button><button type="button" data-v="gisht">Yuzlama g'isht</button><button type="button" data-v="suvoq">Dekorativ suvoq</button><button type="button" data-v="tosh">Tabiiy tosh</button><button type="button" data-v="travertin">Travertin plita</button><button type="button" data-v="yogoch">Suvoq + yog'och panel</button><button type="button" data-v="kombi">Pastda tosh, tepada suvoq</button></div>
+        <div class="field"><span class="flabel">Tashqi devor (fasad) nimadan bo'lsin?</span><div class="seg optseg" data-key="facade"><button type="button" data-v="auto">Uslubga mos</button><button type="button" data-v="gisht">Yuzlama g'isht</button><button type="button" data-v="suvoq">Dekorativ suvoq</button><button type="button" data-v="tosh">Tabiiy tosh</button><button type="button" data-v="travertin">Travertin plita</button><button type="button" data-v="yogoch">Suvoq + yog'och panel</button><button type="button" data-v="kombi">Pastda tosh, tepada suvoq</button><button type="button" data-v="metall">Metall panel (hi-tech)</button><button type="button" data-v="shale">Pastda tosh, tepada yog'och</button></div>
           <small>Devor rangini "Uslub" qadamida tanlaysiz.</small></div>
         <div class="field"><span class="flabel">Uy oldida qanday ko'cha bor?</span><div class="seg optseg" data-key="street"><button type="button" data-v="tor">Tor ko'cha (4–5 m)</button><button type="button" data-v="mahalla">Mahalla ko'chasi (6–7 m)</button><button type="button" data-v="katta">Katta ko'cha (12 m+, yo'lakli)</button></div></div>
         <div class="field"><span class="flabel">Yonida qo'shni uylar bormi?</span><div class="seg optseg" data-key="neighbors"><button type="button" data-v="ikki">Ikki tomonida</button><button type="button" data-v="bir">Bir tomonida</button><button type="button" data-v="yoq">Yo'q, ochiq joy</button></div></div>
@@ -504,6 +566,18 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       </div>
 
       <div data-step="6" class="field" style="gap:16px" hidden>
+        <h2 style="font-size:22px">Uy ichi (interyer)</h2>
+        <p class="note" style="margin:0">Har bir xona alohida chizma va ko'rinish bilan chiqadi. Ichki dizaynni shu yerda tanlaysiz.</p>
+        <div class="field"><span class="flabel">Ichki uslub</span><div class="seg optseg" data-key="intStyle"><button type="button" data-v="auto">Fasadga mos</button><button type="button" data-v="zamonaviy">Zamonaviy</button><button type="button" data-v="neoklassik">Neoklassika</button><button type="button" data-v="klassik">Klassik</button><button type="button" data-v="milliy">Milliy (o'zbekcha)</button><button type="button" data-v="skandinav">Skandinav</button><button type="button" data-v="loft">Loft</button></div></div>
+        <div class="field"><span class="flabel">Devor rangi (oboy yoki bo'yoq)</span><div class="swatches" id="paintSw"><button type="button" class="swatch" data-v="#EFE8DC"><i style="background:#EFE8DC"></i>Sut rang</button><button type="button" class="swatch" data-v="#F5F3EE"><i style="background:#F5F3EE"></i>Oq</button><button type="button" class="swatch" data-v="#E6D8C3"><i style="background:#E6D8C3"></i>Bej</button><button type="button" class="swatch" data-v="#D9CFC1"><i style="background:#D9CFC1"></i>Kapuchino</button><button type="button" class="swatch" data-v="#C9D3D6"><i style="background:#C9D3D6"></i>Kulrang-ko'k</button><button type="button" class="swatch" data-v="#CFD8C7"><i style="background:#CFD8C7"></i>Zaytun</button><button type="button" class="swatch" data-v="#E8D3C7"><i style="background:#E8D3C7"></i>Pudra</button><button type="button" class="swatch" data-v="#B9C2CC"><i style="background:#B9C2CC"></i>Grafit-och</button><label class="swatch" id="paintCustom"><input type="color" id="paintColor" value="#efe8dc" aria-label="Boshqa devor rangi">Boshqa rang</label></div></div>
+        <div class="field"><span class="flabel">Pol</span><div class="seg optseg" data-key="floorType"><button type="button" data-v="auto">Darajaga mos</button><button type="button" data-v="parket">Parket (yog'och)</button><button type="button" data-v="laminat">Laminat</button><button type="button" data-v="marmar">Marmar</button><button type="button" data-v="kafel">Keramogranit</button></div></div>
+        <div class="field"><span class="flabel">Shift</span><div class="seg optseg" data-key="ceiling"><button type="button" data-v="oddiy">Tekis oq</button><button type="button" data-v="gips">Ko'p darajali gipsokarton + LED</button><button type="button" data-v="ganch">Naqshli ganch (milliy)</button></div></div>
+        <div class="field"><span class="flabel">Zalda nima bo'lsin? (bir nechtasini tanlang)</span><div class="seg fchk" data-key="furnZal"><button type="button" data-v="tv">TV devori</button><button type="button" data-v="divan">Katta divan</button><button type="button" data-v="kreslo">Kreslolar</button><button type="button" data-v="stol">Ovqat stoli</button><button type="button" data-v="kamin">Kamin</button><button type="button" data-v="pianino">Pianino</button><button type="button" data-v="akvarium">Akvarium</button></div></div>
+        <div class="field"><span class="flabel">Yotoqxonalarda</span><div class="seg fchk" data-key="furnBed"><button type="button" data-v="garderob">Garderob</button><button type="button" data-v="tv">TV</button><button type="button" data-v="ishstol">Ish stoli</button></div></div>
+        <div class="field"><span class="flabel">Oshxonada</span><div class="seg fchk" data-key="furnKit"><button type="button" data-v="orol">Orol (ostrov)</button><button type="button" data-v="stol">Ovqat stoli</button><button type="button" data-v="bar">Bar stoyka</button></div></div>
+      </div>
+
+      <div data-step="7" class="field" style="gap:16px" hidden>
         <h2 style="font-size:22px">Eshik, deraza va darvoza</h2>
         <div class="field"><span class="flabel">Derazalar o'lchami</span><div class="seg optseg" data-key="winSize"><button type="button" data-v="auto">Uslubga mos</button><button type="button" data-v="kichik">Kichik</button><button type="button" data-v="orta">O'rta</button><button type="button" data-v="katta">Katta</button><button type="button" data-v="panorama">Panorama (poldan shiftgacha)</button></div>
           <small>Panorama faqat zal va oshxonaga qo'yiladi, yotoqxonalarda katta deraza bo'ladi.</small></div>
@@ -519,7 +593,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
         <label class="check"><input type="checkbox" id="kalitkaChk"> Yonida alohida kalitka (piyodalar eshigi, 1 m) bo'lsin</label>
       </div>
 
-      <div data-step="7" class="field" style="gap:16px" hidden>
+      <div data-step="8" class="field" style="gap:16px" hidden>
         <h2 style="font-size:22px">Byudjet</h2>
         <div class="field"><label for="budget">Qurilish uchun taxminiy byudjet</label>
           <output class="rangeval" id="budgetOut" for="budget">$120 000</output>
@@ -545,18 +619,12 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn back small" id="editAnswers" type="button">Orqaga: javoblarni o'zgartirish</button>
         <button class="btn primary small" id="saveProject" type="button">Loyihani saqlash</button>
+        <button class="btn primary small" id="dlAll" type="button">⬇ Hammasini yuklab olish</button>
       </div>
     </div>
+    <button class="dlfab" id="dlFab" type="button" aria-label="Hammasini yuklab olish">⬇ Hammasini yuklab olish</button>
     <div class="morebar"><button class="btn primary small" id="moreVar" type="button">🎲 Yana 3 ta yangi variant</button><small id="seedInfo">Har bosganda yangi shakl, uslub, rang va tom bilan boshqa uylar chiqadi, cheklov yo'q.</small></div>
     <div class="vtabs" role="tablist" id="vtabs"></div>
-    <div class="aigal" id="aiGal">
-      <div class="aig-head"><div><div class="eyebrow">AI dizayn</div><h3 id="aiGalTitle">Uyingiz dizayni</h3></div><div class="aig-act"><span class="note" id="aiGalMsg" role="status"></span><button class="btn ghost small" id="aiGalRedo" type="button" hidden>Qayta chizish</button></div></div>
-      <div class="aig-grid">
-        <figure class="aig-card" data-k="ext"><div class="aig-img"><div class="aig-sk"><i></i><span>Tashqi ko'rinish chizilmoqda…</span></div></div><figcaption><b>Tashqi ko'rinish</b><span>Qurilib bitgandagi fotodek</span></figcaption></figure>
-        <figure class="aig-card" data-k="cut"><div class="aig-img"><div class="aig-sk"><i></i><span>Kesim chizilmoqda…</span></div></div><figcaption><b>Kesim (dollhouse)</b><span>1-qavat xonalari jihozlari bilan</span></figcaption></figure>
-        <figure class="aig-card" data-k="int"><div class="aig-img"><div class="aig-sk"><i></i><span>Interyer chizilmoqda…</span></div></div><figcaption><b>Mehmonxona interyeri</b><span>Ichki dizayn</span></figcaption></figure>
-      </div>
-    </div>
     <div class="resgrid">
       <div class="viewer" id="resViewer"></div>
       <div class="panel summary" id="summary"></div>
@@ -575,6 +643,10 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       </div>
     </div>
     <div class="sheets" id="sheets"></div>
+    <div class="panel" id="roomsPanel">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end"><div><div class="eyebrow">Xonalar</div><h2 style="font-size:20px">Har bir xona alohida: chizma va ko'rinish</h2><span class="note" id="roomsInfo"></span></div><button class="btn primary small" id="roomsAllAi" type="button" hidden>🤖 Hamma xonani AI bilan chizish</button></div>
+      <div class="rooms" id="roomCards"></div>
+    </div>
     <div class="panel">
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline">
         <h2 style="font-size:20px">Qancha material ketadi</h2>
@@ -586,7 +658,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <div class="panel" id="ustaPanel">
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end">
         <div style="display:flex;flex-direction:column;gap:4px"><div class="eyebrow">Qurilish uchun</div><h2 style="font-size:20px">Ustaga beriladigan loyiha</h2><span class="note">Rejalar, poydevor, kesim, deraza-eshik jadvali va bosqichma-bosqich materiallar. PDF qilib yoki havola bilan ustaga yuboring.</span></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="pdfBtn" type="button">PDF yuklab olish</button><button class="btn ghost" id="linkBtn" type="button">Ustaga havolani nusxalash</button></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="pdfBtn" type="button">📘 Loyiha kitobini yuklab olish (PDF)</button><button class="btn ghost" id="linkBtn" type="button">Ustaga havolani nusxalash</button></div>
       </div>
       <p class="note" id="ustaMsg" role="status"></p>
       <div class="sheets" id="ustaSheets"></div>
@@ -603,6 +675,14 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <figure class="pmain"><img id="photoBig" alt="Uyning yakuniy ko'rinishi"><figcaption id="photoCap"></figcaption></figure>
       <div class="pthumbs" id="photoThumbs"></div>
       <p class="note" id="photoMsg" role="status"></p>
+    </div>
+    <div class="aigal" id="aiGal">
+      <div class="aig-head"><div><div class="eyebrow">AI dizayn</div><h3 id="aiGalTitle">Uyingiz dizayni</h3></div><div class="aig-act"><span class="note" id="aiGalMsg" role="status"></span><button class="btn ghost small" id="aiGalRedo" type="button" hidden>Qayta chizish</button></div></div>
+      <div class="aig-grid">
+        <figure class="aig-card" data-k="ext"><div class="aig-img"><div class="aig-sk"><i></i><span>Tashqi ko'rinish chizilmoqda…</span></div></div><figcaption><b>Tashqi ko'rinish</b><span>Qurilib bitgandagi fotodek</span></figcaption></figure>
+        <figure class="aig-card" data-k="cut"><div class="aig-img"><div class="aig-sk"><i></i><span>Kesim chizilmoqda…</span></div></div><figcaption><b>Kesim (dollhouse)</b><span>1-qavat xonalari jihozlari bilan</span></figcaption></figure>
+        <figure class="aig-card" data-k="int"><div class="aig-img"><div class="aig-sk"><i></i><span>Interyer chizilmoqda…</span></div></div><figcaption><b>Mehmonxona interyeri</b><span>Ichki dizayn</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -624,9 +704,32 @@ const FH = 3.3, PL = 0.45, WT = 0.38, SB = 3;
 const DEF = {plotShape:'rect', plotW:18, plotL:30, plotBackW:12, floors:2, family:5, beds:4, targetArea:0,
   bigZal:true, darvoza:true, garage:false, ayvon:true, sauna:false, lux:'auto',
   pool:false, trees:6, gulzor:true, gazebo:false, tandir:true, playground:false, fountain:false, supa:true,
-  style:'klassik', wall:'oq', roofShape:'auto', roofMat:'auto', roofCol:'auto', seed:0, layout:'auto', styleFixed:false, wallFixed:false, winSize:'auto', winCount:'orta', winFrame:'auto', doorType:'bir', doorMat:'auto', intDoorH:2.1, gateW:4, gateH:2.4, gateType:'ochiladigan', kalitka:true, facade:'auto', street:'mahalla', neighbors:'ikki', view:'shahar', facing:'janub', budget:120000, rate:380, rateManual:false};
+  style:'klassik', sub:'', wall:'oq', roofShape:'auto', roofMat:'auto', roofCol:'auto', seed:0, layout:'auto', massing:'auto', styleFixed:false, wallFixed:false, winSize:'auto', winCount:'orta', winFrame:'auto', doorType:'bir', doorMat:'auto', intDoorH:2.1, gateW:4, gateH:2.4, gateType:'ochiladigan', kalitka:true, facade:'auto', intStyle:'auto', paint:'#EFE8DC', floorType:'auto', ceiling:'oddiy', furnZal:'tv,divan,stol', furnBed:'garderob,tv', furnKit:'orol,stol', street:'mahalla', neighbors:'ikki', view:'shahar', facing:'janub', budget:120000, rate:380, rateManual:false};
 const RATE = {zamonaviy:340, klassik:380, milliy:360};
 const STYLE_NAME = {zamonaviy:'Zamonaviy', klassik:'Klassik', milliy:'Milliy'};
+const SUBS={
+ haytek:{n:'Hi-tech',b:'zamonaviy',d:"Shisha, metall panel, katta oynalar",wall:'oq',fac:'metall',rv:{shape:'tekis',mat:'metall',col:'grafit'},frame:'antrasit',win:'panorama',svg:['tekis','#E9ECEF','#3B4046',1],ai:'high-tech architecture: floor-to-ceiling glass curtain walls, dark aluminium composite panels, cantilevered volumes, steel-and-glass entrance canopy, razor-thin flat roof edges, glass balcony railings, linear LED lighting'},
+ minimal:{n:'Minimalizm',b:'zamonaviy',d:"Oq kub hajmlar, ortiqcha bezaksiz",wall:'oq',fac:'suvoq',rv:{shape:'tekis',mat:'metall',col:'grafit'},frame:'antrasit',win:'katta',svg:['tekis','#F6F5F2','#2A2F33',0],ai:'pure minimalist architecture: crisp white cubic volumes, no ornament, large frameless windows with black frames, hidden gutters, flat roof'},
+ loft:{n:'Loft',b:'zamonaviy',d:"Qizil g'isht, qora metall romlar",wall:'gisht',fac:'gisht',rv:{shape:'tekis',mat:'metall',col:'grafit'},frame:'antrasit',win:'katta',svg:['tekis','#A8553C','#1F2226',0],ai:'industrial loft style: exposed red brick walls, black steel-framed factory-style grid windows, black metal canopy and railings, flat roof'},
+ barnhaus:{n:'Barnhaus',b:'zamonaviy',d:"Oddiy 2 qiyalik hajm, to'q metall",wall:'#4A4E53',fac:'metall',rv:{shape:'ikki',mat:'profnastil',col:'grafit'},frame:'antrasit',win:'panorama',svg:['ikki','#4A4E53','#1F2226',1],ai:'modern barnhouse: a simple elongated gable volume without eaves, dark standing-seam metal roof and wall cladding, huge glazed gable end, minimal details'},
+ skandi:{n:'Skandinav',b:'zamonaviy',d:"Tik tom, oq suvoq va yog'och",wall:'oq',fac:'yogoch',rv:{shape:'ikki',mat:'metall',col:'grafit'},frame:'antrasit',win:'katta',svg:['ikki','#F4F3EF','#9A6B43',0],ai:'Scandinavian style: steep gable roof with dark metal, white plaster and natural light wood cladding, large simple windows, cosy and bright'},
+ shale:{n:'Shale (Alp)',b:'zamonaviy',d:"Pastda tosh, tepada yog'och, keng tom",wall:'bej',fac:'shale',rv:{shape:'ikki',mat:'keramik',col:'jigar'},frame:'yogoch',win:'orta',svg:['ikki','#8A5A36','#5B3A22',0],ai:'Alpine chalet: rough natural stone ground floor, warm wooden upper floor, wide gable roof with deep overhanging eaves and wooden brackets, wooden balconies with carved railings'},
+ provans:{n:'Provans',b:'klassik',d:"Bej suvoq, terrakota tom, oq romlar",wall:'bej',fac:'suvoq',rv:{shape:'tort',mat:'keramik',col:'qizil'},frame:'oq',win:'orta',svg:['tort','#E4D3B6','#9E3B2C',0],ai:'French Provence style: warm beige textured plaster, terracotta clay tile hip roof, white window frames with pastel blue wooden shutters, climbing roses and lavender'},
+ amerika:{n:'Amerikacha',b:'klassik',d:"G'isht + oq bezak, ayvonli kirish",wall:'gisht',fac:'gisht',rv:{shape:'ikki',mat:'yumshoq',col:'grafit'},frame:'oq',win:'orta',svg:['ikki','#B9674B','#4A4F55',0],ai:'American suburban style: red brick with white trim, several gable roofs with asphalt shingles, covered front porch with white columns, white sash windows'},
+ ingliz:{n:'Inglizcha',b:'klassik',d:"Qizil g'isht, tik tom, mo'rilar",wall:'gisht',fac:'gisht',rv:{shape:'tort',mat:'keramik',col:'jigar'},frame:'oq',win:'orta',svg:['tort','#9E4A36','#5A3424',0],ai:'English Georgian style: dark red brick, white sash windows in strict symmetry, steep clay-tiled roof with brick chimneys, white door portico'},
+ saroy:{n:'Saroy (Neoklassik)',b:'klassik',d:"Travertin, mansard tom, ustunlar",wall:'oq',fac:'travertin',rv:{shape:'mansard',mat:'keramik',col:'yashil'},frame:'oq',win:'katta',svg:['mansard','#EDE4D3','#2F5A43',0],ai:'palatial neoclassical villa: travertine facade, French mansard roof with iron cresting, colossal columns, balustrades, arched windows with keystones, grand symmetric entrance'},
+ sharq:{n:'Sharqona (arab)',b:'milliy',d:"Ravoqlar, travertin, panjara",wall:'bej',fac:'travertin',rv:{shape:'tekis',mat:'metall',col:'grafit'},frame:'yogoch',win:'orta',svg:['tekis','#E4D3B6','#7A5232',0],ai:'Middle-Eastern oriental style: pointed arches, beige travertine stone, carved mashrabiya lattice screens, flat roof with crenellated parapet, small dome accent, palm trees'},
+ buxoro:{n:'Buxorocha',b:'milliy',d:"Sariq pishiq g'isht, o'ymakor eshik",wall:'qum',fac:'gisht',rv:{shape:'tekis',mat:'metall',col:'kok'},frame:'yogoch',win:'kichik',svg:['tekis','#D9C07C','#1F5F9E',0],ai:'Bukhara traditional architecture: yellow baked brick with patterned brickwork, carved wooden doors and columns, deep aivan, blue glazed tile ornaments, flat roof'}};
+const SUB_K=['',...Object.keys(SUBS)];
+const stN=v=>(v&&v.sub&&SUBS[v.sub])?SUBS[v.sub].n:STYLE_NAME[(v&&v.style)||'klassik'];
+function applySub(v,A,k){ const s=SUBS[k]; if(!s){ v.sub=''; return; } v.sub=k; v.style=s.b; if(!A.wallFixed) v.wall=s.wall; if(!A.facade||A.facade==='auto') v.facade=s.fac; v.rv=Object.assign({},s.rv); }
+const SUBS_OF=b=>Object.keys(SUBS).filter(k=>SUBS[k].b===b);
+function subSVG(k){ const s=SUBS[k], [rf,wc,ac,glass]=s.svg; let roof='';
+  if(rf==='tekis') roof=`<rect x="18" y="16" width="84" height="5" fill="${ac}"></rect>`; else if(rf==='ikki') roof=`<polygon points="14,24 60,4 106,24" fill="${ac}"></polygon>`; else if(rf==='tort') roof=`<polygon points="14,24 34,8 86,8 106,24" fill="${ac}"></polygon>`; else roof=`<polygon points="16,24 26,10 94,10 104,24" fill="${ac}"></polygon><rect x="26" y="7" width="68" height="3" fill="#333"></rect>`;
+  const wins=glass?`<rect x="26" y="28" width="68" height="13" fill="#9FC3D6"></rect><rect x="26" y="44" width="40" height="14" fill="#9FC3D6"></rect>`:[28,46,64,82].map(x=>`<rect x="${x}" y="29" width="10" height="9" fill="#9FC3D6" stroke="${s.frame==='oq'?'#fff':s.frame==='yogoch'?'#6E4428':'#2A2F33'}" stroke-width="1.2"></rect>`).join('')+`<rect x="54" y="43" width="12" height="15" fill="${s.frame==='yogoch'?'#6E4428':'#33383D'}"></rect>`;
+  const band=k==='shale'?`<rect x="20" y="41" width="80" height="17" fill="#8F8A80"></rect>`:'';
+  return `<svg viewBox="0 0 120 70" aria-hidden="true"><rect x="0" y="58" width="120" height="12" fill="#B9C7A8"></rect><rect x="20" y="22" width="80" height="36" fill="${wc}"></rect>${band}${roof}${wins}</svg>`; }
+
 const LUX_NAME = {oddiy:'Oddiy', orta:"O'rta", hashamatli:'Hashamatli'};
 const LUXK = {oddiy:0.8, orta:1, hashamatli:1.55};
 const LUXA = {oddiy:0.9, orta:1, hashamatli:1.22};
@@ -669,8 +772,8 @@ function genCompact(A,mw,opt){
   if(A.floors===2){
     const g=groundBedCount(A), u=A.beds-g;
     const gRooms=[]; if(g>=1) gRooms.push({n:'Ota-ona xonasi',t:'bed',a:18*K}); if(g>=2) gRooms.push({n:'Mehmon yotoqxonasi',t:'bed',a:15*K}); if(g===0) gRooms.push({n:'Ish xonasi',t:'bed',a:12*K});
-    const G={front:front0.slice(), back:[{n:'Zina',t:'stair',m:2.8},{n:'S/u',t:'wet',m:2.2}].concat(kir,sauna,gRooms)};
-    const U={front:[], back:[{n:'Zina',t:'stair',m:2.8},{n:'Vanna',t:'wet',m:2.4},{n:'S/u',t:'wet',m:2.0}]};
+    const G={front:front0.slice(), back:[{n:'Zina',t:'stair',m:2.8},{n:'Hojatxona',t:'wet',m:2.2}].concat(kir,sauna,gRooms)};
+    const U={front:[], back:[{n:'Zina',t:'stair',m:2.8},{n:'Vanna',t:'wet',m:2.4},{n:'Hojatxona',t:'wet',m:2.0}]};
     const ub = bedsList(u,1,K); U.front.push(ub.shift());
     if(lux==='hashamatli'){ U.front.push({n:'Garderob',t:'util',m:2.2}); U.back.push({n:'Shaxsiy hammom',t:'wet',m:2.4}); }
     if(u<=4) ub.push({n:'Oilaviy zal',t:'zal',a:18*K});
@@ -678,7 +781,7 @@ function genCompact(A,mw,opt){
     ensureFlex(U.front); ensureFlex(U.back);
     floorsSpec=[G,U];
   } else {
-    const G={front:front0.slice(), back:[{n:'Vanna',t:'wet',m:2.4},{n:'S/u',t:'wet',m:2.0}].concat(kir,sauna)};
+    const G={front:front0.slice(), back:[{n:'Vanna',t:'wet',m:2.4},{n:'Hojatxona',t:'wet',m:2.0}].concat(kir,sauna)};
     if(lux==='hashamatli') G.back.push({n:'Shaxsiy hammom',t:'wet',m:2.4});
     greedy([{items:G.front,d:dF},{items:G.back,d:dB}], bedsList(A.beds,1,K));
     ensureFlex(G.back);
@@ -691,7 +794,7 @@ function genCompact(A,mw,opt){
   let need=8.4; floorsSpec.forEach(f=>{ need=Math.max(need,rowW(f.front,dF),rowW(f.back,dB)); });
   const notes=[];
   let W=Math.round(need*2)/2;
-  const maxW=mw(D+(opt.extraDepth||4));
+  const maxW=mw(D+(opt.extraDepth||4)); if(opt.minW) W=Math.max(W,Math.min(opt.minW,Math.floor(maxW*2)/2));
   if(W>maxW){ notes.push("Yer eni yetmadi: xonalar biroz kichraytirildi."); W=Math.max(8,Math.floor(maxW*10)/10); }
   const floors = floorsSpec.map((f,k)=>{
     const rooms = seg(0,W,0,dF,f.front).concat([room("Yo'lak",'circ',0,dF,W,C)]).concat(seg(0,W,dF+C,dB,f.back));
@@ -741,7 +844,7 @@ function genPassage(A,mw,opt){
   const xr=wW+P;
   G.push(room('Oshxona-yemakxona','kitchen',xr,0,wW,dF));
   G.push(room('Hol','circ',xr,dF,2.4,D-dF-2.8,{entry:{nx:-1,ny:0}}));
-  G.push(room('S/u','wet',xr,D-2.8,2.4,2.8));
+  G.push(room('Hojatxona','wet',xr,D-2.8,2.4,2.8));
   G.push(room(g>=2?'Mehmon yotoqxonasi':(A.sauna?'Sauna-hammom':'Mehmon xonasi'),g>=2||!A.sauna?'bed':'wet',xr+2.4,dF,wW-2.4,D-dF));
   const g0={rooms:G, blocks:[{x:0,y:0,w:wW,h:D,roof:false},{x:xr,y:0,w:wW,h:D,roof:false}], open:[
     {type:'passage',x:wW,y:0,w:P,h:D},
@@ -756,7 +859,7 @@ function genPassage(A,mw,opt){
   U.push(room(slot(2)||'Ish xonasi','bed',0,dF+C,wW-2.8,dB));
   U.push(room('Zina','stair',wW-2.8,dF+C,2.8,dB));
   U.push(room('Vanna','wet',wW,dF+C,P/2,dB));
-  U.push(room('S/u','wet',wW+P/2,dF+C,P/2,dB));
+  U.push(room('Hojatxona','wet',wW+P/2,dF+C,P/2,dB));
   if(slot(3)){ U.push(room('Garderob','util',xr,dF+C,2.2,dB)); U.push(room(slot(3),'bed',xr+2.2,dF+C,wW-2.2,dB)); }
   else { U.push(room('Kir yuvish','util',xr,dF+C,2.2,dB)); U.push(room('Ish xonasi','bed',xr+2.2,dF+C,wW-2.2,dB)); }
   const g1={rooms:U, blocks:[{x:0,y:0,w:W,h:D,roof:true}], open:[{type:'balcony',x:wW,y:-1.6,w:P,h:1.6}]};
@@ -768,7 +871,7 @@ function genFront(A,mw,two,opt){
   opt=opt||{};
   const Dg=(A.bigZal?6:5.4)+6.2, L=Math.min(9*(opt.Lk||1),A.plotL-Dg-6);
   if(L<4.5) return null;
-  const core=genCompact(A,d=>mw(d+L),{noGarage:true,noAyvon:true,mirror:opt.mirror!==false,k:opt.k});
+  const core=genCompact(A,d=>mw(d+L),{noGarage:true,noAyvon:true,mirror:opt.mirror!==false,k:opt.k,minW:two?2*((opt.ww||4.2)+(opt.gal||2.0))+3.5:0});
   const D=core.D, W=core.W, ww=opt.ww||4.2, gal=opt.gal||2.0;
   const G=core.floors[0];
   const left=A.garage ? [['Garaj','garage',Math.min(6.2,L*0.62),{nx:0,ny:-1}],['Yozgi oshxona','kitchen',0,{nx:1,ny:0}]] : [['Mehmonxona (katta)','zal',L*0.6,{nx:1,ny:0}],['Yozgi oshxona','kitchen',0,{nx:1,ny:0}]];
@@ -777,7 +880,7 @@ function genFront(A,mw,two,opt){
   G.open.push({type:'ayvon',x:ww,y:-L,w:gal,h:L,roofed:true,low:true,cols:colsAlongY(-L,L,ww+gal-0.3)});
   let x1=W;
   if(two && W>=2*(ww+gal)+3){
-    const right=[['Mehmon xonasi','bed',L*0.55],['S/u','wet',2.2],[A.sauna?'Sauna-hammom':"Hammom (bug')",'wet',0]];
+    const right=[['Mehmon xonasi','bed',L*0.55],['Hojatxona','wet',2.2],[A.sauna?'Sauna-hammom':"Hammom (bug')",'wet',0]];
     let y2=-L; right.forEach(([n,t,l],i)=>{ const hh=i===right.length-1?(0-y2):l; G.rooms.push(room(n,t,W-ww,y2,ww,hh,{entry:{nx:-1,ny:0}})); y2+=hh; });
     G.blocks.push({x:W-ww,y:-L,w:ww,h:L,roof:true,low:true});
     G.open.push({type:'ayvon',x:W-ww-gal,y:-L,w:gal,h:L,roofed:true,low:true,cols:colsAlongY(-L,L,W-ww-gal+0.3)});
@@ -792,7 +895,7 @@ function genFront(A,mw,two,opt){
 function genCourt(A,mw,two,opt){
   opt=opt||{};
   const Dg=(A.bigZal?5.6:5.0)+6.2, L=Math.max(4,Math.min(12*(opt.Lk||1),A.plotL-SB-Dg-3));
-  const core = genCompact(A,d=>mw(d+L),{shallow:true,mirror:opt.mirror!==false,noGarage:true,ayvon:true,k:opt.k,bays:opt.bays,porch:opt.porch});
+  const core = genCompact(A,d=>mw(d+L),{shallow:true,mirror:opt.mirror!==false,noGarage:true,ayvon:true,k:opt.k,bays:opt.bays,porch:opt.porch,minW:two?(opt.ww||4.2)*2+4.5:0});
   const D=core.D, W=core.W, ww=opt.ww||4.2, gal=opt.gal||2.0;
   const G=core.floors[0];
   const items=[]; if(A.garage) items.push(['Garaj','garage',6.2]); items.push(['Yozgi oshxona','kitchen',4.6]); items.push(['Omborxona','util',2.6]);
@@ -801,7 +904,7 @@ function genCourt(A,mw,two,opt){
   G.blocks.push({x:0,y:D,w:ww,h:y-D,roof:true,low:true});
   G.open.push({type:'ayvon',x:ww,y:D,w:gal,h:y-D,roofed:true,low:true,cols:colsAlongY(D,y-D,ww+gal-0.3)});
   if(two && W>=ww*2+4){
-    const r2=[['Mehmon xonasi','bed',4.4],[A.sauna?'Sauna-hammom':"Hammom (bug')",'wet',3.0],['S/u','wet',2.2]];
+    const r2=[['Mehmon xonasi','bed',4.4],[A.sauna?'Sauna-hammom':"Hammom (bug')",'wet',3.0],['Hojatxona','wet',2.2]];
     let y2=D; const t2=r2.reduce((s,i)=>s+i[2],0); const k2=Math.min(1,L/t2);
     r2.forEach(([n,t,l])=>{ const h=l*k2; G.rooms.push(room(n,t,W-ww,y2,ww,h,{entry:{nx:-1,ny:0}})); y2+=h; });
     G.blocks.push({x:W-ww,y:D,w:ww,h:y2-D,roof:true,low:true});
@@ -835,13 +938,14 @@ function buildRandom(A){
   const out=[], seen=new Set();
   for(let t=0;t<14&&out.length<3;t++){
     const fam=pick(fams); const o={mirror:ch(0.5),porch:ch(0.5),bays:ch(0.4),backAyvon:ch(0.5),shallow:ch(0.3),ww:3.8+R()*1.4,gal:1.6+R()*1.0,Lk:0.75+R()*0.35};
-    let v=null, nm='', ds='';
+    const ms=A.massing||'auto'; if(ms==='kub'){ o.porch=false; o.backAyvon=true; } if(ms==='porch'){ o.porch=true; } if(ms==='ayvon'){ o.backAyvon=false; o.frontAyvon=true; } if(ms==='garaj'){ o.porch=ch(0.5); }
+    let v=null, nm='', ds=''; const J=0.9+R()*0.26;
     const mods=()=>[o.bays?'erker oynalar':'',o.porch?'ustunli kirish':'',o.mirror?'oyna-teskari reja':''].filter(Boolean).join(', ');
-    if(fam==='darvoza'){ v=sized(A,k=>genPassage(A,mw,{k})); nm='Darvozaxonali'; ds="Mashina uy ostidan o'tadi"; }
-    else if(fam==='ixcham'){ v=sized(A,k=>genCompact(A,mw,{mirror:o.mirror,porch:o.porch,backAyvon:o.backAyvon,shallow:o.shallow,k})); nm='Ixcham'; ds=mods()||"To'g'ri to'rtburchak, tejamkor"; }
-    else if(fam==='erker'){ v=sized(A,k=>genCompact(A,mw,{bays:true,porch:o.porch,mirror:o.mirror,k,extraDepth:4.2})); nm='Erkerli'; ds=o.porch?'Erker oynalar, ustunli kirish':'Erker oynalar, orqada ayvon'; }
-    else if(fam==='L'||fam==='U'){ v=sized(A,k=>genFront(A,mw,fam==='U',{k,ww:o.ww,gal:o.gal,Lk:o.Lk,mirror:o.mirror,bays:o.bays})); if(v&&fam==='U'&&!v._two) v=null; nm=fam+'-shakl, old hovlili'; ds="Ko'chaga chiqqan qanot"+(fam==='U'?'lar':'')+' va galereya'; }
-    else { const two=fam==='orqaU'; v=sized(A,k=>genCourt(A,mw,two,{k,ww:o.ww,gal:o.gal,Lk:o.Lk,mirror:o.mirror,bays:o.bays,porch:o.porch})); if(v&&two&&!v._two) v=null; nm=(two?'U':'L')+'-shakl, orqa hovlili'; ds='Orqada yozgi oshxona va galereya'; }
+    if(fam==='darvoza'){ v=sized(A,k=>genPassage(A,mw,{k:k*J})); nm='Darvozaxonali'; ds="Mashina uy ostidan o'tadi"; }
+    else if(fam==='ixcham'){ v=sized(A,k=>genCompact(A,mw,{mirror:o.mirror,porch:o.porch,backAyvon:o.backAyvon,ayvon:o.frontAyvon,shallow:o.shallow,k:k*J})); nm=({kub:'Ixcham kub',porch:'Ustunli kirish',ayvon:'Old ayvonli',garaj:'Yon garajli'})[A.massing]||'Ixcham'; ds=mods()||"To'g'ri to'rtburchak, tejamkor"; }
+    else if(fam==='erker'){ v=sized(A,k=>genCompact(A,mw,{bays:true,porch:o.porch,mirror:o.mirror,k:k*J,extraDepth:4.2})); nm='Erkerli'; ds=o.porch?'Erker oynalar, ustunli kirish':'Erker oynalar, orqada ayvon'; }
+    else if(fam==='L'||fam==='U'){ v=sized(A,k=>genFront(A,mw,fam==='U',{k:k*J,ww:o.ww,gal:o.gal,Lk:o.Lk,mirror:o.mirror,bays:o.bays})); if(v&&fam==='U'&&!v._two) v=null; nm=fam+'-shakl, old hovlili'; ds="Ko'chaga chiqqan qanot"+(fam==='U'?'lar':'')+' va galereya'; }
+    else { const two=fam==='orqaU'; v=sized(A,k=>genCourt(A,mw,two,{k:k*J,ww:o.ww,gal:o.gal,Lk:o.Lk,mirror:o.mirror,bays:o.bays,porch:o.porch})); if(v&&two&&!v._two) v=null; nm=(two?'U':'L')+'-shakl, orqa hovlili'; ds='Orqada yozgi oshxona va galereya'; }
     if(!v) { if(fams.length===1 && t>6){ fams=['ixcham','erker','L','orqaL']; out.fallback=LAYOUTS[A.layout]; } continue; }
     const key=fam+Math.round(v.W*2)+'x'+Math.round(v.D*2)+(o.bays?1:0); if(seen.has(key)&&t<10) continue; seen.add(key);
     v.name=nm; v.desc=ds; out.push(v);
@@ -854,6 +958,7 @@ function buildRandom(A){
     v.wall = A.wallFixed||i===0 ? A.wall : pick(WALL_PAL);
     v.facade = A.facade&&A.facade!=='auto' ? A.facade : (i===0 ? 'auto' : pick({klassik:['gisht','travertin','kombi','gisht'],zamonaviy:['suvoq','yogoch','travertin','kombi'],milliy:['gisht','suvoq','tosh','kombi']}[v.style]));
     v.rv={shape:wpick(ROOFP[v.style]),mat:pick(['metall','metall','keramik','yumshoq','profnastil']),col:pick(['grafit','grafit','jigar','qizil','yashil','kok'])};
+    v.sub=''; if(v.style===A.style&&A.sub&&SUBS[A.sub]) applySub(v,A,A.sub); else if(i>0&&!A.styleFixed&&R()<0.75){ const L=SUBS_OF(v.style); if(L.length) applySub(v,A,L[Math.floor(R()*L.length)]); }
     finalize(v,A); if(out.fallback && v.name.indexOf(A.layout+'-')!==0) v.notes.unshift(`${out.fallback} uchun yer o'lchami yetmadi, shu sababli o'xshash boshqa shakl berildi.`); });
   return out;
 }
@@ -873,17 +978,31 @@ function buildVariants(A){
   out.push(bays()); out.push(fl()); if(out.length<3) out.push(fu());
   const styles=[A.style].concat(['klassik','zamonaviy','milliy'].filter(s=>s!==A.style));
   const wi=Math.max(0,WALL_ORDER.indexOf(A.wall));
-  out.slice(0,3).forEach((v,i)=>{ v.key='ABC'[i]; v.style=styles[i]; v.wall=WALL_ORDER[(wi+i*(i===2?3:1))%4]; if(i===2&&v.wall===A.wall) v.wall=WALL_ORDER[(wi+2)%4]; if(i===0&&/^#/.test(A.wall)) v.wall=A.wall; if(A.styleFixed) v.style=A.style; if(A.wallFixed) v.wall=A.wall; finalize(v,A); });
+  out.slice(0,3).forEach((v,i)=>{ v.key='ABC'[i]; v.style=styles[i]; v.wall=WALL_ORDER[(wi+i*(i===2?3:1))%4]; if(i===2&&v.wall===A.wall) v.wall=WALL_ORDER[(wi+2)%4]; if(i===0&&/^#/.test(A.wall)) v.wall=A.wall; if(A.styleFixed) v.style=A.style; if(A.wallFixed) v.wall=A.wall; v.sub=''; if(v.style===A.style&&A.sub&&SUBS[A.sub]) applySub(v,A,A.sub); else if(i>0&&!A.styleFixed){ const L=SUBS_OF(v.style); if(L.length) applySub(v,A,L[(i*5+(A.beds|0)+Math.round(A.plotW)+Math.round(A.plotL))%L.length]); } finalize(v,A); });
   if(A.darvoza && !pv) out[0].notes.unshift(A.floors!==2?"Darvozaxona faqat 2 qavatli uyda bo'ladi.":(A.targetArea>=40&&widthAt(A,SB+18)>=17.2?`Darvozaxonali uy kamida ~340 m² bo'ladi, siz ${fmt(A.targetArea)} m² so'radingiz.`:"Darvozaxona uchun yer eni kamida 17 m bo'lishi kerak."));
   return out.slice(0,3);
 }
-function restyle(v,A,style){ v.style=style; finalize(v,A); }
+function restyle(v,A,style){ if(SUBS[style]) applySub(v,A,style); else { v.style=style; v.sub=''; } finalize(v,A); }
+/* Uslub almashtirilganda: shu uslubga mos boshqa maket (shakl) + o'z tomi bilan yangi uy */
+const MKPREF={klassik:['porch','erker','U','L'],zamonaviy:['kub','L','orqaL','garaj'],milliy:['ayvon','orqaU','orqaL','U'],haytek:['L','garaj','kub','orqaL'],minimal:['kub','orqaL','L'],loft:['kub','garaj','L'],barnhaus:['kub','orqaL','garaj'],skandi:['kub','L','orqaL'],shale:['ayvon','L','kub'],provans:['porch','L','orqaL'],amerika:['ayvon','garaj','L'],ingliz:['porch','erker','kub'],saroy:['U','porch','erker'],sharq:['orqaU','ayvon','orqaL'],buxoro:['orqaU','ayvon','U']};
+const BASE_RV={zamonaviy:'tekis',klassik:'tort',milliy:'tort'};
+function restyleNew(v,A,s){ const sub=SUBS[s]?s:'', st=sub?SUBS[s].b:s; S.rsN=(S.rsN||0)+1;
+  const pref=(MKPREF[s]||['kub']).filter(x=>x!==v.mk); const tries=pref.length?pref:(MKPREF[s]||['kub']);
+  for(let t=0;t<tries.length;t++){ const mk=tries[(S.rsN+t)%tries.length], M=MAKETS.find(x=>x.id===mk);
+    const A2=Object.assign({},A,{style:st,sub,styleFixed:true,massing:mk,layout:M?M.layout:'auto',roofShape:'auto',roofMat:'auto',roofCol:'auto',seed:((A.seed|0)+1)*31+S.rsN*7+t});
+    if(mk==='garaj') A2.garage=true; if(mk==='ayvon') A2.ayvon=true;
+    let r=[]; try{ r=buildRandom(A2); }catch(e){ console.error(e); }
+    const nv=r.find(x=>x.style===st); if(!nv) continue;
+    if(!sub){ nv.sub=''; nv.rv=Object.assign({},nv.rv,{shape:BASE_RV[st]}); }
+    nv.key=v.key; nv.mk=mk; nv.forceRoof=true; nv.name=(M?M.n:nv.name); finalize(nv,Object.assign({},A,{roofShape:'auto',roofMat:'auto',roofCol:'auto'}));
+    return nv; }
+  restyle(v,A,s); v.forceRoof=true; finalize(v,A); return v; }
 const ROOFM={metall:{n:'Metallocherepitsa',life:'30–40 yil',kg:5,note:"Yengil, arzon, tez o'rnatiladi; yomg'irda shovqinliroq"},keramik:{n:'Keramik cherepitsa',life:'80–100 yil',kg:45,note:"Eng uzoq xizmat qiladi, issiq-sovuqqa chidamli; og'ir — stropila kuchliroq bo'ladi"},yumshoq:{n:'Yumshoq (bitumli) cherepitsa',life:'25–35 yil',kg:9,note:"Shovqinsiz, murakkab shakllarga mos; ostiga OSB plita kerak"},profnastil:{n:'Profnastil',life:'20–30 yil',kg:5,note:"Eng arzon variant, ko'proq yordamchi binolarga"}};
 const ROOFC={grafit:'#4A4F55',jigar:'#6B3E2A',qizil:'#9E3B2C',yashil:'#2F5A43',kok:'#2C4A6E'};
 const ROOFCN={grafit:'Grafit',jigar:'Jigarrang',qizil:"Qizil-g'isht",yashil:"To'q yashil",kok:"To'q ko'k"};
-const ROOFSH={tekis:'Tekis tom',ikki:'2 qiyalik',tort:'4 qiyalik'};
+const ROOFSH={tekis:'Tekis tom',ikki:'2 qiyalik',tort:'4 qiyalik',mansard:'Mansard tom'};
 function roofOf(st,A,rv){ rv=rv||{}; let sh=A.roofShape||'auto'; if(sh==='auto') sh=rv.shape||(st==='zamonaviy'?'tekis':'tort');
-  const pitch=sh==='tekis'?0:(st==='milliy'?0.36:(sh==='ikki'?0.58:0.62)); const col=(A.roofCol&&A.roofCol!=='auto')?A.roofCol:(rv.col||(st==='milliy'?'jigar':'grafit'));
+  const pitch=sh==='tekis'?0:(st==='milliy'?0.36:(sh==='ikki'?0.58:sh==='mansard'?1.3:0.62)); const col=(A.roofCol&&A.roofCol!=='auto')?A.roofCol:(rv.col||(st==='milliy'?'jigar':'grafit'));
   const mat=(A.roofMat&&A.roofMat!=='auto'&&ROOFM[A.roofMat])?A.roofMat:(rv.mat||'metall'); const hex=/^#[0-9a-fA-F]{6}$/.test(col)?col:(ROOFC[col]||'#4A4F55');
   return {shape:sh,mat,col,hex,cname:ROOFCN[col]||'Tanlangan rang',pitch,deg:Math.round(Math.atan(pitch)*180/Math.PI)}; }
 function roofBlocks(v){ const out=[]; v.floors.forEach((f,k)=>f.blocks.forEach(b=>{ if(!b.roof) return; const up=v.floors[k+1]&&v.floors[k+1].blocks.some(u=>u.x<b.x+b.w-1e-3&&u.x+u.w>b.x+1e-3&&u.y<b.y+b.h-1e-3&&u.y+u.h>b.y+1e-3); if(!up) out.push(Object.assign({k},b)); })); return out; }
@@ -969,8 +1088,9 @@ function computeDoors(f){
   f.rooms.filter(q=>q.t==='circ').forEach(c=>{ f.rooms.filter(q=>q.t==='zal'&&!q.part).forEach(z=>{ const e=sharedEdge(c,z); if(e&&e.len>2.0 && !f.doors.some(d=>d.room===z)) f.opens.push(Object.assign({},e,{a0:(e.a0+e.a1)/2-0.8,a1:(e.a0+e.a1)/2+0.8,arch:true})); }); });
 }
 function finalize(v,A){
-  v.lux=luxOf(A); v.roof=roofOf(v.style||A.style,A,v.rv);
-  v.floors.forEach(f=>{ computeOpenings(f,v.style||A.style,A); computeDoors(f); f.doorH=+A.intDoorH||2.1; });
+  v.lux=luxOf(A); v.roof=roofOf(v.style||A.style,v.forceRoof?Object.assign({},A,{roofShape:'auto',roofMat:'auto',roofCol:'auto'}):A,v.rv);
+  const AW=(v.sub&&SUBS[v.sub]&&(!A.winSize||A.winSize==='auto'))?Object.assign({},A,{winSize:SUBS[v.sub].win}):A;
+  v.floors.forEach(f=>{ computeOpenings(f,v.style||A.style,AW); computeDoors(f); f.doorH=+A.intDoorH||2.1; });
   v.area = calcArea(v);
   let mn=0; v.floors.forEach(f=>f.blocks.concat(f.open).forEach(b=>{ mn=Math.min(mn,b.y); })); v.minY=mn;
   let mx=v.D; v.floors.forEach(f=>f.blocks.concat(f.open).forEach(b=>{ mx=Math.max(mx,b.y+b.h); })); v.maxY=mx;
@@ -1223,6 +1343,7 @@ function labelSprite(text,sub){
   const t=new THREE.CanvasTexture(c); t.encoding=THREE.sRGBEncoding; const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,depthTest:false,transparent:true})); s.scale.set(3.2,1.0,1); s.renderOrder=10; return s;
 }
 function travTex(){ return mkTex('trav',512,(x,S)=>{ const R=rnd(31); x.fillStyle='#D9CBB0'; x.fillRect(0,0,S,S); const rh=S/8; for(let r=0;r<8;r++){ const off=(r%2)*S/4; for(let i=-1;i<3;i++){ const bx=i*S/2+off, y=r*rh; x.fillStyle=shade('#D9CBB0',(R()-0.5)*0.12); x.fillRect(bx+1.5,y+1.5,S/2-3,rh-3); for(let k=0;k<6;k++){ x.strokeStyle=`rgba(150,125,90,${0.12+R()*0.18})`; x.lineWidth=0.6+R(); x.beginPath(); const yy=y+3+R()*(rh-6); x.moveTo(bx+2,yy); x.bezierCurveTo(bx+S/6,yy+(R()-0.5)*4,bx+S/3,yy+(R()-0.5)*4,bx+S/2-2,yy+(R()-0.5)*3); x.stroke(); } for(let k=0;k<30;k++){ x.fillStyle='rgba(120,100,70,0.25)'; x.fillRect(bx+R()*S/2,y+R()*rh,1.5,1); } } } x.fillStyle='rgba(255,255,255,0.35)'; for(let r=0;r<=8;r++) x.fillRect(0,r*rh-0.75,S,1.5); },2.4); }
+function panelTex(c){ c=/^#/.test(c)&&c.toUpperCase()!=='#F2F0EB'?c:'#3B4046'; return mkTex('pnl'+c,256,(x,S)=>{ const g=x.createLinearGradient(0,0,S,S); g.addColorStop(0,shade(c,0.08)); g.addColorStop(1,shade(c,-0.08)); x.fillStyle=g; x.fillRect(0,0,S,S); x.strokeStyle=shade(c,-0.45); x.lineWidth=2; for(let i=0;i<=4;i++){ x.beginPath(); x.moveTo(i*S/4,0); x.lineTo(i*S/4,S); x.stroke(); } x.beginPath(); x.moveTo(0,S/2); x.lineTo(S,S/2); x.stroke(); x.strokeStyle='rgba(255,255,255,0.12)'; x.lineWidth=1; for(let i=0;i<4;i++){ x.beginPath(); x.moveTo(i*S/4+2,0); x.lineTo(i*S/4+2,S); x.stroke(); } },2.4); }
 function cladTex(){ return mkTex('clad',256,(x,S)=>{ const R=rnd(37); const n=10, w=S/n; for(let i=0;i<n;i++){ const b=['#8A5A36','#7B4E2E','#94633D','#6F4628'][Math.floor(R()*4)]; const g=x.createLinearGradient(i*w,0,i*w+w,0); g.addColorStop(0,shade(b,-0.25)); g.addColorStop(0.1,b); g.addColorStop(0.9,shade(b,0.06)); g.addColorStop(1,shade(b,-0.35)); x.fillStyle=g; x.fillRect(i*w,0,w,S); for(let k=0;k<14;k++){ x.strokeStyle=`rgba(40,22,10,${0.08+R()*0.12})`; x.lineWidth=0.7; x.beginPath(); const xx=i*w+2+R()*(w-4); x.moveTo(xx,0); x.bezierCurveTo(xx+(R()-0.5)*4,S/3,xx+(R()-0.5)*4,S*2/3,xx+(R()-0.5)*3,S); x.stroke(); } } },1.6); }
 function tileRoofTex(col){ return mkTex('rtile'+col,256,(x,S)=>{ x.fillStyle=shade(col,-0.45); x.fillRect(0,0,S,S); const R=rnd(5); const cw=S/8, rh=S/8;
   for(let r=0;r<8;r++) for(let i=-1;i<9;i++){ const cx=i*cw+(r%2)*cw/2+cw/2, y=r*rh; const g=x.createLinearGradient(cx-cw/2,0,cx+cw/2,0); const c=shade(col,(R()-0.5)*0.12); g.addColorStop(0,shade(col,-0.3)); g.addColorStop(0.5,c); g.addColorStop(1,shade(col,-0.35)); x.fillStyle=g; x.beginPath(); x.moveTo(cx-cw/2+1,y); x.lineTo(cx+cw/2-1,y); x.lineTo(cx+cw/2-1,y+rh*0.75); x.quadraticCurveTo(cx,y+rh*1.15,cx-cw/2+1,y+rh*0.75); x.closePath(); x.fill(); } },1.1); }
@@ -1245,6 +1366,10 @@ function gableRoof(x0,z0,W,D,pitch,m,endM,ov){ const grp=new THREE.Group(); cons
   const em=new THREE.Mesh(eg,endM); em.castShadow=true; em.receiveShadow=true; grp.add(em);
   const rl=along?W:D; const rc=new THREE.Mesh(new THREE.BoxGeometry(along?rl+0.04:0.22,0.12,along?0.22:rl+0.04),m); rc.position.set((r0[0]+r1[0])/2,h+0.03,(r0[2]+r1[2])/2); grp.add(rc);
   return grp; }
+function mansardRoof(x0,z0,W,D,m,H){ H=H||1.7; const g=new THREE.Group(), mn=Math.min(W,D), f=Math.max(0.45,1-2*0.75/mn);
+  let geo=new THREE.CylinderGeometry(f/Math.SQRT2,1/Math.SQRT2,H,4,1,true); geo.rotateY(Math.PI/4); geo=geo.toNonIndexed(); geo.computeVertexNormals();
+  const lo=new THREE.Mesh(geo,m); lo.scale.set(W,1,D); lo.position.set(x0+W/2,H/2,z0+D/2); lo.castShadow=true; lo.receiveShadow=true; g.add(lo);
+  const tW=W*f, tD=D*f, up=hipRoof(x0+(W-tW)/2,z0+(D-tD)/2,tW,tD,0.32,m); up.position.y=H; g.add(up); g.userData.h=H+Math.min(tW,tD)/2*0.32; return g; }
 function hipRoof(x0,z0,W,D,pitch,m){
   const along=W>=D, h=Math.min(W,D)/2*pitch; let r0,r1;
   if(along){ const zc=z0+D/2; r0=[x0+D/2,h,zc]; r1=[x0+W-D/2,h,zc]; } else { const xc=x0+W/2; r0=[xc,h,z0+W/2]; r1=[xc,h,z0+D-W/2]; }
@@ -1301,7 +1426,7 @@ class Viewer{
     if(this.opts.controls) this._controls();
   }
   _resize(){ const w=this.el.clientWidth,h=this.el.clientHeight; if(!w||!h) return; this.renderer.setSize(w,h,false); this.cam.aspect=w/h; this.cam.updateProjectionMatrix(); }
-  _cam(){ const t=this.t; this.cam.position.set(t.x+this.r*Math.sin(this.ph)*Math.sin(this.th), t.y+this.r*Math.cos(this.ph), t.z+this.r*Math.sin(this.ph)*Math.cos(this.th)); this.cam.lookAt(t); }
+  _cam(){ const t=this.t, a=this.cam.aspect||1.3, r=this.r*((!this.walking&&a<1.25)?Math.min(1.7,Math.pow(1.25/a,0.85)):1); this.cam.position.set(t.x+r*Math.sin(this.ph)*Math.sin(this.th), t.y+r*Math.cos(this.ph), t.z+r*Math.sin(this.ph)*Math.cos(this.th)); this.cam.lookAt(t); }
   _bind(){
     const c=this.renderer.domElement; let lx=0,ly=0;
     c.addEventListener('pointerdown',e=>{ this.drag=true; this.auto=false; lx=e.clientX; ly=e.clientY; try{c.setPointerCapture(e.pointerId);}catch(_){} c.style.cursor='grabbing'; if(this.walking) c.focus(); });
@@ -1351,13 +1476,15 @@ class Viewer{
     }
     mk("Tashqi ko'rinish",()=>{ this.mode='out'; this.applyMode(); },this.mode==='out');
     v.floors.forEach((f,k)=>mk(`${k+1}-qavat ichi`,()=>{ this.mode='f'+k; this.applyMode(); },this.mode==='f'+k));
-    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); }
+    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); const kk=mk('🦴 Karkas',()=>this.karkasStart(),this.mode==='karkas'); kk.classList.add('vwalk'); }
     const w=mk('🚶 Ichida yurish',()=>this.walkStart(0)); w.classList.add('vwalk');
     if(this.stagesFn){ const bq=mk('🏗 Qurilish (5D)',()=>this.buildStart(false)); bq.classList.add('vwalk'); }
     if(this.opts.controls){ const bm=mk('🎬 Maket',()=>this.introStart()); bm.classList.add('vwalk'); }
   }
   applyMode(){
     if(!this.G) return; const m=this.mode; if(this.cut&&m!=='cut') this.cutStop();
+    if(this.KG) this.KG.visible=m==='karkas'; if(this.kUI&&m!=='karkas') this.kUI.hidden=true;
+    if(m==='karkas'){ this.G.floors.forEach(g=>{ g.shell.visible=false; g.cap.visible=false; g.inner.visible=false; g.labels.visible=false; if(g.open){ g.open.visible=false; g.fin.visible=false; } }); this.G.roof.visible=false; return; }
     if(m==='cut'){ this.G.floors.forEach(g=>{ g.shell.visible=true; g.cap.visible=true; g.inner.visible=true; g.labels.visible=false; if(g.open){ g.open.visible=true; g.fin.visible=true; } }); return; }
     this.G.floors.forEach((g,k)=>{
       if(m==='walk'){ g.shell.visible=true; g.cap.visible=true; g.inner.visible=k===this.walkFloor||(this.onStair&&(k===this.onStair.s.k||k===this.onStair.s.k+1)); g.labels.visible=false; return; }
@@ -1536,7 +1663,7 @@ class Viewer{
       ['✏️','Reja chizilmoqda',`${n} ta xona, ${v.floors.length} qavat, ${v.bedCount} yotoqxona`],
       ['🧱','Maket: devorlar',`${fmt1(v.W)} × ${fmt1(v.D)} m, ${v.floors.length===2?'ikki qavat ustma-ust':'bir qavat'} ko'tarilmoqda`],
       ['🏠','Tom yopilmoqda',R.shape==='tekis'?'Tekis tom, parapet bilan':`${ROOFSH[R.shape]}, ${R.deg}°, ${ROOFM[R.mat].n.toLowerCase()}`],
-      ['🎨','Materiallar va ranglar',`${STYLE_NAME[v.style]} uslub, ${LUX_NAME[v.lux].toLowerCase()} daraja`],
+      ['🎨','Materiallar va ranglar',`${stN(v)} uslub, ${LUX_NAME[v.lux].toLowerCase()} daraja`],
       ['🌳','Hovli obodonlashtirilmoqda',yard.length?yard.slice(0,4).join(', '):'yo\'laklar va panjara'],
       ['✅','Tayyor!',`${fmtA(v.area)} m² · taxminan ${money(v.total)}`]];
   }
@@ -1623,7 +1750,7 @@ class Viewer{
     try{ return this._shot(o); } finally { if(IN){ this.intro=IN; this._introApply(IN.t); } }
   }
   _shot(o){
-    const R=this.renderer, W=o.w||1600, H=o.h||900;
+    const R=this.renderer, OW=o.w||1600, OH=o.h||900, SS=OW<=1920?1.5:1, W=Math.round(OW*SS), H=Math.round(OH*SS);
     const prev={th:this.th,ph:this.ph,r:this.r,t:this.t.clone(),mode:this.mode,sp:this.sun.position.clone(),sc:this.sun.color.getHex(),si:this.sun.intensity,ex:R.toneMappingExposure,hi:this.hemi.intensity,fov:this.cam.fov,pr:R.getPixelRatio(),auto:this.auto,wf:this.walkFloor};
     R.setPixelRatio(1); R.setSize(W,H,false); this.cam.aspect=W/H;
     const setShadow=n=>{ if(this.sun.shadow.map){ this.sun.shadow.map.dispose(); this.sun.shadow.map=null; } this.sun.shadow.mapSize.set(n,n); };
@@ -1642,15 +1769,17 @@ class Viewer{
       this.cutStart(); this.cut.h=PL+1.45; this._cutApply(); if(this.cutUI) this.cutUI.hidden=true;
       this.cam.fov=o.fov||36; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.9); this.t.set(0,0.6,0); this._cam();
     } else if(o.kind==='int'){
-      const f=this.v.floors[0]; const r=mainRooms(f).filter(q=>q.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0];
-      this.walkFloor=0; this.mode='walk'; this.applyMode(); this.hemi.intensity=1.05; this.cam.fov=72;
-      const o0=this.root.position, px=r.x+Math.min(0.7,r.w*0.15), py=r.y+r.h-Math.min(0.7,r.h*0.15);
-      lights=new THREE.Group(); (this.G.roomLights[0]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFE9C8,0.7,10,2); L.position.set(x,y,z); lights.add(L); }); lights.position.copy(o0); this.scene.add(lights);
-      this.cam.updateProjectionMatrix(); this.cam.position.set(px+o0.x,PL+1.55,-py+o0.z); this.cam.lookAt(r.x+r.w*0.7+o0.x,PL+1.1,-(r.y+r.h*0.3)+o0.z);
+      const kk=o.k|0, f=this.v.floors[kk]; const r=o.r||mainRooms(f).filter(q=>q.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0]; const bs=PL+kk*FH;
+      this.walkFloor=kk; this.mode='walk'; this.applyMode(); this.hemi.intensity=1.05; this.cam.fov=r.w*r.h<10?88:76;
+      const o0=this.root.position, px=r.x+Math.min(0.85,r.w*0.2), py=r.y+r.h-Math.min(0.85,r.h*0.2);
+      lights=new THREE.Group(); (this.G.roomLights[kk]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFE9C8,0.7,10,2); L.position.set(x,y,z); lights.add(L); }); lights.position.copy(o0); this.scene.add(lights);
+      this.cam.updateProjectionMatrix(); this.cam.position.set(px+o0.x,bs+1.6,-py+o0.z); this.cam.lookAt(r.x+r.w*0.75+o0.x,bs+1.05,-(r.y+r.h*0.25)+o0.z);
     } else {
       this.mode='out'; this.applyMode(); this.cam.fov=o.fov||38; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.85); this.t.set(0,o.ty||3.2,0); this._cam();
     }
-    R.render(this.scene,this.cam); const url=R.domElement.toDataURL('image/jpeg',0.93);
+    R.render(this.scene,this.cam); let url;
+    if(SS>1){ try{ const c2=document.createElement('canvas'); c2.width=OW; c2.height=OH; const x2=c2.getContext('2d'); x2.imageSmoothingEnabled=true; x2.imageSmoothingQuality='high'; x2.drawImage(R.domElement,0,0,OW,OH); url=c2.toDataURL('image/jpeg',0.93); }catch(e){ url=null; } }
+    if(!url) url=R.domElement.toDataURL('image/jpeg',0.93);
     if(lights) this.scene.remove(lights);
     if(night){ const M=this.G.M; if(M.glass.emissive){ M.glass.emissive.setHex(night.glass[0]); M.glass.emissiveIntensity=night.glass[1]; } M.glass.opacity=night.glass[2]; if(M.sheer.emissive){ M.sheer.emissive.setHex(night.sheer[0]); M.sheer.emissiveIntensity=night.sheer[1]; } M.led.emissiveIntensity=night.led;
       this.scene.environment=night.env; this.scene.fog.color.setHex(night.fog); this.sky.material.color.setHex(night.skyc); this.clouds.forEach(c=>c.visible=true); }
@@ -1673,6 +1802,61 @@ class Viewer{
     this.mode='out'; this.applyMode(); this.setModes(v);
   }
 }
+
+/* ===== Karkas: ustunlar, rigellar, poydevor, armatura ===== */
+Viewer.prototype._karkasBuild=function(){
+  const v=this.v, G=this.G, nF=v.floors.length, kg=new THREE.Group();
+  const conc=new THREE.MeshStandardMaterial({color:0xBFC3C6,transparent:true,opacity:0.32,roughness:0.9,depthWrite:false});
+  const concS=new THREE.MeshStandardMaterial({color:0xA9AEB2,transparent:true,opacity:0.5,roughness:0.95,depthWrite:false});
+  const edgeM=new THREE.LineBasicMaterial({color:0x1A1D21}), rebM=new THREE.LineBasicMaterial({color:0xB0391E}), stM=new THREE.LineBasicMaterial({color:0x6B2A18});
+  const reb=[], sti=[], st={col:0,beam:0,foot:0,vol:0,bar:0};
+  const solid=(w,h,d,x,y,z,m)=>{ const g=new THREE.BoxGeometry(w,h,d); const me=new THREE.Mesh(g,m||conc); me.position.set(x,y,z); me.renderOrder=2; kg.add(me);
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeM); e.position.copy(me.position); kg.add(e); st.vol+=w*h*d; return me; };
+  const L=(a,b,arr)=>arr.push(a[0],a[1],a[2],b[0],b[1],b[2]);
+  const rect=(arr,cx,y,cz,w,d,axis)=>{ // stirrup ring perpendicular to axis
+    const p=axis==='y'?[[cx-w,y,cz-d],[cx+w,y,cz-d],[cx+w,y,cz+d],[cx-w,y,cz+d]]:axis==='x'?[[cx,y-w,cz-d],[cx,y+w,cz-d],[cx,y+w,cz+d],[cx,y-w,cz+d]]:[[cx-d,y-w,cz],[cx+d,y-w,cz],[cx+d,y+w,cz],[cx-d,y+w,cz]];
+    for(let i=0;i<4;i++) L(p[i],p[(i+1)%4],arr); };
+  const C=0.4, cr=0.15, top=PL+nF*FH;
+  // columns
+  const cols=new Map();
+  v.floors.forEach((f,k)=>f.blocks.forEach(b=>{ const xs=[], ys=[];
+    const nx=Math.max(1,Math.ceil(b.w/4.5)), ny=Math.max(1,Math.ceil(b.h/4.5));
+    for(let i=0;i<=nx;i++) xs.push(b.x+C/2+(b.w-C)*i/nx); for(let j=0;j<=ny;j++) ys.push(b.y+C/2+(b.h-C)*j/ny);
+    xs.forEach((x,i)=>ys.forEach((y,j)=>{ if(i>0&&i<nx&&j>0&&j<ny) return; const key=Math.round(x*2)+'_'+Math.round(y*2);
+      const c=cols.get(key)||{x,y,k0:k,k1:k}; c.k0=Math.min(c.k0,k); c.k1=Math.max(c.k1,k); cols.set(key,c); })); }));
+  cols.forEach(c=>{ const x=c.x, z=-c.y, y0=c.k0===0?-0.75:PL+c.k0*FH, y1=PL+(c.k1+1)*FH;
+    solid(C,y1-y0,C,x,(y0+y1)/2,z); st.col++;
+    [[-1,-1],[1,-1],[1,1],[-1,1]].forEach(([a,b])=>{ L([x+a*cr,y0-0.3,z+b*cr],[x+a*cr,y1-0.05,z+b*cr],reb); st.bar+=y1-y0; });
+    for(let y=y0+0.1;y<y1;y+=0.25) rect(sti,x,y,z,cr+0.01,cr+0.01,'y');
+    if(c.k0===0){ solid(1.4,0.5,1.4,x,-1.0,z,concS); st.foot++; for(let t=-0.55;t<=0.56;t+=0.22){ L([x+t,-1.18,z-0.6],[x+t,-1.18,z+0.6],reb); L([x-0.6,-1.15,z+t],[x+0.6,-1.15,z+t],reb); } }
+  });
+  // beams along block edges at each floor level (k=0 => grade beam)
+  const beam=(x0,y0,x1,y1,yc,h)=>{ const len=Math.hypot(x1-x0,y1-y0); if(len<0.3) return; const al=Math.abs(x1-x0)>Math.abs(y1-y0), cx=(x0+x1)/2, cz=-(y0+y1)/2, w=0.3;
+    solid(al?len:w,h,al?w:len,cx,yc,cz); st.beam+=len; const hh=h/2-0.05, ww=w/2-0.05;
+    [[-1,-1],[1,-1],[1,1],[-1,1]].forEach(([a,b])=>{ if(al) L([x0,yc+a*hh,cz+b*ww],[x1,yc+a*hh,cz+b*ww],reb); else L([cx+b*ww,yc+a*hh,-y0],[cx+b*ww,yc+a*hh,-y1],reb); st.bar+=len; });
+    const n=Math.floor(len/0.3); for(let i=1;i<n;i++){ const t=i/n; if(al) rect(sti,x0+(x1-x0)*t,yc,cz,hh+0.01,ww+0.01,'x'); else rect(sti,cx,yc,-(y0+(y1-y0)*t),hh+0.01,ww+0.01,'z'); } };
+  const slab=(b,y)=>{ const me=solid(b.w,0.2,b.h,b.x+b.w/2,y,-(b.y+b.h/2),concS); me.material=concS;
+    for(let x=b.x+0.3;x<b.x+b.w-0.1;x+=0.6) L([x,y-0.04,-b.y-0.05],[x,y-0.04,-(b.y+b.h)+0.05],reb);
+    for(let yy=b.y+0.3;yy<b.y+b.h-0.1;yy+=0.6) L([b.x+0.05,y-0.04,-yy],[b.x+b.w-0.05,y-0.04,-yy],reb); };
+  for(let k=0;k<=nF;k++){ const bl=k===0?v.floors[0].blocks:v.floors[k-1].blocks, yc=k===0?PL-0.25:PL+k*FH-0.22, h=k===0?0.5:0.45;
+    bl.forEach(b=>{ beam(b.x,b.y+0.15,b.x+b.w,b.y+0.15,yc,h); beam(b.x,b.y+b.h-0.15,b.x+b.w,b.y+b.h-0.15,yc,h); beam(b.x+0.15,b.y,b.x+0.15,b.y+b.h,yc,h); beam(b.x+b.w-0.15,b.y,b.x+b.w-0.15,b.y+b.h,yc,h);
+      const ny=Math.max(1,Math.ceil(b.h/4.5)), nx=Math.max(1,Math.ceil(b.w/4.5)); if(b.w>b.h){ for(let i=1;i<nx;i++){ const x=b.x+C/2+(b.w-C)*i/nx; beam(x,b.y,x,b.y+b.h,yc,h); } } else { for(let j=1;j<ny;j++){ const y=b.y+C/2+(b.h-C)*j/ny; beam(b.x,y,b.x+b.w,y,yc,h); } }
+      if(k>0) slab(b,PL+k*FH+0.1); else slab(b,PL-0.05); }); }
+  // stairs
+  (G.stairs||[]).forEach(s=>{ const al=s.w<s.h, len=al?s.h:s.w, wd=(al?s.w:s.h)/2-0.05, rise=FH, y0=PL+s.k*FH; const ang=Math.atan2(rise,len*0.85);
+    const g=new THREE.BoxGeometry(al?wd:Math.hypot(len*0.85,rise),0.18,al?Math.hypot(len*0.85,rise):wd); const me=new THREE.Mesh(g,concS); me.position.set(al?s.x+wd/2+0.05:s.x+len/2,y0+rise/2,al?-(s.y+len/2):-(s.y+wd/2+0.05));
+    if(al) me.rotation.x=ang; else me.rotation.z=ang; kg.add(me); const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeM); e.position.copy(me.position); e.rotation.copy(me.rotation); kg.add(e);
+    const n=Math.round(rise/0.17); for(let i=0;i<n;i++){ const t=(i+0.5)/n, sx=al?s.x+wd/2+0.05:s.x+len*0.075+len*0.85*t, sz=al?-(s.y+len*0.075+len*0.85*t):-(s.y+wd/2+0.05); solid(al?wd:len*0.85/n,0.17,al?len*0.85/n:wd,sx,y0+rise*t+0.06,sz,concS); } });
+  const gr=a=>{ const gg=new THREE.BufferGeometry(); gg.setAttribute('position',new THREE.Float32BufferAttribute(a,3)); return gg; };
+  kg.add(new THREE.LineSegments(gr(reb),rebM)); kg.add(new THREE.LineSegments(gr(sti),stM));
+  st.kg=Math.round(st.bar*1.58+sti.length/6*0.62*0.4); this.KST=st; return kg; };
+Viewer.prototype.karkasStart=function(){
+  if(!this.G||!this.ok) return; if(this.walking) this.walkStop(); if(this.building) this.buildStop(); if(this.intro) this.introStop(); if(this.cut){ this.mode='out'; this.applyMode(); }
+  if(!this.KG||this.KG.userData.v!==this.v){ if(this.KG){ this.KG.parent&&this.KG.parent.remove(this.KG); this.KG.traverse(o=>o.geometry&&o.geometry.dispose()); } this.KG=this._karkasBuild(); this.KG.userData.v=this.v; this.G.group.add(this.KG); }
+  this.mode='karkas'; this.applyMode();
+  if(!this.kUI){ const d=this.kUI=document.createElement('div'); d.className='vcut'; this.el.appendChild(d); }
+  const s=this.KST; this.kUI.innerHTML=`<b>🦴 Karkas (temir-beton)</b><div style="line-height:1.55">Ustunlar: <b>${s.col} ta</b> (40×40 sm)<br>Rigellar: <b>${Math.round(s.beam)} m</b> (30×45 sm)<br>Poydevor yostiqlari: <b>${s.foot} ta</b><br>Beton: <b>≈ ${Math.round(s.vol)} m³</b><br>Armatura: <b>≈ ${(s.kg/1000).toFixed(1)} t</b> (Ø16 + Ø8 xomut)</div><div style="opacity:.75;font-size:11px">Qizil — armatura, to'q — xomutlar. Taxminiy, konstruktor hisobi kerak.</div><button type="button" class="vbtn kx">✕ Yopish</button>`;
+  this.kUI.querySelector('.kx').onclick=()=>{ this.mode='out'; this.applyMode(); this.setModes(this.v); }; this.kUI.hidden=false; };
 
 /* ---------- furniture (local coords: x along wall, z into room, y up) ---------- */
 function F(){ return new THREE.Group(); }
@@ -1773,28 +1957,31 @@ function furnish(r,f,grp,base,lux){
 function buildHouse(v,A){
   const S=v.style||A.style, lux=v.lux||'orta', WC=(w=>/^#[0-9a-fA-F]{6}$/.test(w)?w:(WALLC[w]||WALLC.oq))(v.wall||A.wall); const RF=v.roof||roofOf(S,A);
   const FAC=(v.facade&&v.facade!=='auto')?v.facade:((A.facade&&A.facade!=='auto')?A.facade:null);
+  const WF=(A.winFrame&&A.winFrame!=='auto')?A.winFrame:((v.sub&&SUBS[v.sub])?SUBS[v.sub].frame:'auto');
+  const metM=()=>matT('mpanel'+WC,panelTex(WC),{roughness:0.38,metalness:0.55,envMapIntensity:1.1});
   const plM=()=>matT('pl'+WC,plasterTex(WC)), brM=()=>matT('br'+WC,brickTex(WC),{bumpMap:brickTex(WC),bumpScale:0.3});
   const stoneMat = matT('stone',stoneTex(),{roughness:0.8,bumpMap:stoneTex(),bumpScale:0.4});
   const travM=()=>matT('trav',travTex(),{roughness:0.7,bumpMap:travTex(),bumpScale:0.15}), cladM=()=>matT('clad',cladTex(),{roughness:0.65,bumpMap:cladTex(),bumpScale:0.25});
   let wallMat = (S==='zamonaviy'||lux==='oddiy') ? plM() : brM(), groundMat=null;
   if(FAC==='gisht') wallMat=brM(); else if(FAC==='suvoq') wallMat=plM(); else if(FAC==='tosh') wallMat=stoneMat; else if(FAC==='travertin') wallMat=travM();
-  else if(FAC==='kombi'){ wallMat=plM(); groundMat=S==='zamonaviy'?travM():stoneMat; } else if(FAC==='yogoch'){ groundMat=plM(); wallMat=v.floors.length>1?cladM():plM(); }
+  else if(FAC==='metall'){ wallMat=metM(); groundMat=v.floors.length>1?plM():null; } else if(FAC==='shale'){ wallMat=cladM(); groundMat=stoneMat; } else if(FAC==='kombi'){ wallMat=plM(); groundMat=S==='zamonaviy'?travM():stoneMat; } else if(FAC==='yogoch'){ groundMat=plM(); wallMat=v.floors.length>1?cladM():plM(); }
   const M={wall:wallMat, ground:groundMat||(lux==='hashamatli'&&S!=='zamonaviy'&&!FAC?stoneMat:wallMat), plinth:matT('marble',marbleTex(),{roughness:0.35,envMapIntensity:0.9}), white:mat(0xF7F6F2,{roughness:0.6}), slab:mat(0xE9E7E2),
     glass:mat(0x8FA9B8,{transparent:true,opacity:0.38,roughness:0.03,metalness:0.7,envMapIntensity:1.8}),
     curtain:mat(0xD9CDB8,{roughness:0.95}), sheer:mat(0xF4F1EA,{transparent:true,opacity:0.78,roughness:0.95,side:THREE.DoubleSide}),
     gutter:mat(0x3A3F44,{roughness:0.4,metalness:0.6}),
-    frame:A.winFrame==='yogoch'?matT('wood',woodTex(),{roughness:0.55}):mat(A.winFrame==='oq'?0xF5F4F0:(A.winFrame==='antrasit'?0x2E3236:(S==='zamonaviy'?0x2A2F33:(S==='milliy'?0x6E4428:0xF5F4F0))),{roughness:0.5}),
+    frame:WF==='yogoch'?matT('wood',woodTex(),{roughness:0.55}):mat(WF==='oq'?0xF5F4F0:(WF==='antrasit'?0x2E3236:(S==='zamonaviy'?0x2A2F33:(S==='milliy'?0x6E4428:0xF5F4F0))),{roughness:0.5}),
     edoor:A.doorMat==='metall'?mat(0x2B2F33,{roughness:0.35,metalness:0.6}):(A.doorMat==='shisha'?mat(0x5F7786,{transparent:true,opacity:0.6,roughness:0.05,metalness:0.6,envMapIntensity:1.6}):(A.doorMat==='yogoch'?matT('wood',woodTex(),{roughness:0.6}):(S==='zamonaviy'?mat(0x33383D,{roughness:0.5}):matT('wood',woodTex(),{roughness:0.6})))),
     door:S==='zamonaviy'?mat(0x33383D,{roughness:0.5}):matT('wood',woodTex(),{roughness:0.6}),
     roof:matT('roof'+RF.mat+RF.hex,roofTexFor(RF.mat,RF.hex),{roughness:RF.mat==='keramik'?0.75:(RF.mat==='yumshoq'?0.9:0.5),metalness:(RF.mat==='metall'||RF.mat==='profnastil')?0.4:0.02,side:THREE.DoubleSide,envMapIntensity:0.8,bumpMap:roofTexFor(RF.mat,RF.hex),bumpScale:RF.mat==='keramik'?0.9:0.4}),
     trim:mat(S==='milliy'?0x1E5C9A:(S==='zamonaviy'?0x2A2F33:0xF7F6F2),{roughness:0.55}),
-    wood:matT('wood',woodTex(),{roughness:0.6}), inner:mat(0xF3F1EC,{roughness:0.9}), lining:mat(0xF1EEE8,{roughness:0.92}), rail:mat(0xC6DDEA,{transparent:true,opacity:0.32,roughness:0.05,metalness:0.2}),
+    wood:matT('wood',woodTex(),{roughness:0.6}), inner:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#F3F1EC')).slice(1),16),{roughness:0.9}), lining:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#F1EEE8')).slice(1),16),{roughness:0.92}), rail:mat(0xC6DDEA,{transparent:true,opacity:0.32,roughness:0.05,metalness:0.2}),
     steel:mat(0x2A2E32,{roughness:0.35,metalness:0.7}), grass:matT('grass',grassTex()), grass2:matT('grass2',grassTex('#5F7D45','grass2')),
     pave:matT('pave',paveTex(),{roughness:0.55,bumpMap:paveTex(),bumpScale:0.25}), asph:matT('asph',asphaltTex(),{roughness:0.95}), gdoor:matT('sect',sectTex(),{roughness:0.5,metalness:0.3}),
     led:new THREE.MeshStandardMaterial({color:0xFFFFFF,emissive:0xFFF6E8,emissiveIntensity:1.4}), hedge:matT('hedge',grassTex('#3F5F30','hedge'),{roughness:1}),
     parq:matT('parq',parquetTex(),{roughness:0.5}), tileW:matT('tileW',tileTex('#E9EEF1','tileW'),{roughness:0.3}), tileK:matT('tileK',tileTex('#E6E1D8','tileK',3),{roughness:0.35}), marbleF:matT('marbleF',tileTex('#EFECE6','marbleF',2),{roughness:0.15,envMapIntensity:0.9}),
     wetWall:matT('tileWall',tileTex('#F3F6F7','tileWall',6),{roughness:0.3}), water:mat(0x3FA7D6,{transparent:true,opacity:0.82,roughness:0.04,metalness:0.1,envMapIntensity:1.4}), clay:mat(0xB9764A,{roughness:0.9})};
   const FLOOR={zal:lux==='hashamatli'?M.marbleF:M.parq,kitchen:M.tileK,bed:M.parq,wet:M.tileW,circ:lux==='oddiy'?M.tileK:M.marbleF,stair:M.slab,util:M.tileK,garage:M.slab};
+  if(A.floorType==='parket'||A.floorType==='laminat'){ FLOOR.zal=M.parq; FLOOR.bed=M.parq; } else if(A.floorType==='marmar'){ FLOOR.zal=M.marbleF; FLOOR.bed=M.marbleF; FLOOR.circ=M.marbleF; FLOOR.kitchen=M.marbleF; } else if(A.floorType==='kafel'){ FLOOR.zal=M.tileK; FLOOR.bed=M.tileK; FLOOR.circ=M.tileK; }
   const g=new THREE.Group(); const floors=[]; const roof=new THREE.Group(); g.add(roof);
   const X=x=>x, Z=y=>-y; const colliders=v.floors.map(()=>[]); const roomLights=v.floors.map(()=>[]);
   const addCol=(k,cx,cz,w,d)=>{ if(colliders[k]) colliders[k].push({x0:cx-w/2,x1:cx+w/2,z0:cz-d/2,z1:cz+d/2}); };
@@ -1811,14 +1998,14 @@ function buildHouse(v,A){
   { const lampM=mat(0x3A3F44,{roughness:0.4,metalness:0.6}); for(let x=-12;x<pw+12;x+=(A.street==='katta'?14:20)){ cyl(site,0.07,5.2,fx0+x,2.6,Z(fy0-0.35),lampM,8); box(site,0.9,0.08,0.18,fx0+x-0.4,5.15,Z(fy0-0.35),lampM); box(site,0.35,0.06,0.2,fx0+x-0.8,5.08,Z(fy0-0.35),M.led,false); } }
   { const nb=A.neighbors||'ikki'; const NB=[]; if(nb==='ikki'||nb==='bir') NB.push(-1); if(nb==='ikki') NB.push(1); const R2=rnd(Math.round(pw*7+pl*3));
     const ncols=['#E7DCC8','#D9D2C4','#EFE9DE','#CDBFA8','#E4D6BF'], rcols=['#5A4636','#4A4F55','#7A3F2E','#56606A'];
-    NB.forEach(sd=>{ const nw=8+R2()*2.5, nd=8+R2()*2, nh=3.4+R2()*0.8, x0=sd<0?fx0-nw-4.5:fx0+pw+4.5, y0=fy0+6+R2()*3; const nm=mat(parseInt(ncols[Math.floor(R2()*5)].slice(1),16),{roughness:0.9}); const rm=mat(parseInt(rcols[Math.floor(R2()*4)].slice(1),16),{roughness:0.6,metalness:0.2});
+    NB.forEach(sd=>{ const nw=8+R2()*2.5, nd=8+R2()*2, nh=3.4+R2()*0.8, x0=sd<0?fx0-nw-7:fx0+pw+7, y0=fy0+9+R2()*3; const nm=mat(parseInt(ncols[Math.floor(R2()*5)].slice(1),16),{roughness:0.9}); const rm=mat(parseInt(rcols[Math.floor(R2()*4)].slice(1),16),{roughness:0.6,metalness:0.2});
       box(site,nw,nh,nd,x0+nw/2,nh/2,Z(y0+nd/2),nm); const r=hipRoof(x0-0.5,Z(y0+nd)-0.5,nw+1,nd+1,0.5,rm); r.position.y=nh; site.add(r);
       const gm=mat(0x2C3A44,{roughness:0.1,metalness:0.6}); for(let fl=0;fl<(nh>5?2:1);fl++) for(let i=0;i<3;i++) box(site,1.2,1.4,0.06,x0+nw*(i+0.5)/3,1.4+fl*3,Z(y0)+0.03,gm,false);
       const fx=sd<0?fx0-0.2:fx0+pw+0.2; box(site,0.22,2.0,pl*0.8,fx+(sd<0?-0.15:0.15),1.0,Z(fy0+pl*0.45),nm); }); }
   { const vw=A.view||'shahar', R3=rnd(97);
     if(vw==='tog'){ const mm=mat(0x7D8A99,{roughness:1}), sn=mat(0xF4F6F8,{roughness:0.9}); for(let i=0;i<9;i++){ const a=-Math.PI/2+(i-4)*0.22+(R3()-0.5)*0.1, d=200+R3()*45, hgt=45+R3()*55, rad=55+R3()*45; const cx=Math.cos(a)*d+fx0+pw/2, cz=Math.sin(a)*d+Z(fy0+pl/2);
         const c=new THREE.Mesh(new THREE.ConeGeometry(rad,hgt,7,1),mm); c.position.set(cx,hgt/2-2,cz); c.rotation.y=R3()*3; site.add(c); const s=new THREE.Mesh(new THREE.ConeGeometry(rad*0.28,hgt*0.28,7,1),sn); s.position.set(cx,hgt-2-hgt*0.14+0.5,cz); s.rotation.y=c.rotation.y; site.add(s); } }
-    else if(vw==='shahar'){ const bm=[mat(0xA9B4C0,{roughness:0.6,metalness:0.2}),mat(0xC9CED4,{roughness:0.7}),mat(0x8D99A6,{roughness:0.4,metalness:0.4})]; for(let i=0;i<26;i++){ const a=-Math.PI/2+(R3()-0.5)*2.4, d=150+R3()*90, hgt=14+R3()*60, w=10+R3()*14; box(site,w,hgt,w,Math.cos(a)*d+fx0+pw/2,hgt/2,Math.sin(a)*d+Z(fy0+pl/2),bm[i%3],false); } }
+    else if(vw==='shahar'){ const bm=[mat(0xA9B4C0,{roughness:0.6,metalness:0.2}),mat(0xC9CED4,{roughness:0.7}),mat(0x8D99A6,{roughness:0.4,metalness:0.4})]; for(let i=0;i<26;i++){ const a=-Math.PI/2+(R3()-0.5)*1.6, d=210+R3()*60, hgt=10+R3()*35, w=10+R3()*14; box(site,w,hgt,w,Math.cos(a)*d+fx0+pw/2,hgt/2,Math.sin(a)*d+Z(fy0+pl/2),bm[i%3],false); } }
     else { const tm=mat(0x4F6F3A,{roughness:1}); for(let i=0;i<60;i++){ const a=-Math.PI/2+(R3()-0.5)*3, d=90+R3()*120, s=4+R3()*5; const c=new THREE.Mesh(new THREE.SphereGeometry(s,8,6),tm); c.position.set(Math.cos(a)*d+fx0+pw/2,s*0.8,Math.sin(a)*d+Z(fy0+pl/2)); c.scale.y=0.8; site.add(c); } } }
   plane(site,pw+80,2.2,fx0+pw/2,0.0,Z(fy0-0.6),matT('pave2',paveTex(),{roughness:0.6}));
   { const sh=new THREE.Shape(); Yd.P.forEach(([px,py],i)=>{ const [x,y]=PH(px,py); if(i===0) sh.moveTo(x,y); else sh.lineTo(x,y); });
@@ -1951,7 +2138,8 @@ function buildHouse(v,A){
         parts.forEach(([x,y,w,d])=>{ if(w>0.01&&d>0.01) box(cap,w,0.25,d,X(x+w/2),top-0.125,Z(y+d/2),M.slab); }); }
       else box(cap,b.w+(hasUpper?0:0.3),0.25,b.h+(hasUpper?0:0.3),X(b.x+b.w/2),top-0.125,Z(b.y+b.h/2),M.slab);
       if(b.roof && !hasUpper){
-        if(RF.shape==='tort' && S!=='milliy'){
+        if(RF.shape==='mansard'){ const ov=0.35, r=mansardRoof(X(b.x)-ov,Z(b.y+b.h)-ov,b.w+ov*2,b.h+ov*2,M.roof,1.9); r.position.y=top+0.18; roof.add(r); box(roof,b.w+ov*2+0.1,0.24,b.h+ov*2+0.1,X(b.x+b.w/2),top+0.08,Z(b.y+b.h/2),M.white); }
+        else if(RF.shape==='tort' && S!=='milliy'){
           const r=hipRoof(X(b.x)-0.6,Z(b.y+b.h)-0.6,b.w+1.2,b.h+1.2,RF.pitch,M.roof); r.position.y=top+0.02; roof.add(r);
           box(roof,b.w+1.25,0.2,b.h+1.25,X(b.x+b.w/2),top+0.02,Z(b.y+b.h/2),M.white);
           [[b.w+1.4,0.12,X(b.x+b.w/2),Z(b.y)+0.68],[b.w+1.4,0.12,X(b.x+b.w/2),Z(b.y+b.h)-0.68]].forEach(([L,t,x,z])=>box(roof,L,0.12,t,x,top+0.05,z,M.gutter,false));
@@ -2023,20 +2211,23 @@ function buildHouse(v,A){
 /* ================== Usta (builder) package ================== */
 const ART_URL='https://claude.ai/artifact/B8zyx7ev9s3vKLu8QknXbn';
 const FLAG_KEYS=['bigZal','darvoza','garage','ayvon','sauna','pool','gulzor','gazebo','tandir','playground','fountain','supa'];
-function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
+function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r',mansard:'s'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+(['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'].indexOf(A.massing||'auto')).toString(36)+Math.max(0,SUB_K.indexOf(A.sub||'')).toString(36)+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
 const OPC={winSize:['auto','kichik','orta','katta','panorama'],winCount:['orta','kam','kop'],winFrame:['auto','oq','antrasit','yogoch'],doorType:['bir','ikki','katta'],doorMat:['auto','yogoch','metall','shisha'],gateType:['ochiladigan','surma','naqshli']};
-function encOpen(A){ return Object.keys(OPC).map(k=>Math.max(0,OPC[k].indexOf(A[k]))).join('')+(A.intDoorH>2.2?1:0)+(A.kalitka?1:0)+'g'+Math.round((+A.gateW||4)*10)+'h'+Math.round((+A.gateH||2.4)*10)+'f'+Math.max(0,FAC_K.indexOf(A.facade))+['tor','mahalla','katta'].indexOf(A.street||'mahalla')+['ikki','bir','yoq'].indexOf(A.neighbors||'ikki')+['shahar','tog','dala'].indexOf(A.view||'shahar')+['janub','shimol','sharq','garb'].indexOf(A.facing||'janub'); }
-const FAC_K=['auto','gisht','suvoq','tosh','travertin','yogoch','kombi'];
+function encOpen(A){ return Object.keys(OPC).map(k=>Math.max(0,OPC[k].indexOf(A[k]))).join('')+(A.intDoorH>2.2?1:0)+(A.kalitka?1:0)+'g'+Math.round((+A.gateW||4)*10)+'h'+Math.round((+A.gateH||2.4)*10)+'f'+Math.max(0,FAC_K.indexOf(A.facade))+['tor','mahalla','katta'].indexOf(A.street||'mahalla')+['ikki','bir','yoq'].indexOf(A.neighbors||'ikki')+['shahar','tog','dala'].indexOf(A.view||'shahar')+['janub','shimol','sharq','garb'].indexOf(A.facing||'janub')+'i'+Math.max(0,INT_K.indexOf(A.intStyle||'auto'))+Math.max(0,['auto','parket','laminat','marmar','kafel'].indexOf(A.floorType||'auto'))+Math.max(0,['oddiy','gips','ganch'].indexOf(A.ceiling||'oddiy'))+String(A.paint||'#efe8dc').slice(1)+'.'+[A.furnZal,A.furnBed,A.furnKit].map(s=>(s||'').split(',').filter(Boolean).map(x=>x.slice(0,2)).join('')).join('_'); }
+const INT_K=['auto','zamonaviy','neoklassik','klassik','milliy','skandinav','loft'];
+const FAC_K=['auto','gisht','suvoq','tosh','travertin','yogoch','kombi','metall','shale'];
 function decOpen(A,s){ if(!s) return; const ks=Object.keys(OPC); ks.forEach((k,i)=>{ const j=+s[i]; if(OPC[k][j]) A[k]=OPC[k][j]; }); A.intDoorH=s[ks.length]==='1'?2.4:2.1; A.kalitka=s[ks.length+1]!=='0'; const g=s.match(/g(\d+)/), hh=s.match(/h(\d+)/); if(g) A.gateW=Math.max(2.6,Math.min(7,+g[1]/10)); if(hh) A.gateH=Math.max(1.8,Math.min(3.4,+hh[1]/10));
-  const ff=s.match(/f(\d)(\d)(\d)(\d)(\d)/); if(ff){ A.facade=FAC_K[+ff[1]]||'auto'; A.street=['tor','mahalla','katta'][+ff[2]]||'mahalla'; A.neighbors=['ikki','bir','yoq'][+ff[3]]||'ikki'; A.view=['shahar','tog','dala'][+ff[4]]||'shahar'; A.facing=['janub','shimol','sharq','garb'][+ff[5]]||'janub'; } }
+  const ff=s.match(/f(\d)(\d)(\d)(\d)(\d)/); if(ff){ A.facade=FAC_K[+ff[1]]||'auto'; A.street=['tor','mahalla','katta'][+ff[2]]||'mahalla'; A.neighbors=['ikki','bir','yoq'][+ff[3]]||'ikki'; A.view=['shahar','tog','dala'][+ff[4]]||'shahar'; A.facing=['janub','shimol','sharq','garb'][+ff[5]]||'janub'; }
+  const ii=s.match(/i(\d)(\d)(\d)([0-9a-fA-F]{6})/); if(ii){ A.intStyle=INT_K[+ii[1]]||'auto'; A.floorType=['auto','parket','laminat','marmar','kafel'][+ii[2]]||'auto'; A.ceiling=['oddiy','gips','ganch'][+ii[3]]||'oddiy'; A.paint='#'+ii[4].toLowerCase(); } }
+function decFurn(A,s){ if(s==null) return; const all=['tv','divan','kreslo','stol','kamin','pianino','akvarium','garderob','ishstol','orol','bar']; const pr=t=>{ const out=[]; for(let i=0;i<t.length;i+=2){ const p=t.slice(i,i+2); const m=all.find(x=>x.slice(0,2)===p); if(m) out.push(m); } return out.join(','); }; const [z,b,k]=s.split('_'); A.furnZal=pr(z||''); A.furnBed=pr(b||''); A.furnKit=pr(k||''); }
 function b64u(s){ return btoa(unescape(encodeURIComponent(s))).replace(/\+/g,'_').replace(/\//g,'.').replace(/=+$/,''); }
 function ub64(s){ return decodeURIComponent(escape(atob(s.replace(/_/g,'+').replace(/\./g,'/')))); }
 function decProject(s){ const p=s.split('-'); if(p[0]!=='q'||p.length<18) return null; const sty=c=>({z:'zamonaviy',k:'klassik',m:'milliy'}[c]||'klassik');
   const A=Object.assign({},DEF,{plotShape:{r:'rect',z:'trap',t:'tri'}[p[1]]||'rect',plotW:+p[2],plotL:+p[3],plotBackW:+p[4],floors:+p[5]===1?1:2,family:+p[6],beds:Math.min(6,Math.max(2,+p[7])),targetArea:+p[8]||0,trees:Math.min(16,Math.max(0,+p[10]||0)),lux:{a:'auto',d:'oddiy',o:'orta',h:'hashamatli'}[p[11]]||'auto',style:sty(p[12]),wall:WALLC[p[13]]?p[13]:(/^x[0-9a-fA-F]{6}$/.test(p[13]||'')?'#'+p[13].slice(1).toLowerCase():'oq'),budget:(+p[14]||120)*1000});
   FLAG_KEYS.forEach((k,i)=>{ A[k]=(p[9]||'')[i]==='1'; });
   if(+p[15]>0){ A.rate=+p[15]; A.rateManual=true; } else A.rateManual=false;
-  { const r=p[17]||''; A.roofShape={a:'auto',t:'tekis',i:'ikki',r:'tort'}[r[1]]||'auto'; A.roofMat={m:'metall',k:'keramik',y:'yumshoq',p:'profnastil'}[r[2]]||'auto'; A.roofCol={a:'auto',g:'grafit',j:'jigar',q:'qizil',y:'yashil',k:'kok'}[r[3]]||'auto';
-    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; decOpen(A,ex[4]); }
+  { const r=p[17]||''; A.roofShape={a:'auto',t:'tekis',i:'ikki',r:'tort',s:'mansard'}[r[1]]||'auto'; A.roofMat={m:'metall',k:'keramik',y:'yumshoq',p:'profnastil'}[r[2]]||'auto'; A.roofCol={a:'auto',g:'grafit',j:'jigar',q:'qizil',y:'yashil',k:'kok'}[r[3]]||'auto';
+    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; A.massing=['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'][parseInt(lc[3]||'0',36)]||'auto'; A.sub=SUB_K[parseInt(lc[4]||'0',36)]||''; if(A.sub&&SUBS[A.sub]) A.style=SUBS[A.sub].b; decOpen(A,ex[4]); decFurn(A,ex[5]); }
   if(p[18]){ try{ const R=JSON.parse(ub64(p.slice(18).join('-'))); if(R&&typeof R==='object') A.rooms={adj:R.adj||{},base:R.base||{},del:Array.isArray(R.del)?R.del:[],add:Array.isArray(R.add)?R.add.filter(r=>r&&typeof r.n==='string'&&r.a>0).slice(0,12):[]}; }catch(e){} }
   if(!(A.plotW>=9&&A.plotW<=60&&A.plotL>=15&&A.plotL<=80)) return null; return {A,vi:Math.min(2,Math.max(0,+p[16]||0)),st:sty((p[17]||'')[0])}; }
 function shareUrl(){ const base=/claude/.test(location.hostname)||location.protocol==='about:'||!location.hostname ? ART_URL : location.origin+location.pathname; const v=S.variants[S.active]; return base+'#'+encProject(S.A,S.active,v&&v.style); }
@@ -2050,7 +2241,8 @@ function roofSVG(v,A){
   bl.forEach(b=>{ const X0=b.x-ov, Y0=b.y-ov, W=b.w+ov*2, D=b.h+ov*2, cx=X0+W/2, cy=Y0+D/2;
     o.push(`<rect x="${b.x}" y="${Y(b.y+b.h)}" width="${b.w}" height="${b.h}" fill="none" stroke="#9AA3AD" stroke-width="0.06" stroke-dasharray="0.3 0.2"></rect>`);
     o.push(`<rect x="${X0}" y="${Y(Y0+D)}" width="${W}" height="${D}" fill="${R.hex}" fill-opacity="0.16" stroke="#222" stroke-width="0.09"></rect>`);
-    if(R.shape==='tort'){ const al=W>=D; const r0=al?[X0+D/2,cy]:[cx,Y0+W/2], r1=al?[X0+W-D/2,cy]:[cx,Y0+D-W/2];
+    if(R.shape==='mansard') o.push(`<rect x="${X0+W*0.29}" y="${Y(Y0+D*0.71)}" width="${W*0.42}" height="${D*0.42}" fill="none" stroke="#B4362A" stroke-width="0.1"></rect>`);
+    if(R.shape==='tort'||R.shape==='mansard'){ const al=W>=D; const r0=al?[X0+D/2,cy]:[cx,Y0+W/2], r1=al?[X0+W-D/2,cy]:[cx,Y0+D-W/2];
       o.push(`<line x1="${r0[0]}" y1="${Y(r0[1])}" x2="${r1[0]}" y2="${Y(r1[1])}" stroke="#B4362A" stroke-width="0.12"></line>`);
       [[X0,Y0,r0],[X0,Y0+D,r0],[X0+W,Y0,r1],[X0+W,Y0+D,r1]].forEach(([x,y,r])=>{ const rr=(al?(x<cx?r0:r1):(y<cy?r0:r1)); o.push(`<line x1="${x}" y1="${Y(y)}" x2="${rr[0]}" y2="${Y(rr[1])}" stroke="#222" stroke-width="0.07"></line>`); });
       o.push(arrow(cx,cy-D*0.12,0,-1),arrow(cx,cy+D*0.12,0,1));
@@ -2144,35 +2336,56 @@ async function makePdf(){
   try{
     if(!window.jspdf) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
     const v=S.variants[S.active], A=S.A; const doc=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
-    const W=297,H=210; let page=0;
-    const frame=(title)=>{ if(page++) doc.addPage(); doc.setDrawColor(20); doc.setLineWidth(0.5); doc.rect(8,8,W-16,H-16); doc.setLineWidth(0.3); doc.rect(W-108,H-30,100,22);
+    const W=297,H=210; let page=0; const toc=[];
+    // make sure every room has its picture before building the book
+    try{ const rl=roomList(v); for(let i=0;i<rl.length;i++){ const {k,r}=rl[i], key=`${v.key}|${k}|${r.n}|${i}`; if(S.roomImgs[key]||!resV||!resV.ok) continue; msg.textContent=`Xona rasmlari tayyorlanmoqda: ${i+1}/${rl.length}…`; await new Promise(rs=>setTimeout(rs,30)); const u=resV.shot({kind:'int',k,r,w:1280,h:720}); if(u) S.roomImgs[key]={url:await postPhoto(u),ai:false}; } }catch(e){ console.error(e); }
+    if(!(S.photos&&S.photos.length)&&resV&&resV.ok){ S.photos=[]; for(const s of SHOTS){ try{ msg.textContent='Rasmlar chizilmoqda…'; await new Promise(rs=>setTimeout(rs,30)); const u=resV.shot(Object.assign({w:1920,h:1080},s)); if(u) S.photos.push({url:await postPhoto(u,s.kind==='night'),cap:s.cap,kind:s.kind}); }catch(e){} } }
+    msg.textContent='Loyiha kitobi yig\'ilmoqda…';
+    // cover
+    { page++; const cover=(aiList()[0]||(S.photos||[])[0]); doc.setFillColor(10,17,32); doc.rect(0,0,W,H,'F'); if(cover){ try{ doc.addImage(cover.url,cover.url.startsWith('data:image/png')?'PNG':'JPEG',0,0,W,W*9/16); }catch(e){} }
+      doc.setFillColor(10,17,32); doc.rect(0,H-62,W,62,'F'); doc.setFillColor(31,95,224); doc.rect(0,H-62,W,1.6,'F');
+      doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(26); doc.text(pt('UY LOYIHASI KITOBI'),16,H-44); doc.setFontSize(14); doc.text(pt(`Variant ${v.key}: ${v.name} · ${stN(v)} uslub`),16,H-34);
+      doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.text(pt(`${fmtA(v.area)} m2 · ${v.floors.length} qavat · ${v.bedCount} yotoqxona · taxminan ${money(v.total)}`),16,H-25);
+      doc.text(pt(`${S.user?S.user.name+' · ':''}${new Date().toLocaleDateString('ru-RU')} · UyChizma`),16,H-16); doc.setTextColor(0,0,0); }
+    const frame=(title,chap)=>{ if(page++) doc.addPage(); if(chap) toc.push([chap,page]); doc.setDrawColor(20); doc.setLineWidth(0.5); doc.rect(8,8,W-16,H-16); doc.setLineWidth(0.3); doc.rect(W-108,H-30,100,22);
       doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text(pt('UyChizma · eskiz loyiha'),W-105,H-24); doc.setFont('helvetica','normal'); doc.setFontSize(8);
-      doc.text(pt(`Variant ${v.key}: ${v.name}`),W-105,H-19); doc.text(pt(`${S.user?S.user.name+' · '+S.user.phone:''}`),W-105,H-14); doc.text(`Varaq ${page} · ${new Date().toLocaleDateString('ru-RU')}`,W-105,H-10);
+      doc.text(pt(`Variant ${v.key}: ${v.name}`),W-105,H-19); doc.text(pt(`${S.user?S.user.name+' · '+S.user.phone:''}`),W-105,H-14); doc.text(new Date().toLocaleDateString("ru-RU"),W-105,H-10);
       doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.text(pt(title),14,18); doc.setFont('helvetica','normal'); };
     const table=(x,y,cols,rows,widths)=>{ doc.setFontSize(9); doc.setFont('helvetica','bold'); let cx=x; cols.forEach((c,i)=>{ doc.text(pt(c),cx,y); cx+=widths[i]; }); doc.setFont('helvetica','normal'); y+=2; doc.line(x,y,x+widths.reduce((a,b)=>a+b,0),y); y+=5;
       rows.forEach(r=>{ if(y>H-34){ return; } cx=x; r.forEach((c,i)=>{ doc.text(pt(c),cx,y,{maxWidth:widths[i]-2}); cx+=widths[i]; }); y+=5.4; }); return y; };
-    // page 1: summary
-    frame('Uy loyihasi: '+v.name);
-    doc.setFontSize(10); const info=[['Yer uchastkasi',`${fmt1(A.plotW)} × ${fmt1(A.plotL)} m, ${fmt1(plotArea(A))} m2`],['Gabarit',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)],['Umumiy maydon',fmtA(v.area)+' m2'],['Yotoqxonalar',String(v.bedCount)],['Uslub / daraja',STYLE_NAME[v.style]+' / '+LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)+` (${v.rate} $/m2)`],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)],['Buyurtmachi',S.user?`${S.user.name}, ${S.user.phone}, ${S.user.city}`:'-']];
+    frame('Uy loyihasi: '+v.name,'1. Loyiha haqida qisqacha');
+    doc.setFontSize(10); const info=[['Yer uchastkasi',`${fmt1(A.plotW)} × ${fmt1(A.plotL)} m, ${fmt1(plotArea(A))} m2`],['Gabarit',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)],['Umumiy maydon',fmtA(v.area)+' m2'],['Yotoqxonalar',String(v.bedCount)],['Uslub / daraja',stN(v)+' / '+LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)+` (${v.rate} $/m2)`],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)],['Buyurtmachi',S.user?`${S.user.name}, ${S.user.phone}, ${S.user.city}`:'-']];
     let y=30; info.forEach(([k,x])=>{ doc.setFont('helvetica','normal'); doc.text(pt(k),14,y); doc.setFont('helvetica','bold'); doc.text(pt(x),70,y); y+=7; });
     doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.text(pt("Eslatma: bu eskiz loyiha. Qurilishdan oldin arxitektor va konstruktor tayyorlagan ishchi loyiha (AR, KR) va tuproq tekshiruvi talab qilinadi."),14,H-14,{maxWidth:170});
     // plan pages
-    if(S.photos&&S.photos.length){ frame('Natija: uyning ko\'rinishi'); const ph=aiList().concat(S.photos).slice(0,4); const pw2=(W-36)/2, phh=pw2*9/16; ph.forEach((p,i)=>{ const x=14+(i%2)*(pw2+8), y=24+Math.floor(i/2)*(phh+10); doc.addImage(p.url,'JPEG',x,y,pw2,phh); doc.setFontSize(8); doc.text(pt(p.cap),x,y+phh+4); }); }
-    frame('Hovli rejasi'); { const s=await svgToPng(siteSVG(v,A),2000); let h=H-46, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); }
-    frame('Tom rejasi'); { const s=await svgToPng(roofSVG(v,A),2000); let h=H-80, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); table(200,28,['Tom','Qiymat'],roofRows(v,A).slice(0,6),[30,50]); }
-    for(let k=0;k<v.floors.length;k++){ frame(`${k+1}-qavat rejasi`); const img=await svgToPng(planSVG(v,k),2400); const mw=170, mh=H-46; let w=mw,h=w*img.ar; if(h>mh){h=mh;w=h/img.ar;} doc.addImage(img.data,'JPEG',12,24,w,h);
+    { const ph=aiList().concat(S.photos||[]); for(let i=0;i<ph.length;i+=2){ frame('Uyning ko\'rinishi', i===0?'2. Uyning ko\'rinishi (rasmlar)':null); [ph[i],ph[i+1]].forEach((p,j)=>{ if(!p) return; const pw2=(W-36)/2, phh=pw2*9/16, x=14+j*(pw2+8), y=40; try{ doc.addImage(p.url,p.url.startsWith('data:image/png')?'PNG':'JPEG',x,y,pw2,phh); }catch(e){} doc.setFontSize(9); doc.text(pt(p.cap),x,y+phh+5); }); } }
+    frame('Hovli rejasi','3. Hovli rejasi'); { const s=await svgToPng(siteSVG(v,A),2000); let h=H-46, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); }
+    frame('Tom rejasi','4. Tom rejasi'); { const s=await svgToPng(roofSVG(v,A),2000); let h=H-80, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); table(200,28,['Tom','Qiymat'],roofRows(v,A).slice(0,6),[30,50]); }
+    for(let k=0;k<v.floors.length;k++){ frame(`${k+1}-qavat rejasi`,k===0?'5. Qavat rejalari':null); const img=await svgToPng(planSVG(v,k),2400); const mw=170, mh=H-46; let w=mw,h=w*img.ar; if(h>mh){h=mh;w=h/img.ar;} doc.addImage(img.data,'JPEG',12,24,w,h);
       const f=v.floors[k]; const rows=mainRooms(f).map((r,i)=>[String(i+1),r.n,`${fmt2(r.w)} × ${fmt2(r.h)}`,fmtA(roomA(r,f))]); rows.push(['','Jami','',fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))]);
       table(188,28,['No','Xona','O\'lcham, m','m2'],rows,[8,44,26,16]); }
-    frame('Poydevor rejasi va kesim 1-1'); { const a=await svgToPng(foundSVG(v),2000); let w=135,h=w*a.ar; if(h>150){h=150;w=h/a.ar;} doc.addImage(a.data,'JPEG',12,26,w,h); const b=await svgToPng(sectionSVG(v,A),2000); let w2=135,h2=w2*b.ar; if(h2>120){h2=120;w2=h2/b.ar;} doc.addImage(b.data,'JPEG',152,26,w2,h2); }
-    frame('Deraza va eshiklar jadvali'); table(14,30,['Belgi','Turi','O\'lchami, mm','1-qavat','2-qavat','Jami'],openSchedule(v),[22,50,50,25,25,20]);
-    frame('Ish bosqichlari va materiallar'); { let y2=30; stageRows(v,A).forEach(s=>{ doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text(pt(`${s.name}  (~${money(s.sum)})`),14,y2); y2+=5.5; doc.setFont('helvetica','normal'); doc.setFontSize(9); s.items.forEach(it=>{ doc.text(pt(it[0]),20,y2); doc.text(pt(it[1]+' '+it[2]),110,y2); y2+=4.8; }); y2+=2; if(y2>H-40 && s!==null){ } }); }
-    const blob=doc.output('blob'); const fname=`UyChizma-variant-${v.key}.pdf`;
+    { const rl=roomList(v); for(let i=0;i<rl.length;i++){ const {k,r,f}=rl[i]; frame(`${i+1}. ${r.n} - chizma`,i===0?'6. Xonalar (har biri: chizma + ko\'rinish)':null); const img=await svgToPng(roomSVG(v,k,r,A),1800); let w=170,h=w*img.ar; if(h>H-46){h=H-46;w=h/img.ar;} doc.addImage(img.data,'JPEG',14,24,w,h);
+        table(194,30,['Xona','Qiymat'],[['Qavat',String(k+1)],["O'lcham",`${fmt2(r.w)} x ${fmt2(r.h)} m`],['Maydon',fmtA(roomA(r,f))+' m2'],['Devor rangi',A.paint||''],['Pol',floorOf(r,v,A)],['Shift',CEIL_N[A.ceiling]||CEIL_N.oddiy]],[30,60]);
+        const im=S.roomImgs[`${v.key}|${k}|${r.n}|${i}`]; if(im){ frame(`${i+1}. ${r.n} - ko'rinish`); doc.addImage(im.url,im.url.startsWith('data:image/png')?'PNG':'JPEG',14,24,W-28,(W-28)*9/16); } } }
+    frame('Poydevor rejasi va kesim 1-1','7. Poydevor va kesim'); { const a=await svgToPng(foundSVG(v),2000); let w=135,h=w*a.ar; if(h>150){h=150;w=h/a.ar;} doc.addImage(a.data,'JPEG',12,26,w,h); const b=await svgToPng(sectionSVG(v,A),2000); let w2=135,h2=w2*b.ar; if(h2>120){h2=120;w2=h2/b.ar;} doc.addImage(b.data,'JPEG',152,26,w2,h2); }
+    frame('Deraza va eshiklar jadvali','8. Deraza, eshik va darvozalar'); table(14,30,['Belgi','Turi','O\'lchami, mm','1-qavat','2-qavat','Jami'],openSchedule(v),[22,50,50,25,25,20]);
+    frame('Materiallar ro\'yxati','9. Materiallar va narx'); table(14,30,['Material','Miqdor','Birlik','Izoh'],v.mat.map(r=>[r[0],r[1],r[2],r[3]]),[60,28,16,160]);
+    frame('Ish bosqichlari','10. Qurilish bosqichlari'); { let y2=30; stageRows(v,A).forEach(s=>{ const need=8+s.items.length*4.8; if(y2+need>H-34){ frame('Ish bosqichlari (davomi)'); y2=30; } doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text(pt(`${s.name}  (~${money(s.sum)})`),14,y2); y2+=5.5; doc.setFont('helvetica','normal'); doc.setFontSize(9); s.items.forEach(it=>{ doc.text(pt(it[0]),20,y2); doc.text(pt(it[1]+' '+it[2]),110,y2); y2+=4.8; }); y2+=2; }); }
+    // contents page -> position 2
+    doc.addPage(); page++; doc.setFont('helvetica','bold'); doc.setFontSize(20); doc.text(pt('Mundarija'),20,26); doc.setFontSize(12); let ty=42;
+    toc.forEach(([t,p])=>{ doc.setFont('helvetica','normal'); doc.text(pt(t),24,ty); doc.text(String(p+1),W-30,ty,{align:'right'}); doc.setDrawColor(200); doc.setLineDashPattern([0.6,1.2],0); doc.line(24+doc.getTextWidth(pt(t))+3,ty,W-34,ty); doc.setLineDashPattern([],0); ty+=10; });
+    doc.movePage(page,2);
+    const N=doc.getNumberOfPages(); for(let i=2;i<=N;i++){ doc.setPage(i); doc.setFontSize(8); doc.setTextColor(120); doc.text(`${i} / ${N}`,W/2,H-3,{align:'center'}); doc.setTextColor(0); }
+    const blob=doc.output('blob'); const fname=`UyChizma-loyiha-kitobi-${v.key}.pdf`;
     const dl = window.claude && window.claude.use ? await window.claude.use('downloads') : null;
     if(dl){ try{ await dl.save({filename:fname,data:blob}); msg.textContent='PDF saqlandi. Uni Telegram orqali ustaga yuboring.'; }catch(e){ msg.textContent = e&&e.code==='declined' ? 'Yuklab olish bekor qilindi.' : "PDF'ni saqlab bo'lmadi. Qaytadan urinib ko'ring."; } }
     else { const u=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000); msg.textContent='PDF yuklab olindi.'; }
   }catch(e){ console.error(e); msg.textContent="PDF tayyorlab bo'lmadi. Internet aloqasini tekshirib, qaytadan bosing."; }
   btn.disabled=false;
 }
+async function dlAllRun(){ const bs=[$('#dlAll'),$('#dlFab')]; if(bs[0].disabled) return; bs.forEach(b=>{ b.disabled=true; b.dataset.t=b.textContent; b.textContent='⏳ Tayyorlanmoqda…'; });
+  const m=$('#ustaMsg'); const ob=new MutationObserver(()=>{ bs[1].textContent='⏳ '+m.textContent.slice(0,40); }); try{ ob.observe(m,{childList:true,characterData:true,subtree:true}); }catch(e){}
+  try{ await makePdf(); toast(m.textContent||'Tayyor'); } finally { ob.disconnect(); bs.forEach(b=>{ b.disabled=false; b.textContent=b.dataset.t; }); } }
 async function copyLink(){ const u=shareUrl(), msg=$('#ustaMsg'); try{ await navigator.clipboard.writeText(u); msg.textContent='Havola nusxalandi. Uni ustaga yuboring: u shu loyihani to\'liq ko\'radi.'; }catch(e){ msg.innerHTML='Havolani belgilab nusxalang: <code style="user-select:all;word-break:break-all">'+esc(u)+'</code>'; } }
 
 
@@ -2201,24 +2414,24 @@ const GOOGLE_CLIENT_ID=''; // Google Cloud Console → Credentials → OAuth 2.0
 function gFail(msg){ $('#gBtn').disabled=true; $('#gNote').textContent=msg||"Google xizmatiga ulanib bo'lmadi. Ism va telefon bilan ro'yxatdan o'ting."; }
 function onGoogle(resp){ try{ const b=resp.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/'); const p=JSON.parse(decodeURIComponent(Array.from(atob(b)).map(c=>'%'+c.charCodeAt(0).toString(16).padStart(2,'0')).join(''))); $('#regName').value=p.name||''; S.gEmail=p.email||''; $('#gNote').textContent=(p.email||'Google')+" orqali kirildi. Endi telefon raqamingizni qo'shing."; $('#regPhone').focus(); }catch(e){ gFail(); } }
 function initGoogle(){
-  if(!GOOGLE_CLIENT_ID){ $('#gBtn').onclick=()=>{ $('#gNote').textContent="Google orqali kirish sayt o'z domeningizga joylanib, Google Client ID ulanganda ishlaydi. Hozircha ism va telefon bilan davom eting."; }; return; }
+  if(!GOOGLE_CLIENT_ID){ const w=document.querySelector('#regForm .gwrap'), d=document.querySelector('#regForm .divider'); if(w) w.hidden=true; if(d) d.hidden=true; return; }
   const s=document.createElement('script'); s.src='https://accounts.google.com/gsi/client'; s.async=true;
   s.onload=()=>{ try{ google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:onGoogle}); $('#gBtn').hidden=true; google.accounts.id.renderButton($('#gBtnHost'),{theme:'filled_black',size:'large',text:'continue_with',shape:'pill',width:320}); }catch(e){ gFail(); } };
   s.onerror=()=>gFail(); document.head.appendChild(s);
 }
 /* register */
-$('#regForm').addEventListener('submit',e=>{
-  e.preventDefault();
+function regSubmit(){
   const name=$('#regName').value.trim(), phone=$('#regPhone').value.replace(/[^\d+]/g,''), city=$('#regCity').value;
   const digits=phone.replace(/\D/g,'');
   if(name.length<2){ $('#regErr').textContent="Ismingizni yozing."; return; }
   if(digits.length<9){ $('#regErr').textContent="Telefon raqamni to'liq yozing, masalan +998 90 123 45 67."; return; }
   $('#regErr').textContent=''; S.user={name,phone,city,email:S.gEmail||'',via:S.gEmail?'google':'form',at:Date.now()}; LS.set('user',S.user); renderUser(); toast("Ro'yxatdan o'tdingiz"); go('start');
-});
+}
+$('#regGo').addEventListener('click',regSubmit); $('#regForm').addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.tagName==='INPUT'){ e.preventDefault(); regSubmit(); } });
 
 /* wizard */
-const STEP_NAMES=['Yer uchastkasi','Uy kattaligi',"Xonalar va hashamat",'Hovli','Uslub','Fasad va atrof','Eshik va derazalar','Byudjet'];
-const NSTEP=8;
+const STEP_NAMES=['Yer uchastkasi','Uy kattaligi',"Xonalar va hashamat",'Hovli','Uslub','Fasad va atrof','Uy ichi','Eshik va derazalar','Byudjet'];
+const NSTEP=9;
 function plotInfo(){ const A=S.A; const ar=plotArea(A); $('#plotInfo').textContent=`Yer maydoni: ${fmt1(ar)} m² ≈ ${fmt1(ar/100)} sotix`; $('#backWrap').hidden=A.plotShape!=='trap'; }
 function syncInputs(){
   const A=S.A;
@@ -2230,10 +2443,13 @@ function syncInputs(){
   $$('#luxSeg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===(A.lux||'auto'))));
   $$('.stepper').forEach(s=>s.querySelector('output').textContent=A[s.dataset.key]);
   $$('input[type=checkbox][data-key]').forEach(c=>c.checked=!!A[c.dataset.key]);
-  $$('#styleCards .stylecard').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.style)));
+  $$('#styleCards .stylecard').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.style&&(b.dataset.sub||'')===(A.sub||''))));
   $$('#wallSw .swatch').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.wall)));
   $$('.optseg').forEach(s=>{ const k=s.dataset.key; s.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(String(A[k])===b.dataset.v||(s.dataset.num&&+A[k]===+b.dataset.v)))); });
   { const kc=$('#kalitkaChk'); if(kc) kc.checked=!!A.kalitka; }
+  $$('.fchk').forEach(s=>{ const on=(A[s.dataset.key]||'').split(','); s.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(on.includes(b.dataset.v)))); });
+  $$('#paintSw .swatch').forEach(b=>{ if(b.dataset.v) b.setAttribute('aria-pressed',String((A.paint||'').toLowerCase()===b.dataset.v.toLowerCase())); });
+  try{ syncMakets(); }catch(e){}
   $$('#layoutSeg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===(A.layout||'auto'))));
   { const wc=$('#wallCustom'); if(wc){ const hx=/^#/.test(A.wall); wc.setAttribute('aria-pressed',String(hx)); if(hx) $('#wallColor').value=A.wall; } const rc=$('#roofCustom'); if(rc){ const hx=/^#/.test(A.roofCol||''); rc.setAttribute('aria-pressed',String(hx)); if(hx) $('#roofColor').value=A.roofCol; } }
   $$('#roofShapeSeg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===(A.roofShape||'auto'))));
@@ -2264,12 +2480,18 @@ $('#zalSeg').addEventListener('click',e=>{ const b=e.target.closest('button'); i
 $('#luxSeg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.lux=b.dataset.v; syncInputs(); });
 $$('.stepper').forEach(s=>s.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const k=s.dataset.key; S.A[k]=Math.min(+s.dataset.max,Math.max(+s.dataset.min,(+S.A[k]||0)+(+b.dataset.d))); syncInputs(); }));
 $$('input[type=checkbox][data-key]').forEach(c=>c.addEventListener('change',()=>{ S.A[c.dataset.key]=c.checked; }));
-$('#styleCards').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.style=b.dataset.v; S.A.rateManual=false; syncInputs(); });
+(()=>{ const host=$('#styleCards'); const grp={zamonaviy:'Zamonaviy oilasi',klassik:'Klassik oilasi',milliy:'Milliy va sharqona'};
+  ['zamonaviy','klassik','milliy'].forEach(bk=>{ const base=host.querySelector(`.stylecard[data-v="${bk}"]:not([data-sub])`); const hd=document.createElement('div'); hd.className='stgrp'; hd.textContent=grp[bk]; host.insertBefore(hd,base);
+    let after=base; SUBS_OF(bk).forEach(k=>{ const s=SUBS[k], b=document.createElement('button'); b.type='button'; b.className='stylecard'; b.dataset.v=s.b; b.dataset.sub=k; b.innerHTML=subSVG(k)+`<b>${s.n}</b><small>${s.d}</small>`; after.after(b); after=b; }); });
+  host.addEventListener('click',e=>{ const b=e.target.closest('button.stylecard'); if(!b) return; S.A.style=b.dataset.v; S.A.sub=b.dataset.sub||''; S.A.rateManual=false; syncInputs(); clearTimeout(S._mkT); S._mkT=setTimeout(()=>{ try{ renderMakets3D(); }catch(e){} },60); }); })();
 $('#wallSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.wall=b.dataset.v; S.A.wallFixed=false; syncInputs(); });
 $('#wallColor').addEventListener('input',e=>{ S.A.wall=e.target.value; S.A.wallFixed=true; syncInputs(); });
 $('#roofColor').addEventListener('input',e=>{ S.A.roofCol=e.target.value; syncInputs(); });
 $$('.optseg').forEach(s=>s.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A[s.dataset.key]=s.dataset.num?+b.dataset.v:b.dataset.v; syncInputs(); }));
 $('#kalitkaChk').addEventListener('change',e=>{ S.A.kalitka=e.target.checked; });
+$$('.fchk').forEach(s=>s.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const k=s.dataset.key; const on=new Set((S.A[k]||'').split(',').filter(Boolean)); on.has(b.dataset.v)?on.delete(b.dataset.v):on.add(b.dataset.v); S.A[k]=[...on].join(','); syncInputs(); }));
+$('#paintSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.paint=b.dataset.v; syncInputs(); });
+$('#paintColor').addEventListener('input',e=>{ S.A.paint=e.target.value; syncInputs(); });
 $('#layoutSeg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.layout=b.dataset.v; syncInputs(); });
 /* ===== Orzu: matn yoki rasmdan parametrlar ===== */
 const DREAM={file:null};
@@ -2278,7 +2500,9 @@ const hexOk=s=>typeof s==='string'&&/^#[0-9a-fA-F]{6}$/.test(s);
 const COLW={oq:'#EDEAE3',"qora":'#2E3033',kulrang:'#9A9A96',bej:'#E0CCA9',krem:'#EADCC2',sariq:'#E3C77A',qizil:'#A8402F',"g'isht":'#B4624A',jigarrang:'#7A4E35',qahvarang:'#6E4A35',"ko'k":'#3D5E86',yashil:'#3F6B4E',"to'q":'#3A3D42',pushti:'#D9A9A0',zangori:'#8EB3C9'};
 function localParse(t){
   t=' '+String(t||'').toLowerCase().replace(/[ʻʼ‘’`]/g,"'")+' '; const P={}; const has=r=>r.test(t);
-  if(has(/zamonaviy|modern|hi-?tech|minimal|современ/)) P.style='zamonaviy'; else if(has(/klassik|classic|класси/)) P.style='klassik'; else if(has(/milliy|o'zbekcha|sharqona|an'anaviy|национал/)) P.style='milliy';
+  { const SR={haytek:/hi-?tech|haytek|хай-?тек/,minimal:/minimal/,loft:/loft|лофт/,barnhaus:/barn-?h|barnhaus|барнхаус/,skandi:/skandi|scandi|сканди/,shale:/shale|chalet|шале|alp/,provans:/provans|provence|прованс/,amerika:/amerika|american|америк/,ingliz:/ingliz|english|англ/,saroy:/saroy|palace|dvorets|дворец|neoklass/,sharq:/arab|sharqona|oriental|восточ/,buxoro:/buxoro|bukhara|бухар/}; for(const k in SR) if(has(SR[k])){ P.sub=k; break; } }
+  if(P.sub);
+  else if(has(/zamonaviy|modern|current|современ/)) P.style='zamonaviy'; else if(has(/klassik|classic|класси/)) P.style='klassik'; else if(has(/milliy|o'zbekcha|sharqona|an'anaviy|национал/)) P.style='milliy';
   let m=t.match(/(\d)\s*-?\s*(qavat|этаж|floor)/); if(m) P.floors=+m[1]>=2?2:1; else if(has(/bir qavat|bitta qavat|1 qavatli/)) P.floors=1; else if(has(/ikki qavat/)) P.floors=2;
   if(has(/tekis tom|flat roof|плоск/)) P.roofShape='tekis'; else if(has(/(2|ikki)\s*(qiyalik|skat|tomonlama)|двускат/)) P.roofShape='ikki'; else if(has(/(4|to'rt)\s*(qiyalik|skat)|четырехскат|вальм/)) P.roofShape='tort';
   if(has(/keramik|черепиц/)) P.roofMat='keramik'; else if(has(/yumshoq|мягк|bitum/)) P.roofMat='yumshoq'; else if(has(/profnastil|профнаст/)) P.roofMat='profnastil'; else if(has(/metallocherepitsa|metall/)) P.roofMat='metall';
@@ -2297,14 +2521,15 @@ function imgColors(file){ return new Promise(res=>{ const u=URL.createObjectURL(
   res({roofHex:hx(band(0.12,0.42,L=>L<150)), wallHex:hx(band(0.45,0.8,L=>L>110))}); }; im.onerror=()=>res({}); im.src=u; }); }
 const DREAM_PROMPT=t=>`Sen uy loyihalash saytida yordamchisan. Foydalanuvchi orzusidagi uyni so'z bilan tasvirladi va/yoki uy rasmini yubordi. Shu uyga o'xshash uy chizish uchun parametrlarni aniqla.
 Faqat bitta JSON obyekt qaytar, boshqa matn yo'q:
-{"style":"zamonaviy"|"klassik"|"milliy"|null,"floors":1|2|null,"layout":"ixcham"|"erker"|"L"|"U"|"orqaL"|"orqaU"|"darvoza"|"auto","roofShape":"tekis"|"ikki"|"tort"|"auto","roofMat":"metall"|"keramik"|"yumshoq"|"profnastil"|"auto","roofHex":"#rrggbb"|null,"wallHex":"#rrggbb"|null,"garage":true|false|null,"ayvon":true|false|null,"pool":true|false|null,"gazebo":true|false|null,"fountain":true|false|null,"beds":2-6|null,"targetArea":son|null,"bigZal":true|false|null,"summary":"o'zbek tilida (lotin) 1-2 gap: qanday uyni tushunding"}
+{"style":"zamonaviy"|"klassik"|"milliy"|null,"sub":"${Object.keys(SUBS).join('"|"')}"|null,"floors":1|2|null,"layout":"ixcham"|"erker"|"L"|"U"|"orqaL"|"orqaU"|"darvoza"|"auto","roofShape":"tekis"|"ikki"|"tort"|"auto","roofMat":"metall"|"keramik"|"yumshoq"|"profnastil"|"auto","roofHex":"#rrggbb"|null,"wallHex":"#rrggbb"|null,"garage":true|false|null,"ayvon":true|false|null,"pool":true|false|null,"gazebo":true|false|null,"fountain":true|false|null,"beds":2-6|null,"targetArea":son|null,"bigZal":true|false|null,"summary":"o'zbek tilida (lotin) 1-2 gap: qanday uyni tushunding"}
 Qoidalar: zamonaviy = tekis yoki kam qiyalikli tom, katta oynalar, oddiy shakllar; klassik = qiyalik tom, ustunlar, karnizlar, simmetriya; milliy = o'zbekcha ayvon, yog'och ustunlar, naqsh. "L"/"U" = qanotlari ko'chaga qaragan; "orqaL"/"orqaU" = qanotlari orqa hovliga qaragan; "erker" = old tomonda chiqib turgan oynali qismlar; "ixcham" = oddiy to'rtburchak. Ranglarni rasmdagi haqiqiy devor va tom rangidan ol. Aytilmagan yoki ko'rinmagan narsani null yoki "auto" qoldir.
 Foydalanuvchi matni: """${(t||'(matn yo\'q, faqat rasm)').slice(0,1500)}"""`;
 function applyDream(P){
   const A=S.A, ch=[];
-  if(['zamonaviy','klassik','milliy'].includes(P.style)){ A.style=P.style; A.styleFixed=true; A.rateManual=false; ch.push(STYLE_NAME[P.style]+' uslub'); }
+  if(P.sub&&SUBS[P.sub]){ A.sub=P.sub; A.style=SUBS[P.sub].b; A.styleFixed=true; A.rateManual=false; ch.push(SUBS[P.sub].n+' uslub'); }
+  else if(['zamonaviy','klassik','milliy'].includes(P.style)){ A.style=P.style; A.sub=''; A.styleFixed=true; A.rateManual=false; ch.push(STYLE_NAME[P.style]+' uslub'); }
   if(P.floors===1||P.floors===2){ A.floors=P.floors; ch.push(P.floors+' qavat'); }
-  if(LAYOUTS[P.layout]&&P.layout!=='auto'){ A.layout=P.layout; ch.push(LAYOUTS[P.layout]); if(P.layout==='darvoza'){ A.darvoza=true; A.floors=2; } }
+  if(LAYOUTS[P.layout]&&P.layout!=='auto'){ A.layout=P.layout; A.massing=({ixcham:'kub'})[P.layout]||P.layout; ch.push(LAYOUTS[P.layout]); if(P.layout==='darvoza'){ A.darvoza=true; A.floors=2; } }
   if(ROOFSH[P.roofShape]){ A.roofShape=P.roofShape; ch.push(ROOFSH[P.roofShape]); }
   if(ROOFM[P.roofMat]){ A.roofMat=P.roofMat; ch.push(ROOFM[P.roofMat].n); }
   if(hexOk(P.roofHex)){ A.roofCol=P.roofHex.toLowerCase(); ch.push(`<i style="background:${P.roofHex}"></i>tom rangi`); }
@@ -2335,8 +2560,169 @@ $('#dreamGo').addEventListener('click',async()=>{
   dreamShow(`<div>${head}</div>${ch.length?`<div class="chips">${ch.map(c=>`<span>${c}</span>`).join('')}</div>`:''}<div style="margin-top:6px;color:var(--muted);font-size:13px">${how==='local'||how==='rate'?(f?'Rasmdan ranglarni oldim; shaklni matnda yozsangiz aniqroq bo\'ladi. ':''):''}Keyingi savollarda xohlaganingizni o'zgartirishingiz mumkin. Natijada «🎲 Yana 3 ta yangi variant» bilan cheksiz variant ko'rasiz.</div>`);
 });
 
+/* ===== Maket tanlash: 10 xil shakl, oq maket ko'rinishida ===== */
+const MAKETS=[
+  {id:'kub',n:'Ixcham kub',d:"Oddiy to'rtburchak, tejamkor",layout:'ixcham',b:[[0,0,10,10,6.6]]},
+  {id:'porch',n:'Ustunli kirish',d:'Old tomonda ustunli kirish',layout:'ixcham',b:[[0,0,10,10,6.6],[3.4,-2,3.2,2,0.3,3.1],[3.5,-1.9,0.3,0.3,3.1],[6.2,-1.9,0.3,0.3,3.1]]},
+  {id:'ayvon',n:'Old ayvonli',d:"Butun old tomon bo'ylab ayvon",layout:'ixcham',b:[[0,0,12,9,6.6],[0,-2.6,12,2.6,0.25,3.1],[0.2,-2.4,0.3,0.3,3.1],[4,-2.4,0.3,0.3,3.1],[7.7,-2.4,0.3,0.3,3.1],[11.5,-2.4,0.3,0.3,3.1]]},
+  {id:'erker',n:'Erkerli',d:'Old tomonda chiqib turgan oynali qismlar',layout:'erker',b:[[0,0,12,10,6.6],[1.6,-1.2,3,1.2,6.6],[7.4,-1.2,3,1.2,6.6]]},
+  {id:'garaj',n:'Yon garajli',d:'Uy yonida bir qavatli garaj',layout:'ixcham',b:[[0,0,11,10,6.6],[11,0,4.5,7,3.3]]},
+  {id:'L',n:'L-shakl',d:"Qanoti ko'chaga chiqqan, oldida hovli",layout:'L',b:[[0,0,12,10,6.6],[0,-7,4.5,7,3.3]]},
+  {id:'U',n:'U-shakl',d:'Ikki qanot oldida yopiq hovli',layout:'U',b:[[0,0,14,10,6.6],[0,-7,4.5,7,3.3],[9.5,-7,4.5,7,3.3]]},
+  {id:'orqaL',n:'Orqa L',d:'Orqada yozgi oshxona qanoti',layout:'orqaL',b:[[0,0,12,10,6.6],[0,10,4.5,8,3.3]]},
+  {id:'orqaU',n:'Orqa U (atrium)',d:'Orqada ikki qanotli hovli',layout:'orqaU',b:[[0,0,14,10,6.6],[0,10,4.5,8,3.3],[9.5,10,4.5,8,3.3]]},
+  {id:'darvoza',n:'Darvozaxonali',d:"Mashina uy ostidan o'tadi",layout:'darvoza',b:[[0,0,6,12,3.3],[10.5,0,6,12,3.3],[0,0,16.5,12,3.3,3.3]]}];
+function maketSVG(m){ const k=6.2, ix=(x,y,z)=>[(x-y)*0.866*k/6, ((x+y)*0.5-z)*k/6]; const polys=[];
+  const bs=m.b.map(b=>({x:b[0],y:-b[1]-b[3],w:b[2],d:b[3],h:b[4],z:b[5]||0})).sort((a,b)=>(a.x+a.y+a.z*0.01)-(b.x+b.y+b.z*0.01));
+  let mnx=1e9,mxx=-1e9,mny=1e9,mxy=-1e9; const P=(x,y,z)=>{ const p=ix(x,y,z); mnx=Math.min(mnx,p[0]); mxx=Math.max(mxx,p[0]); mny=Math.min(mny,p[1]); mxy=Math.max(mxy,p[1]); return p.map(n=>n.toFixed(2)).join(','); };
+  bs.forEach(b=>{ const {x,y,w,d,h,z}=b, t=z+h;
+    polys.push(`<polygon points="${P(x,y+d,z)} ${P(x+w,y+d,z)} ${P(x+w,y+d,t)} ${P(x,y+d,t)}" fill="#E4E7EC" stroke="#9AA3AF" stroke-width="0.06"/>`);
+    polys.push(`<polygon points="${P(x+w,y,z)} ${P(x+w,y+d,z)} ${P(x+w,y+d,t)} ${P(x+w,y,t)}" fill="#C9CED6" stroke="#9AA3AF" stroke-width="0.06"/>`);
+    polys.push(`<polygon points="${P(x,y,t)} ${P(x+w,y,t)} ${P(x+w,y+d,t)} ${P(x,y+d,t)}" fill="#FFFFFF" stroke="#9AA3AF" stroke-width="0.06"/>`); });
+  const pad=1; return `<svg viewBox="${(mnx-pad).toFixed(1)} ${(mny-pad).toFixed(1)} ${(mxx-mnx+pad*2).toFixed(1)} ${(mxy-mny+pad*2).toFixed(1)}" aria-hidden="true"><ellipse cx="${((mnx+mxx)/2).toFixed(1)}" cy="${(mxy-0.6).toFixed(1)}" rx="${((mxx-mnx)/2).toFixed(1)}" ry="1.2" fill="rgba(10,17,32,.10)"/>${polys.join('')}</svg>`; }
+function renderMakets(){ const g=$('#maketGrid'); if(!g) return; g.innerHTML=`<button type="button" class="maket" data-id="auto"><div class="mk-svg mk-auto">🎲</div><b>Har xil</b><small>Sayt o'zi har xil shakllar beradi</small></button>`+MAKETS.map(m=>`<button type="button" class="maket" data-id="${m.id}"><div class="mk-svg">${maketSVG(m)}</div><b>${m.n}</b><small>${m.d}</small></button>`).join(''); syncMakets(); }
+function syncMakets(){ const cur=S.A.massing||'auto'; $$('#maketGrid .maket').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===cur))); }
+document.addEventListener('click',e=>{ const b=e.target.closest('#maketGrid .maket'); if(!b) return; const id=b.dataset.id; const m=MAKETS.find(x=>x.id===id); const A=S.A;
+  A.massing=id; A.layout=m?m.layout:'auto'; if(id==='auto') A.massing='auto'; if(id==='garaj') A.garage=true; if(id==='ayvon') A.ayvon=true; if(id==='darvoza'){ A.darvoza=true; A.floors=2; } syncInputs(); syncMakets(); });
+renderMakets();
+
+/* ===== Katalog: 100 ta tayyor model ===== */
+const CATALOG=(()=>{ const R=rnd(2026), out=[], sts=['klassik','zamonaviy','milliy',...Object.keys(SUBS)], seen=new Set();
+  const baseRoof={zamonaviy:'tekis',klassik:'tort',milliy:'tort'}, roofs=['tekis','ikki','tort','mansard'];
+  for(let t=0;out.length<100&&t<2000;t++){ const sk=sts[out.length%sts.length], s=SUBS[sk], st=s?s.b:sk; const mk=MAKETS[Math.floor(R()*MAKETS.length)];
+    const fl=mk.id==='darvoza'?2:(R()<0.3?1:2); let roof=s?s.rv.shape:baseRoof[st]; if(R()<0.3) roof=roofs[Math.floor(R()*4)]; if(st==='zamonaviy'&&roof==='mansard') roof='tekis';
+    const sx=0.85+R()*0.35, sy=0.85+R()*0.3; const key=sk+mk.id+fl+roof+Math.round(sx*5)+Math.round(sy*5); if(seen.has(key)) continue; seen.add(key);
+    const b=mk.b.map(q=>{ const r=q.slice(); r[0]*=sx; r[2]*=sx; r[1]*=sy; r[3]*=sy; if(fl===1&&r[4]>4) r[4]=3.3; return r; });
+    const wc=s?(/^#/.test(s.svg[1])?s.svg[1]:'#D9C07C'):({zamonaviy:'#ECEBE6',klassik:'#E8DCC4',milliy:'#D9C07C'}[st]);
+    const no=out.length+1; out.push({no,id:'cat'+no,mk:mk.id,layout:mk.layout,b,st,sub:s?sk:'',roof,fl,wc,area:Math.round(mk.b.filter(q=>!q[5]&&q[4]>1).reduce((a,q)=>a+q[2]*sx*q[3]*sy*(fl===2&&q[4]>4?2:1),0)),
+      n:(s?s.n:STYLE_NAME[st])+' · '+mk.n}); }
+  return out; })();
+let catQ=[], catBusy=false, catObs=null;
+function catPump(){ if(catBusy) return; const it=catQ.shift(); if(!it) return; catBusy=true; const url=mkImage(styMaket({id:it.mk+'-c'+it.no,b:it.b},it.st,it.sub),it.roof,it.wc,it.id,{st:it.st,sub:it.sub}); const box=document.querySelector(`#catGrid .maket[data-cat="${it.no}"] .mk-svg`); if(box&&url){ box.innerHTML=`<img alt="" src="${url}">`; box.classList.add('mk3d'); } catBusy=false; setTimeout(catPump,10); }
+function renderCatalog(){ const g=$('#catGrid'); if(!g) return; const q=($('#catQ').value||'').toLowerCase().trim(); const list=CATALOG.filter(c=>!q||(`#${c.no} ${c.n} ${c.fl} qavat ${ROOFSH[c.roof]||''} ${c.st} ${c.sub}`).toLowerCase().includes(q));
+  $('#catN').textContent=`${list.length} ta model`;
+  g.innerHTML=list.map(c=>`<button type="button" class="maket" data-cat="${c.no}" aria-pressed="${S.A.catNo===c.no}"><span class="catno">#${c.no}</span><div class="mk-svg">${maketSVG({b:c.b})}</div><b>${esc(c.n)}</b><small>${c.fl} qavat · ${ROOFSH[c.roof]} · ≈${c.area} m²</small></button>`).join('');
+  if(catObs) catObs.disconnect(); catQ=[];
+  catObs='IntersectionObserver' in window?new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ catObs.unobserve(e.target); const c=CATALOG[+e.target.dataset.cat-1]; if(c){ catQ.push(c); catPump(); } } }); },{rootMargin:'200px'}):null;
+  g.querySelectorAll('.maket').forEach(b=>{ if(catObs) catObs.observe(b); else { catQ.push(CATALOG[+b.dataset.cat-1]); } }); if(!catObs) catPump(); }
+$('#catBtn').onclick=()=>{ const w=$('#catWrap'); w.hidden=!w.hidden; $('#catBtn').textContent=w.hidden?'📚 Katalog: 100 ta tayyor model':'✕ Katalogni yopish'; if(!w.hidden&&!$('#catGrid').children.length) renderCatalog(); };
+$('#catQ').addEventListener('input',()=>renderCatalog());
+$('#catGrid').addEventListener('click',e=>{ const b=e.target.closest('.maket'); if(!b) return; const c=CATALOG[+b.dataset.cat-1]; if(!c) return; const A=S.A;
+  A.catNo=c.no; A.massing=c.mk; A.layout=c.layout; A.floors=c.fl; A.style=c.st; A.sub=c.sub; A.styleFixed=true; A.roofShape=c.roof; A.rateManual=false;
+  if(c.mk==='garaj') A.garage=true; if(c.mk==='ayvon') A.ayvon=true; if(c.mk==='darvoza') A.darvoza=true;
+  syncInputs(); syncMakets(); $$('#catGrid .maket').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); toast(`Model #${c.no} tanlandi: ${c.n}`); });
+/* ===== SketchUp uslubidagi maket rasmlari (haqiqiy 3D) ===== */
+let MKR=null; const MKCACHE={};
+function mkRenderer(){ if(MKR!==null) return MKR; try{ if(typeof THREE==='undefined') throw 0; const R=new THREE.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true}); R.setPixelRatio(1); R.setSize(560,420,false); R.outputEncoding=THREE.sRGBEncoding; R.shadowMap.enabled=true; R.shadowMap.type=THREE.PCFSoftShadowMap; MKR=R; }catch(e){ MKR=false; } return MKR; }
+function mkEdges(g){ const lm=new THREE.LineBasicMaterial({color:0x1b1b1b,transparent:true,opacity:0.85}); const add=[]; g.traverse(o=>{ if(o.isMesh&&!o.userData.noEdge){ const e=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,28),lm); e.position.copy(o.position); e.rotation.copy(o.rotation); e.scale.copy(o.scale); add.push([o.parent,e]); } }); add.forEach(([p,e])=>p.add(e)); }
+function mkScene(m,roof,wc,pf){ wc=wc||'#D9C07C'; pf=pf||{st:'',sub:''}; const ST=pf.st, SB=pf.sub||'';
+  const sc=new THREE.Scene(); const g=new THREE.Group(); sc.add(g);
+  const sb=SUBS[SB], rcol=(sb&&ROOFC[sb.rv.col])||({zamonaviy:'#4A4F55',milliy:'#6B3E2A',klassik:'#5C6266'}[ST]||'#7F8B96');
+  const flat=(ST==='zamonaviy'&&!/loft/.test(SB))||SB==='sharq';
+  const brick=flat&&!/loft|buxoro/.test(SB)?mat(new THREE.Color(wc).getHex(),{roughness:0.85}):matT('mkbrick'+wc,brickTex(wc),{roughness:0.9});
+  const grey=mat(0x8E959D,{roughness:0.8}), white=mat(0xF4F2EC,{roughness:0.7}), slab=mat(0xB9BEC4,{roughness:0.8});
+  const fcol=sb?({oq:0xF5F4F0,antrasit:0x2A2E32,yogoch:0x6E4428}[sb.frame]):({zamonaviy:0x2A2E32,milliy:0x6E4428,klassik:0xF5F4F0}[ST]||0xF5F4F0);
+  const frame=mat(fcol,{roughness:0.5}), glass=mat(0x3E4A55,{roughness:0.15,metalness:0.5}), roofM=mat(new THREE.Color(rcol).getHex(),{roughness:0.55,metalness:0.25,side:THREE.DoubleSide});
+  const trim=ST==='klassik'?white:(ST==='milliy'?mat(0x7A5232,{roughness:0.7}):grey), blue=mat(0x1F5F9E,{roughness:0.5});
+  const colM=ST==='klassik'?white:(ST==='milliy'?mat(0x7A5232,{roughness:0.6}):mat(0x22262B,{roughness:0.4}));
+  const FM={wood:matT('clad',cladTex(),{roughness:0.65}),stone:matT('stone',stoneTex(),{roughness:0.85}),metal:matT('mpanel#3B4046',panelTex('#3B4046'),{roughness:0.4,metalness:0.5}),glass:null};
+  const bs=m.b.map(b=>({x:b[0],y:b[1],w:b[2],d:b[3],h:b[4],z:b[5]||0,rf:b[6]||'',fl:b[7]||''}));
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9; bs.forEach(b=>{ x0=Math.min(x0,b.x); x1=Math.max(x1,b.x+b.w); y0=Math.min(y0,b.y); y1=Math.max(y1,b.y+b.d); });
+  const Z=y=>-y;
+  const win=(wx,fy,fz,face,ww,wh)=>{ // face: 'f' front(-y), 's' sides(x)
+    const fr=0.09; if(face==='f'){ box(g,ww,wh,0.08,wx,fy+wh/2,fz+0.02,glass); box(g,ww+fr*2,fr,0.12,wx,fy+wh+fr/2,fz+0.04,frame); box(g,ww+fr*2,fr,0.12,wx,fy-fr/2,fz+0.04,frame); box(g,fr,wh,0.12,wx-ww/2-fr/2,fy+wh/2,fz+0.04,frame); box(g,fr,wh,0.12,wx+ww/2+fr/2,fy+wh/2,fz+0.04,frame); if(ww>1.3) box(g,0.06,wh,0.1,wx,fy+wh/2,fz+0.04,frame);
+      if(ST==='klassik'){ box(g,ww+0.5,0.16,0.22,wx,fy-0.12,fz+0.1,white); box(g,ww+0.45,0.22,0.2,wx,fy+wh+0.2,fz+0.09,white); box(g,0.28,0.32,0.22,wx,fy+wh+0.16,fz+0.12,white); }
+      else if(ST==='milliy'){ box(g,ww+0.3,0.16,0.16,wx,fy+wh+0.12,fz+0.08,blue); box(g,ww+0.3,0.12,0.18,wx,fy-0.08,fz+0.08,trim); }
+      else box(g,ww+0.2,0.06,0.2,wx,fy-0.04,fz+0.1,grey); }
+    else { box(g,0.08,wh,ww,fz,fy+wh/2,wx,glass); box(g,0.12,fr,ww+fr*2,fz,fy+wh+fr/2,wx,frame); box(g,0.12,fr,ww+fr*2,fz,fy-fr/2,wx,frame); } };
+  bs.forEach(b=>{ const cx=b.x+b.w/2, cz=Z(b.y+b.d/2);
+    if(b.w<0.5&&b.d<0.5){ const r=ST==='klassik'?0.19:(ST==='zamonaviy'?0.1:0.15); if(ST==='zamonaviy') box(g,r*2,b.h,r*2,cx,b.z+b.h/2,cz,colM); else cyl(g,r,b.h,cx,b.z+b.h/2,cz,colM,16);
+      if(ST!=='zamonaviy'){ box(g,0.5,0.2,0.5,cx,b.z+0.1,cz,ST==='milliy'?grey:white); box(g,0.52,0.24,0.52,cx,b.z+b.h-0.12,cz,colM); } return; }
+    if(b.h<0.6){ box(g,b.w,b.h,b.d,cx,b.z+b.h/2,cz,ST==='milliy'&&b.z>0?trim:slab);
+      if(b.z>0){ if(ST==='klassik'){ for(let t=0.3;t<b.w-0.2;t+=0.32) box(g,0.1,0.55,0.1,b.x+t,b.z+b.h+0.28,Z(b.y)-0.05,white); box(g,b.w,0.1,0.18,cx,b.z+b.h+0.6,Z(b.y)-0.05,white); }
+        else if(ST==='milliy') box(g,b.w+0.1,0.22,0.12,cx,b.z+b.h/2,Z(b.y)+0.02,blue);
+        else if(ST==='zamonaviy') box(g,b.w,0.5,0.04,cx,b.z+b.h+0.25,Z(b.y)-0.02,mat(0x9FC3D6,{transparent:true,opacity:0.5})); } return; }
+    const covered=bs.some(o=>o!==b&&o.h>=0.6&&o.w*o.d>=0.5*b.w*b.d&&o.z>=b.z+b.h-0.01&&o.x<b.x+b.w-0.1&&o.x+o.w>b.x+0.1&&o.y<b.y+b.d-0.1&&o.y+o.d>b.y+0.1);
+    if(b.fl==='glass'){ box(g,b.w,b.h,b.d,cx,b.z+b.h/2,cz,mat(0x5B7487,{roughness:0.08,metalness:0.6,transparent:true,opacity:0.85}));
+      for(let t=0;t<=b.w+0.01;t+=1.2) box(g,0.07,b.h,0.07,b.x+Math.min(t,b.w),b.z+b.h/2,Z(b.y)+0.02,frame); box(g,b.w,0.08,0.08,cx,b.z+b.h-0.04,Z(b.y)+0.02,frame);
+      box(g,b.w+0.2,0.25,b.d+0.2,cx,b.z+b.h+0.12,cz,grey); return; }
+    box(g,b.w,b.h,b.d,cx,b.z+b.h/2,cz,FM[b.fl]||brick);
+    const nf=Math.max(1,Math.round(b.h/3.3));
+    if(ST!=='zamonaviy'){ const pil=0.4; [[b.x+pil/2,b.y+pil/2],[b.x+b.w-pil/2,b.y+pil/2],[b.x+pil/2,b.y+b.d-pil/2],[b.x+b.w-pil/2,b.y+b.d-pil/2]].forEach(([px,py])=>box(g,pil+0.06,b.h,pil+0.06,px,b.z+b.h/2,Z(py),trim));
+      box(g,b.w+0.16,0.45,b.d+0.16,cx,b.z+0.22,cz,ST==='klassik'?grey:mat(0x9A8F80,{roughness:0.9}));
+      for(let f=1;f<nf;f++) box(g,b.w+0.12,0.22,b.d+0.12,cx,b.z+f*(b.h/nf),cz,trim);
+      box(g,b.w+0.34,0.36,b.d+0.34,cx,b.z+b.h-0.18,cz,ST==='milliy'?blue:white); }
+    else { box(g,b.w+0.04,0.2,b.d+0.04,cx,b.z+0.1,cz,mat(0x3A3D40,{roughness:0.8})); }
+    for(let f=0;f<nf;f++){ const fh=b.h/nf, fy=b.z+f*fh+(ST==='zamonaviy'?0.35:0.9);
+      const big=ST==='zamonaviy'||SB==='haytek', wh=big?(SB==='haytek'||SB==='barnhaus'?fh-0.6:1.9):(ST==='milliy'?1.35:1.75), ww=big?(SB==='haytek'?2.8:2.2):(ST==='milliy'?1.0:1.15);
+      const step=big?3.2:2.5, nW=Math.max(1,Math.floor((b.w-0.8)/step));
+      for(let i=0;i<nW;i++){ const wx=b.x+(i+0.5)*b.w/nW; win(wx,fy,Z(b.y),'f',Math.min(ww,b.w/nW-0.5),wh); }
+      const nS=Math.max(1,Math.floor((b.d-1)/3.2)); for(let i=0;i<nS;i++){ const wz=Z(b.y+(i+0.5)*b.d/nS); win(wz,fy,b.x+b.w+0.01,'s',Math.min(1.1,b.d/nS-0.6),Math.min(wh,1.7)); } }
+    const R=b.rf||roof;
+    if(!covered){ const top=b.z+b.h, ov=ST==='zamonaviy'?0.25:(SB==='shale'?1.1:0.55);
+      if(R==='tekis'){ box(g,b.w-0.1,0.05,b.d-0.1,cx,top+0.03,cz,mat(0x9DA2A7,{roughness:0.95})); const ph=ST==='zamonaviy'?0.35:0.7, pm=ST==='zamonaviy'?mat(0x2E3236,{roughness:0.5}):grey; [[cx,Z(b.y),b.w+0.1,0.22],[cx,Z(b.y+b.d),b.w+0.1,0.22]].forEach(([x,z,w,t])=>box(g,w,ph,t,x,top+ph/2,z,pm)); [[b.x,cz],[b.x+b.w,cz]].forEach(([x,z])=>box(g,0.22,ph,b.d+0.1,x,top+ph/2,z,pm));
+        if(SB==='sharq'){ for(let t=0.4;t<b.w;t+=0.9) box(g,0.45,0.4,0.24,b.x+t,top+ph+0.2,Z(b.y),grey); } }
+      else if(R==='ikki'){ const r=gableRoof(b.x-ov,Z(b.y+b.d)-ov,b.w+ov*2,b.d+ov*2,SB==='barnhaus'||SB==='skandi'?0.95:0.6,roofM,FM[b.fl]||brick,ov); r.position.y=top+0.02; g.add(r); box(g,b.w+ov*2,0.12,b.d+ov*2,cx,top-0.04,cz,ST==='klassik'?white:grey); }
+      else if(R==='mansard'){ const r=mansardRoof(b.x-ov,Z(b.y+b.d)-ov,b.w+ov*2,b.d+ov*2,roofM,1.7); r.position.y=top+0.18; g.add(r); box(g,b.w+ov*2+0.1,0.22,b.d+ov*2+0.1,cx,top+0.08,cz,white);
+        const nd=Math.max(1,Math.floor(b.w/3)); for(let i=0;i<nd;i++){ const dx=b.x+(i+0.5)*b.w/nd; box(g,0.9,1.0,0.5,dx,top+0.9,Z(b.y)+0.05,white); box(g,0.6,0.7,0.1,dx,top+0.85,Z(b.y)-0.22,glass); } }
+      else { const r=hipRoof(b.x-ov,Z(b.y+b.d)-ov,b.w+ov*2,b.d+ov*2,ST==='milliy'?0.4:0.6,roofM); r.position.y=top+0.02; g.add(r); box(g,b.w+ov*2,0.12,b.d+ov*2,cx,top-0.04,cz,ST==='milliy'?blue:grey); }
+      if(/ingliz|amerika/.test(SB)&&b.w>6&&R!=='tekis'){ box(g,0.9,2.6,0.7,b.x+b.w-1.4,top+1.3,cz,matT('mkbrick#9E4A36',brickTex('#9E4A36'))); } } });
+  // front entrance steps
+  { const mb=bs.reduce((a,b)=>b.w*b.d>a.w*a.d&&b.h>=3?b:a,bs[0]); const fr=bs.filter(b=>b.h>=3&&b.fl!=='glass').reduce((a,b)=>b.y<a.y?b:a,mb); const dx=fr.x+fr.w/2, dz=Z(fr.y); box(g,2.4,0.15,0.7,dx,0.075,dz+0.6,white); box(g,2.4,0.15,0.4,dx,0.225,dz+0.45,white);
+    box(g,ST==='klassik'?1.6:1.2,2.4,0.1,dx,0.3+1.2,dz+0.04,ST==='zamonaviy'?mat(0x2A2E32,{roughness:0.4}):matT('wood',woodTex(),{roughness:0.55})); if(ST==='klassik') box(g,2.2,0.35,0.25,dx,2.9,dz+0.12,white); if(ST==='zamonaviy') box(g,2.8,0.12,1.6,dx,3.0,dz+0.8,mat(0x2A2E32,{roughness:0.4})); }
+  mkEdges(g);
+  // ground slab with lawns and dimensions (canvas)
+  const mg=5, gx0=x0-mg, gx1=x1+mg, gy0=y0-mg-3, gy1=y1+mg, GW=gx1-gx0, GD=gy1-gy0;
+  const [cv,cx2]=cvs(1024,Math.round(1024*GD/GW)); const sx=cv.width/GW, toX=x=>(x-gx0)*sx, toY=y=>cv.height-(y-gy0)*sx;
+  cx2.fillStyle='#E9EAEC'; cx2.fillRect(0,0,cv.width,cv.height); cx2.strokeStyle='rgba(0,0,0,0.06)'; for(let x=0;x<cv.width;x+=sx*1.2){ cx2.beginPath(); cx2.moveTo(x,0); cx2.lineTo(x,cv.height); cx2.stroke(); }
+  cx2.fillStyle='#7FA34E'; [[x0-0.5,(x0+x1)/2-1.6],[(x0+x1)/2+1.6,x1+0.5]].forEach(([a,b2])=>{ cx2.fillRect(toX(a),toY(y0-1.4),(b2-a)*sx,2.2*sx); }); cx2.strokeStyle='#4E6B2A'; cx2.lineWidth=3;
+  const dim=(xa,ya,xb,yb,txt,rot)=>{ cx2.strokeStyle='#222'; cx2.lineWidth=2.4; cx2.beginPath(); cx2.moveTo(toX(xa),toY(ya)); cx2.lineTo(toX(xb),toY(yb)); cx2.stroke(); [[xa,ya],[xb,yb]].forEach(([px,py])=>{ cx2.beginPath(); cx2.moveTo(toX(px)-9,toY(py)+9); cx2.lineTo(toX(px)+9,toY(py)-9); cx2.stroke(); });
+    cx2.save(); cx2.translate(toX((xa+xb)/2),toY((ya+yb)/2)); if(rot) cx2.rotate(-Math.PI/2); cx2.fillStyle='#111'; cx2.font=`bold ${Math.round(sx*0.9)}px Golos Text, Arial`; cx2.textAlign='center'; cx2.fillText(txt,0,-sx*0.35); cx2.restore(); };
+  dim(x0,y0-0.9,x1,y0-0.9,fmt(Math.round((x1-x0)*1000)).replace(/\s/g,'')); dim(x0-0.9,y0,x0-0.9,y1,fmt(Math.round((y1-y0)*1000)).replace(/\s/g,''),true);
+  const gt=new THREE.CanvasTexture(cv); gt.encoding=THREE.sRGBEncoding; gt.anisotropy=8; const gm=new THREE.MeshStandardMaterial({map:gt,roughness:1});
+  const gb=new THREE.Mesh(new THREE.BoxGeometry(GW,0.3,GD),[mat(0xD5D7DA),mat(0xD5D7DA),gm,mat(0xD5D7DA),mat(0xC8CBCF),mat(0xC8CBCF)]); gb.position.set(gx0+GW/2,-0.15,Z(gy0+GD/2)); gb.receiveShadow=true; gb.userData.noEdge=true; sc.add(gb);
+  const ge=new THREE.LineSegments(new THREE.EdgesGeometry(gb.geometry),new THREE.LineBasicMaterial({color:0x555555})); ge.position.copy(gb.position); sc.add(ge);
+  // lights + sky
+  sc.add(new THREE.HemisphereLight(0xEAF2FF,0x9AA0A6,0.85)); const sun=new THREE.DirectionalLight(0xFFF6E8,1.25); sun.position.set(x0-12,30,Z(y0)+22); sun.castShadow=true; sun.shadow.mapSize.set(1024,1024); const s=sun.shadow.camera; s.left=-30; s.right=30; s.top=30; s.bottom=-30; s.far=120; sun.target.position.set((x0+x1)/2,0,Z((y0+y1)/2)); sc.add(sun,sun.target);
+  const sk=new THREE.Mesh(new THREE.SphereGeometry(200,24,12),new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})); { const p=sk.geometry.attributes.position, cs=[]; for(let i=0;i<p.count;i++){ const t=Math.max(0,p.getY(i)/200); const c=new THREE.Color(0xFFFFFF).lerp(new THREE.Color(0x7FB6EA),Math.pow(t,0.5)); cs.push(c.r,c.g,c.b); } sk.geometry.setAttribute('color',new THREE.Float32BufferAttribute(cs,3)); } sc.add(sk);
+  const cxw=(x0+x1)/2, czw=Z((y0+y1)/2), span=Math.max(x1-x0,y1-y0)+6;
+  const cam=new THREE.PerspectiveCamera(32,4/3,0.5,500); const back=/^orqa/.test(m.id)?-1:1; cam.position.set(cxw+span*0.8,span*0.72,czw+back*span*1.22); cam.lookAt(cxw,3.0,czw);
+  return {sc,cam}; }
+function mkImage(m,roof,wc,ck,pf){ const key=(ck||m.id)+'|'+roof+'|'+(wc||'')+'|'+(pf?pf.st+pf.sub:''); if(MKCACHE[key]) return MKCACHE[key]; const R=mkRenderer(); if(!R) return null;
+  try{ const {sc,cam}=mkScene(m,roof,wc,pf); R.render(sc,cam); const url=R.domElement.toDataURL('image/jpeg',0.9); sc.traverse(o=>{ if(o.geometry) o.geometry.dispose(); }); MKCACHE[key]=url; return url; }catch(e){ console.error(e); return null; } }
+function mkRoof(){ const r=S.A.roofShape; if(r&&r!=='auto') return r; const s=SUBS[S.A.sub]; return s?s.rv.shape:({zamonaviy:'tekis',milliy:'tort',klassik:'tort'}[S.A.style]||'tort'); }
+function mkWall(){ const s=SUBS[S.A.sub]; return s&&/^#/.test(s.svg[1])?s.svg[1]:({zamonaviy:'#ECEBE6',klassik:'#E8DCC4',milliy:'#D9C07C'}[S.A.style]||'#D9C07C'); }
+/* uslubga qarab maket shakli o'zgaradi */
+function styMaket(m,st,sub){ st=st||S.A.style; sub=sub===undefined?(S.A.sub||''):sub; const b=m.b.map(q=>q.slice()); const out=[];
+  const mi=b.findIndex(q=>q[4]>4&&!q[5]); const main=mi>=0?b[mi]:b[0]; const [x,y,w,d,hh]=main;
+  if(st==='zamonaviy'){
+    const cl=sub==='haytek'||sub==='barnhaus'?'metal':(/skandi|shale/.test(sub)?'wood':'');
+    if(mi>=0&&m.id!=='darvoza'&&sub!=='barnhaus'){ b[mi]=[x,y,w*0.68,d,3.3,0,'',sub==='haytek'?'glass':(sub==='shale'?'stone':'')]; out.push([x+w*0.18,y-1.6,w*0.82,d*0.82+1.6,3.3,3.3,'',cl]); out.push([x+w*0.68,y+d*0.3,w*0.32,d*0.7,3.3]); out.push([x+w*0.18+w*0.82-0.3,y-1.45,0.16,0.16,3.3]); }
+    else if(m.id==='darvoza'){ b[2]=[b[2][0]-1,b[2][1]-1.4,b[2][2]+2,b[2][3]+1.4,3.3,3.3,'',cl]; }
+    if(sub==='barnhaus'||sub==='skandi'||sub==='shale') b.forEach(q=>{ if(q[2]>1&&q[3]>1){ q[6]='ikki'; if(sub==='barnhaus') q[7]='metal'; } });
+    if(sub==='loft') b.forEach(q=>{ q[7]=''; });
+  } else if(st==='klassik'){
+    if(m.id!=='darvoza'&&mi>=0&&w>7){ const rw=Math.min(4.6,w*0.36), rx=x+(w-rw)/2; out.push([rx,y-1.2,rw,d*0.5+1.2,hh+(sub==='saroy'?0.6:0.3),0,'ikki']);
+      out.push([rx-0.4,y-3.4,rw+0.8,2.2,0.25,3.2]); [0,0.33,0.67,1].forEach(t=>out.push([rx-0.25+(rw+0.5)*t-0.12,y-3.2,0.3,0.3,3.2])); }
+    if(sub==='saroy'&&mi>=0){ b[mi]=[x-1.8,y,w+3.6,d,hh]; }
+    if(sub==='amerika'&&mi>=0){ out.push([x,y-2.6,w,2.6,0.25,3.0]); for(let i=0;i<=4;i++) out.push([x+0.15+(w-0.6)*i/4,y-2.45,0.3,0.3,3.0]); b[mi][6]='ikki'; }
+  } else if(st==='milliy'){
+    if(mi>=0&&!b.some(q=>q[1]<0&&q[4]<0.5)){ out.push([x,y-3,w,3,0.3,3.1]); const n=Math.max(3,Math.round(w/2.6)); for(let i=0;i<=n;i++) out.push([x+0.15+(w-0.6)*i/n,y-2.75,0.3,0.3,3.1]); }
+    if(sub==='sharq'&&mi>=0) out.push([x+w/2-1.3,y+d/2-1.3,2.6,2.6,1.4,hh,'tort']);
+  }
+  return {id:m.id,b:b.concat(out)}; }
+function renderMakets3D(){ const g=$('#maketGrid'); if(!g) return; const roof=mkRoof(); const ids=MAKETS.map(m=>m.id); let i=0;
+  const step=()=>{ if(i>=ids.length) return; const m=MAKETS[i++]; const box2=g.querySelector(`.maket[data-id="${m.id}"] .mk-svg`); const url=mkImage(styMaket(m),roof,mkWall(),m.id,{st:S.A.style,sub:S.A.sub||''}); if(box2&&url){ box2.innerHTML=`<img alt="" src="${url}">`; box2.classList.add('mk3d'); } setTimeout(step,15); }; step();
+  const rs=$('#roofShapeSeg'); if(rs&&!rs.dataset.pics){ rs.dataset.pics='1'; }
+  renderRoofPics(); }
+function renderRoofPics(){ const host=$('#roofPics'); if(!host) return; const base=MAKETS[0]; const cur=S.A.roofShape||'auto';
+  host.innerHTML=[['tekis','Tekis tom'],['ikki','2 qiyalik'],['tort','4 qiyalik'],['mansard','Mansard (frantsuzcha)']].map(([k,n])=>{ const u=mkImage(styMaket(base),k,mkWall(),'roof',{st:S.A.style,sub:S.A.sub||''}); return `<button type="button" class="maket roofpic" data-roof="${k}" aria-pressed="${cur===k}"><div class="mk-svg mk3d">${u?`<img alt="" src="${u}">`:''}</div><b>${n}</b></button>`; }).join(''); }
+document.addEventListener('click',e=>{ const b=e.target.closest('#roofPics .roofpic'); if(!b) return; S.A.roofShape=b.dataset.roof; syncInputs(); renderRoofPics(); setTimeout(renderMakets3D,30); });
+
+setTimeout(()=>{ try{ renderMakets3D(); }catch(e){ console.error(e); } },400);
+
 $('#moreVar').addEventListener('click',()=>{ S.A.seed=(S.A.seed||Math.floor(Math.random()*9000))+1; generate(0); const si=$('#seedInfo'); if(si) si.textContent=`To'plam №${S.A.seed}. Yoqmasa, yana bosing.`; $('#vtabs').scrollIntoView({behavior:'smooth',block:'nearest'}); });
-[['#roofShapeSeg','roofShape'],['#roofMatSeg','roofMat'],['#roofColSw','roofCol']].forEach(([s,k])=>$(s).addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A[k]=b.dataset.v; syncInputs(); }));
+[['#roofShapeSeg','roofShape'],['#roofMatSeg','roofMat'],['#roofColSw','roofCol']].forEach(([s,k])=>$(s).addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A[k]=b.dataset.v; syncInputs(); if(k==='roofShape'){ try{ renderRoofPics(); renderMakets3D(); }catch(e){} } }));
 $('#budget').addEventListener('input',e=>{ S.A.budget=+e.target.value; $('#budgetOut').textContent=money(S.A.budget); if(!S.A.rateManual){ S.A.rate=Math.round(RATE[S.A.style]*LUXK[luxOf(S.A)]/10)*10; $('#rate').value=S.A.rate; } });
 $('#rate').addEventListener('input',e=>{ S.A.rate=parseFloat(e.target.value)||0; S.A.rateManual=true; });
 $('#wizBack').onclick=()=>{ if(S.step>0){ S.step--; renderStep(); } };
@@ -2361,7 +2747,7 @@ function generate(keep){ S.introSeen={};
   $('#resTitle').textContent='Sizning 3 ta variantingiz';
   const tabs=$('#vtabs'); tabs.innerHTML='';
   S.variants.forEach((v,i)=>{ const b=document.createElement('button'); b.type='button'; b.className='vtab'; b.setAttribute('role','tab'); b.setAttribute('aria-selected',String(i===0));
-    b.innerHTML=`<b>Variant ${v.key}: ${esc(v.name)}</b><span>${STYLE_NAME[v.style]} uslub · ${esc(v.desc)}</span><span class="num">${fmtA(v.area)} m² · ${money(v.total)}</span>`;
+    b.innerHTML=`<b>Variant ${v.key}: ${esc(v.name)}</b><span>${stN(v)} uslub · ${esc(v.desc)}</span><span class="num">${fmtA(v.area)} m² · ${money(v.total)}</span>`;
     b.onclick=()=>{ S.active=i; [...tabs.children].forEach((x,j)=>x.setAttribute('aria-selected',String(j===i))); renderVariant(); }; tabs.appendChild(b); });
   S.tabEls=[...tabs.children]; S.tabEls.forEach((x,j)=>x.setAttribute('aria-selected',String(j===S.active)));
   if(!resV) resV=new Viewer($('#resViewer'),{controls:true});
@@ -2372,20 +2758,21 @@ function renderVariant(){
   if(resV){ resV.stagesFn=()=>buildStages(v,S.A); resV.onVideo=(blob,ext)=>saveBlob(blob,`UyChizma-${v.key}-qurilish.${ext}`,'Video saqlandi'); resV.onVideoError=()=>toast("Bu brauzer video yozishni qo'llamaydi. Animatsiyani ekranda ko'rishingiz mumkin."); }
   if(resV){ try{ resV.load(v,A); resV.err&&resV.err.remove(); S.introSeen=S.introSeen||{}; const ik=(A.seed||0)+'|'+v.key+'|'+v.name+'|'+fmt(v.area); if(!S.introSeen[ik]){ S.introSeen[ik]=1; try{ resV.introStart(); }catch(e){ console.error(e); resV.intro&&resV.introStop(); } } }catch(e){ console.error(e); if(!resV.err){ resV.err=document.createElement('p'); resV.err.className='vhint'; } resV.err.textContent="3D modelni chizishda xato bo'ldi. Rejalar va hisob pastda."; resV.el.appendChild(resV.err); } }
   try{ aiAutoSoon(); }catch(e){ console.error(e); }
+  try{ roomJob++; const rc=$('#roomCards'); if(rc) rc.innerHTML='<p class="note">Xonalar tayyorlanmoqda…</p>'; }catch(e){}
   const within=v.total<=A.budget;
   const rows=[['Gabarit (eni × chuqurligi)',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)]].concat(v.floors.map((f,k)=>[`${k+1}-qavat maydoni`,fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))+' m²'])).concat([['Umumiy maydon',fmtA(v.area)+' m²'],['Yotoqxonalar',String(v.bedCount)],['Daraja',LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)]]);
   $('#summary').innerHTML=`<div class="eyebrow">Variant ${v.key}</div><h2 style="font-size:20px">${esc(v.name)}</h2>
-    <div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Uslubni almashtirish</span><div class="stylesw" id="styleSw">${['klassik','zamonaviy','milliy'].map(s=>`<button type="button" data-s="${s}" aria-pressed="${s===v.style}">${STYLE_NAME[s]}</button>`).join('')}</div></div>`+
-    `<div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Tom</span><div class="stylesw" id="roofSw">${['tekis','ikki','tort'].map(s=>`<button type="button" data-r="${s}" aria-pressed="${s===v.roof.shape}">${ROOFSH[s]}</button>`).join('')}</div>`+
+    <div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Uslubni almashtirish</span><div class="stylesw" id="styleSw">${['klassik','zamonaviy','milliy',...Object.keys(SUBS)].map(s=>`<button type="button" data-s="${s}" aria-pressed="${SUBS[s]?v.sub===s:(s===v.style&&!v.sub)}">${SUBS[s]?SUBS[s].n:STYLE_NAME[s]}</button>`).join('')}</div></div>`+
+    `<div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Tom</span><div class="stylesw" id="roofSw">${['tekis','ikki','tort','mansard'].map(s=>`<button type="button" data-r="${s}" aria-pressed="${s===v.roof.shape}">${ROOFSH[s]}</button>`).join('')}</div>`+
     `<div class="stylesw" id="roofMatSw" ${v.roof.shape==='tekis'?'hidden':''}>${Object.keys(ROOFM).map(s=>`<button type="button" data-m="${s}" aria-pressed="${s===v.roof.mat}">${ROOFM[s].n.replace(' (bitumli)','')}</button>`).join('')}</div></div>`+
     rows.map(([k,x],i)=>`<div class="kv"${i===rows.length-1?' style="font-size:15px"':''}><span>${k}</span><b>${x}</b></div>`).join('')+
     `<span class="badge ${within?'ok':'warn'}">${within?'Byudjetga sig\'adi':'Byudjetdan '+money(v.total-A.budget)+' oshadi'}</span>`+
     v.notes.concat(v.yard.missing.length?[`Hovliga sig'madi: ${v.yard.missing.join(', ')}.`]:[]).map(n=>`<p class="note">${esc(n)}</p>`).join('')+
-    `<p class="note">Uy: ${fmt(v.rate)} $/m² × ${fmtA(v.area)} m² (${LUX_NAME[v.lux].toLowerCase()} daraja, ${STYLE_NAME[v.style].toLowerCase()} uslub).</p>`;
-  const reroof=()=>{ S.variants.forEach(x=>restyle(x,S.A,x.style)); const t=S.tabEls&&S.tabEls[S.active]; if(t) t.querySelector('.num').textContent=`${fmtA(v.area)} m² · ${money(v.total)}`; syncInputs(); renderVariant(); };
-  $('#roofSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.roofShape=b.dataset.r; reroof(); });
+    `<p class="note">Uy: ${fmt(v.rate)} $/m² × ${fmtA(v.area)} m² (${LUX_NAME[v.lux].toLowerCase()} daraja, ${stN(v).toLowerCase()} uslub).</p>`;
+  const reroof=()=>{ S.variants.forEach(x=>{ x.forceRoof=false; restyle(x,S.A,x.sub||x.style); }); const t=S.tabEls&&S.tabEls[S.active]; if(t) t.querySelector('.num').textContent=`${fmtA(v.area)} m² · ${money(v.total)}`; syncInputs(); renderVariant(); };
+  $('#roofSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.roofShape=b.dataset.r; (S.variants||[]).forEach(x=>x.forceRoof=false); reroof(); });
   $('#roofMatSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.roofMat=b.dataset.m; reroof(); });
-  $('#styleSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b||b.dataset.s===v.style) return; restyle(v,S.A,b.dataset.s); const t=S.tabEls&&S.tabEls[S.active]; if(t) t.querySelector('span').textContent=`${STYLE_NAME[v.style]} uslub · ${v.desc}`, t.querySelector('.num').textContent=`${fmtA(v.area)} m² · ${money(v.total)}`; renderVariant(); });
+  $('#styleSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b||b.dataset.s===(v.sub||v.style)) return; const nv=restyleNew(v,S.A,b.dataset.s); S.variants[S.active]=nv; const t=S.tabEls&&S.tabEls[S.active]; if(t) t.querySelector('b').textContent=`Variant ${nv.key}: ${nv.name}`, t.querySelector('span').textContent=`${stN(nv)} uslub · ${nv.desc}`, t.querySelector('.num').textContent=`${fmtA(nv.area)} m² · ${money(nv.total)}`; toast(`${stN(nv)} · ${nv.name} · ${ROOFSH[nv.roof.shape]}`); renderVariant(); });
   const sh=$('#sheets'); sh.innerHTML='';
   { const el=document.createElement('div'); el.className='sheet'; const Y=v.yard;
     el.innerHTML=`<h3>HOVLI REJASI <span>yer ${fmt1(plotArea(A))} m²</span></h3><div class="svgbox">${siteSVG(v,A)}</div><table class="expl"><tbody>${[['Basseyn',Y.costs.pool],['Shiypon',Y.costs.gazebo],["So'ri",Y.costs.supa],['Favvora',Y.costs.fountain],['Bolalar maydonchasi',Y.costs.playground],['Tandir',Y.costs.tandir],['Gulzor',Y.costs.gulzor],[`Daraxtlar (${Y.trees} ta)`,Y.costs.trees],[`Darvoza ${fmt1(+A.gateW||4)} m${A.kalitka?' + kalitka':''}`,Y.costs.gate],['Hovli yo\'laklari',Y.costs.pave]].filter(r=>r[1]>0).map(r=>`<tr><td></td><td>${r[0]}</td><td></td><td>${money(r[1])}</td></tr>`).join('')}<tr class="tot"><td></td><td>Hovli jami</td><td></td><td>${money(Y.cost)}</td></tr></tbody></table>`; sh.appendChild(el); }
@@ -2444,7 +2831,9 @@ $('#reReset').onclick=()=>{ S.edit=cloneEdits(null); S.A.rooms=null; saveDraft()
 function postPhoto(url,night){ return new Promise(res=>{ const img=new Image(); img.onload=()=>{ const c=document.createElement('canvas'); c.width=img.width; c.height=img.height; const x=c.getContext('2d');
   try{ x.filter=night?'contrast(1.1) saturate(1.15)':'contrast(1.07) saturate(1.12) brightness(1.02)'; }catch(e){} x.drawImage(img,0,0); try{ x.filter='none'; }catch(e){}
   try{ const b=document.createElement('canvas'); b.width=c.width/4|0; b.height=c.height/4|0; const bx=b.getContext('2d'); bx.filter='contrast(2.2)'; bx.drawImage(c,0,0,b.width,b.height); x.save(); x.globalCompositeOperation='screen'; x.globalAlpha=night?0.55:0.16; x.filter=`blur(${Math.round(c.width/110)}px)`; x.drawImage(b,0,0,c.width,c.height); x.restore(); x.filter='none'; }catch(e){}
-  if(!night){ x.globalCompositeOperation='soft-light'; x.fillStyle='rgba(255,186,120,0.22)'; x.fillRect(0,0,c.width,c.height); x.globalCompositeOperation='source-over'; }
+  if(!night){ x.globalCompositeOperation='soft-light'; x.fillStyle='rgba(255,186,120,0.22)'; x.fillRect(0,0,c.width,c.height);
+    const sk=x.createLinearGradient(0,0,0,c.height*0.55); sk.addColorStop(0,'rgba(120,170,230,0.18)'); sk.addColorStop(1,'rgba(120,170,230,0)'); x.globalCompositeOperation='screen'; x.fillStyle=sk; x.fillRect(0,0,c.width,c.height*0.55);
+    const gr=x.createLinearGradient(0,c.height*0.6,0,c.height); gr.addColorStop(0,'rgba(0,0,0,0)'); gr.addColorStop(1,'rgba(40,25,10,0.18)'); x.globalCompositeOperation='multiply'; x.fillStyle=gr; x.fillRect(0,c.height*0.6,c.width,c.height*0.4); x.globalCompositeOperation='source-over'; }
   else { x.globalCompositeOperation='soft-light'; x.fillStyle='rgba(40,70,140,0.25)'; x.fillRect(0,0,c.width,c.height); x.globalCompositeOperation='source-over'; }
   const g=x.createRadialGradient(c.width/2,c.height/2,c.height*0.38,c.width/2,c.height/2,c.width*0.72); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,0.36)'); x.fillStyle=g; x.fillRect(0,0,c.width,c.height);
   x.font=`600 ${Math.round(c.width/70)}px Golos Text, sans-serif`; x.fillStyle='rgba(255,255,255,0.75)'; x.textAlign='right'; x.fillText('UyChizma',c.width-24,c.height-22);
@@ -2452,35 +2841,39 @@ function postPhoto(url,night){ return new Promise(res=>{ const img=new Image(); 
 const SHOTS=[{kind:'ext',th:Math.PI*0.24,ph:1.36,rk:0.78,cap:'Burchakdan'},{kind:'ext',th:0.02,ph:1.4,rk:0.8,cap:"Ko'chadan, old tomon"},{kind:'ext',th:Math.PI*0.86,ph:1.2,rk:0.9,ty:2.5,sun:30,cap:'Hovlidan (orqa tomon)'},{kind:'night',th:Math.PI*0.2,ph:1.38,rk:0.8,cap:'Kechqurun, chiroqlar yonganda'},{kind:'cut',th:Math.PI*0.16,ph:0.72,rk:0.82,cap:'Kesim: 1-qavat yuqoridan'},{kind:'int',cap:'Ichkaridan: mehmonxona'}];
 let photoJob=0;
 async function makePhotos(){
-  if(!resV||!resV.ok) { $('#photoMsg').textContent="Rasm chiqarish uchun 3D ishlashi kerak."; try{ AIK.forEach(([k])=>{ const b=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(b&&b.dataset.ai!=='1'&&!b.querySelector('img')) aiCard(k,'idle',null,"Bu qurilmada 3D ishlamadi."); }); }catch(e){} return; }
+  if(!resV||!resV.ok) { $('#photoMsg').textContent="Rasm chiqarish uchun 3D ishlashi kerak."; try{ AIK.forEach(([k])=>{ const b=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(b&&b.dataset.ai!=='1'&&!b.querySelector('img')) aiCard(k,'idle',null,"Bu qurilmada 3D ishlamadi."); }); renderRooms(); }catch(e){} return; }
   const job=++photoJob, v=S.variants[S.active]; $('#photoMsg').textContent='Rasmlar chizilmoqda…'; $('#photoBig').removeAttribute('src');
   S.photos=[]; const th=$('#photoThumbs'); th.innerHTML='';
   for(const s of SHOTS){ await new Promise(r=>setTimeout(r,60)); if(job!==photoJob) return; let url=null; try{ url=resV.shot(Object.assign({w:1920,h:1080},s)); }catch(e){ console.error(e); } if(!url) continue; url=await postPhoto(url,s.kind==="night"); if(job!==photoJob) return; S.photos.push({url,cap:s.cap,kind:s.kind});
     const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(S.photos.length===1)); b.setAttribute('aria-label',s.cap); b.innerHTML=`<img alt="" src="${url}">`; const idx=S.photos.length-1; b.onclick=()=>showPhoto(idx); th.appendChild(b);
     if(S.photos.length===1) showPhoto(0); }
-  $('#photoMsg').textContent=`Variant ${v.key} · ${STYLE_NAME[v.style]} uslub · ${fmtA(v.area)} m²`;
+  $('#photoMsg').textContent=`Variant ${v.key} · ${stN(v)} uslub · ${fmtA(v.area)} m²`;
   try{ aiGal3D(); }catch(e){ console.error(e); }
+  try{ renderRooms(); }catch(e){ console.error(e); }
 }
 function showPhoto(i){ const p=S.photos[i]; if(!p) return; S.photoIdx=i; $('#photoBig').src=p.url; $('#photoCap').textContent=p.cap; [...$('#photoThumbs').children].forEach((b,j)=>b.setAttribute('aria-pressed',String(j===i))); }
 $('#photoRedo').onclick=()=>makePhotos();
 /* ===== Haqiqiy foto (AI) — tomoshabinning Figma akkaunti orqali ===== */
-const FAC_EN={gisht:'light facing brick',suvoq:'smooth decorative plaster',tosh:'natural limestone cladding',travertin:'beige travertine stone panels',yogoch:'smooth plaster ground floor and warm vertical wood cladding on the upper floor',kombi:'natural stone on the ground floor and smooth plaster above'};
+const FAC_EN={metall:'dark aluminium composite metal panels with white plaster ground floor',shale:'rough natural stone ground floor and warm wood cladding on the upper floor',gisht:'light facing brick',suvoq:'smooth decorative plaster',tosh:'natural limestone cladding',travertin:'beige travertine stone panels',yogoch:'smooth plaster ground floor and warm vertical wood cladding on the upper floor',kombi:'natural stone on the ground floor and smooth plaster above'};
 const WALL_EN={oq:'warm white',bej:'beige',qum:'sand grey',gisht:'terracotta brick red'};
 function aiPrompt(v,A,night){
-  const st={klassik:'classic European-style (columns, cornices, window surrounds, symmetric facade)',zamonaviy:'modern minimalist (clean lines, large glazing, flat surfaces)',milliy:'Uzbek national style (carved wooden columns, wide aivan veranda, ornamental details)'}[v.style];
+  const st=(v.sub&&SUBS[v.sub])?SUBS[v.sub].ai:{klassik:'classic European-style (columns, cornices, window surrounds, symmetric facade)',zamonaviy:'modern minimalist (clean lines, large glazing, flat surfaces)',milliy:'Uzbek national style (carved wooden columns, wide aivan veranda, ornamental details)'}[v.style];
   const wall=/^#/.test(v.wall)?`walls in color ${v.wall}`:`${WALL_EN[v.wall]||'light'} walls`;
   const fac=FAC_EN[v.facade&&v.facade!=='auto'?v.facade:(A.facade!=='auto'?A.facade:'')]||(v.style==='zamonaviy'?'smooth plaster':'facing brick');
   const lay={'Darvozaxonali':'with a wide covered drive-through passage under the house in the center of the ground floor','Erkerli':'with projecting bay windows on the front facade','Ixcham':'compact rectangular volume'}[v.name]||(/L-shakl/.test(v.name)?'L-shaped plan with a wing toward the street and a gallery':(/U-shakl/.test(v.name)?'U-shaped plan with two wings forming a courtyard':''));
-  const R=v.roof, roof=R.shape==='tekis'?'flat roof with a slim parapet':`${R.shape==='ikki'?'gable (two-slope)':'hip (four-slope)'} roof, ${R.deg} degree pitch, covered with ${({metall:'metal roof tiles',keramik:'ceramic clay tiles',yumshoq:'bitumen shingles',profnastil:'corrugated metal sheets'})[R.mat]} in color ${R.hex}`;
+  const R=v.roof, roof=R.shape==='tekis'?'flat roof with a slim parapet':`${R.shape==='ikki'?'gable (two-slope)':R.shape==='mansard'?'French mansard (steep lower slopes, flat top with iron cresting)':'hip (four-slope)'} roof, ${R.deg} degree pitch, covered with ${({metall:'metal roof tiles',keramik:'ceramic clay tiles',yumshoq:'bitumen shingles',profnastil:'corrugated metal sheets'})[R.mat]} in color ${R.hex}`;
   const win={kichik:'small windows',orta:'medium windows',katta:'large windows',panorama:'floor-to-ceiling panoramic windows in the living room'}[A.winSize]||'windows';
-  const frame={oq:'white frames',antrasit:'anthracite black frames',yogoch:'wooden frames'}[A.winFrame]||({zamonaviy:'anthracite black frames',milliy:'dark wooden frames',klassik:'white frames'}[v.style]);
+  const frame={oq:'white frames',antrasit:'anthracite black frames',yogoch:'wooden frames'}[A.winFrame]||{oq:'white frames',antrasit:'anthracite black frames',yogoch:'wooden frames'}[(SUBS[v.sub]||{}).frame]||({zamonaviy:'anthracite black frames',milliy:'dark wooden frames',klassik:'white frames'}[v.style]);
   const door={bir:'single-leaf',ikki:'double-leaf',katta:'tall oversized'}[A.doorType]+' '+({yogoch:'wooden',metall:'dark metal',shisha:'glass'}[A.doorMat]||(v.style==='zamonaviy'?'dark metal':'wooden'))+' entrance door';
   const gate=`${({ochiladigan:'double swing steel',surma:'sliding steel',naqshli:'traditional carved wooden Uzbek'})[A.gateType]} gate about ${A.gateW} m wide and ${A.gateH} m high${A.kalitka?' with a separate pedestrian door':''}`;
   const Y=v.yard.costs, yard=[Y.pool&&'a swimming pool',Y.gazebo&&'a wooden gazebo',Y.supa&&'a traditional tapchan',Y.fountain&&'a small fountain',v.yard.trees&&`${v.yard.trees} fruit trees`,Y.gulzor&&'flower beds'].filter(Boolean).join(', ');
   const street={tor:'a narrow residential lane',mahalla:'a quiet mahalla street',katta:'a wide city street with sidewalks'}[A.street];
   const nb={ikki:'neighbouring houses on both sides',bir:'a neighbouring house on one side',yoq:'open land around'}[A.neighbors];
   const view={shahar:'distant city buildings',tog:'snow-capped mountains in the far background',dala:'green fields and orchards in the background'}[A.view];
-  return `Photorealistic architectural exterior photograph of a newly built ${v.floors.length}-storey private house in Uzbekistan, ${st}, ${lay}. Facade about ${Math.round(v.W)} m wide. ${wall}, finished with ${fac}. ${roof}. ${win} with ${frame}, ${door}. In front: ${street}, a fence with pillars and a ${gate}. Yard: ${yard||'paved paths and lawn'}. Surroundings: ${nb}, ${view}. ${night?'Blue hour evening, warm interior lights glowing through the windows, exterior wall lamps on':'Golden hour warm sunlight, clear sky, soft realistic shadows'}. Eye-level 3/4 view from the street, full-frame camera, 24mm lens, high detail, realistic materials, no people, no text, no watermark.`;
+  const lux=(v.sub&&v.sub!=='saroy')?'premium high-end execution of this exact style with refined authentic details, quality materials and warm exterior lighting':{klassik:'grand neoclassical luxury villa: columned entrance portico with Corinthian columns, balustraded balconies with black wrought-iron railings, rich cornices and window surrounds, arched windows with keystones, tall glazed entrance with a crystal chandelier glowing inside, warm wall sconces beside every window',zamonaviy:'luxury contemporary villa: travertine and dark metal accents, frameless glazing, warm hidden LED lines under cornices, glass balcony railings, dramatic entrance canopy',milliy:'luxury Uzbek palace-style villa: carved wooden columns on a deep aivan, ganch plaster ornaments, blue majolica tile accents, carved wooden doors, warm lanterns'}[v.style];
+  const land=`grand stone-paved forecourt in light travertine with a ${Y.fountain||v.lux==='hashamatli'?'central round classical fountain':'central round flower island'}, sculpted topiary balls and slim cone cypresses in pairs, low clipped boxwood hedges, white roses and lavender beds, classic black lamp posts along the paving, manicured lawn`;
+  const shape=`IMPORTANT: keep exactly this building shape and proportions — ${v.floors.length} storeys, footprint about ${Math.round(v.W)} x ${Math.round((v.maxY||v.D)-(v.minY||0))} m, ${lay||'rectangular volume'}, ${roof}`;
+  return `Ultra-realistic high-end architectural visualization (premium real-estate render, V-Ray / Corona quality) of a ${v.floors.length}-storey private villa in Uzbekistan. ${shape}. Style: ${st}, ${lux}. ${wall}, finished with ${fac}. ${win} with ${frame}, ${door}. Front: ${land}; a fence with pillars and a ${gate}, ${street}. Yard: ${yard||'paved paths and lawn'}. Surroundings: ${nb}, ${view}. ${night?'Blue hour dusk, every window glowing warm, chandeliers visible inside, wall lamps and lamp posts lit, soft reflections on wet-looking stone paving':'Late golden hour, soft warm sunlight, clear pale sky, gentle long shadows'}. Eye-level frontal view from the forecourt, slightly off-axis, symmetric composition, 24mm architectural lens with vertical lines corrected, crisp detail, realistic materials, no people, no text, no watermark.`;
 }
 function aiPromptInt(v,A){
   const f=v.floors[0]; const z=mainRooms(f).filter(r=>r.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0]; const ar=Math.round(z.w*z.h);
@@ -2494,10 +2887,10 @@ function aiPromptCut(v,A){
   const pass=f.open.some(o=>o.type==='passage')?'a wide covered drive-through passage through the middle of the house with a car; ':'';
   const Y=v.yard.costs, yard=[Y.pool&&'swimming pool',Y.gazebo&&'gazebo',Y.supa&&'traditional tapchan',v.yard.trees&&'fruit trees',Y.gulzor&&'flower beds'].filter(Boolean).join(', ');
   const fl=v.lux==='hashamatli'?'marble and parquet floors':'oak parquet and tiled floors';
-  return `Photorealistic 3D dollhouse cutaway render of the ground floor of a ${STYLE_NAME[v.style].toLowerCase()} style private house in Uzbekistan (${Math.round(v.W)} × ${Math.round(v.D)} m), isometric 45-degree view from above, roof and upper floor removed, walls cut at 1.5 m with clean white cut tops, fully furnished rooms: ${rooms}; ${pass}${fl}, warm interior lighting, soft shadows, yard with paving, lawn${yard?', '+yard:''}. Professional interior design app render style, clean, high detail, no text, no people.`; }
+  return `Photorealistic 3D dollhouse cutaway render of the ground floor of a ${stN(v).toLowerCase()} style private house in Uzbekistan (${Math.round(v.W)} × ${Math.round(v.D)} m), isometric 45-degree view from above, roof and upper floor removed, walls cut at 1.5 m with clean white cut tops, fully furnished rooms: ${rooms}; ${pass}${fl}, warm interior lighting, soft shadows, yard with paving, lawn${yard?', '+yard:''}. Professional interior design app render style, clean, high detail, no text, no people.`; }
 let mcpP=null; const getMcp=()=>mcpP||(mcpP=(async()=>{ try{ return (window.claude&&claude.use)?await claude.use('mcp'):null; }catch(e){ return null; } })());
 const plOf=r=>{ if(r&&r.payload!==undefined) return r.payload; for(const b of (r&&r.content)||[]){ if(b.type==='text'){ try{ return JSON.parse(b.text); }catch(e){} } } return null; };
-async function figmaFile(mcp,fresh){ let fk=null; try{ fk=fresh?null:localStorage.getItem('uc_fig'); }catch(e){} if(fk) return fk;
+async function figmaFile(mcp,fresh){ let fk=null; try{ fk=fresh?null:localStorage.getItem('uc_fig'); }catch(e){} if(fk) return fk; if(!fresh) return 'JO0z6AYMqcwjvndsPIcd6E';
   const w=plOf(await mcp.callTool('Figma','whoami',{})); const plans=((w&&(w.whoami||w).plans)||[]).filter(p=>p.user_can_access_figma_ai!==false); const pk=plans[0]&&plans[0].key; if(!pk) throw {code:'no_ai'};
   const c=await mcp.callTool('Figma','create_new_file',{fileName:'UyChizma — hayotiy rasmlar',planKey:pk,editorType:'design'}); const p=plOf(c)||{}; const txt=JSON.stringify(c.content||'');
   fk=p.fileKey||p.file_key||p.key||((String(p.url||p.file_url||'')+txt).match(/design\/([0-9a-zA-Z]{22,128})/)||[])[1]; if(!fk) throw {code:'no_file'}; try{ localStorage.setItem('uc_fig',fk); }catch(e){} return fk; }
@@ -2538,7 +2931,7 @@ let aiBusyKey='', aiTimer=null;
 function aiAutoSoon(){ clearTimeout(aiTimer); aiTimer=setTimeout(()=>aiAuto(false),1200); }
 async function aiAuto(force){
   const v=S.variants&&S.variants[S.active]; if(!v||!$('#aiGal')) return; const A=S.A; const key=encProject(A,S.active,v.style)+'|'+v.key, vid=v.key+'|'+(A.seed||0); aiCur=key;
-  $('#aiGalTitle').textContent=`Variant ${v.key}: ${v.name} · ${STYLE_NAME[v.style]} uslub`;
+  $('#aiGalTitle').textContent=`Variant ${v.key}: ${v.name} · ${stN(v)} uslub`;
   const mcp=await getMcp(); const msg=$('#aiGalMsg'), redo=$('#aiGalRedo');
   if(!mcp){ AIK.forEach(([k])=>{ const box=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(box){ box.dataset.ai='0'; } aiCard(k,'load',null,'3D rasm chizilmoqda…'); }); msg.textContent="Rasmlar uyning 3D modelidan chiziladi. Figma ulangan akkauntda AI fotolar chiqadi."; redo.hidden=true; aiGal3D(); return; }
   redo.hidden=false; AILAST[vid]=key;
@@ -2551,8 +2944,80 @@ async function aiAuto(force){
     if(aiCur===key){ aiBusyKey=''; msg.textContent="Tayyor. Rasmlarni sun'iy intellekt chizdi, mayda detallar 3D rejadan farq qilishi mumkin."; } });
 }
 $('#aiGalRedo').onclick=()=>aiAuto(true);
-document.addEventListener('click',e=>{ const im=e.target.closest('.sc-card img, .aig-img img'); if(!im) return; const d=document.createElement('div'); d.className='lbx'; d.setAttribute('role','dialog'); d.innerHTML=`<img alt="" src="${im.src}">`; d.onclick=()=>d.remove(); document.body.appendChild(d); });
+document.addEventListener('click',e=>{ const im=e.target.closest('.sc-card img, .aig-img img, .rp-img img'); if(!im) return; const d=document.createElement('div'); d.className='lbx'; d.setAttribute('role','dialog'); d.innerHTML=`<img alt="" src="${im.src}">`; d.onclick=()=>d.remove(); document.body.appendChild(d); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.lbx').forEach(x=>x.remove()); });
+/* ===== Har bir xona: 1-varaq chizma, 2-varaq ko'rinish ===== */
+const INT_STYLE={zamonaviy:'Zamonaviy',klassik:'Klassik',neoklassik:'Neoklassika',milliy:'Milliy (o\'zbekcha)',skandinav:'Skandinav',loft:'Loft'};
+const FLOOR_N={parket:'Parket (yog\'och)',laminat:'Laminat',marmar:'Marmar',kafel:'Keramogranit'};
+const CEIL_N={oddiy:'Tekis oq shift',gips:"Ko'p darajali gipsokarton, yashirin LED",ganch:'Naqshli ganch (milliy)'};
+const FURN_N={tv:'TV devori',divan:'Katta divan',stol:'Ovqat stoli',kamin:'Kamin',pianino:'Pianino',akvarium:'Akvarium',garderob:'Garderob',ishstol:'Ish stoli',orol:'Orol (ostrov)',bar:'Bar stoyka',kreslo:'Kreslolar'};
+function intStyleOf(v,A){ return A.intStyle&&A.intStyle!=='auto'?A.intStyle:({zamonaviy:'zamonaviy',klassik:'neoklassik',milliy:'milliy'}[v.style]||'zamonaviy'); }
+function floorOf(r,v,A){ if(r.t==='wet') return 'Kafel (sirpanmaydigan)'; if(r.t==='kitchen'&&A.floorType!=='marmar') return 'Keramogranit'; const f=A.floorType&&A.floorType!=='auto'?A.floorType:(v.lux==='hashamatli'?'marmar':'parket'); return FLOOR_N[f]; }
+function furnOf(r,A){ const s=k=>(A[k]||'').split(',').filter(Boolean); return r.t==='zal'?s('furnZal'):r.t==='bed'?s('furnBed'):r.t==='kitchen'?s('furnKit'):[]; }
+function roomList(v){ const out=[]; v.floors.forEach((f,k)=>mainRooms(f).forEach(r=>{ if(r.t==='stair'||(r.t==='circ'&&/Yo'lak/.test(r.n))) return; out.push({k,r,f}); })); return out; }
+function roomSVG(v,k,r,A){
+  const f=v.floors[k], pad=1.6, W=r.w, D=r.h, Y=y=>-(y), o=[], X0=r.x, Y0=r.y, ar=roomA(r,f);
+  const L=(x,y)=>[x-X0,Y(y-Y0)];
+  const VW=Math.max(W+pad*2,7.5), VH=Math.max(D+pad*2+0.6,6), vx=W/2-VW/2, vy=-D/2-VH/2+0.3;
+  o.push(`<svg viewBox="${vx} ${vy} ${VW} ${VH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(r.n)} chizmasi" font-family="Golos Text, sans-serif"><rect x="${vx}" y="${vy}" width="${VW}" height="${VH}" fill="#FFFFFF"></rect>`);
+  o.push(`<rect x="0" y="${-D}" width="${W}" height="${D}" fill="${PCOL[r.t]||'#FAFAFA'}"></rect>`);
+  const fur=[]; const box=(x,y,w,h,label,fill)=>fur.push(`<rect x="${x}" y="${-(y+h)}" width="${w}" height="${h}" rx="0.06" fill="${fill||'#FFFFFF'}" stroke="#5A6470" stroke-width="0.035"></rect>`+(label?`<text x="${x+w/2}" y="${-(y+h/2)+0.09}" font-size="${Math.min(0.24,w/5)}" text-anchor="middle" fill="#3A4450">${label}</text>`:''));
+  const F=furnOf(r,A);
+  if(r.t==='zal'){ const sw=Math.min(W-1,3.2); box((W-sw)/2,D-1.0,sw,0.9,'Divan','#E9E1D4'); if(W>3.6) box((W-sw)/2-0.05,D-2.6,0.9,1.4,'','#E9E1D4'); box(W/2-0.6,D-2.3,1.2,0.6,'Jurnal stol','#D9C7A8'); fur.push(`<rect x="${W/2-1.4}" y="${-(D-0.9)}" width="2.8" height="2.0" fill="none" stroke="#B4362A" stroke-width="0.03" stroke-dasharray="0.12 0.08"></rect>`);
+    if(F.includes('tv')) box(W/2-1.2,0.05,2.4,0.35,'TV devori','#3A3F44'); if(F.includes('kamin')) box(0.05,D/2-0.6,0.5,1.2,'Kamin','#C9C2B5'); if(F.includes('stol')&&D>4.2) box(W-1.25,0.7,1.1,1.8,'Stol 6','#D9C7A8'); if(F.includes('pianino')) box(W-1.6,D-0.7,1.5,0.6,'Pianino','#2E2E2E'); if(F.includes('akvarium')) box(0.05,0.6,0.45,1.4,'Akv.','#9FD3E6'); if(F.includes('kreslo')){ box(0.4,D-2.1,0.8,0.8,'','#E9E1D4'); box(W-1.2,D-2.1,0.8,0.8,'','#E9E1D4'); } }
+  else if(r.t==='bed'){ const bw=Math.min(1.8,W-1.4), bl=2.05; box((W-bw)/2,D-bl-0.05,bw,bl,'Krovat','#E9E1D4'); box((W-bw)/2-0.55,D-0.5,0.45,0.45,'','#D9C7A8'); box((W+bw)/2+0.1,D-0.5,0.45,0.45,'','#D9C7A8');
+    if(F.includes('garderob')) box(0.05,0.05,Math.min(2.4,W*0.55),0.6,'Garderob','#D9C7A8'); if(F.includes('tv')) box(W/2-0.7,0.05,1.4,0.3,'TV','#3A3F44'); if(F.includes('ishstol')) box(W-1.3,0.8,1.2,0.6,'Ish stoli','#D9C7A8'); }
+  else if(r.t==='kitchen'){ box(0.05,D-0.65,W-0.1,0.6,'Oshxona mebeli','#D8DEE4'); box(0.05,D-0.65-Math.min(2.4,D-1.5),0.6,Math.min(2.4,D-1.5),'','#D8DEE4'); if(F.includes('orol')&&W>3.4&&D>3.4) box(W/2-0.9,D/2-0.1,1.8,0.9,'Orol','#C9D1D9'); if(F.includes('stol')) box(W/2-0.8,0.5,1.6,0.95,'Stol 6','#D9C7A8'); if(F.includes('bar')) box(W-0.5,0.6,0.45,1.6,'Bar','#C9D1D9'); }
+  else if(r.t==='wet'){ box(0.1,D-0.75,0.4,0.65,'WC','#FFFFFF'); box(W-0.75,D-0.55,0.65,0.45,'Rakovina','#FFFFFF'); if(W*D>4.5) box(0.05,0.05,Math.min(1.7,W-0.2),0.75,W*D>6.5?'Vanna':'Dush','#E2EEF4'); else box(W-0.95,0.05,0.9,0.9,'Dush','#E2EEF4'); }
+  else if(r.t==='util'){ box(0.05,D-0.65,0.6,0.6,'Kir mash.','#FFFFFF'); box(0.7,D-0.65,0.6,0.6,'Quritgich','#FFFFFF'); }
+  else if(r.t==='circ'){ box(0.05,0.3,0.4,Math.min(1.8,D-0.6),'Shkaf','#D9C7A8'); }
+  else if(r.t==='garage'){ box(W/2-0.9,0.6,1.8,4.4,'Mashina','#BFC5CB'); }
+  o.push(...fur);
+  // walls
+  o.push(`<rect x="0" y="${-D}" width="${W}" height="${D}" fill="none" stroke="#1E1E1E" stroke-width="0.2"></rect>`);
+  // exterior openings on this room
+  f.openings.filter(op=>op.room===r).forEach(op=>{ const s=f.segs[op.si]; if(!s) return; const hz=Math.abs(s.y0-s.y1)<1e-6; const a=op.c-op.w/2, b=op.c+op.w/2;
+    if(hz){ const yy=s.y0-Y0; const p0=a-X0, p1=b-X0; o.push(`<line x1="${p0}" y1="${-yy}" x2="${p1}" y2="${-yy}" stroke="#FFFFFF" stroke-width="0.24"></line>`); if(op.kind==='win') o.push(`<line x1="${p0}" y1="${-yy-0.06}" x2="${p1}" y2="${-yy-0.06}" stroke="#1F5FE0" stroke-width="0.04"></line><line x1="${p0}" y1="${-yy+0.06}" x2="${p1}" y2="${-yy+0.06}" stroke="#1F5FE0" stroke-width="0.04"></line><text x="${(p0+p1)/2}" y="${-yy+(yy<0.1?0.55:-0.35)}" font-size="0.2" text-anchor="middle" fill="#1F5FE0">D ${fmt(op.w*1000)}×${fmt(op.h*1000)}</text>`); else o.push(`<path d="M${p0} ${-yy} A ${p1-p0} ${p1-p0} 0 0 ${yy<0.1?0:1} ${p1} ${-yy+(yy<0.1?-(p1-p0):(p1-p0))}" fill="none" stroke="#B4362A" stroke-width="0.035"></path><text x="${(p0+p1)/2}" y="${-yy+(yy<0.1?0.55:-0.35)}" font-size="0.2" text-anchor="middle" fill="#B4362A">E ${fmt(op.w*1000)}</text>`); }
+    else { const xx=s.x0-X0; const p0=a-Y0, p1=b-Y0; o.push(`<line x1="${xx}" y1="${-p0}" x2="${xx}" y2="${-p1}" stroke="#FFFFFF" stroke-width="0.24"></line>`); if(op.kind==='win') o.push(`<line x1="${xx-0.06}" y1="${-p0}" x2="${xx-0.06}" y2="${-p1}" stroke="#1F5FE0" stroke-width="0.04"></line><line x1="${xx+0.06}" y1="${-p0}" x2="${xx+0.06}" y2="${-p1}" stroke="#1F5FE0" stroke-width="0.04"></line>`); else o.push(`<line x1="${xx}" y1="${-p0}" x2="${xx+(xx<0.1?1:-1)*(p1-p0)}" y2="${-p0}" stroke="#B4362A" stroke-width="0.035"></line>`); } });
+  // interior doors
+  f.doors.filter(d=>d.room===r).forEach(d=>{ const a=d.c-d.w/2-(d.o==='v'?Y0:X0), b=a+d.w; if(d.o==='v'){ const xx=d.line-X0; o.push(`<line x1="${xx}" y1="${-a}" x2="${xx}" y2="${-b}" stroke="#FFFFFF" stroke-width="0.24"></line><path d="M${xx} ${-a} L ${xx+(xx<0.1?1:-1)*d.w} ${-a}" stroke="#B4362A" stroke-width="0.035"></path>`); } else { const yy=d.line-Y0; o.push(`<line x1="${a}" y1="${-yy}" x2="${b}" y2="${-yy}" stroke="#FFFFFF" stroke-width="0.24"></line><path d="M${a} ${-yy} L ${a} ${-yy+(yy<0.1?-1:1)*d.w}" stroke="#B4362A" stroke-width="0.035"></path>`); } });
+  // dimensions
+  o.push(`<line x1="0" y1="${0.75}" x2="${W}" y2="${0.75}" stroke="#333" stroke-width="0.025"></line><line x1="0" y1="0.6" x2="0" y2="0.9" stroke="#333" stroke-width="0.025"></line><line x1="${W}" y1="0.6" x2="${W}" y2="0.9" stroke="#333" stroke-width="0.025"></line><text x="${W/2}" y="1.12" font-size="0.28" text-anchor="middle" fill="#222">${fmt(W*1000)}</text>`);
+  o.push(`<line x1="${-0.75}" y1="0" x2="${-0.75}" y2="${-D}" stroke="#333" stroke-width="0.025"></line><line x1="-0.9" y1="0" x2="-0.6" y2="0" stroke="#333" stroke-width="0.025"></line><line x1="-0.9" y1="${-D}" x2="-0.6" y2="${-D}" stroke="#333" stroke-width="0.025"></line><text x="${-1.0}" y="${-D/2}" font-size="0.28" text-anchor="middle" fill="#222" transform="rotate(-90 ${-1.0} ${-D/2})">${fmt(D*1000)}</text>`);
+  o.push(`<text x="${W/2}" y="${-D-0.55}" font-size="0.32" text-anchor="middle" fill="#111" font-weight="600">${esc(r.n)} · ${fmtA(ar)} m²</text></svg>`);
+  return o.join(''); }
+function roomPrompt(v,A,k,r){ const ist=intStyleOf(v,A), f=v.floors[k];
+  const SD={zamonaviy:'modern minimalist interior, handle-less furniture, linear LED lights, neutral palette with wood and black accents',klassik:'classic interior with mouldings, wall panelling, chandelier, carved furniture',neoklassik:'neoclassic interior: light wall panelling, elegant mouldings, crystal chandelier, soft upholstered furniture',milliy:'modern Uzbek interior: carved wood details, ganch plaster ornaments, suzani textiles, warm wood',skandinav:'Scandinavian interior: light oak, white and soft grey, cozy textiles, simple forms',loft:'loft interior: exposed brick accent wall, black metal, concrete texture, warm wood'}[ist];
+  const T={zal:'living room (mehmonxona)',bed:'bedroom',kitchen:'kitchen with dining area',wet:'bathroom',util:'laundry room',circ:'entrance hall',garage:'garage'}[r.t]||'room';
+  const fu=furnOf(r,A).map(x=>({tv:'TV media wall',divan:'large sofa',stol:'dining table',kamin:'fireplace',pianino:'piano',akvarium:'aquarium',garderob:'built-in wardrobe',ishstol:'work desk',orol:'kitchen island',bar:'bar counter',kreslo:'armchairs'}[x])).filter(Boolean).join(', ');
+  const ceil={oddiy:'flat white ceiling',gips:'multi-level gypsum ceiling with hidden LED strip',ganch:'ornamental carved ganch ceiling'}[A.ceiling]||'flat white ceiling';
+  const fl={parket:'oak parquet floor',laminat:'light laminate floor',marmar:'polished marble floor',kafel:'large porcelain tile floor'}[A.floorType]||(v.lux==='hashamatli'?'polished marble floor':'oak parquet floor');
+  const wins=f.openings.filter(o=>o.room===r&&o.kind==='win').length;
+  return `Photorealistic interior design render of a ${T} in a private house in Uzbekistan, ${fmt1(r.w)} × ${fmt1(r.h)} m (${Math.round(roomA(r,f))} m²), ceiling 3.0 m. ${SD}. Walls painted in color ${A.paint||'#EFE8DC'}, ${r.t==='wet'?'large format wall tiles':fl}, ${ceil}. ${wins?wins+' window'+(wins>1?'s':'')+' with sheer curtains':'no windows, warm artificial light'}. ${fu?'Furniture: '+fu+'.':''} Professional 3D interior visualization like an interior design app render, wide angle 20mm, eye level, soft natural light, high detail, no people, no text, no watermark.`; }
+S.roomImgs={}; let roomJob=0;
+function renderRooms(){
+  const v=S.variants&&S.variants[S.active], el=$('#roomCards'); if(!v||!el) return; const A=S.A, list=roomList(v), ist=intStyleOf(v,A);
+  $('#roomsInfo').textContent=`${list.length} ta xona · interyer: ${INT_STYLE[ist]} · shift: ${CEIL_N[A.ceiling]||CEIL_N.oddiy}`;
+  el.innerHTML=list.map(({k,r,f},i)=>{ const key=`${v.key}|${k}|${r.n}|${i}`; const im=S.roomImgs[key]; const fu=furnOf(r,A).map(x=>FURN_N[x]).filter(Boolean).join(', ');
+    return `<article class="room" data-i="${i}"><header><b>${i+1}. ${esc(r.n)}</b><span>${k+1}-qavat · ${fmt2(r.w)} × ${fmt2(r.h)} m · ${fmtA(roomA(r,f))} m²</span></header>
+    <div class="room-pages"><figure class="rp"><figcaption>1-varaq · Chizma</figcaption><div class="rp-svg">${roomSVG(v,k,r,A)}</div></figure>
+    <figure class="rp"><figcaption>2-varaq · Ko'rinish ${im&&im.ai?'<span class="aitag">AI</span>':''}</figcaption><div class="rp-img" data-key="${esc(key)}">${im?`<img alt="${esc(r.n)}" src="${im.url}">`:'<div class="aig-sk"><i></i><span>Chizilmoqda…</span></div>'}</div>
+    <ul class="rp-spec"><li><i style="background:${esc(A.paint||'#EFE8DC')}"></i>Devor: oboy/bo'yoq ${esc(A.paint||'')}</li><li>Pol: ${floorOf(r,v,A)}</li><li>Shift: ${CEIL_N[A.ceiling]||CEIL_N.oddiy}</li>${fu?`<li>Jihozlar: ${fu}</li>`:''}</ul>
+    <button class="btn ghost small rp-ai" type="button" data-i="${i}" hidden>🤖 AI bilan chizish</button></figure></div></article>`; }).join('');
+  getMcp().then(m=>{ if(m){ el.querySelectorAll('.rp-ai').forEach(b=>b.hidden=false); $('#roomsAllAi').hidden=false; } });
+  const job=++roomJob;
+  (async()=>{ for(let i=0;i<list.length;i++){ if(job!==roomJob) return; const {k,r}=list[i]; const key=`${v.key}|${k}|${r.n}|${i}`; if(S.roomImgs[key]) continue;
+      await new Promise(rs=>setTimeout(rs,80)); if(job!==roomJob||!resV||!resV.ok) return; let url=null; try{ url=resV.shot({kind:'int',k,r,w:1280,h:720}); }catch(e){ console.error(e); } if(!url) continue; url=await postPhoto(url); S.roomImgs[key]={url,ai:false};
+      const box=el.querySelector(`.rp-img[data-key="${CSS.escape(key)}"]`); if(box) box.innerHTML=`<img alt="${esc(r.n)}" src="${url}">`; } })();
+}
+async function roomAi(i){ const v=S.variants[S.active], A=S.A, list=roomList(v), it=list[i]; if(!it) return; const key=`${v.key}|${it.k}|${it.r.n}|${i}`;
+  const box=document.querySelector(`.rp-img[data-key="${CSS.escape(key)}"]`); const prev=box&&box.innerHTML; if(box) box.insertAdjacentHTML('beforeend','<div class="aig-over"><i></i>AI chizmoqda…</div>');
+  try{ const url=await aiGen(roomPrompt(v,A,it.k,it.r)); S.roomImgs[key]={url,ai:true}; if(box){ box.innerHTML=`<img alt="${esc(it.r.n)}" src="${url}">`; const cap=box.parentElement.querySelector('figcaption'); if(cap&&!cap.querySelector('.aitag')) cap.insertAdjacentHTML('beforeend','<span class="aitag">AI</span>'); } }
+  catch(e){ console.error(e); if(box){ box.innerHTML=prev; box.insertAdjacentHTML('beforeend','<div class="aig-over">AI chizib bo\'lmadi</div>'); } } }
+document.addEventListener('click',e=>{ const b=e.target.closest('.rp-ai'); if(b){ b.disabled=true; roomAi(+b.dataset.i).finally(()=>b.disabled=false); } });
+$('#roomsAllAi').onclick=async()=>{ const b=$('#roomsAllAi'); b.disabled=true; const n=roomList(S.variants[S.active]).length; for(let i=0;i<n;i++){ $('#roomsInfo').textContent=`AI chizmoqda: ${i+1}/${n}…`; await roomAi(i); } b.disabled=false; renderRoomsInfo(); };
+function renderRoomsInfo(){ const v=S.variants[S.active]; if(v) $('#roomsInfo').textContent=`${roomList(v).length} ta xona · interyer: ${INT_STYLE[intStyleOf(v,S.A)]}`; }
+
 
 getMcp().then(m=>{ if(m){ $('#aiPhoto').hidden=false; $('#aiPhotoN').hidden=false; $('#aiPhotoI').hidden=false; $('#aiPhotoC').hidden=false; } });
 
@@ -2633,7 +3098,7 @@ async function makePromoImages(){
   try{ if(hv0) heroV.load(hv0,hA0); heroV.auto=true; }catch(e){}
 }
 
-$('#pdfBtn').onclick=makePdf; $('#linkBtn').onclick=copyLink;
+$('#pdfBtn').onclick=makePdf; $('#linkBtn').onclick=copyLink; $('#dlAll').onclick=dlAllRun; $('#dlFab').onclick=dlAllRun;
 /* boot */
 renderUser(); syncInputs(); initGoogle();
 (function(){ const hs=(location.hash||'').slice(1); const pr=hs?decProject(hs):null; if(pr){ S.A=pr.A; generate(); show('result'); const v=S.variants[pr.vi]; if(v&&pr.st&&pr.st!==v.style) restyle(v,S.A,pr.st); const t=$('#vtabs').children[pr.vi]; if(t) t.click(); } })();
