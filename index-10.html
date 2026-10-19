@@ -3195,12 +3195,14 @@ $('#aiPhoto').onclick=()=>aiPhoto(false); $('#aiPhotoN').onclick=()=>aiPhoto(tru
 /* ===== AI dizayn galereyasi: natija ochilganda 3 ta rasm avtomatik chiziladi ===== */
 /* Bepul AI rasm (Figma bo'lmagan joyda, masalan GitHub saytida): Pollinations.ai */
 const FREE_AI=!!(location.protocol.startsWith('http')&&!/claude\.ai|claudeusercontent|anthropic/.test(location.hostname));
-async function freeAi(PR,w,h){ w=w||1280; h=h||720; const seed=Math.floor(Math.random()*1e6);
-  const p=String(PR).replace(/\s+/g,' ').slice(0,1400); const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(p)}?width=${w}&height=${h}&nologo=true&model=flux&seed=${seed}`;
-  const ctl=('AbortController' in window)?new AbortController():null; const tm=setTimeout(()=>ctl&&ctl.abort(),120000);
-  try{ const r=await fetch(url,ctl?{signal:ctl.signal}:{}); if(!r.ok) throw {code:'free_http',status:r.status}; const b=await r.blob(); if(!/^image\//.test(b.type)||b.size<5000) throw {code:'free_type'};
-    return await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=()=>rej({code:'free_read'}); fr.readAsDataURL(b); }); }
-  finally{ clearTimeout(tm); } }
+async function freeAi(PR,w,h,tries){ w=w||1280; h=h||720; tries=tries||0; const seed=Math.floor(Math.random()*1e6);
+  const p=String(PR).replace(/\s+/g,' ').slice(0,1200); const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(p)}?width=${w}&height=${h}&nologo=true&seed=${seed}`;
+  const ctl=('AbortController' in window)?new AbortController():null; const tm=setTimeout(()=>ctl&&ctl.abort(),120000); let r;
+  try{ r=await fetch(url,ctl?{signal:ctl.signal}:{}); } finally{ clearTimeout(tm); }
+  if((r.status===402||r.status===429||r.status===503)&&tries<4){ let wait=46; try{ const j=await r.json(); const mm=String((j.error&&j.error.message)||''); const m=mm.match(/Retry after (\d+)/i)||mm.match(/(\d+)\s*s/); if(m) wait=+m[1]+2; }catch(e){}
+    if(window.__aiWait) try{ window.__aiWait(wait); }catch(e){} await new Promise(res=>setTimeout(res,wait*1000)); return freeAi(PR,w,h,tries+1); }
+  if(!r.ok) throw {code:'free_http',status:r.status}; const b=await r.blob(); if(!/^image\//.test(b.type)||b.size<5000) throw {code:'free_type'};
+  return await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=()=>rej({code:'free_read'}); fr.readAsDataURL(b); }); }
 const aiAvail=async()=>!!(await getMcp())||FREE_AI;
 async function aiGen(PR){ const mcp=await getMcp(); if(!mcp){ if(FREE_AI) return await freeAi(PR); throw {code:'no_mcp'}; }
   let fk=await figmaFile(mcp), gen; const inp=fk2=>({fileKey:fk2,prompt:PR,width:1920,height:1080,model:'gemini-3.1-flash-image'});
@@ -3227,7 +3229,7 @@ async function aiAuto(force){
   redo.hidden=false; AILAST[vid]=key;
   AIK.forEach(([k,n])=>{ const u=!force&&AIC[key+'#'+k]; const box=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(u) aiCard(k,'ok',u); else if(box&&box.querySelector('img')){ const tg=box.dataset.ai==='1'?'AI':'3D'; box.dataset.ai='0'; const img=box.querySelector('img').src; aiCard(k,'ok',img,'Yangi rasm chizilmoqda…',tg); box.dataset.ai='0'; } else aiCard(k,'load',null,`${n} chizilmoqda…`); });
   if(AIK.every(([k])=>!force&&AIC[key+'#'+k])){ msg.textContent=''; return; }
-  msg.textContent=(mcp?'Figma AI':'AI')+' chizmoqda, har bir rasm 20–60 soniya…'; aiBusyKey=key; let aiFails=0;
+  msg.textContent=(mcp?'Figma AI chizmoqda, har bir rasm 20–60 soniya…':'AI chizmoqda… Bepul xizmat har 45 soniyada 1 ta rasm chizadi, 3 ta rasm ~2–3 daqiqa.'); aiBusyKey=key; let aiFails=0; window.__aiWait=s=>{ if(aiCur===key) msg.textContent=`AI navbatda: keyingi rasm ~${s} soniyada chiziladi…`; };
   aiQ=aiQ.then(async()=>{ for(const [k,n] of AIK){ if(aiCur!==key) return; if(!force&&AIC[key+'#'+k]) continue;
       try{ const url=await aiGen(aiPromptK(k,v,A)); AIC[key+'#'+k]=url; if(aiCur===key) aiCard(k,'ok',url); }
       catch(e){ aiFails++; const c=e&&e.code; if(!mcp){ if(aiCur===key) aiCard(k,'idle',null,"AI xizmati javob bermadi, «Qayta chizish»ni bosing."); console.error(e); continue; } const t=c==='not_granted'||c==='denied'||c==='server_not_connected'?"Figma'ga ruxsat berilmadi.":(c==='no_ai'?"Figma akkauntida AI yoqilmagan.":"Chizib bo'lmadi, «Qayta chizish»ni bosing."); if(aiCur===key) aiCard(k,'idle',null,t); console.error(e); if(c==='not_granted'||c==='denied'||c==='no_ai') break; } }
