@@ -1,4 +1,12 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<button class="fbfab" id="fbFab" type="button" aria-label="Fikr bildirish">💬 Fikr</button>
+<div class="fbm" id="fbModal" hidden role="dialog" aria-label="Fikr bildirish"><div class="fbbox">
+  <h3 style="margin:0 0 6px">Sayt sizga yoqdimi?</h3><p class="note" style="margin:0 0 8px">Fikringiz saytni yaxshilashga yordam beradi. Qayerda qiynaldingiz?</p>
+  <div class="fbstars" id="fbStars"><button type="button" data-v="1">★</button><button type="button" data-v="2">★</button><button type="button" data-v="3">★</button><button type="button" data-v="4">★</button><button type="button" data-v="5">★</button></div>
+  <textarea id="fbText" rows="4" placeholder="Masalan: savollar tushunarsiz edi, 3D sekin ochildi, narx juda baland chiqdi…"></textarea>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px"><button class="btn back small" id="fbClose" type="button">Yopish</button><button class="btn primary small" id="fbSend" type="button">Yuborish</button></div>
+  <p class="note" id="fbMsg" role="status"></p></div></div>
+
 <title>UyChizma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,6 +115,19 @@ section[data-screen]{display:flex;flex-direction:column;gap:28px}
 .check small{color:var(--muted);font-size:12px}
 .catbar{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.catbar input{flex:1;min-width:200px}.maket .catno{position:absolute;left:8px;top:8px;background:rgba(8,14,28,.75);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:2px 6px}.maket{position:relative}
 .gpats{display:flex;flex-wrap:wrap;gap:8px}.gpats button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;border:2px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;font-size:12px;min-width:84px}.gpats button[aria-pressed="true"]{border-color:var(--accent)}
+.disc{font-size:12px;line-height:1.45;background:#FFF6E0;color:#6A4A00;border:1px solid #F0D9A0;border-radius:10px;padding:8px 10px;margin:8px 0 0}
+.qmode{display:grid;grid-template-columns:1fr 1fr;gap:10px}.qm{display:flex;flex-direction:column;gap:3px;text-align:left;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--paper);cursor:pointer}.qm b{font-size:16px}.qm small{color:var(--muted,#6b7280);font-size:12.5px}.qm[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,95,224,.12)}
+.quick{display:flex;flex-direction:column;gap:14px}
+.wskip{margin-right:auto}
+@media (max-width:640px){.qmode{grid-template-columns:1fr}}
+.archpk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}.archpk button{display:flex;flex-direction:column;gap:4px;text-align:left;padding:10px;border:2px solid var(--line);border-radius:12px;background:var(--paper);cursor:pointer}.archpk button[aria-pressed="true"]{border-color:var(--accent)}.archpk small{font-size:12px;color:var(--muted,#6b7280)}
+@media (max-width:640px){.archpk{grid-template-columns:1fr}}
+.fbfab{position:fixed;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:29;border:0;border-radius:999px;padding:10px 14px;background:#0A1120;color:#fff;font-weight:600;box-shadow:0 8px 20px -8px rgba(0,0,0,.5);cursor:pointer}
+.fbm{position:fixed;inset:0;z-index:60;background:rgba(5,10,22,.55);display:flex;align-items:center;justify-content:center;padding:16px}.fbm[hidden]{display:none}.fbbox{background:var(--paper,#fff);border-radius:16px;padding:18px;max-width:440px;width:100%}.fbbox textarea{width:100%}
+.fbstars{display:flex;gap:4px;margin-bottom:8px}.fbstars button{font-size:28px;line-height:1;border:0;background:none;cursor:pointer;color:#C9CED6}.fbstars button.on{color:#F5A623}
+.callfab{position:fixed;right:14px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:29;border-radius:999px;padding:10px 14px;background:#16A34A;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.ctbar{background:#0A1120;color:#E6ECF5;font-size:14px;margin-top:24px}.ctbar a{color:#fff}.ct-phone b{font-size:17px}.ct-tg{background:#229ED9;padding:4px 10px;border-radius:8px;text-decoration:none}
+.archcall{display:inline-flex;gap:6px;align-items:center;margin-top:6px;font-weight:700}
 .styles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.stgrp{grid-column:1/-1;font-weight:700;font-size:13px;color:var(--muted,#6b7280);margin-top:6px;text-transform:uppercase;letter-spacing:.04em}
 .stylecard{border:2px solid var(--line);border-radius:12px;padding:10px;background:var(--paper);cursor:pointer;display:flex;flex-direction:column;gap:8px;text-align:left}
 .stylecard[aria-pressed="true"]{border-color:var(--accent)}
@@ -456,6 +477,18 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <div class="eyebrow" id="stepLabel">1 / 6 · Yer uchastkasi</div>
 
       <div data-step="0" class="field" style="gap:16px">
+        <div class="qmode" role="group" aria-label="Rejim"><button type="button" class="qm" data-m="tez" aria-pressed="true"><b>⚡ Tez</b><small>4 ta savol, 1 daqiqa</small></button><button type="button" class="qm" data-m="toliq" aria-pressed="false"><b>🧩 To'liq sozlash</b><small>9 qadam, hamma narsani o'zingiz tanlaysiz</small></button></div>
+        <div class="quick" id="quick">
+          <h2 style="font-size:22px">Uyingiz haqida 4 ta savol</h2>
+          <div class="row2"><div class="field"><label for="qW">1. Yer eni (ko'cha tomoni), m</label><input id="qW" type="number" inputmode="decimal" min="9" max="60" step="0.5" value="18"></div><div class="field"><label for="qL">Yer uzunligi, m</label><input id="qL" type="number" inputmode="decimal" min="15" max="80" step="0.5" value="30"></div></div>
+          <div class="field"><span class="flabel">2. Necha qavat?</span><div class="seg" id="qFloors"><button type="button" data-v="1">1 qavat</button><button type="button" data-v="2">2 qavat</button></div></div>
+          <div class="field"><span class="flabel">3. Nechta yotoqxona?</span><div class="seg" id="qBeds"><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="5">5</button><button type="button" data-v="6">6</button></div></div>
+          <div class="field"><span class="flabel">4. Qaysi uslub yoqadi?</span><div class="seg" id="qStyle"><button type="button" data-v="zamonaviy">Zamonaviy</button><button type="button" data-v="klassik">Klassik</button><button type="button" data-v="milliy">Milliy</button></div></div>
+          <p class="note" style="margin:0">Qolganini (tom, fasad, hovli, eshik-deraza, narx) sayt o'zi tanlaydi. Keyin natijada istagan narsani o'zgartirasiz.</p>
+          <p class="err" id="qErr" role="alert"></p>
+          <button class="btn primary" id="qGo" type="button" style="min-height:52px;font-size:17px">🏠 Uyimni ko'rsat</button>
+        </div>
+        <div class="full" id="fullStart" hidden>
         <div class="dream" id="dream">
           <div class="dream-h"><b>✨ Orzuingizdagi uy</b><span class="opt">ixtiyoriy</span></div>
           <p>Uyingiz qanaqa bo'lishini yozing yoki yoqqan uy rasmini yuklang, shunga o'xshatib chizamiz. Xohlamasangiz, bu qismni o'tkazib yuboring.</p>
@@ -480,7 +513,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
         </div>
         <div class="field" id="backWrap" hidden><label for="plotBackW">Orqa tomoni eni, m</label><input id="plotBackW" type="number" min="2" max="60" step="0.5" value="12"><small>Ko'chadagi enidan tor yoki keng bo'lishi mumkin</small></div>
         <p class="note" id="plotInfo"></p>
-      </div>
+      </div></div>
 
       <div data-step="1" class="field" style="gap:16px" hidden>
         <h2 style="font-size:22px">Uy kattaligi va oilangiz</h2>
@@ -504,7 +537,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
           <label class="check"><input type="checkbox" data-key="darvoza"><span><b>Darvozaxona</b><small>Mashina uy ostidan o'tadi (2 qavat, eni 17 m+)</small></span></label>
           <label class="check"><input type="checkbox" data-key="garage"><span><b>Garaj</b><small>Yopiq garaj</small></span></label>
           <label class="check"><input type="checkbox" data-key="ayvon"><span><b>Ayvon</b><small>Tomli ochiq ayvon, ustunlar bilan</small></span></label>
-          <label class="check"><input type="checkbox" data-key="podval"><span><b>Podval (yerto'la)</b><small>Uy ostida 2,8 m chuqur qavat: qozonxona, ombor, sport zal</small></span></label>
+          <label class="check"><input type="checkbox" data-key="podval"><span><b>Podval (yerto'la)</b><small>Uy ostida 2,8 m chuqur qavat, bo'sh xonalar bilan</small></span></label>
           <label class="check"><input type="checkbox" data-key="sauna"><span><b>Sauna-hammom</b><small>Uy ichida bug' xona</small></span></label>
         </div>
       </div>
@@ -603,12 +636,14 @@ input[type=range]{width:100%;accent-color:var(--accent)}
         <div class="field"><label for="budget">Qurilish uchun taxminiy byudjet</label>
           <output class="rangeval" id="budgetOut" for="budget">$120 000</output>
           <input id="budget" type="range" min="20000" max="400000" step="5000" value="120000"></div>
+        <div class="field"><label for="regionSel">Uy qayerda quriladi? (narx shunga qarab)</label><select id="regionSel"></select><small>Viloyatlarda material tashish va usta haqi farq qiladi, narx shunga moslanadi.</small></div>
         <div class="field"><label for="rate">1 m² qurilish narxi, $ (karobka + oddiy pardoz)</label><input id="rate" type="number" min="100" max="1500" step="10" value="380"><small>Uslub va hashamat darajasiga qarab avtomatik hisoblanadi. O'zingiz yozsangiz, shu narx olinadi</small></div>
       </div>
 
       <p class="err" id="wizErr" role="alert"></p>
       <div class="navrow">
         <button class="btn back" id="wizBack" type="button">Orqaga</button>
+        <button class="btn ghost wskip" id="wizSkip" type="button" hidden>⏭ Qolganini sayt tanlasin</button>
         <button class="btn primary" id="wizNext" type="button">Keyingi</button>
       </div>
     </div>
@@ -660,6 +695,21 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <div class="tablebox"><table class="mat" id="matTable"></table></div>
       <p class="note">Hisob eskiz loyiha bo'yicha. Qurilishdan oldin litsenziyali arxitektor va konstruktor tayyorlagan ishchi loyiha (AR, KR) kerak bo'ladi.</p>
     </div>
+    <div class="panel arch" id="archPanel">
+      <div class="eyebrow">Ishonch uchun</div><h2 style="font-size:20px">👷 Arxitektor tekshiruvi</h2>
+      <p class="note" style="margin:0">Saytdagi loyiha eskiz. Litsenziyali arxitektor uni tekshirib, qurilish uchun ishchi loyiha tayyorlab beradi. Ariza qoldiring, siz bilan bog'lanamiz.</p>
+      <div class="archpk" id="archPk">
+        <button type="button" data-p="tekshiruv" aria-pressed="true"><b>🔍 Loyihani tekshirish</b><small>Arxitektor rejani, o'lchamlarni va narxni ko'rib, xatolarini aytadi</small></button>
+        <button type="button" data-p="ishchi" aria-pressed="false"><b>📐 Ishchi loyiha (AR + KR)</b><small>Ustaga beriladigan to'liq chizmalar: arxitektura va konstruktiv qism</small></button>
+        <button type="button" data-p="ruxsat" aria-pressed="false"><b>📄 Qurilish ruxsati hujjatlari</b><small>Hokimiyat va tegishli idoralar uchun hujjatlar to'plami</small></button>
+      </div>
+      <div class="row2"><div class="field"><label for="arName">Ismingiz</label><input id="arName" autocomplete="name"></div><div class="field"><label for="arPhone">Telefon</label><input id="arPhone" inputmode="tel" autocomplete="tel" placeholder="+998 90 123 45 67"></div></div>
+      <div class="field"><label for="arNote">Izoh (ixtiyoriy)</label><textarea id="arNote" rows="2" placeholder="Masalan: qachon qurmoqchisiz, qo'shimcha istaklar"></textarea></div>
+      <p class="err" id="arErr" role="alert"></p>
+      <button class="btn primary" id="arGo" type="button">Ariza yuborish</button>
+      <a class="archcall cf-tel" href="#" hidden>📞 Yoki hoziroq qo'ng'iroq qiling: <span class="cf-num"></span></a>
+      <p class="note" id="arMsg" role="status"></p>
+    </div>
     <div class="panel" id="ustaPanel">
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end">
         <div style="display:flex;flex-direction:column;gap:4px"><div class="eyebrow">Qurilish uchun</div><h2 style="font-size:20px">Ustaga beriladigan loyiha</h2><span class="note">Rejalar, poydevor, kesim, deraza-eshik jadvali va bosqichma-bosqich materiallar. PDF qilib yoki havola bilan ustaga yuboring.</span></div>
@@ -701,6 +751,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   </section>
 </main>
 <div class="toast" id="toast" role="status" hidden></div>
+<a class="callfab" id="callFab" hidden href="#" aria-label="Qo'ng'iroq qilish">📞 <span class="cf-num"></span></a>
+<footer class="ctbar" id="ctBar" hidden><div class="wrap" style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:14px 16px">
+  <span>Savol bo'lsa yoki loyihani buyurtma qilmoqchi bo'lsangiz:</span><a class="ct-phone" href="#"><b class="cf-num"></b></a><a class="ct-tg" href="#" target="_blank" rel="noopener" hidden>Telegram</a></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -710,7 +763,9 @@ const DEF = {plotShape:'rect', plotW:18, plotL:30, plotBackW:12, floors:2, famil
   bigZal:true, darvoza:true, garage:false, ayvon:true, sauna:false, lux:'auto',
   pool:false, trees:6, gulzor:true, gazebo:false, tandir:true, playground:false, fountain:false, supa:true,
   style:'klassik', sub:'', fence:'gisht', gatePat:'oddiy', gateCol:'qora', wall:'oq', roofShape:'auto', roofMat:'auto', roofCol:'auto', seed:0, layout:'auto', massing:'auto', styleFixed:false, wallFixed:false, winSize:'auto', winCount:'orta', winFrame:'auto', doorType:'bir', doorMat:'auto', intDoorH:2.1, gateW:4, gateH:2.4, gateType:'ochiladigan', kalitka:true, facade:'auto', intStyle:'auto', paint:'#E6D8C3', floorType:'auto', ceiling:'oddiy', furnZal:'tv,divan,stol', furnBed:'garderob,tv', furnKit:'orol,stol', street:'mahalla', neighbors:'ikki', view:'shahar', facing:'janub', budget:120000, rate:380, rateManual:false};
-const RATE = {zamonaviy:340, klassik:380, milliy:360};
+const RATE = {zamonaviy:420, klassik:460, milliy:440}; // $/m², 2026 Toshkent bozori (o'rta pardoz)
+const UZS_RATE=12100; // 1 $ ≈ so'm (2026 aprel, taxminiy)
+const somFmt=d=>{ const s=d*UZS_RATE; return s>=1e9?(s/1e9).toFixed(2).replace('.',',')+' mlrd so\'m':Math.round(s/1e6).toLocaleString('ru-RU')+' mln so\'m'; };
 const STYLE_NAME = {zamonaviy:'Zamonaviy', klassik:'Klassik', milliy:'Milliy'};
 const SUBS={
  haytek:{n:'Hi-tech',b:'zamonaviy',d:"Shisha, metall panel, katta oynalar",wall:'oq',fac:'metall',rv:{shape:'tekis',mat:'metall',col:'grafit'},frame:'antrasit',win:'panorama',svg:['tekis','#E9ECEF','#3B4046',1],ai:'high-tech architecture: floor-to-ceiling glass curtain walls, dark aluminium composite panels, cantilevered volumes, steel-and-glass entrance canopy, razor-thin flat roof edges, glass balcony railings, linear LED lighting'},
@@ -736,7 +791,9 @@ function subSVG(k){ const s=SUBS[k], [rf,wc,ac,glass]=s.svg; let roof='';
   return `<svg viewBox="0 0 120 70" aria-hidden="true"><rect x="0" y="58" width="120" height="12" fill="#B9C7A8"></rect><rect x="20" y="22" width="80" height="36" fill="${wc}"></rect>${band}${roof}${wins}</svg>`; }
 
 const LUX_NAME = {oddiy:'Oddiy', orta:"O'rta", hashamatli:'Hashamatli'};
-const LUXK = {oddiy:0.8, orta:1, hashamatli:1.55};
+const LUXK = {oddiy:0.78, orta:1, hashamatli:1.4};
+const REGK={"Toshkent shahri":1.15,"Toshkent viloyati":1.0,"Samarqand":0.95,"Buxoro":0.93,"Andijon":0.9,"Farg'ona":0.9,"Namangan":0.9,"Qashqadaryo":0.88,"Surxondaryo":0.87,"Xorazm":0.88,"Navoiy":0.9,"Jizzax":0.88,"Sirdaryo":0.88,"Qoraqalpog'iston":0.85};
+const regOf=A=>(A&&A.region&&REGK[A.region]!==undefined)?A.region:((typeof S!=='undefined'&&S.user&&REGK[S.user.city]!==undefined)?S.user.city:'Toshkent viloyati');
 const LUXA = {oddiy:0.9, orta:1, hashamatli:1.22};
 const WALL_ORDER = ['oq','bej','qum','gisht'];
 function luxOf(A){ if(A.lux && A.lux!=='auto') return A.lux; return A.budget<90000?'oddiy':(A.budget<220000?'orta':'hashamatli'); }
@@ -1100,7 +1157,7 @@ function finalize(v,A){
   let mn=0; v.floors.forEach(f=>f.blocks.concat(f.open).forEach(b=>{ mn=Math.min(mn,b.y); })); v.minY=mn;
   let mx=v.D; v.floors.forEach(f=>f.blocks.concat(f.open).forEach(b=>{ mx=Math.max(mx,b.y+b.h); })); v.maxY=mx;
   v.bedCount = v.floors.reduce((s,f)=>s+f.rooms.filter(r=>r.t==='bed'&&!r.part&&/Yotoq|Ota-ona|Mehmon yotoq/.test(r.n)).length,0);
-  v.rate = A.rateManual ? A.rate : Math.round(RATE[v.style]*LUXK[v.lux]/10)*10;
+  v.rate = A.rateManual ? A.rate : Math.round(RATE[v.style]*LUXK[v.lux]*(REGK[regOf(A)]||1)/10)*10; v.region=regOf(A);
   v.mat = materials(v,A);
   v.yard = placeYard(v,A);
   v.cost = v.area*v.rate;
@@ -1482,8 +1539,9 @@ class Viewer{
       return;
     }
     mk("Tashqi ko'rinish",()=>{ this.mode='out'; this.applyMode(); },this.mode==='out');
+    if(this.G&&this.G.basement) mk('Podval',()=>{ if(this.cut){ this.mode='out'; this.applyMode(); } this.mode='podval'; this.applyMode(); this.t.set(0,-1.6,0); this.ph=0.85; this.r=this.r0*0.75; },this.mode==='podval');
     v.floors.forEach((f,k)=>mk(`${k+1}-qavat ichi`,()=>{ this.mode='f'+k; this.applyMode(); },this.mode==='f'+k));
-    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); const kk=mk('🦴 Karkas',()=>this.karkasStart(),this.mode==='karkas'); kk.classList.add('vwalk'); if(this.G&&this.G.basement){ const pv=mk('⬇ Podval',()=>{ if(this.walking) this.walkStop(); if(this.cut){ this.mode='out'; this.applyMode(); } this.mode='podval'; this.applyMode(); this.t.set(0,-1.6,0); this.ph=0.85; this.r=this.r0*0.75; },this.mode==='podval'); pv.classList.add('vwalk'); } }
+    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); const kk=mk('🦴 Karkas',()=>this.karkasStart(),this.mode==='karkas'); kk.classList.add('vwalk'); }
     const w=mk('🚶 Ichida yurish',()=>this.walkStart(0)); w.classList.add('vwalk');
     if(this.stagesFn){ const bq=mk('🏗 Qurilish (5D)',()=>this.buildStart(false)); bq.classList.add('vwalk'); }
     if(this.opts.controls){ const bm=mk('🎬 Maket',()=>this.introStart()); bm.classList.add('vwalk'); }
@@ -1491,7 +1549,7 @@ class Viewer{
   applyMode(){
     if(!this.G) return; const m=this.mode; if(this.cut&&m!=='cut') this.cutStop();
     if(this.KG) this.KG.visible=m==='karkas'; if(this.kUI&&m!=='karkas') this.kUI.hidden=true;
-    if(this.G.basement){ const g=this.G.group; if(m==='podval'){ if(!this._pvSave){ this._pvSave=g.children.map(c=>[c,c.visible]); } g.children.forEach(c=>c.visible=c===this.G.basement); this.G.basement.visible=true; return; } else { this.G.basement.visible=false; if(this._pvSave){ this._pvSave.forEach(([c,vv])=>{ if(c!==this.G.basement) c.visible=vv; }); this._pvSave=null; } } }
+    if(this.G.basement){ const g=this.G.group; if(m==='podval'){ if(!this._pvSave){ this._pvSave=g.children.map(c=>[c,c.visible]); } g.children.forEach(c=>c.visible=c===this.G.basement); this.G.basement.visible=true; return; } else { this.G.basement.visible=false; if(this._pvSave){ this._pvSave.forEach(([c,vv])=>{ if(c!==this.G.basement) c.visible=vv; }); this._pvSave=null; if(this.t.y<0) this.t.set(0,3.4,0); } } }
     if(m==='karkas'){ this.G.floors.forEach(g=>{ g.shell.visible=false; g.cap.visible=false; g.inner.visible=false; g.labels.visible=false; if(g.open){ g.open.visible=false; g.fin.visible=false; } }); this.G.roof.visible=false; return; }
     if(m==='cut'){ this.G.floors.forEach(g=>{ g.shell.visible=true; g.cap.visible=true; g.inner.visible=true; g.labels.visible=false; if(g.open){ g.open.visible=true; g.fin.visible=true; } }); return; }
     this.G.floors.forEach((g,k)=>{
@@ -1773,19 +1831,26 @@ class Viewer{
       const v=this.v; [[0.3,-0.6],[v.W/2,-0.8],[v.W-0.3,-0.6]].forEach(([x,y])=>{ const L=new THREE.PointLight(0xFFD9A0,1.4,9,2); L.position.set(x,2.6,-y); lights.add(L); });
       lights.position.copy(o0); this.scene.add(lights);
       this.mode='out'; this.applyMode(); this.cam.fov=o.fov||38; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.85); this.t.set(0,o.ty||3.2,0); this._cam();
+    } else if(o.kind==='view'){ // floor plans in 3D, karkas, podval
+      if(o.mode==='karkas'){ this.karkasStart(); if(this.kUI) this.kUI.hidden=true; } else { this.mode=o.mode; this.applyMode(); }
+      this.cam.fov=o.fov||36; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.85); this.t.set(0,o.ty!==undefined?o.ty:1.2,0); this._cam();
+    } else if(o.kind==='build'){
+      this.stages=this.stagesFn(); let t=0; this.stages.forEach(s=>{ s.t0=t; t+=s.dur; }); this.btotal=t; this._prep(); this.mode='out'; this.applyMode(); this.G.floors.forEach(g=>{ g.inner.visible=false; g.labels.visible=false; });
+      const s=this.stages[Math.min(this.stages.length-1,o.i)]; this._buildApply(s.t0+s.dur*0.999); this._bshot=true;
+      this.cam.fov=38; this.cam.updateProjectionMatrix(); this.th=Math.PI*0.2; this.ph=1.1; this.r=this.r0*1.0; this.t.set(0,1.2,0); this._cam();
     } else if(o.kind==='cut'){
       this.cutStart(); this.cut.h=PL+1.45; this._cutApply(); if(this.cutUI) this.cutUI.hidden=true;
       this.cam.fov=o.fov||36; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.9); this.t.set(0,0.6,0); this._cam();
     } else if(o.kind==='int'){
       const kk=o.k|0, f=this.v.floors[kk]; const r=o.r||mainRooms(f).filter(q=>q.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0]; const bs=PL+kk*FH;
-      this.walkFloor=kk; this.mode='walk'; this.applyMode(); this.hemi.intensity=0.42; this._intSun=this.sun.intensity; this.sun.intensity*=0.35; this.cam.fov=r.w*r.h<10?88:76;
+      this.walkFloor=kk; this.mode='walk'; this.applyMode(); this.hemi.intensity=0.42; this._intSun=this.sun.intensity; this.sun.intensity*=0.35; R.toneMappingExposure=0.92; this.cam.fov=r.w*r.h<10?88:76;
       const o0=this.root.position, px=r.x+Math.min(0.85,r.w*0.2), py=r.y+r.h-Math.min(0.85,r.h*0.2);
       lights=new THREE.Group(); (this.G.roomLights[kk]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFC98A,0.7,10,2); L.position.set(x,y,z); lights.add(L); }); lights.position.copy(o0); this.scene.add(lights);
       this.cam.updateProjectionMatrix(); this.cam.position.set(px+o0.x,bs+1.6,-py+o0.z); this.cam.lookAt(r.x+r.w*0.75+o0.x,bs+1.05,-(r.y+r.h*0.25)+o0.z);
     } else {
       this.mode='out'; this.applyMode(); this.cam.fov=o.fov||38; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.85); this.t.set(0,o.ty||3.2,0); this._cam();
     }
-    R.render(this.scene,this.cam); let url; if(this._intSun!==undefined){ this.sun.intensity=this._intSun; this._intSun=undefined; }
+    R.render(this.scene,this.cam); let url; if(this._bshot){ this._bshot=false; try{ this.buildStop(); if(this.bov) this.bov.hidden=true; if(this.bar) this.bar.hidden=false; }catch(e){} } if(this._intSun!==undefined){ this.sun.intensity=this._intSun; this._intSun=undefined; }
     if(SS>1){ try{ const c2=document.createElement('canvas'); c2.width=OW; c2.height=OH; const x2=c2.getContext('2d'); x2.imageSmoothingEnabled=true; x2.imageSmoothingQuality='high'; x2.drawImage(R.domElement,0,0,OW,OH); url=c2.toDataURL('image/jpeg',0.93); }catch(e){ url=null; } }
     if(!url) url=R.domElement.toDataURL('image/jpeg',0.93);
     if(lights) this.scene.remove(lights);
@@ -1863,7 +1928,7 @@ Viewer.prototype.karkasStart=function(){
   if(!this.KG||this.KG.userData.v!==this.v){ if(this.KG){ this.KG.parent&&this.KG.parent.remove(this.KG); this.KG.traverse(o=>o.geometry&&o.geometry.dispose()); } this.KG=this._karkasBuild(); this.KG.userData.v=this.v; this.G.group.add(this.KG); }
   this.mode='karkas'; this.applyMode();
   if(!this.kUI){ const d=this.kUI=document.createElement('div'); d.className='vcut'; this.el.appendChild(d); }
-  const s=this.KST; this.kUI.innerHTML=`<b>🦴 Karkas (temir-beton)</b><div style="line-height:1.55">Ustunlar: <b>${s.col} ta</b> (40×40 sm)<br>Rigellar: <b>${Math.round(s.beam)} m</b> (30×45 sm)<br>Poydevor yostiqlari: <b>${s.foot} ta</b><br>Beton: <b>≈ ${Math.round(s.vol)} m³</b><br>Armatura: <b>≈ ${(s.kg/1000).toFixed(1)} t</b> (Ø16 + Ø8 xomut)</div><div style="opacity:.75;font-size:11px">Qizil — armatura, to'q — xomutlar. Taxminiy, konstruktor hisobi kerak.</div><button type="button" class="vbtn kx">✕ Yopish</button>`;
+  this.kUI.innerHTML=`<button type="button" class="vbtn kx">✕ Karkasdan chiqish</button>`; this.kUI.style.width='auto'; this.kUI.style.padding='6px';
   this.kUI.querySelector('.kx').onclick=()=>{ this.mode='out'; this.applyMode(); this.setModes(this.v); }; this.kUI.hidden=false; };
 
 /* ---------- furniture (local coords: x along wall, z into room, y up) ---------- */
@@ -2026,6 +2091,10 @@ function remontFloor(f,k,grp,base,M,lux){
     const cb=(x0,x1,y0,y1,yy,hh,arr)=>arr.push([x1-x0,hh,y1-y0,(x0+x1)/2,yy,-(y0+y1)/2]);
     cb(ix0,ix1,iy0,iy0+band,yc,drop,R.mould); cb(ix0,ix1,iy1-band,iy1,yc,drop,R.mould); cb(ix0,ix0+band,iy0+band,iy1-band,yc,drop,R.mould); cb(ix1-band,ix1,iy0+band,iy1-band,yc,drop,R.mould);
     const ly=CE-drop-0.012, e=0.025; cb(ix0+band,ix1-band,iy0+band-e,iy0+band,ly,0.025,R.led); cb(ix0+band,ix1-band,iy1-band,iy1-band+e,ly,0.025,R.led); cb(ix0+band-e,ix0+band,iy0+band,iy1-band,ly,0.025,R.led); cb(ix1-band,ix1-band+e,iy0+band,iy1-band,ly,0.025,R.led);
+    if(r.t==='zal'&&W>3&&D>3){ const ch=new THREE.Group(), gm=mat(0xB08A3E,{roughness:0.3,metalness:0.8}), cm=new THREE.MeshStandardMaterial({color:0xFFF4E0,emissive:0xFFD9A0,emissiveIntensity:1.2,roughness:0.1}); const cxp=(ix0+ix1)/2, cyp=(iy0+iy1)/2, y0=CE-drop-0.55;
+      const rod=new THREE.Mesh(new THREE.CylinderGeometry(0.015,0.015,0.5,6),gm); rod.position.set(cxp,y0+0.3,-cyp); ch.add(rod); const ring=new THREE.Mesh(new THREE.TorusGeometry(0.42,0.02,6,28),gm); ring.rotation.x=Math.PI/2; ring.position.set(cxp,y0,-cyp); ch.add(ring);
+      for(let i=0;i<10;i++){ const a=i/10*Math.PI*2; const b=new THREE.Mesh(new THREE.SphereGeometry(0.06,10,8),cm); b.position.set(cxp+Math.cos(a)*0.42,y0+0.05,-cyp+Math.sin(a)*0.42); ch.add(b); const d=new THREE.Mesh(new THREE.CylinderGeometry(0.008,0.008,0.18,4),cm); d.position.set(cxp+Math.cos(a)*0.32,y0-0.12,-cyp+Math.sin(a)*0.32); ch.add(d); }
+      grp.add(ch); }
     if((r.t==='zal'||r.t==='bed')&&W>2.4&&D>2.4){ const alongX=W>=D, L=alongX?W-0.4:D-0.4, n=Math.max(2,Math.floor(L/1.3));
       [0.3,0.7].forEach(t=>{ if(alongX){ const yy=iy0+band+(D-2*band)*t; cb(ix0+0.2,ix1-0.2,yy-0.02,yy+0.02,CE-drop-0.03,0.035,R.dark); for(let i=0;i<n;i++){ const xx=ix0+0.4+i*(L-0.4)/(n-1); cb(xx-0.04,xx+0.04,yy-0.04,yy+0.04,CE-drop-0.11,0.12,R.bronze); } }
         else { const xx=ix0+band+(W-2*band)*t; cb(xx-0.02,xx+0.02,iy0+0.2,iy1-0.2,CE-drop-0.03,0.035,R.dark); for(let i=0;i<n;i++){ const yy=iy0+0.4+i*(L-0.4)/(n-1); cb(xx-0.04,xx+0.04,yy-0.04,yy+0.04,CE-drop-0.11,0.12,R.bronze); } } }); }
@@ -2043,12 +2112,10 @@ function buildBasement(v,A,M){ const g=new THREE.Group(), Dp=2.9, X=x=>x, Z=y=>-
     box(g,b.w+0.8,0.5,b.h+0.8,X(cx),-Dp-0.5,Z(cy),mat(0x7E8285,{roughness:1}));
     for(let x=b.x+1;x<b.x+b.w-1;x+=3){ box(g,0.9,0.5,0.06,X(x+0.45),-0.45,Z(b.y+0.05),M.glass,false); }
     if(b===big&&b.w>4&&b.h>4){ const mx=b.x+b.w*0.5; box(g,0.15,Dp,b.h-0.8,X(mx),-Dp/2,Z(cy+0.4),conc);
-      const rooms=b.w*b.h>60?[["Qozonxona / texnik",b.x,b.y,b.w*0.5,b.h*0.5],['Ombor',b.x,b.y+b.h*0.5,b.w*0.5,b.h*0.5],['Sport zal',mx,b.y,b.w*0.5,b.h]]:[["Qozonxona / texnik",b.x,b.y,b.w*0.5,b.h],['Ombor',mx,b.y,b.w*0.5,b.h]];
+      const rooms=b.w*b.h>60?[["1-xona",b.x,b.y,b.w*0.5,b.h*0.5],['2-xona',b.x,b.y+b.h*0.5,b.w*0.5,b.h*0.5],['3-xona',mx,b.y,b.w*0.5,b.h]]:[["1-xona",b.x,b.y,b.w*0.5,b.h],['2-xona',mx,b.y,b.w*0.5,b.h]];
       if(rooms.length===3) box(g,b.w*0.5-0.4,Dp,0.15,X(b.x+b.w*0.25),-Dp/2,Z(b.y+b.h*0.5),conc);
       rooms.forEach(([n,x,y,w,hh])=>{ const s=labelSprite(n,fmtA(Math.max(0,(w-0.4)*(hh-0.4)))+' m²'); s.position.set(X(x+w/2),-Dp+1.5,Z(y+hh/2)); lbl.add(s); });
       const sx=b.x+b.w-1.4, sy=b.y+b.h-0.5; for(let i=0;i<14;i++){ const tp=(i+1)*Dp/14; box(g,1.0,0.18,0.28,X(sx+0.5),-Dp+tp-0.09,Z(sy-0.4-i*0.28),flr); } } });
-  // boiler + shelves
-  { const b=big; box(g,0.6,1.6,0.5,X(b.x+0.9),-Dp+0.8,Z(b.y+0.8),mat(0xEDEDED,{roughness:0.4})); for(let i=0;i<3;i++) box(g,1.8,0.04,0.45,X(b.x+1.5),-Dp+0.5+i*0.6,Z(b.y+b.h-0.7),M.wood); }
   g.visible=false; return g; }
 function buildHouse(v,A){
   const S=v.style||A.style, lux=v.lux||'orta', WC=(w=>/^#[0-9a-fA-F]{6}$/.test(w)?w:(WALLC[w]||WALLC.oq))(v.wall||A.wall); const RF=v.roof||roofOf(S,A);
@@ -2329,7 +2396,7 @@ function buildHouse(v,A){
 /* ================== Usta (builder) package ================== */
 const ART_URL='https://claude.ai/artifact/B8zyx7ev9s3vKLu8QknXbn';
 const FLAG_KEYS=['bigZal','darvoza','garage','ayvon','sauna','pool','gulzor','gazebo','tandir','playground','fountain','supa','podval'];
-function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r',mansard:'s'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+(['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'].indexOf(A.massing||'auto')).toString(36)+Math.max(0,SUB_K.indexOf(A.sub||'')).toString(36)+Math.max(0,GATE_PAT_K.indexOf(A.gatePat||'oddiy')).toString(36)+Math.max(0,GATE_COL_K.indexOf(A.gateCol||'qora')).toString(36)+Math.max(0,['gisht','panjara','yaxlit','yoq'].indexOf(A.fence||'gisht'))+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
+function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r',mansard:'s'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+(['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'].indexOf(A.massing||'auto')).toString(36)+Math.max(0,SUB_K.indexOf(A.sub||'')).toString(36)+Math.max(0,GATE_PAT_K.indexOf(A.gatePat||'oddiy')).toString(36)+Math.max(0,GATE_COL_K.indexOf(A.gateCol||'qora')).toString(36)+Math.max(0,['gisht','panjara','yaxlit','yoq'].indexOf(A.fence||'gisht'))+Math.max(0,Object.keys(REGK).indexOf(regOf(A))).toString(36)+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
 const GATE_PAT={oddiy:"Oddiy panjara",yaxlit:"Yaxlit list",panjara:"Kovka (bezakli)",kvadrat:"Katakli",shamol:"Quyosh nurlari",arka:"Arkasimon",naqsh:"Milliy naqsh"};
 const GATE_PAT_K=Object.keys(GATE_PAT), GATE_COL={qora:'#1E2023',grafit:'#3E4349',jigar:'#5A3A26',oq:'#EEEDE8',yashil:'#2F4A3A',kok:'#2A3F5E',oltin:'#9C7A3C',qizil:'#7A2E24'}, GATE_COL_K=Object.keys(GATE_COL);
 const GATE_COLN={qora:'Qora',grafit:'Grafit',jigar:'Jigarrang',oq:'Oq',yashil:"To'q yashil",kok:"To'q ko'k",oltin:'Oltin (bronza)',qizil:"To'q qizil"};
@@ -2357,7 +2424,7 @@ function decProject(s){ const p=s.split('-'); if(p[0]!=='q'||p.length<18) return
   FLAG_KEYS.forEach((k,i)=>{ A[k]=(p[9]||'')[i]==='1'; });
   if(+p[15]>0){ A.rate=+p[15]; A.rateManual=true; } else A.rateManual=false;
   { const r=p[17]||''; A.roofShape={a:'auto',t:'tekis',i:'ikki',r:'tort',s:'mansard'}[r[1]]||'auto'; A.roofMat={m:'metall',k:'keramik',y:'yumshoq',p:'profnastil'}[r[2]]||'auto'; A.roofCol={a:'auto',g:'grafit',j:'jigar',q:'qizil',y:'yashil',k:'kok'}[r[3]]||'auto';
-    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; A.massing=['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'][parseInt(lc[3]||'0',36)]||'auto'; A.sub=SUB_K[parseInt(lc[4]||'0',36)]||''; A.gatePat=GATE_PAT_K[parseInt(lc[5]||'0',36)]||'oddiy'; A.gateCol=GATE_COL_K[parseInt(lc[6]||'0',36)]||'qora'; A.fence=['gisht','panjara','yaxlit','yoq'][+(lc[7]||0)]||'gisht'; if(A.sub&&SUBS[A.sub]) A.style=SUBS[A.sub].b; decOpen(A,ex[4]); decFurn(A,ex[5]); }
+    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; A.massing=['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'][parseInt(lc[3]||'0',36)]||'auto'; A.sub=SUB_K[parseInt(lc[4]||'0',36)]||''; A.gatePat=GATE_PAT_K[parseInt(lc[5]||'0',36)]||'oddiy'; A.gateCol=GATE_COL_K[parseInt(lc[6]||'0',36)]||'qora'; A.fence=['gisht','panjara','yaxlit','yoq'][+(lc[7]||0)]||'gisht'; if(lc[8]) A.region=Object.keys(REGK)[parseInt(lc[8],36)]||undefined; if(A.sub&&SUBS[A.sub]) A.style=SUBS[A.sub].b; decOpen(A,ex[4]); decFurn(A,ex[5]); }
   if(p[18]){ try{ const R=JSON.parse(ub64(p.slice(18).join('-'))); if(R&&typeof R==='object') A.rooms={adj:R.adj||{},base:R.base||{},del:Array.isArray(R.del)?R.del:[],add:Array.isArray(R.add)?R.add.filter(r=>r&&typeof r.n==='string'&&r.a>0).slice(0,12):[]}; }catch(e){} }
   if(!(A.plotW>=9&&A.plotW<=60&&A.plotL>=15&&A.plotL<=80)) return null; return {A,vi:Math.min(2,Math.max(0,+p[16]||0)),st:sty((p[17]||'')[0])}; }
 function shareUrl(){ const base=/claude/.test(location.hostname)||location.protocol==='about:'||!location.hostname ? ART_URL : location.origin+location.pathname; const v=S.variants[S.active]; return base+'#'+encProject(S.A,S.active,v&&v.style); }
@@ -2455,7 +2522,7 @@ function renderUsta(v){
   $('#stageTable').innerHTML='<thead><tr><th>Bosqich</th><th>Material / ish</th><th style="text-align:right">Miqdor</th><th>Birlik</th></tr></thead><tbody>'+sr.map(s=>s.items.map((it,i)=>`<tr>${i===0?`<td rowspan="${s.items.length}" style="vertical-align:top"><b>${s.name}</b><br><small>≈ ${money(s.sum)}</small></td>`:''}<td>${esc(it[0])}</td><td class="n">${it[1]}</td><td>${it[2]}</td></tr>`).join('')).join('')+'</tbody>';
 }
 /* PDF */
-function loadScript(src){ return new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
+function loadScript(src){ return new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; const t=setTimeout(()=>rej(new Error('timeout '+src)),20000); s.onload=()=>{ clearTimeout(t); res(); }; s.onerror=e=>{ clearTimeout(t); rej(e); }; document.head.appendChild(s); }); }
 function svgToPng(svg,wpx){ return new Promise((res,rej)=>{ const m=svg.match(/viewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"/); const ar=m?(+m[4])/(+m[3]):0.7; const hpx=Math.round(wpx*ar);
   const s2=svg.replace('<svg ',`<svg width="${wpx}" height="${hpx}" `); const url=URL.createObjectURL(new Blob([s2],{type:'image/svg+xml'})); const img=new Image();
   img.onload=()=>{ const c=document.createElement('canvas'); c.width=wpx; c.height=hpx; const x=c.getContext('2d'); x.fillStyle='#fff'; x.fillRect(0,0,wpx,hpx); x.drawImage(img,0,0,wpx,hpx); URL.revokeObjectURL(url); res({data:c.toDataURL('image/jpeg',0.92),ar}); };
@@ -2476,21 +2543,32 @@ async function makePdf(){
       doc.setFillColor(10,17,32); doc.rect(0,H-62,W,62,'F'); doc.setFillColor(31,95,224); doc.rect(0,H-62,W,1.6,'F');
       doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(26); doc.text(pt('UY LOYIHASI KITOBI'),16,H-44); doc.setFontSize(14); doc.text(pt(`Variant ${v.key}: ${v.name} · ${stN(v)} uslub`),16,H-34);
       doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.text(pt(`${fmtA(v.area)} m2 · ${v.floors.length} qavat · ${v.bedCount} yotoqxona · taxminan ${money(v.total)}`),16,H-25);
-      doc.text(pt(`${S.user?S.user.name+' · ':''}${new Date().toLocaleDateString('ru-RU')} · UyChizma`),16,H-16); doc.setTextColor(0,0,0); }
+      doc.text(pt(`${S.user?S.user.name+' · ':''}${new Date().toLocaleDateString('ru-RU')} · UyChizma · Aloqa: ${CONTACT_PHONE||('Telegram @'+CONTACT_TG)}`),16,H-16); doc.setTextColor(0,0,0); }
     const frame=(title,chap)=>{ if(page++) doc.addPage(); if(chap) toc.push([chap,page]); doc.setDrawColor(20); doc.setLineWidth(0.5); doc.rect(8,8,W-16,H-16); doc.setLineWidth(0.3); doc.rect(W-108,H-30,100,22);
-      doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text(pt('UyChizma · eskiz loyiha'),W-105,H-24); doc.setFont('helvetica','normal'); doc.setFontSize(8);
+      doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.text(pt('UyChizma · eskiz loyiha · '+(CONTACT_PHONE||('t.me/'+CONTACT_TG))),W-105,H-24); doc.setFont('helvetica','normal'); doc.setFontSize(8);
       doc.text(pt(`Variant ${v.key}: ${v.name}`),W-105,H-19); doc.text(pt(`${S.user?S.user.name+' · '+S.user.phone:''}`),W-105,H-14); doc.text(new Date().toLocaleDateString("ru-RU"),W-105,H-10);
       doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.text(pt(title),14,18); doc.setFont('helvetica','normal'); };
     const table=(x,y,cols,rows,widths)=>{ doc.setFontSize(9); doc.setFont('helvetica','bold'); let cx=x; cols.forEach((c,i)=>{ doc.text(pt(c),cx,y); cx+=widths[i]; }); doc.setFont('helvetica','normal'); y+=2; doc.line(x,y,x+widths.reduce((a,b)=>a+b,0),y); y+=5;
       rows.forEach(r=>{ if(y>H-34){ return; } cx=x; r.forEach((c,i)=>{ doc.text(pt(c),cx,y,{maxWidth:widths[i]-2}); cx+=widths[i]; }); y+=5.4; }); return y; };
     frame('Uy loyihasi: '+v.name,'1. Loyiha haqida qisqacha');
-    doc.setFontSize(10); const info=[['Yer uchastkasi',`${fmt1(A.plotW)} × ${fmt1(A.plotL)} m, ${fmt1(plotArea(A))} m2`],['Gabarit',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)],['Umumiy maydon',fmtA(v.area)+' m2'],['Yotoqxonalar',String(v.bedCount)],['Uslub / daraja',stN(v)+' / '+LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)+` (${v.rate} $/m2)`],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)],['Buyurtmachi',S.user?`${S.user.name}, ${S.user.phone}, ${S.user.city}`:'-']];
+    doc.setFontSize(10); const info=[['Yer uchastkasi',`${fmt1(A.plotW)} × ${fmt1(A.plotL)} m, ${fmt1(plotArea(A))} m2`],['Gabarit',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)],['Umumiy maydon',fmtA(v.area)+' m2'],['Yotoqxonalar',String(v.bedCount)],['Uslub / daraja',stN(v)+' / '+LUX_NAME[v.lux]],['Hudud',v.region||regOf(A)],['Uy qurilishi',money(v.cost)+` (${v.rate} $/m2)`],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)],['Buyurtmachi',S.user?`${S.user.name}, ${S.user.phone}, ${S.user.city}`:'-']];
     let y=30; info.forEach(([k,x])=>{ doc.setFont('helvetica','normal'); doc.text(pt(k),14,y); doc.setFont('helvetica','bold'); doc.text(pt(x),70,y); y+=7; });
     doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.text(pt("Eslatma: bu eskiz loyiha. Qurilishdan oldin arxitektor va konstruktor tayyorlagan ishchi loyiha (AR, KR) va tuproq tekshiruvi talab qilinadi."),14,H-14,{maxWidth:170});
     // maket page
     try{ const mm=MAKETS.find(x=>x.id===(v.mk||A.massing))||MAKETS[0], sb=SUBS[v.sub||''], wc=sb&&/^#/.test(sb.svg[1])?sb.svg[1]:({zamonaviy:'#ECEBE6',klassik:'#E8DCC4',milliy:'#D9C07C'}[v.style]||'#D9C07C');
       const u=mkImage(styMaket(mm,v.style,v.sub||''),v.roof.shape,wc,'pdf_'+mm.id,{st:v.style,sub:v.sub||''}); if(u){ frame('Maket (3D massa modeli)','1.1 Maket'); doc.addImage(u,'JPEG',14,24,190,142.5);
         table(214,30,['Maket','Qiymat'],[['Shakl',mm.n],['Uslub',stN(v)],['Tom',ROOFSH[v.roof.shape]||''],['Qavatlar',String(v.floors.length)],['Gabarit',`${fmt1(v.W)} x ${fmt1(v.D)} m`]],[24,46]); } }catch(e){ console.warn('pdf maket',e); }
+    // 3D views: floors, dollhouse, karkas, podval, construction stages
+    if(resV&&resV.ok){ const sh=(o)=>{ try{ return resV.shot(Object.assign({w:1280,h:720},o)); }catch(e){ console.warn('pdf shot',e); return null; } };
+      const imgPage=(title,chap,url,cap)=>{ if(!url) return; frame(title,chap); doc.addImage(url,'JPEG',14,24,W-28,(W-28)*9/16>H-46?H-46:(W-28)*9/16); if(cap){ doc.setFontSize(9); doc.text(pt(cap),14,H-14,{maxWidth:180}); } };
+      msg.textContent='3D ko\'rinishlar tayyorlanmoqda…'; await new Promise(r=>setTimeout(r,30));
+      v.floors.forEach((f,k)=>imgPage(`${k+1}-qavat (3D, tepasidan)`,k===0?'1.2 3D qavatlar':null,sh({kind:'view',mode:'f'+k,th:Math.PI*0.15,ph:0.62,rk:0.82,ty:PL+k*FH}),`${k+1}-qavat: xonalar, mebel va eshiklar 3D ko'rinishda`));
+      imgPage('Kesim (dollhouse)','1.3 Kesim',sh({kind:'cut',th:Math.PI*0.22,ph:0.95,rk:0.9}),"Uy kesib ko'rsatilgan: ichki xonalar va qavatlar");
+      imgPage('Karkas (temir-beton skelet)','1.4 Karkas',sh({kind:'view',mode:'karkas',th:0.7,ph:1.05,rk:0.95}),resV.KST?`Ustunlar: ${resV.KST.col} ta, rigellar: ${Math.round(resV.KST.beam)} m, beton ≈ ${Math.round(resV.KST.vol)} m3, armatura ≈ ${(resV.KST.kg/1000).toFixed(1)} t (taxminiy)`:'');
+      if(v.podA&&resV.G&&resV.G.basement) imgPage("Podval (3D)",'1.5 Podval 3D',sh({kind:'view',mode:'podval',th:0.6,ph:0.85,rk:0.6,ty:-1.6}),`Podval maydoni ${fmtA(v.podA)} m2`);
+      try{ const stg=resV.stagesFn?resV.stagesFn():[]; const picks=stg.length?[0,Math.floor(stg.length*0.25),Math.floor(stg.length*0.5),Math.floor(stg.length*0.75),stg.length-1].filter((x,i,a)=>a.indexOf(x)===i):[];
+        for(let j=0;j<picks.length;j+=2){ const a=picks[j], b=picks[j+1]; frame('Qurilish bosqichlari (3D)',j===0?'1.6 Qurilish jarayoni':null); [a,b].forEach((ix,q)=>{ if(ix===undefined) return; const u=sh({kind:'build',i:ix,w:1280,h:720}); if(!u) return; const pw2=(W-36)/2, phh=pw2*9/16, x=14+q*(pw2+8); doc.addImage(u,'JPEG',x,34,pw2,phh); doc.setFontSize(9); doc.text(pt(`${ix+1}-bosqich: ${stg[ix].title}`),x,34+phh+5,{maxWidth:pw2}); }); await new Promise(r=>setTimeout(r,20)); } }catch(e){ console.warn('pdf build',e); }
+    }
     // plan pages
     { const ph=aiList().concat(S.photos||[]); for(let i=0;i<ph.length;i+=2){ frame('Uyning ko\'rinishi', i===0?'2. Uyning ko\'rinishi (rasmlar)':null); [ph[i],ph[i+1]].forEach((p,j)=>{ if(!p) return; const pw2=(W-36)/2, phh=pw2*9/16, x=14+j*(pw2+8), y=40; try{ doc.addImage(p.url,p.url.startsWith('data:image/png')?'PNG':'JPEG',x,y,pw2,phh); }catch(e){} doc.setFontSize(9); doc.text(pt(p.cap),x,y+phh+5); }); } }
     frame('Hovli rejasi','3. Hovli rejasi'); { const s=await svgToPng(siteSVG(v,A),2000); let h=H-46, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); }
@@ -2502,7 +2580,7 @@ async function makePdf(){
         table(194,30,['Xona','Qiymat'],[['Qavat',String(k+1)],["O'lcham",`${fmt2(r.w)} x ${fmt2(r.h)} m`],['Maydon',fmtA(roomA(r,f))+' m2'],['Devor rangi',A.paint||''],['Pol',floorOf(r,v,A)],['Shift',CEIL_N[A.ceiling]||CEIL_N.oddiy]],[30,60]);
         const im=S.roomImgs[`${v.key}|${k}|${r.n}|${i}`]; if(im){ frame(`${i+1}. ${r.n} - ko'rinish`); doc.addImage(im.url,im.url.startsWith('data:image/png')?'PNG':'JPEG',14,24,W-28,(W-28)*9/16); } } }
     frame('Poydevor rejasi va kesim 1-1','7. Poydevor va kesim'); { const a=await svgToPng(foundSVG(v),2000); let w=135,h=w*a.ar; if(h>150){h=150;w=h/a.ar;} doc.addImage(a.data,'JPEG',12,26,w,h); const b=await svgToPng(sectionSVG(v,A),2000); let w2=135,h2=w2*b.ar; if(h2>120){h2=120;w2=h2/b.ar;} doc.addImage(b.data,'JPEG',152,26,w2,h2); }
-    if(v.podA){ frame("Podval (yerto'la)","7.1 Podval"); table(14,30,['Podval','Qiymat'],[['Maydoni',fmtA(v.podA)+' m2'],['Chuqurligi','2,8 m (shift balandligi 2,6 m)'],['Devorlar','Monolit temir-beton, 40 sm'],['Pol','Beton plita 25 sm, gidroizolyatsiya bilan'],['Gidroizolyatsiya','Tashqaridan bitumli membrana + drenaj'],['Yoritish','Priyamok derazalar 90x50 sm'],['Xonalar','Qozonxona / texnik, ombor'+(v.podA>60?', sport zal':'')],['Taxminiy narx',money(v.podCost)]],[50,140]);
+    if(v.podA){ frame("Podval (yerto'la)","7.1 Podval"); table(14,30,['Podval','Qiymat'],[['Maydoni',fmtA(v.podA)+' m2'],['Chuqurligi','2,8 m (shift balandligi 2,6 m)'],['Devorlar','Monolit temir-beton, 40 sm'],['Pol','Beton plita 25 sm, gidroizolyatsiya bilan'],['Gidroizolyatsiya','Tashqaridan bitumli membrana + drenaj'],['Yoritish','Priyamok derazalar 90x50 sm'],['Xonalar',(v.podA>60?'3':'2')+" ta bo'sh xona (o'zingiz xohlagancha foydalanasiz)"],['Taxminiy narx',money(v.podCost)]],[50,140]);
       doc.setFontSize(8); doc.text(pt("Podval uchun tuproq va yer osti suvi tekshiruvi (geologiya) majburiy."),14,H-14); }
     frame('Deraza va eshiklar jadvali','8. Deraza, eshik va darvozalar'); table(14,30,['Belgi','Turi','O\'lchami, mm','1-qavat','2-qavat','Jami'],openSchedule(v),[22,50,50,25,25,20]);
     frame('Materiallar ro\'yxati','9. Materiallar va narx'); table(14,30,['Material','Miqdor','Birlik','Izoh'],v.mat.map(r=>[r[0],r[1],r[2],r[3]]),[60,28,16,160]);
@@ -2545,11 +2623,26 @@ $('#logoBtn').onclick=()=>show('home');
 function renderUser(){ const c=$('#userChip'); if(S.user){ c.hidden=false; c.textContent=S.user.name; } else c.hidden=true; }
 
 
+/* ===== Bulut (Firebase): Google bilan kirish + loyihalarni serverda saqlash =====
+   Sozlash: console.firebase.google.com -> loyiha -> Web app -> config'ni FIREBASE_CONFIG ga qo'ying (FIREBASE-SOZLASH.md). */
+const FIREBASE_CONFIG = {apiKey:"AIzaSyC9zJhKMXVnMd-wB72hcWkF-2sG4phnlto",authDomain:"uychizma.firebaseapp.com",projectId:"uychizma",storageBucket:"uychizma.firebasestorage.app",messagingSenderId:"475315386452",appId:"1:475315386452:web:736912ec5a93398ab315c1"}; // misol: {apiKey:"...",authDomain:"uychizma.firebaseapp.com",projectId:"uychizma",appId:"..."}
+const CLOUD={ok:false,user:null,db:null};
+async function cloudInit(){ if(!FIREBASE_CONFIG) return false; try{ const V='10.12.2'; for(const f of ['app','auth','firestore']) await loadScript(`https://cdn.jsdelivr.net/npm/firebase@${V}/firebase-${f}-compat.js`);
+  firebase.initializeApp(FIREBASE_CONFIG); CLOUD.db=firebase.firestore(); CLOUD.ok=true;
+  firebase.auth().onAuthStateChanged(u=>{ CLOUD.user=u||null; if(u){ S.user=Object.assign({},S.user||{},{name:(S.user&&S.user.name)||u.displayName||u.email,email:u.email||'',uid:u.uid,via:'google'}); LS.set('user',S.user); renderUser(); cloudSyncUser();
+      $('#gNote').textContent=(u.email||'Google')+" orqali kirdingiz. Loyihalaringiz serverda saqlanadi."; if(!$('#regName').value) $('#regName').value=u.displayName||''; cloudPull(); } });
+  return true; }catch(e){ console.warn('firebase',e); CLOUD.failed=true; return false; } }
+async function cloudLogin(){ if(!CLOUD.ok) return; const p=new firebase.auth.GoogleAuthProvider(); try{ await firebase.auth().signInWithPopup(p); }catch(e){ try{ await firebase.auth().signInWithRedirect(p); }catch(e2){ $('#gNote').textContent="Google orqali kirib bo'lmadi. Ism va telefon bilan davom eting."; } } }
+async function cloudSyncUser(){ if(!CLOUD.user) return; try{ await CLOUD.db.collection('users').doc(CLOUD.user.uid).set({name:S.user.name||'',email:S.user.email||'',phone:S.user.phone||'',city:S.user.city||'',last:Date.now()},{merge:true}); }catch(e){ console.warn(e); } }
+async function cloudSaveProject(p){ if(!CLOUD.ok||!CLOUD.user) return false; try{ await CLOUD.db.collection('users').doc(CLOUD.user.uid).collection('projects').doc(p.id).set(Object.assign({},p,{A:JSON.stringify(p.A),code:encProject(p.A,p.variant,p.style)})); return true; }catch(e){ console.warn(e); return false; } }
+async function cloudPull(){ if(!CLOUD.ok||!CLOUD.user) return; try{ const q=await CLOUD.db.collection('users').doc(CLOUD.user.uid).collection('projects').orderBy('at','desc').limit(50).get(); const cl=q.docs.map(d=>{ const x=d.data(); try{ x.A=JSON.parse(x.A); }catch(e){} return x; }).filter(x=>x&&x.A&&x.id);
+    const loc=LS.get('projects',[]); let add=0; cl.forEach(p=>{ if(!loc.some(q2=>q2.id===p.id)){ loc.push(p); add++; } }); if(add){ loc.sort((a,b)=>b.at-a.at); LS.set('projects',loc.slice(0,60)); if(!document.querySelector('section[data-screen="projects"]').hidden) renderProjects(); } }catch(e){ console.warn(e); } }
 /* Google sign-in: works when the site runs on your own domain with a Google OAuth Client ID */
 const GOOGLE_CLIENT_ID=''; // Google Cloud Console → Credentials → OAuth 2.0 Client ID (Web)
 function gFail(msg){ $('#gBtn').disabled=true; $('#gNote').textContent=msg||"Google xizmatiga ulanib bo'lmadi. Ism va telefon bilan ro'yxatdan o'ting."; }
 function onGoogle(resp){ try{ const b=resp.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/'); const p=JSON.parse(decodeURIComponent(Array.from(atob(b)).map(c=>'%'+c.charCodeAt(0).toString(16).padStart(2,'0')).join(''))); $('#regName').value=p.name||''; S.gEmail=p.email||''; $('#gNote').textContent=(p.email||'Google')+" orqali kirildi. Endi telefon raqamingizni qo'shing."; $('#regPhone').focus(); }catch(e){ gFail(); } }
 function initGoogle(){
+  if(FIREBASE_CONFIG){ cloudInit().then(ok=>{ if(!ok){ const w=document.querySelector('#regForm .gwrap'), d=document.querySelector('#regForm .divider'); if(w) w.hidden=true; if(d) d.hidden=true; return; } $('#gBtn').onclick=()=>cloudLogin(); }); return; }
   if(!GOOGLE_CLIENT_ID){ const w=document.querySelector('#regForm .gwrap'), d=document.querySelector('#regForm .divider'); if(w) w.hidden=true; if(d) d.hidden=true; return; }
   const s=document.createElement('script'); s.src='https://accounts.google.com/gsi/client'; s.async=true;
   s.onload=()=>{ try{ google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:onGoogle}); $('#gBtn').hidden=true; google.accounts.id.renderButton($('#gBtnHost'),{theme:'filled_black',size:'large',text:'continue_with',shape:'pill',width:320}); }catch(e){ gFail(); } };
@@ -2561,7 +2654,7 @@ function regSubmit(){
   const digits=phone.replace(/\D/g,'');
   if(name.length<2){ $('#regErr').textContent="Ismingizni yozing."; return; }
   if(digits.length<9){ $('#regErr').textContent="Telefon raqamni to'liq yozing, masalan +998 90 123 45 67."; return; }
-  $('#regErr').textContent=''; S.user={name,phone,city,email:S.gEmail||'',via:S.gEmail?'google':'form',at:Date.now()}; LS.set('user',S.user); renderUser(); toast("Ro'yxatdan o'tdingiz"); go('start');
+  $('#regErr').textContent=''; S.user=Object.assign({},S.user&&S.user.uid?S.user:{},{name,phone,city,email:(S.user&&S.user.email)||S.gEmail||'',via:(S.user&&S.user.uid)||S.gEmail?'google':'form',at:Date.now()}); if(!S.A.region&&REGK[city]!==undefined) S.A.region=city; cloudSyncUser(); LS.set('user',S.user); renderUser(); toast("Ro'yxatdan o'tdingiz"); go('start');
 }
 $('#regGo').addEventListener('click',regSubmit); $('#regForm').addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.tagName==='INPUT'){ e.preventDefault(); regSubmit(); } });
 
@@ -2595,11 +2688,11 @@ function syncInputs(){
   { const m=ROOFM[A.roofMat]; const el=$('#roofMatNote'); if(el) el.textContent=m?`${m.note}. Xizmat muddati ${m.life}.`:"Variantlarda har xil material ko'rsatiladi."; }
   $$('#roofColSw .swatch').forEach(b=>{ if(/^#/.test(A.roofCol||'')&&b.dataset.v==='auto') b.setAttribute('aria-pressed','false'); });
   $('#budget').value=A.budget; $('#budgetOut').textContent=money(A.budget);
-  if(!A.rateManual) A.rate=Math.round(RATE[A.style]*LUXK[luxOf(A)]/10)*10; $('#rate').value=A.rate;
+  if(!A.rateManual) A.rate=Math.round(RATE[A.style]*LUXK[luxOf(A)]*(REGK[regOf(A)]||1)/10)*10; $('#rate').value=A.rate; if($('#regionSel')) $('#regionSel').value=regOf(A);
   plotInfo();
 }
 function renderStep(){
-  syncInputs();
+  syncInputs(); try{ syncQuick(); }catch(e){}
   $$('[data-step]').forEach(s=>s.hidden=+s.dataset.step!==S.step);
   $$('#prog span').forEach((s,i)=>s.classList.toggle('on',i<=S.step));
   $('#stepLabel').textContent=`${S.step+1} / ${NSTEP} · ${STEP_NAMES[S.step]}`;
@@ -2620,6 +2713,7 @@ $$('input[type=checkbox][data-key]').forEach(c=>c.addEventListener('change',()=>
 (()=>{ const host=$('#styleCards'); const grp={zamonaviy:'Zamonaviy oilasi',klassik:'Klassik oilasi',milliy:'Milliy va sharqona'};
   ['zamonaviy','klassik','milliy'].forEach(bk=>{ const base=host.querySelector(`.stylecard[data-v="${bk}"]:not([data-sub])`); const hd=document.createElement('div'); hd.className='stgrp'; hd.textContent=grp[bk]; host.insertBefore(hd,base);
     let after=base; SUBS_OF(bk).forEach(k=>{ const s=SUBS[k], b=document.createElement('button'); b.type='button'; b.className='stylecard'; b.dataset.v=s.b; b.dataset.sub=k; b.innerHTML=subSVG(k)+`<b>${s.n}</b><small>${s.d}</small>`; after.after(b); after=b; }); });
+  { const rs=$('#regionSel'); if(rs){ rs.innerHTML=Object.keys(REGK).map(k=>`<option value="${k}">${k} (${REGK[k]>1?'+':''}${Math.round((REGK[k]-1)*100)}%)</option>`).join(''); rs.addEventListener('change',()=>{ S.A.region=rs.value; S.A.rateManual=false; syncInputs(); }); } }
   { const gp=$('#gatePatSw'), gc=$('#gateColSw'); if(gp){ gp.innerHTML=GATE_PAT_K.map(k=>`<button type="button" data-v="${k}">${gatePatSVG(k)}<span>${GATE_PAT[k]}</span></button>`).join(''); gp.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.gatePat=b.dataset.v; if(b.dataset.v==='naqsh') S.A.gateType='naqshli'; else if(S.A.gateType==='naqshli') S.A.gateType='ochiladigan'; syncInputs(); }); }
     if(gc){ gc.innerHTML=GATE_COL_K.map(k=>`<button type="button" class="swatch" data-v="${k}"><i style="background:${GATE_COL[k]}"></i>${GATE_COLN[k]}</button>`).join('')+`<label class="swatch"><input type="color" id="gateColor" value="#3e4349" aria-label="Boshqa darvoza rangi">Boshqa rang</label>`; gc.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.gateCol=b.dataset.v; syncInputs(); }); $('#gateColor').addEventListener('input',e=>{ S.A.gateCol=e.target.value; syncInputs(); }); } }
   host.addEventListener('click',e=>{ const b=e.target.closest('button.stylecard'); if(!b) return; S.A.style=b.dataset.v; S.A.sub=b.dataset.sub||''; S.A.rateManual=false; syncInputs(); clearTimeout(S._mkT); S._mkT=setTimeout(()=>{ try{ renderMakets3D(); }catch(e){} },60); }); })();
@@ -2876,7 +2970,59 @@ $('#wizNext').onclick=()=>{
   if(!S.A.seed) S.A.seed=1+Math.floor(Math.random()*90000);
   generate(); show('result');
 };
-$('#editAnswers').onclick=()=>{ S.step=0; renderStep(); show('wizard'); };
+$('#editAnswers').onclick=()=>{ S.qmode='toliq'; S.step=0; renderStep(); show('wizard'); };
+
+/* ===== Arxitektor tekshiruvi arizasi + fikr bildirish (Firebase'ga yoziladi) ===== */
+const TG_USER='amirhonsh'; // Telegram username (masalan 'uychizma_admin'): ariza shu yerga ham yuboriladi
+async function cloudReady(){ for(let i=0;i<40&&FIREBASE_CONFIG&&!CLOUD.ok&&!CLOUD.failed;i++) await new Promise(r=>setTimeout(r,250)); if(FIREBASE_CONFIG&&!CLOUD.ok&&!CLOUD.failed) await cloudInit(); return CLOUD.ok; }
+let arPkg='tekshiruv';
+$('#archPk').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; arPkg=b.dataset.p; $$('#archPk button').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); });
+function archPrefill(){ if(S.user){ if(!$('#arName').value) $('#arName').value=S.user.name||''; if(!$('#arPhone').value) $('#arPhone').value=S.user.phone||''; } }
+$('#arGo').onclick=async()=>{ const name=$('#arName').value.trim(), phone=$('#arPhone').value.trim(), note=$('#arNote').value.trim(); const v=S.variants&&S.variants[S.active];
+  if(name.length<2){ $('#arErr').textContent='Ismingizni yozing.'; return; } if(phone.replace(/\D/g,'').length<9){ $('#arErr').textContent="Telefon raqamni to'liq yozing."; return; } $('#arErr').textContent='';
+  const b=$('#arGo'); b.disabled=true; $('#arMsg').textContent='Yuborilmoqda…';
+  const PK={tekshiruv:'Loyihani tekshirish',ishchi:'Ishchi loyiha (AR+KR)',ruxsat:'Qurilish ruxsati hujjatlari'};
+  const link=(()=>{ try{ return shareUrl(); }catch(e){ return ''; } })();
+  const doc={name,phone,note:note.slice(0,1500),pkg:arPkg,pkgName:PK[arPkg],city:(S.user&&S.user.city)||regOf(S.A),email:(S.user&&S.user.email)||'',uid:(CLOUD.user&&CLOUD.user.uid)||'',variant:v?`${v.key}: ${v.name} · ${stN(v)} · ${fmtA(v.area)} m2 · ${money(v.total)}`:'',link,at:Date.now(),status:'yangi'};
+  let ok=false; try{ if(await cloudReady()){ await CLOUD.db.collection('orders').add(doc); ok=true; } }catch(e){ console.warn(e); }
+  if(TG_USER){ const txt=`Arxitektor arizasi: ${doc.pkgName}\n${name}, ${phone}\n${doc.variant}\n${note}\n${link}`; window.open(`https://t.me/${TG_USER}?text=${encodeURIComponent(txt)}`,'_blank'); ok=true; }
+  $('#arMsg').textContent=ok?"✅ Arizangiz qabul qilindi. Tez orada siz bilan bog'lanamiz.":"Yuborib bo'lmadi. Internetni tekshirib, qayta urinib ko'ring."; b.disabled=false; if(ok) toast('Ariza yuborildi'); };
+let fbRate=0;
+$('#fbFab').onclick=()=>{ $('#fbModal').hidden=false; $('#fbMsg').textContent=''; setTimeout(()=>$('#fbText').focus(),50); };
+$('#fbClose').onclick=()=>{ $('#fbModal').hidden=true; };
+$('#fbModal').addEventListener('click',e=>{ if(e.target.id==='fbModal') $('#fbModal').hidden=true; });
+$('#fbStars').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; fbRate=+b.dataset.v; $$('#fbStars button').forEach(x=>x.classList.toggle('on',+x.dataset.v<=fbRate)); });
+$('#fbSend').onclick=async()=>{ const text=$('#fbText').value.trim(); if(!text&&!fbRate){ $('#fbMsg').textContent='Baho bering yoki fikr yozing.'; return; } const b=$('#fbSend'); b.disabled=true; $('#fbMsg').textContent='Yuborilmoqda…';
+  const scr=[...document.querySelectorAll('section[data-screen]')].filter(s=>!s.hidden).map(s=>s.dataset.screen)[0]||'';
+  const doc={text:text.slice(0,2900),rating:fbRate,screen:scr,step:S.step|0,mode:S.qmode||'',name:(S.user&&S.user.name)||'',phone:(S.user&&S.user.phone)||'',mobile:matchMedia('(max-width:640px)').matches,at:Date.now()};
+  let ok=false; try{ if(await cloudReady()){ await CLOUD.db.collection('feedback').add(doc); ok=true; } }catch(e){ console.warn(e); }
+  if(!ok&&TG_USER){ window.open(`https://t.me/${TG_USER}?text=${encodeURIComponent('Fikr: '+fbRate+'★ '+text)}`,'_blank'); ok=true; }
+  b.disabled=false; $('#fbMsg').textContent=ok?'Rahmat! Fikringiz yuborildi.':"Yuborib bo'lmadi, keyinroq urinib ko'ring."; if(ok){ $('#fbText').value=''; setTimeout(()=>{ $('#fbModal').hidden=true; },1200); } };
+
+/* ===== Aloqa telefoni: saytning ko'rinadigan joylarida ===== */
+const CONTACT_PHONE=''; // masalan '+998 90 123 45 67'
+const CONTACT_TG=TG_USER;
+(function(){ if(!CONTACT_PHONE&&!CONTACT_TG) return; const tg=CONTACT_TG?'https://t.me/'+CONTACT_TG:''; const tel=CONTACT_PHONE?'tel:'+CONTACT_PHONE.replace(/[^\d+]/g,''):'';
+  const lab=CONTACT_PHONE||('@'+CONTACT_TG); document.querySelectorAll('.cf-num').forEach(e=>e.textContent=lab);
+  const f=$('#callFab'); f.href=tel||tg; if(!tel){ f.target='_blank'; f.rel='noopener'; f.innerHTML='✈️ Telegram'; f.style.background='#229ED9'; f.setAttribute('aria-label','Telegram orqali yozish'); } f.hidden=false;
+  const b=$('#ctBar'); b.hidden=false; const ph=b.querySelector('.ct-phone'); if(tel) ph.href=tel; else ph.remove();
+  document.querySelectorAll('.cf-tel').forEach(a=>{ a.href=tel||tg; if(!tel){ a.target='_blank'; a.innerHTML='✈️ Yoki hoziroq Telegramda yozing: @'+CONTACT_TG; } a.hidden=false; });
+  if(tg){ const t=b.querySelector('.ct-tg'); t.href=tg; t.textContent='✈️ Telegram: @'+CONTACT_TG; t.hidden=false; } })();
+/* ===== Tez rejim: 4 savol ===== */
+function syncQuick(){ const A=S.A, m=S.qmode||'tez'; $$('.qm').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));
+  const q=$('#quick'), f=$('#fullStart'); if(q) q.hidden=m!=='tez'; if(f) f.hidden=m==='tez'; const nr=document.querySelector('[data-screen="wizard"] .navrow'); if(nr) nr.hidden=(m==='tez'&&S.step===0); const qz=(m==='tez'&&S.step===0); $('#prog').hidden=qz; $('#stepLabel').hidden=qz;
+  if(document.activeElement!==$('#qW')) $('#qW').value=A.plotW; if(document.activeElement!==$('#qL')) $('#qL').value=A.plotL;
+  $$('#qFloors button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.v===A.floors))); $$('#qBeds button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.v===A.beds))); $$('#qStyle button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.style&&!A.sub)));
+  const sk=$('#wizSkip'); if(sk) sk.hidden=S.step<1||S.step>=NSTEP-1; }
+document.addEventListener('click',e=>{ const m=e.target.closest('.qm'); if(m){ S.qmode=m.dataset.m; syncQuick(); return; }
+  const b=e.target.closest('#qFloors button,#qBeds button,#qStyle button'); if(!b) return; const A=S.A, p=b.parentElement.id;
+  if(p==='qFloors') A.floors=+b.dataset.v; else if(p==='qBeds') A.beds=+b.dataset.v; else { A.style=b.dataset.v; A.sub=''; A.rateManual=false; } syncInputs(); syncQuick(); });
+['qW','qL'].forEach(id=>$('#'+id).addEventListener('input',e=>{ const v=parseFloat(String(e.target.value).replace(',','.')); if(!isNaN(v)){ if(id==='qW') S.A.plotW=v; else S.A.plotL=v; } }));
+function quickGo(){ const A=S.A; A.plotW=parseFloat(String($('#qW').value).replace(',','.')); A.plotL=parseFloat(String($('#qL').value).replace(',','.'));
+  if(!(A.plotW>=9&&A.plotW<=60)||!(A.plotL>=15&&A.plotL<=80)){ $('#qErr').textContent="Yer eni 9–60 m, uzunligi 15–80 m bo'lsin."; return; } $('#qErr').textContent='';
+  A.plotShape=A.plotShape||'rect'; A.rateManual=false; if(!A.seed) A.seed=1+Math.floor(Math.random()*90000); try{ saveDraft(); }catch(e){} generate(); show('result'); }
+$('#qGo').onclick=quickGo;
+$('#wizSkip').onclick=()=>{ if(!S.A.seed) S.A.seed=1+Math.floor(Math.random()*90000); try{ saveDraft(); }catch(e){} generate(); show('result'); };
 
 /* result */
 function generate(keep){ S.introSeen={};
@@ -2893,18 +3039,19 @@ function generate(keep){ S.introSeen={};
   renderVariant();
 }
 function renderVariant(){
-  const v=S.variants[S.active], A=S.A;
+  const v=S.variants[S.active], A=S.A; try{ archPrefill(); }catch(e){}
   if(resV){ resV.stagesFn=()=>buildStages(v,S.A); resV.onVideo=(blob,ext)=>saveBlob(blob,`UyChizma-${v.key}-qurilish.${ext}`,'Video saqlandi'); resV.onVideoError=()=>toast("Bu brauzer video yozishni qo'llamaydi. Animatsiyani ekranda ko'rishingiz mumkin."); }
   if(resV){ try{ resV.load(v,A); resV.err&&resV.err.remove(); S.introSeen=S.introSeen||{}; const ik=(A.seed||0)+'|'+v.key+'|'+v.name+'|'+fmt(v.area); if(!S.introSeen[ik]){ S.introSeen[ik]=1; try{ resV.introStart(); }catch(e){ console.error(e); resV.intro&&resV.introStop(); } } }catch(e){ console.error(e); if(!resV.err){ resV.err=document.createElement('p'); resV.err.className='vhint'; } resV.err.textContent="3D modelni chizishda xato bo'ldi. Rejalar va hisob pastda."; resV.el.appendChild(resV.err); } }
   try{ aiAutoSoon(); }catch(e){ console.error(e); }
   try{ roomJob++; const rc=$('#roomCards'); if(rc) rc.innerHTML='<p class="note">Xonalar tayyorlanmoqda…</p>'; }catch(e){}
   const within=v.total<=A.budget;
-  const rows=[['Gabarit (eni × chuqurligi)',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)]].concat(v.floors.map((f,k)=>[`${k+1}-qavat maydoni`,fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))+' m²'])).concat([['Umumiy maydon',fmtA(v.area)+' m²'],['Yotoqxonalar',String(v.bedCount)],['Daraja',LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)],['Hovli obodonchiligi',money(v.yard.cost)]].concat(v.podA?[["Podval (yerto'la)",`${fmtA(v.podA)} m² · ${money(v.podCost)}`]]:[]).concat([['Jami taxminiy narx',money(v.total)]]));
+  const rows=[['Gabarit (eni × chuqurligi)',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)]].concat(v.floors.map((f,k)=>[`${k+1}-qavat maydoni`,fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))+' m²'])).concat([['Umumiy maydon',fmtA(v.area)+' m²'],['Yotoqxonalar',String(v.bedCount)],['Daraja',LUX_NAME[v.lux]],['Hudud',`${v.region||regOf(S.A)}`],['1 m² narxi',`${v.rate} $`],['Uy qurilishi',money(v.cost)],['Hovli obodonchiligi',money(v.yard.cost)]].concat(v.podA?[["Podval (yerto'la)",`${fmtA(v.podA)} m² · ${money(v.podCost)}`]]:[]).concat([['Jami taxminiy narx',`${money(v.total)} <small style="font-weight:500;color:var(--muted,#6b7280)">≈ ${somFmt(v.total)}</small>`]]));
   $('#summary').innerHTML=`<div class="eyebrow">Variant ${v.key}</div><h2 style="font-size:20px">${esc(v.name)}</h2>
     <div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Uslubni almashtirish</span><div class="stylesw" id="styleSw">${['klassik','zamonaviy','milliy',...Object.keys(SUBS)].map(s=>`<button type="button" data-s="${s}" aria-pressed="${SUBS[s]?v.sub===s:(s===v.style&&!v.sub)}">${SUBS[s]?SUBS[s].n:STYLE_NAME[s]}</button>`).join('')}</div></div>`+
     `<div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Tom</span><div class="stylesw" id="roofSw">${['tekis','ikki','tort','mansard'].map(s=>`<button type="button" data-r="${s}" aria-pressed="${s===v.roof.shape}">${ROOFSH[s]}</button>`).join('')}</div>`+
     `<div class="stylesw" id="roofMatSw" ${v.roof.shape==='tekis'?'hidden':''}>${Object.keys(ROOFM).map(s=>`<button type="button" data-m="${s}" aria-pressed="${s===v.roof.mat}">${ROOFM[s].n.replace(' (bitumli)','')}</button>`).join('')}</div></div>`+
     rows.map(([k,x],i)=>`<div class="kv"${i===rows.length-1?' style="font-size:15px"':''}><span>${k}</span><b>${x}</b></div>`).join('')+
+    `<p class="disc">⚠️ Bu eskiz loyiha va taxminiy narx. 1 m² narxi 2026-yil Toshkent bozori o'rtacha ko'rsatkichlariga (karobka + o'rta pardoz) asoslangan, viloyatga qarab moslanadi; so'mda kurs ≈ 12 100. Narxlar o'zgarib turadi: ustangiz yoki qurilish firmasi bilan tekshiring. Qurilish ruxsati uchun litsenziyali arxitektor tayyorlagan ishchi loyiha (AR, KR) kerak.</p>`+
     `<span class="badge ${within?'ok':'warn'}">${within?'Byudjetga sig\'adi':'Byudjetdan '+money(v.total-A.budget)+' oshadi'}</span>`+
     v.notes.concat(v.yard.missing.length?[`Hovliga sig'madi: ${v.yard.missing.join(', ')}.`]:[]).map(n=>`<p class="note">${esc(n)}</p>`).join('')+
     `<p class="note">Uy: ${fmt(v.rate)} $/m² × ${fmtA(v.area)} m² (${LUX_NAME[v.lux].toLowerCase()} daraja, ${stN(v).toLowerCase()} uslub).</p>`;
@@ -2933,8 +3080,10 @@ $('#saveProject').onclick=()=>{
   const list=LS.get('projects',[]); const v=S.variants[S.active];
   list.unshift({id:Date.now().toString(36),at:Date.now(),A:Object.assign({},S.A),variant:S.active,style:v.style,name:`Variant ${v.key}: ${v.name}`,area:v.area,cost:v.total});
   toast(LS.set('projects',list.slice(0,30))?'Loyiha saqlandi':"Saqlab bo'lmadi: brauzer xotirasi yopiq");
+  cloudSaveProject(list[0]).then(ok=>{ if(ok) toast('Loyiha serverga ham saqlandi'); });
 };
 function renderProjects(){
+  if(CLOUD.user&&!renderProjects._p){ renderProjects._p=1; cloudPull().finally(()=>{ renderProjects._p=0; }); }
   const list=LS.get('projects',[]); const box=$('#projList');
   if(!list.length){ box.innerHTML=`<div class="empty" style="grid-column:1/-1"><b>Hali loyiha yo'q</b><span>Savollarga javob bering, yoqqan variantni "Loyihani saqlash" tugmasi bilan shu yerga qo'shing.</span><button class="btn primary small" data-go="start">Loyiha boshlash</button></div>`; return; }
   box.innerHTML=list.map(p=>`<div class="pcard"><h3>${esc(p.name)}</h3><p>${new Date(p.at).toLocaleDateString('uz-UZ')} · ${fmt1(p.A.plotW)} × ${fmt1(p.A.plotL)} m · ${p.A.floors} qavat · ${STYLE_NAME[p.style||p.A.style]}</p><p><b style="color:var(--ink)">${fmtA(p.area)} m²</b> · ${money(p.cost)}</p><button class="btn ghost small" data-open="${p.id}">Ochish</button></div>`).join('');
@@ -3035,23 +3184,25 @@ async function figmaFile(mcp,fresh){ let fk=null; try{ fk=fresh?null:localStorag
   fk=p.fileKey||p.file_key||p.key||((String(p.url||p.file_url||'')+txt).match(/design\/([0-9a-zA-Z]{22,128})/)||[])[1]; if(!fk) throw {code:'no_file'}; try{ localStorage.setItem('uc_fig',fk); }catch(e){} return fk; }
 function renderThumbs(){ const th=$('#photoThumbs'); th.innerHTML=''; S.photos.forEach((p,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(i===S.photoIdx)); b.setAttribute('aria-label',p.cap); b.innerHTML=`<img alt="" src="${p.url}">`+(p.ai?'<span class="aitag">AI</span>':''); b.onclick=()=>showPhoto(i); th.appendChild(b); }); }
 async function aiPhoto(night,int){
-  const mcp=await getMcp(); const msg=$('#photoMsg'), b1=$('#aiPhoto'), b2=$('#aiPhotoN'), b3=$('#aiPhotoI'), b4=$('#aiPhotoC'); if(!mcp){ msg.textContent="AI foto uchun Figma ulanishi kerak."; return; }
-  const v=S.variants[S.active], A=S.A; b1.disabled=b2.disabled=b3.disabled=b4.disabled=true; msg.textContent='Figma AI haqiqiy fotoni chizmoqda… (20–60 soniya)'; const PR=int==='cut'?aiPromptCut(v,A):(int?aiPromptInt(v,A):aiPrompt(v,A,night));
-  try{
-    let fk=await figmaFile(mcp), gen;
-    try{ gen=await mcp.callTool('Figma','generate_image',{fileKey:fk,prompt:PR,width:1920,height:1080,model:'gemini-3.1-flash-image'}); }
-    catch(e){ if(e&&e.code==='tool_error'){ fk=await figmaFile(mcp,true); gen=await mcp.callTool('Figma','generate_image',{fileKey:fk,prompt:PR,width:1920,height:1080,model:'gemini-3.1-flash-image'}); } else throw e; }
-    const g=plOf(gen)||{}; const nodeId=g.nodeId||g.node_id; if(!nodeId) throw {code:'no_node'};
-    const sh=await mcp.callTool('Figma','get_screenshot',{fileKey:fk,nodeId:String(nodeId),maxDimension:1600,enableBase64Response:true});
-    const im=(sh.content||[]).find(c=>c.type==='image'); if(!im) throw {code:'no_image'};
-    const url=`data:${im.mimeType||'image/png'};base64,${im.data}`;
+  const msg=$('#photoMsg'), bs=[$('#aiPhoto'),$('#aiPhotoN'),$('#aiPhotoI'),$('#aiPhotoC')]; if(!(await aiAvail())){ msg.textContent="AI foto bu yerda ishlamaydi."; return; }
+  const v=S.variants[S.active], A=S.A; bs.forEach(b=>b&&(b.disabled=true)); msg.textContent='AI haqiqiy fotoni chizmoqda… (20–60 soniya)'; const PR=int==='cut'?aiPromptCut(v,A):(int?aiPromptInt(v,A):aiPrompt(v,A,night));
+  try{ const url=await aiGen(PR);
     S.photos=S.photos||[]; S.photos.unshift({url,cap:`Haqiqiy foto (AI) · ${int==='cut'?'kesim (dollhouse)':(int?'ichki: mehmonxona':(night?'kechqurun':'kunduzi'))} · Variant ${v.key}`,ai:true}); S.photoIdx=0; renderThumbs(); showPhoto(0);
     msg.textContent="Tayyor. Bu rasm sun'iy intellekt chizgan: uslub, fasad, tom, deraza, darvoza va atrof sizning javoblaringizdan olindi. Mayda detallar 3D rejadan farq qilishi mumkin.";
   }catch(e){ const c=e&&e.code; msg.textContent = c==='denied'||c==='not_granted'||c==='server_not_connected' ? "Figma'ga ruxsat berilmadi yoki ulanmagan." : (c==='no_ai'?"Figma akkauntingizda AI rasm yoqilmagan.":"AI foto chizib bo'lmadi. Keyinroq qayta urinib ko'ring."); console.error(e); }
-  finally{ b1.disabled=b2.disabled=b3.disabled=b4.disabled=false; } }
+  finally{ bs.forEach(b=>b&&(b.disabled=false)); } }
 $('#aiPhoto').onclick=()=>aiPhoto(false); $('#aiPhotoN').onclick=()=>aiPhoto(true); $('#aiPhotoI').onclick=()=>aiPhoto(false,true); $('#aiPhotoC').onclick=()=>aiPhoto(false,'cut');
 /* ===== AI dizayn galereyasi: natija ochilganda 3 ta rasm avtomatik chiziladi ===== */
-async function aiGen(PR){ const mcp=await getMcp(); if(!mcp) throw {code:'no_mcp'};
+/* Bepul AI rasm (Figma bo'lmagan joyda, masalan GitHub saytida): Pollinations.ai */
+const FREE_AI=!!(location.protocol.startsWith('http')&&!/claude\.ai|claudeusercontent|anthropic/.test(location.hostname));
+async function freeAi(PR,w,h){ w=w||1280; h=h||720; const seed=Math.floor(Math.random()*1e6);
+  const p=String(PR).replace(/\s+/g,' ').slice(0,1400); const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(p)}?width=${w}&height=${h}&nologo=true&model=flux&seed=${seed}`;
+  const ctl=('AbortController' in window)?new AbortController():null; const tm=setTimeout(()=>ctl&&ctl.abort(),120000);
+  try{ const r=await fetch(url,ctl?{signal:ctl.signal}:{}); if(!r.ok) throw {code:'free_http',status:r.status}; const b=await r.blob(); if(!/^image\//.test(b.type)||b.size<5000) throw {code:'free_type'};
+    return await new Promise((res,rej)=>{ const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=()=>rej({code:'free_read'}); fr.readAsDataURL(b); }); }
+  finally{ clearTimeout(tm); } }
+const aiAvail=async()=>!!(await getMcp())||FREE_AI;
+async function aiGen(PR){ const mcp=await getMcp(); if(!mcp){ if(FREE_AI) return await freeAi(PR); throw {code:'no_mcp'}; }
   let fk=await figmaFile(mcp), gen; const inp=fk2=>({fileKey:fk2,prompt:PR,width:1920,height:1080,model:'gemini-3.1-flash-image'});
   try{ gen=await mcp.callTool('Figma','generate_image',inp(fk)); }catch(e){ if(e&&e.code==='tool_error'){ fk=await figmaFile(mcp,true); gen=await mcp.callTool('Figma','generate_image',inp(fk)); } else throw e; }
   const g=plOf(gen)||{}; const nodeId=g.nodeId||g.node_id; if(!nodeId) throw {code:'no_node'};
@@ -3072,15 +3223,15 @@ async function aiAuto(force){
   const v=S.variants&&S.variants[S.active]; if(!v||!$('#aiGal')) return; const A=S.A; const key=encProject(A,S.active,v.style)+'|'+v.key, vid=v.key+'|'+(A.seed||0); aiCur=key;
   $('#aiGalTitle').textContent=`Variant ${v.key}: ${v.name} · ${stN(v)} uslub`;
   const mcp=await getMcp(); const msg=$('#aiGalMsg'), redo=$('#aiGalRedo');
-  if(!mcp){ AIK.forEach(([k])=>{ const box=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(box){ box.dataset.ai='0'; } aiCard(k,'load',null,'3D rasm chizilmoqda…'); }); msg.textContent="Rasmlar uyning 3D modelidan chiziladi. Figma ulangan akkauntda AI fotolar chiqadi."; redo.hidden=true; aiGal3D(); return; }
+  if(!mcp&&!FREE_AI){ AIK.forEach(([k])=>{ const box=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(box){ box.dataset.ai='0'; } aiCard(k,'load',null,'3D rasm chizilmoqda…'); }); msg.textContent="Rasmlar uyning 3D modelidan chiziladi. Figma ulangan akkauntda AI fotolar chiqadi."; redo.hidden=true; aiGal3D(); return; }
   redo.hidden=false; AILAST[vid]=key;
   AIK.forEach(([k,n])=>{ const u=!force&&AIC[key+'#'+k]; const box=document.querySelector(`.aig-card[data-k="${k}"] .aig-img`); if(u) aiCard(k,'ok',u); else if(box&&box.querySelector('img')){ const tg=box.dataset.ai==='1'?'AI':'3D'; box.dataset.ai='0'; const img=box.querySelector('img').src; aiCard(k,'ok',img,'Yangi rasm chizilmoqda…',tg); box.dataset.ai='0'; } else aiCard(k,'load',null,`${n} chizilmoqda…`); });
   if(AIK.every(([k])=>!force&&AIC[key+'#'+k])){ msg.textContent=''; return; }
-  msg.textContent='Figma AI chizmoqda, har bir rasm 20–60 soniya…'; aiBusyKey=key;
+  msg.textContent=(mcp?'Figma AI':'AI')+' chizmoqda, har bir rasm 20–60 soniya…'; aiBusyKey=key; let aiFails=0;
   aiQ=aiQ.then(async()=>{ for(const [k,n] of AIK){ if(aiCur!==key) return; if(!force&&AIC[key+'#'+k]) continue;
       try{ const url=await aiGen(aiPromptK(k,v,A)); AIC[key+'#'+k]=url; if(aiCur===key) aiCard(k,'ok',url); }
-      catch(e){ const c=e&&e.code; const t=c==='not_granted'||c==='denied'||c==='server_not_connected'?"Figma'ga ruxsat berilmadi.":(c==='no_ai'?"Figma akkauntida AI yoqilmagan.":"Chizib bo'lmadi, «Qayta chizish»ni bosing."); if(aiCur===key) aiCard(k,'idle',null,t); console.error(e); if(c==='not_granted'||c==='denied'||c==='no_ai') break; } }
-    if(aiCur===key){ aiBusyKey=''; msg.textContent="Tayyor. Rasmlarni sun'iy intellekt chizdi, mayda detallar 3D rejadan farq qilishi mumkin."; } });
+      catch(e){ aiFails++; const c=e&&e.code; if(!mcp){ if(aiCur===key) aiCard(k,'idle',null,"AI xizmati javob bermadi, «Qayta chizish»ni bosing."); console.error(e); continue; } const t=c==='not_granted'||c==='denied'||c==='server_not_connected'?"Figma'ga ruxsat berilmadi.":(c==='no_ai'?"Figma akkauntida AI yoqilmagan.":"Chizib bo'lmadi, «Qayta chizish»ni bosing."); if(aiCur===key) aiCard(k,'idle',null,t); console.error(e); if(c==='not_granted'||c==='denied'||c==='no_ai') break; } }
+    if(aiCur===key){ aiBusyKey=''; if(!mcp&&aiFails>=AIK.length){ msg.textContent="AI xizmati hozir javob bermadi, rasmlar 3D modeldan chizildi."; aiGal3D(); } else msg.textContent="Tayyor. Rasmlarni sun'iy intellekt chizdi, mayda detallar 3D rejadan farq qilishi mumkin."; } });
 }
 $('#aiGalRedo').onclick=()=>aiAuto(true);
 document.addEventListener('click',e=>{ const im=e.target.closest('.sc-card img, .aig-img img, .rp-img img'); if(!im) return; const d=document.createElement('div'); d.className='lbx'; d.setAttribute('role','dialog'); d.innerHTML=`<img alt="" src="${im.src}">`; d.onclick=()=>d.remove(); document.body.appendChild(d); });
@@ -3143,7 +3294,7 @@ function renderRooms(){
     <figure class="rp"><figcaption>2-varaq · Ko'rinish ${im&&im.ai?'<span class="aitag">AI</span>':''}</figcaption><div class="rp-img" data-key="${esc(key)}">${im?`<img alt="${esc(r.n)}" src="${im.url}">`:'<div class="aig-sk"><i></i><span>Chizilmoqda…</span></div>'}</div>
     <ul class="rp-spec"><li><i style="background:${esc(A.paint||'#EFE8DC')}"></i>Devor: oboy/bo'yoq ${esc(A.paint||'')}</li><li>Pol: ${floorOf(r,v,A)}</li><li>Shift: ${CEIL_N[A.ceiling]||CEIL_N.oddiy}</li>${fu?`<li>Jihozlar: ${fu}</li>`:''}</ul>
     <button class="btn ghost small rp-ai" type="button" data-i="${i}" hidden>🤖 AI bilan chizish</button></figure></div></article>`; }).join('');
-  getMcp().then(m=>{ if(m){ el.querySelectorAll('.rp-ai').forEach(b=>b.hidden=false); $('#roomsAllAi').hidden=false; } });
+  aiAvail().then(m=>{ if(m){ el.querySelectorAll('.rp-ai').forEach(b=>b.hidden=false); $('#roomsAllAi').hidden=false; } });
   const job=++roomJob;
   (async()=>{ for(let i=0;i<list.length;i++){ if(job!==roomJob) return; const {k,r}=list[i]; const key=`${v.key}|${k}|${r.n}|${i}`; if(S.roomImgs[key]) continue;
       await new Promise(rs=>setTimeout(rs,80)); if(job!==roomJob||!resV||!resV.ok) return; let url=null; try{ url=resV.shot({kind:'int',k,r,w:1280,h:720}); }catch(e){ console.error(e); } if(!url) continue; url=await postPhoto(url); S.roomImgs[key]={url,ai:false};
@@ -3158,7 +3309,7 @@ $('#roomsAllAi').onclick=async()=>{ const b=$('#roomsAllAi'); b.disabled=true; c
 function renderRoomsInfo(){ const v=S.variants[S.active]; if(v) $('#roomsInfo').textContent=`${roomList(v).length} ta xona · interyer: ${INT_STYLE[intStyleOf(v,S.A)]}`; }
 
 
-getMcp().then(m=>{ if(m){ $('#aiPhoto').hidden=false; $('#aiPhotoN').hidden=false; $('#aiPhotoI').hidden=false; $('#aiPhotoC').hidden=false; } });
+aiAvail().then(m=>{ if(m){ $('#aiPhoto').hidden=false; $('#aiPhotoN').hidden=false; $('#aiPhotoI').hidden=false; $('#aiPhotoC').hidden=false; } });
 
 $('#buildBtn').onclick=()=>{ if(!resV||!resV.ok) return; $('#resViewer').scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>resV.buildStart(false),400); };
 async function saveBlob(blob,fname,okMsg){ const dl = window.claude && window.claude.use ? await window.claude.use('downloads') : null;
