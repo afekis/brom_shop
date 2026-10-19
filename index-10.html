@@ -106,6 +106,7 @@ section[data-screen]{display:flex;flex-direction:column;gap:28px}
 .check span{display:flex;flex-direction:column}
 .check small{color:var(--muted);font-size:12px}
 .catbar{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}.catbar input{flex:1;min-width:200px}.maket .catno{position:absolute;left:8px;top:8px;background:rgba(8,14,28,.75);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:2px 6px}.maket{position:relative}
+.gpats{display:flex;flex-wrap:wrap;gap:8px}.gpats button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;border:2px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;font-size:12px;min-width:84px}.gpats button[aria-pressed="true"]{border-color:var(--accent)}
 .styles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.stgrp{grid-column:1/-1;font-weight:700;font-size:13px;color:var(--muted,#6b7280);margin-top:6px;text-transform:uppercase;letter-spacing:.04em}
 .stylecard{border:2px solid var(--line);border-radius:12px;padding:10px;background:var(--paper);cursor:pointer;display:flex;flex-direction:column;gap:8px;text-align:left}
 .stylecard[aria-pressed="true"]{border-color:var(--accent)}
@@ -503,6 +504,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
           <label class="check"><input type="checkbox" data-key="darvoza"><span><b>Darvozaxona</b><small>Mashina uy ostidan o'tadi (2 qavat, eni 17 m+)</small></span></label>
           <label class="check"><input type="checkbox" data-key="garage"><span><b>Garaj</b><small>Yopiq garaj</small></span></label>
           <label class="check"><input type="checkbox" data-key="ayvon"><span><b>Ayvon</b><small>Tomli ochiq ayvon, ustunlar bilan</small></span></label>
+          <label class="check"><input type="checkbox" data-key="podval"><span><b>Podval (yerto'la)</b><small>Uy ostida 2,8 m chuqur qavat: qozonxona, ombor, sport zal</small></span></label>
           <label class="check"><input type="checkbox" data-key="sauna"><span><b>Sauna-hammom</b><small>Uy ichida bug' xona</small></span></label>
         </div>
       </div>
@@ -590,6 +592,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
           <small>Yengil mashina uchun kamida 3 m, yuk mashinasi uchun 4–5 m.</small></div>
         <div class="field"><span class="flabel">Darvoza balandligi</span><div class="seg optseg" data-key="gateH" data-num="1"><button type="button" data-v="2">2,0 m</button><button type="button" data-v="2.4">2,4 m</button><button type="button" data-v="2.8">2,8 m</button><button type="button" data-v="3.2">3,2 m</button></div></div>
         <div class="field"><span class="flabel">Darvoza turi</span><div class="seg optseg" data-key="gateType"><button type="button" data-v="ochiladigan">2 tabaqali, ochiladigan</button><button type="button" data-v="surma">Surma (otkatnoy)</button><button type="button" data-v="naqshli">Naqshli yog'och (milliy)</button></div></div>
+        <div class="field"><span class="flabel">Zabor (hovli devori) bo'lsinmi?</span><div class="seg optseg" data-key="fence"><button type="button" data-v="gisht">Ha, g'isht devor</button><button type="button" data-v="panjara">Ha, past devor + panjara</button><button type="button" data-v="yaxlit">Ha, profnastil</button><button type="button" data-v="yoq">Yo'q, zaborsiz</button></div></div>
+        <div class="field"><span class="flabel">Darvoza naqshi</span><div class="gpats" id="gatePatSw"></div></div>
+        <div class="field"><span class="flabel">Darvoza rangi</span><div class="swatches" id="gateColSw"></div></div>
         <label class="check"><input type="checkbox" id="kalitkaChk"> Yonida alohida kalitka (piyodalar eshigi, 1 m) bo'lsin</label>
       </div>
 
@@ -704,7 +709,7 @@ const FH = 3.3, PL = 0.45, WT = 0.38, SB = 3;
 const DEF = {plotShape:'rect', plotW:18, plotL:30, plotBackW:12, floors:2, family:5, beds:4, targetArea:0,
   bigZal:true, darvoza:true, garage:false, ayvon:true, sauna:false, lux:'auto',
   pool:false, trees:6, gulzor:true, gazebo:false, tandir:true, playground:false, fountain:false, supa:true,
-  style:'klassik', sub:'', wall:'oq', roofShape:'auto', roofMat:'auto', roofCol:'auto', seed:0, layout:'auto', massing:'auto', styleFixed:false, wallFixed:false, winSize:'auto', winCount:'orta', winFrame:'auto', doorType:'bir', doorMat:'auto', intDoorH:2.1, gateW:4, gateH:2.4, gateType:'ochiladigan', kalitka:true, facade:'auto', intStyle:'auto', paint:'#EFE8DC', floorType:'auto', ceiling:'oddiy', furnZal:'tv,divan,stol', furnBed:'garderob,tv', furnKit:'orol,stol', street:'mahalla', neighbors:'ikki', view:'shahar', facing:'janub', budget:120000, rate:380, rateManual:false};
+  style:'klassik', sub:'', fence:'gisht', gatePat:'oddiy', gateCol:'qora', wall:'oq', roofShape:'auto', roofMat:'auto', roofCol:'auto', seed:0, layout:'auto', massing:'auto', styleFixed:false, wallFixed:false, winSize:'auto', winCount:'orta', winFrame:'auto', doorType:'bir', doorMat:'auto', intDoorH:2.1, gateW:4, gateH:2.4, gateType:'ochiladigan', kalitka:true, facade:'auto', intStyle:'auto', paint:'#E6D8C3', floorType:'auto', ceiling:'oddiy', furnZal:'tv,divan,stol', furnBed:'garderob,tv', furnKit:'orol,stol', street:'mahalla', neighbors:'ikki', view:'shahar', facing:'janub', budget:120000, rate:380, rateManual:false};
 const RATE = {zamonaviy:340, klassik:380, milliy:360};
 const STYLE_NAME = {zamonaviy:'Zamonaviy', klassik:'Klassik', milliy:'Milliy'};
 const SUBS={
@@ -1099,7 +1104,8 @@ function finalize(v,A){
   v.mat = materials(v,A);
   v.yard = placeYard(v,A);
   v.cost = v.area*v.rate;
-  v.total = v.cost + v.yard.cost;
+  v.podA = A.podval ? Math.round(v.floors[0].blocks.reduce((s,b)=>s+b.w*b.h,0)*10)/10 : 0; v.podCost = Math.round(v.podA*v.rate*0.55/100)*100;
+  v.total = v.cost + v.yard.cost + v.podCost;
 }
 function roomA(r,f){ return r.w*r.h + f.rooms.filter(q=>q.part===r).reduce((s,q)=>s+q.w*q.h,0); }
 function mainRooms(f){ return f.rooms.filter(r=>!r.part); }
@@ -1135,7 +1141,8 @@ function placeYard(v,A){
     for(const c of cand){ if(placed>=nT) break; if(!fits(c.x-0.5,c.y-0.5,1,1,0.3)) continue; if(items.some(t=>t.type==='tree'&&Math.hypot(t.x+0.5-c.x,t.y+0.5-c.y)<2.8)) continue; items.push({type:'tree',x:c.x-0.5,y:c.y-0.5,w:1,h:1,s:0.8+((c.x*13+c.y*7)%5)*0.08}); occ.push({x:c.x-0.6,y:c.y-0.6,w:1.2,h:1.2}); placed++; }
     cost.trees=placed*40; if(placed<nT) missing.push(`${nT-placed} ta daraxt`); }
   cost.pave=Math.round((W*SB+ (v.car?20:0))*12);
-  { const gw=+A.gateW||4, gh=+A.gateH||2.4; cost.gate=Math.round(gw*gh*({ochiladigan:70,surma:95,naqshli:160}[A.gateType]||70)+(A.kalitka?350:0)); }
+  { const gw=+A.gateW||4, gh=+A.gateH||2.4; cost.gate=Math.round(gw*gh*({ochiladigan:70,surma:95,naqshli:160}[A.gateType]||70)*({oddiy:1,yaxlit:1,panjara:1.45,kvadrat:1.05,shamol:1.25,arka:1.2,naqsh:1}[A.gatePat||'oddiy']||1)+(A.kalitka?350:0)); }
+  { const per=Math.round(2*(+A.plotW+ +A.plotL)); cost.fence=Math.round(per*({gisht:55,panjara:48,yaxlit:28,yoq:0}[A.fence||'gisht']||0)); if(A.fence==='yoq') cost.gate=0; }
   const total=Object.values(cost).reduce((a,b)=>a+b,0);
   return {items,hx0,hy0,P,backStart,gateX,cost:total,costs:cost,missing,trees:placed};
 }
@@ -1476,7 +1483,7 @@ class Viewer{
     }
     mk("Tashqi ko'rinish",()=>{ this.mode='out'; this.applyMode(); },this.mode==='out');
     v.floors.forEach((f,k)=>mk(`${k+1}-qavat ichi`,()=>{ this.mode='f'+k; this.applyMode(); },this.mode==='f'+k));
-    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); const kk=mk('🦴 Karkas',()=>this.karkasStart(),this.mode==='karkas'); kk.classList.add('vwalk'); }
+    if(this.opts.controls){ const ck=mk("✂ Kesib ko'rish",()=>this.cutStart(),this.mode==='cut'); ck.classList.add('vwalk'); const kk=mk('🦴 Karkas',()=>this.karkasStart(),this.mode==='karkas'); kk.classList.add('vwalk'); if(this.G&&this.G.basement){ const pv=mk('⬇ Podval',()=>{ if(this.walking) this.walkStop(); if(this.cut){ this.mode='out'; this.applyMode(); } this.mode='podval'; this.applyMode(); this.t.set(0,-1.6,0); this.ph=0.85; this.r=this.r0*0.75; },this.mode==='podval'); pv.classList.add('vwalk'); } }
     const w=mk('🚶 Ichida yurish',()=>this.walkStart(0)); w.classList.add('vwalk');
     if(this.stagesFn){ const bq=mk('🏗 Qurilish (5D)',()=>this.buildStart(false)); bq.classList.add('vwalk'); }
     if(this.opts.controls){ const bm=mk('🎬 Maket',()=>this.introStart()); bm.classList.add('vwalk'); }
@@ -1484,6 +1491,7 @@ class Viewer{
   applyMode(){
     if(!this.G) return; const m=this.mode; if(this.cut&&m!=='cut') this.cutStop();
     if(this.KG) this.KG.visible=m==='karkas'; if(this.kUI&&m!=='karkas') this.kUI.hidden=true;
+    if(this.G.basement){ const g=this.G.group; if(m==='podval'){ if(!this._pvSave){ this._pvSave=g.children.map(c=>[c,c.visible]); } g.children.forEach(c=>c.visible=c===this.G.basement); this.G.basement.visible=true; return; } else { this.G.basement.visible=false; if(this._pvSave){ this._pvSave.forEach(([c,vv])=>{ if(c!==this.G.basement) c.visible=vv; }); this._pvSave=null; } } }
     if(m==='karkas'){ this.G.floors.forEach(g=>{ g.shell.visible=false; g.cap.visible=false; g.inner.visible=false; g.labels.visible=false; if(g.open){ g.open.visible=false; g.fin.visible=false; } }); this.G.roof.visible=false; return; }
     if(m==='cut'){ this.G.floors.forEach(g=>{ g.shell.visible=true; g.cap.visible=true; g.inner.visible=true; g.labels.visible=false; if(g.open){ g.open.visible=true; g.fin.visible=true; } }); return; }
     this.G.floors.forEach((g,k)=>{
@@ -1578,7 +1586,7 @@ class Viewer{
   }
   walkStart(k){
     if(!this.G) return; this.walking=true; this.auto=false; this.saved={th:this.th,ph:this.ph,r:this.r};
-    this.cam.fov=68; this.cam.updateProjectionMatrix(); this.hemi.intensity=0.95;
+    this.cam.fov=68; this.cam.updateProjectionMatrix(); this.hemi.intensity=0.7;
     if(this.zoomBox) this.zoomBox.hidden=true; if(this.pad) this.pad.hidden=false; if(this.walkHint) this.walkHint.hidden=false;
     this.renderer.domElement.style.touchAction='none';
     this.walkTo(k); this.renderer.domElement.focus();
@@ -1588,7 +1596,7 @@ class Viewer{
     const sp=k<0?G.outSpawn:(G.spawns[k]||G.spawns[0]); this.onStair=null;
     this.pos=new THREE.Vector3(sp.x,sp.y,sp.z); this.yaw=sp.yaw; this.pitch=-0.05;
     if(this.lights){ this.scene.remove(this.lights); }
-    this.lights=new THREE.Group(); (G.roomLights[this.walkFloor]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFF0DC,0.55,9,2); L.position.set(x,y,z); this.lights.add(L); });
+    this.lights=new THREE.Group(); (G.roomLights[this.walkFloor]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFD29C,0.85,9,2); L.position.set(x,y,z); this.lights.add(L); });
     this.lights.position.copy(this.root.position); if(!this.walkOut) this.scene.add(this.lights);
     this.mode='walk'; this.applyMode(); this.setModes(this.v);
   }
@@ -1601,7 +1609,7 @@ class Viewer{
   }
   _stairAt(px,py){ for(const s of (this.G.stairs||[])){ if(px>s.x+0.02&&px<s.x+s.w-0.02&&py>s.y-0.05&&py<s.y+s.h-0.02) return s; } return null; }
   _hrel(s,px,py){ if(py>=s.y+s.L1) return FH/2; const t=Math.max(0,Math.min(1,(py-s.y)/s.L1)); return px>=s.x+s.w/2 ? FH/2*t : FH/2+FH/2*(1-t); }
-  _setLevel(L){ this.walkFloor=L; if(this.lights) this.scene.remove(this.lights); this.lights=new THREE.Group(); (this.G.roomLights[L]||[]).slice(0,10).forEach(([x,y,z])=>{ const Lg=new THREE.PointLight(0xFFF0DC,0.55,9,2); Lg.position.set(x,y,z); this.lights.add(Lg); }); this.lights.position.copy(this.root.position); this.scene.add(this.lights); this.applyMode(); if(this.bar) [...this.bar.children].forEach((x,j)=>{ if(j<this.v.floors.length) x.setAttribute('aria-pressed',String(j===L)); }); }
+  _setLevel(L){ this.walkFloor=L; if(this.lights) this.scene.remove(this.lights); this.lights=new THREE.Group(); (this.G.roomLights[L]||[]).slice(0,10).forEach(([x,y,z])=>{ const Lg=new THREE.PointLight(0xFFD29C,0.85,9,2); Lg.position.set(x,y,z); this.lights.add(Lg); }); this.lights.position.copy(this.root.position); this.scene.add(this.lights); this.applyMode(); if(this.bar) [...this.bar.children].forEach((x,j)=>{ if(j<this.v.floors.length) x.setAttribute('aria-pressed',String(j===L)); }); }
   _walkStep(dt){
     const K=this.keys, sp=2.3*dt; let fx=0,fz=0;
     const fwd=new THREE.Vector3(-Math.sin(this.yaw),0,-Math.cos(this.yaw)), right=new THREE.Vector3(Math.cos(this.yaw),0,-Math.sin(this.yaw));
@@ -1770,14 +1778,14 @@ class Viewer{
       this.cam.fov=o.fov||36; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.9); this.t.set(0,0.6,0); this._cam();
     } else if(o.kind==='int'){
       const kk=o.k|0, f=this.v.floors[kk]; const r=o.r||mainRooms(f).filter(q=>q.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0]; const bs=PL+kk*FH;
-      this.walkFloor=kk; this.mode='walk'; this.applyMode(); this.hemi.intensity=1.05; this.cam.fov=r.w*r.h<10?88:76;
+      this.walkFloor=kk; this.mode='walk'; this.applyMode(); this.hemi.intensity=0.42; this._intSun=this.sun.intensity; this.sun.intensity*=0.35; this.cam.fov=r.w*r.h<10?88:76;
       const o0=this.root.position, px=r.x+Math.min(0.85,r.w*0.2), py=r.y+r.h-Math.min(0.85,r.h*0.2);
-      lights=new THREE.Group(); (this.G.roomLights[kk]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFE9C8,0.7,10,2); L.position.set(x,y,z); lights.add(L); }); lights.position.copy(o0); this.scene.add(lights);
+      lights=new THREE.Group(); (this.G.roomLights[kk]||[]).slice(0,10).forEach(([x,y,z])=>{ const L=new THREE.PointLight(0xFFC98A,0.7,10,2); L.position.set(x,y,z); lights.add(L); }); lights.position.copy(o0); this.scene.add(lights);
       this.cam.updateProjectionMatrix(); this.cam.position.set(px+o0.x,bs+1.6,-py+o0.z); this.cam.lookAt(r.x+r.w*0.75+o0.x,bs+1.05,-(r.y+r.h*0.25)+o0.z);
     } else {
       this.mode='out'; this.applyMode(); this.cam.fov=o.fov||38; this.cam.updateProjectionMatrix(); this.th=o.th; this.ph=o.ph; this.r=this.r0*(o.rk||0.85); this.t.set(0,o.ty||3.2,0); this._cam();
     }
-    R.render(this.scene,this.cam); let url;
+    R.render(this.scene,this.cam); let url; if(this._intSun!==undefined){ this.sun.intensity=this._intSun; this._intSun=undefined; }
     if(SS>1){ try{ const c2=document.createElement('canvas'); c2.width=OW; c2.height=OH; const x2=c2.getContext('2d'); x2.imageSmoothingEnabled=true; x2.imageSmoothingQuality='high'; x2.drawImage(R.domElement,0,0,OW,OH); url=c2.toDataURL('image/jpeg',0.93); }catch(e){ url=null; } }
     if(!url) url=R.domElement.toDataURL('image/jpeg',0.93);
     if(lights) this.scene.remove(lights);
@@ -1874,7 +1882,23 @@ function bed(w,lux){ const M=fm(), g=F(), l=2.05; fbox(g,w+0.1,0.32,l,0,0.16,l/2
   fbox(g,w*0.42,0.14,0.42,-w/4,0.6,0.33,M.linen); fbox(g,w*0.42,0.14,0.42,w/4,0.6,0.33,M.linen); fbox(g,w+0.02,0.06,l*0.58,0,0.56,l*0.68,M.blanket);
   [-1,1].forEach(s=>{ fbox(g,0.5,0.48,0.42,s*(w/2+0.36),0.24,0.24,M.wood); fcyl(g,0.05,0.3,s*(w/2+0.36),0.63,0.24,M.steel); fcyl(g,0.12,0.18,s*(w/2+0.36),0.84,0.24,M.lamp,0.16); });
   fbox(g,w+1.0,0.015,1.7,0,0.008,l*0.72,lux?M.rug1:M.rug2); return g; }
-function wardrobe(L){ const M=fm(), g=F(); fbox(g,L,2.3,0.6,0,1.15,0.3,M.white); const n=Math.max(2,Math.round(L/0.6)); for(let i=1;i<n;i++) fbox(g,0.01,2.2,0.01,-L/2+L*i/n,1.15,0.605,M.dark); for(let i=0;i<n;i++) fbox(g,0.02,0.25,0.03,-L/2+L*(i+0.5)/n+0.08,1.15,0.62,M.steel); return g; }
+function wardrobe(L){ const M=fm(), g=F(), H=2.55, cream=mat(0xEFE7DC,{roughness:0.55}), line=mat(0xD9CFC2,{roughness:0.6}), brz=mat(0x8A5A3C,{roughness:0.35,metalness:0.7});
+  fbox(g,L,H,0.6,0,H/2,0.3,cream); const n=Math.max(2,Math.round(L/0.55)), dw=L/n;
+  for(let i=1;i<n;i++) fbox(g,0.012,H-0.06,0.012,-L/2+dw*i,H/2,0.606,line);
+  fbox(g,L-0.04,0.012,0.012,0,0.95,0.606,line);
+  for(let p=0;p+1<n;p+=2){ const cx=-L/2+dw*(p+1), rr=dw*0.82, top=H-0.18, yb=1.05; // arch across a pair of doors
+    fbox(g,0.012,top-rr-yb,0.012,cx-rr,yb+(top-rr-yb)/2,0.608,line); fbox(g,0.012,top-rr-yb,0.012,cx+rr,yb+(top-rr-yb)/2,0.608,line);
+    for(let a=0;a<14;a++){ const t0=Math.PI*a/14, t1=Math.PI*(a+1)/14, x0=cx+Math.cos(t0)*rr, y0=top-rr+Math.sin(t0)*rr, x1=cx+Math.cos(t1)*rr, y1=top-rr+Math.sin(t1)*rr; const me=fbox(g,Math.hypot(x1-x0,y1-y0)+0.004,0.012,0.012,(x0+x1)/2,(y0+y1)/2,0.608,line); me.rotation.z=Math.atan2(y1-y0,x1-x0); }
+    fbox(g,0.03,0.24,0.04,cx-0.035,0.95,0.63,brz); fbox(g,0.03,0.24,0.04,cx+0.035,0.95,0.63,brz); }
+  if(n%2) fbox(g,0.03,0.24,0.04,L/2-dw+0.06,0.95,0.63,brz);
+  return g; }
+function vanity(L){ const g=F(), wood=matT('wood',woodTex(),{roughness:0.5}), stool=mat(0xCFC3B2,{roughness:0.95}); L=Math.min(L,1.4);
+  fbox(g,L,0.12,0.45,0,0.78,0.23,wood); fbox(g,L-0.02,0.12,0.02,0,0.7,0.45,mat(0x6B4A33,{roughness:0.6}));
+  const sh=(w,hh)=>{ const s=new THREE.Shape(), r=w/2; s.moveTo(-r,-hh/2+r); s.lineTo(-r,hh/2-r); s.absarc(0,hh/2-r,r,Math.PI,0,true); s.lineTo(r,-hh/2+r); s.absarc(0,-hh/2+r,r,0,Math.PI,true); return new THREE.ShapeGeometry(s,24); };
+  const glow=new THREE.Mesh(sh(0.7,1.25),new THREE.MeshStandardMaterial({color:0xFFE6C2,emissive:0xFFC27A,emissiveIntensity:1.4})); glow.position.set(0,1.62,0.012); g.add(glow);
+  const mir=new THREE.Mesh(sh(0.64,1.19),mat(0xB9C3C9,{roughness:0.05,metalness:0.95,envMapIntensity:1.6})); mir.position.set(0,1.62,0.02); g.add(mir);
+  for(let i=0;i<4;i++) fbox(g,0.42-Math.abs(i-1.5)*0.03,0.11,0.42-Math.abs(i-1.5)*0.03,0,0.06+i*0.11,0.75,stool);
+  return g; }
 function sofa(L,M2){ const M=fm(), g=F(), c=M2||M.fab1; fbox(g,L,0.42,0.92,0,0.21,0.46,c); fbox(g,L,0.5,0.22,0,0.65,0.11,c); fbox(g,0.2,0.58,0.92,-L/2+0.1,0.29,0.46,c); fbox(g,0.2,0.58,0.92,L/2-0.1,0.29,0.46,c); const n=Math.max(2,Math.round((L-0.4)/0.75)); for(let i=0;i<n;i++) fbox(g,(L-0.4)/n-0.04,0.14,0.66,-L/2+0.2+(L-0.4)*(i+0.5)/n,0.49,0.5,M.fab2); return g; }
 function tvWall(L){ const M=fm(), g=F(); fbox(g,L,0.42,0.42,0,0.21,0.21,M.wood); fbox(g,Math.min(1.65,L-0.3),0.95,0.05,0,1.25,0.04,M.dark); fbox(g,Math.min(1.55,L-0.4),0.86,0.01,0,1.25,0.07,mat(0x15191D,{roughness:0.08,metalness:0.4})); return g; }
 function diningSet(len,wid,n){ const M=fm(), g=F(); fbox(g,len,0.05,wid,0,0.76,0,M.wood); [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([a,b])=>fbox(g,0.07,0.74,0.07,a*(len/2-0.12),0.37,b*(wid/2-0.12),M.wood));
@@ -1920,6 +1944,7 @@ function furnish(r,f,grp,base,lux){
     const w=area<13?1.4:(area<20?1.6:1.8); if(L>w+1.4) put(grp,r,hw,0.5,base,bed(w,lux==='hashamatli'));
     if(S>2.2) put(grp,r,side[0],dw===side[0]?0.25:0.6,base,wardrobe(Math.min(2.6,S-1.6)));
     if(area>18 && S>2.6){ const tv=tvWall(Math.min(1.8,S-1.6)); put(grp,r,side[1],0.55,base,tv); }
+    else if(area>11 && S>2.0){ try{ put(grp,r,side[1],0.6,base,vanity(S-1.2)); }catch(e){} }
     if(area>22) plant(grp,0,0,1.1).position.set(r.x+r.w-0.5,base,-(r.y+0.5));
     return;
   }
@@ -1954,6 +1979,77 @@ function furnish(r,f,grp,base,lux){
 }
 
 /* ---------- house ---------- */
+
+/* ===== Remont: devor panellari (boiserie), karniz, LED-li shift, trek chiroqlar ===== */
+function mergeBoxes(list,m){ if(!list.length) return null; const pos=[],nor=[],uv=[];
+  list.forEach(([w,hh,d,x,y,z,ry])=>{ let g=new THREE.BoxGeometry(Math.max(0.005,w),Math.max(0.005,hh),Math.max(0.005,d)); if(ry) g.rotateY(ry); g.translate(x,y,z); g=g.toNonIndexed();
+    pos.push(...g.attributes.position.array); nor.push(...g.attributes.normal.array); uv.push(...g.attributes.uv.array); g.dispose(); });
+  const G=new THREE.BufferGeometry(); G.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); G.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3)); G.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
+  const me=new THREE.Mesh(G,m); me.receiveShadow=true; return me; }
+function remontFloor(f,k,grp,base,M,lux){
+  const CE=base+FH-0.25, R={mould:[],led:[],dark:[],bronze:[],wood:[]};
+  const DEC=new Set(['zal','bed','circ','kitchen','wet','util']), PAN=new Set(['zal','bed','circ']);
+  f.rooms.forEach(r=>{ if(r.part||!DEC.has(r.t)) return; const cx=r.x+r.w/2, cy=r.y+r.h/2;
+    const edges=[[r.x,r.y,r.x+r.w,r.y],[r.x,r.y+r.h,r.x+r.w,r.y+r.h],[r.x,r.y,r.x,r.y+r.h],[r.x+r.w,r.y,r.x+r.w,r.y+r.h]];
+    const ins={};
+    edges.forEach(([a,b,c,d],ei)=>{ const ext=edgeIsExt(f,a,b,c,d); const inset=ext?WT+0.025:0.075; ins[ei]=inset;
+      const hz=Math.abs(b-d)<1e-6, line=hz?b:a, A0=(hz?a:b), A1=(hz?c:d), o=hz?'h':'v', s=hz?(cy>line?1:-1):(cx>line?1:-1);
+      const gaps=[]; // [p0,p1,y0,y1]
+      f.doors.forEach(dd=>{ if(dd.o===o&&Math.abs(dd.line-line)<1e-3) gaps.push([dd.c-dd.w/2-0.08,dd.c+dd.w/2+0.08,0,(f.doorH||2.1)+0.1]); });
+      f.opens.forEach(op=>{ if(op.o===o&&Math.abs(op.line-line)<1e-3) gaps.push([op.a0-0.05,op.a1+0.05,0,FH]); });
+      f.rooms.filter(q=>q.part===r).forEach(q=>{ if(hz&&Math.abs(line-q.part.y)<1e-3) gaps.push([q.x,q.x+q.w,0,FH]); });
+      if(ext) f.openings.forEach(op=>{ const sg=f.segs[op.si]; if(!sg) return; const shz=Math.abs(sg.y0-sg.y1)<1e-6; if(shz!==hz) return; const sl=shz?sg.y0:sg.x0; if(Math.abs(sl-line)>1e-3) return; gaps.push([op.c-op.w/2-0.12,op.c+op.w/2+0.12,op.sill,op.sill+op.h+0.12,op.kind]); });
+      gaps.sort((p,q)=>p[0]-q[0]);
+      // box placer along this wall face: p along wall, y height, t = protrusion from face
+      const put=(arr,p0,p1,y0,y1,t,off)=>{ if(p1-p0<0.01||y1-y0<0.005) return; const L=p1-p0, pc=(p0+p1)/2, face=line+s*(inset+(off||0)+t/2);
+        if(hz) arr.push([L,y1-y0,t,pc,(y0+y1)/2,-face]); else arr.push([t,y1-y0,L,face,(y0+y1)/2,-pc]); };
+      const lo=A0+(ins[ei^2]!==undefined?0:0), a0=A0+0.02, a1=A1-0.02;
+      // free intervals at floor level (for baseboard) and full height (for panels)
+      const free=(pred)=>{ const out=[]; let cur=a0; gaps.filter(pred).forEach(([g0,g1])=>{ if(g0>cur) out.push([cur,Math.min(g0,a1)]); cur=Math.max(cur,g1); }); if(cur<a1) out.push([cur,a1]); return out.filter(([p,q])=>q-p>0.05); };
+      // plinth (baseboard)
+      free(g=>g[2]<0.3).forEach(([p,q])=>put(R.mould,p,q,base,base+0.11,0.022));
+      // cornice
+      free(g=>false).forEach(([p,q])=>{ put(R.mould,p,q,CE-0.16,CE,0.05); put(R.mould,p,q,CE-0.06,CE,0.11); });
+      if(PAN.has(r.t)){
+        const yb=base+0.34, yt=CE-0.42, fr=0.035, dp=0.022;
+        const frame=(p0,p1,y0,y1,orn)=>{ if(p1-p0<0.35||y1-y0<0.35) return; put(R.mould,p0,p1,y0,y0+fr,dp); put(R.mould,p0,p1,y1-fr,y1,dp); put(R.mould,p0,p0+fr,y0,y1,dp); put(R.mould,p1-fr,p1,y0,y1,dp);
+          if(orn){ [[p0+0.09,y0+0.09],[p1-0.09,y0+0.09],[p0+0.09,y1-0.09],[p1-0.09,y1-0.09]].forEach(([pp,yy])=>{ put(R.mould,pp-0.07,pp+0.07,yy-0.025,yy+0.025,0.03); put(R.mould,pp-0.025,pp+0.025,yy-0.07,yy+0.07,0.03); }); } };
+        free(g=>g[2]<2.0||g[4]==='win').forEach(([p,q])=>{ const L=q-p-0.3; if(L<0.5) return; const n=Math.max(1,Math.round(L/1.25)), gp=0.22, pw=(L-gp*(n-1))/n; for(let i=0;i<n;i++){ const s0=p+0.15+i*(pw+gp); frame(s0,s0+pw,yb,yt,true); frame(s0+0.09,s0+pw-0.09,yb+0.09,yt-0.09,false); } });
+        gaps.filter(g=>g[4]==='win'&&g[2]>0.75).forEach(([g0,g1,y0])=>frame(g0+0.14,g1-0.14,base+0.3,base+y0-0.12,false));
+        // vertical wall lamp (brass LED) between panels on long walls
+        if(false&&!gaps.some(g=>Math.abs((g[0]+g[1])/2-(A0+A1)/2)<0.9)){ const pm=(A0+A1)/2; put(R.led,pm-0.012,pm+0.012,base+1.25,base+2.15,0.02,0.01); put(R.bronze,pm-0.03,pm+0.03,base+1.2,base+1.26,0.05); }
+      }
+    });
+    // tray ceiling with LED cove + track lights
+    const ix0=r.x+ins[2], ix1=r.x+r.w-ins[3], iy0=r.y+ins[0], iy1=r.y+r.h-ins[1], W=ix1-ix0, D=iy1-iy0; if(W<1.2||D<1.2) return;
+    const band=Math.min(0.55,Math.min(W,D)*0.16), drop=0.16, yc=CE-drop/2;
+    const cb=(x0,x1,y0,y1,yy,hh,arr)=>arr.push([x1-x0,hh,y1-y0,(x0+x1)/2,yy,-(y0+y1)/2]);
+    cb(ix0,ix1,iy0,iy0+band,yc,drop,R.mould); cb(ix0,ix1,iy1-band,iy1,yc,drop,R.mould); cb(ix0,ix0+band,iy0+band,iy1-band,yc,drop,R.mould); cb(ix1-band,ix1,iy0+band,iy1-band,yc,drop,R.mould);
+    const ly=CE-drop-0.012, e=0.025; cb(ix0+band,ix1-band,iy0+band-e,iy0+band,ly,0.025,R.led); cb(ix0+band,ix1-band,iy1-band,iy1-band+e,ly,0.025,R.led); cb(ix0+band-e,ix0+band,iy0+band,iy1-band,ly,0.025,R.led); cb(ix1-band,ix1-band+e,iy0+band,iy1-band,ly,0.025,R.led);
+    if((r.t==='zal'||r.t==='bed')&&W>2.4&&D>2.4){ const alongX=W>=D, L=alongX?W-0.4:D-0.4, n=Math.max(2,Math.floor(L/1.3));
+      [0.3,0.7].forEach(t=>{ if(alongX){ const yy=iy0+band+(D-2*band)*t; cb(ix0+0.2,ix1-0.2,yy-0.02,yy+0.02,CE-drop-0.03,0.035,R.dark); for(let i=0;i<n;i++){ const xx=ix0+0.4+i*(L-0.4)/(n-1); cb(xx-0.04,xx+0.04,yy-0.04,yy+0.04,CE-drop-0.11,0.12,R.bronze); } }
+        else { const xx=ix0+band+(W-2*band)*t; cb(xx-0.02,xx+0.02,iy0+0.2,iy1-0.2,CE-drop-0.03,0.035,R.dark); for(let i=0;i<n;i++){ const yy=iy0+0.4+i*(L-0.4)/(n-1); cb(xx-0.04,xx+0.04,yy-0.04,yy+0.04,CE-drop-0.11,0.12,R.bronze); } } }); }
+  });
+  const mould=mat(new THREE.Color(M.inner.color).lerp(new THREE.Color(0xFFFFFF),0.35).getHex(),{roughness:0.55});
+  const led=new THREE.MeshStandardMaterial({color:0xFFE2B8,emissive:0xFFC27A,emissiveIntensity:1.8});
+  [[R.mould,mould],[R.led,led],[R.dark,mat(0x16181A,{roughness:0.4})],[R.bronze,mat(0x8A5A3C,{roughness:0.35,metalness:0.7})]].forEach(([l,m])=>{ const me=mergeBoxes(l,m); if(me) grp.add(me); });
+}
+
+function buildBasement(v,A,M){ const g=new THREE.Group(), Dp=2.9, X=x=>x, Z=y=>-y; const conc=mat(0xA4A8AC,{roughness:0.95}), flr=mat(0x8F9397,{roughness:0.9}), lbl=new THREE.Group(); g.add(lbl);
+  const bl=v.floors[0].blocks; let big=bl[0]; bl.forEach(b=>{ if(b.w*b.h>big.w*big.h) big=b; });
+  bl.forEach(b=>{ const t=0.4, cx=b.x+b.w/2, cy=b.y+b.h/2;
+    box(g,b.w,0.25,b.h,X(cx),-Dp-0.12,Z(cy),flr);
+    box(g,b.w,Dp,t,X(cx),-Dp/2,Z(b.y+t/2),conc); box(g,b.w,Dp,t,X(cx),-Dp/2,Z(b.y+b.h-t/2),conc); box(g,t,Dp,b.h-2*t,X(b.x+t/2),-Dp/2,Z(cy),conc); box(g,t,Dp,b.h-2*t,X(b.x+b.w-t/2),-Dp/2,Z(cy),conc);
+    box(g,b.w+0.8,0.5,b.h+0.8,X(cx),-Dp-0.5,Z(cy),mat(0x7E8285,{roughness:1}));
+    for(let x=b.x+1;x<b.x+b.w-1;x+=3){ box(g,0.9,0.5,0.06,X(x+0.45),-0.45,Z(b.y+0.05),M.glass,false); }
+    if(b===big&&b.w>4&&b.h>4){ const mx=b.x+b.w*0.5; box(g,0.15,Dp,b.h-0.8,X(mx),-Dp/2,Z(cy+0.4),conc);
+      const rooms=b.w*b.h>60?[["Qozonxona / texnik",b.x,b.y,b.w*0.5,b.h*0.5],['Ombor',b.x,b.y+b.h*0.5,b.w*0.5,b.h*0.5],['Sport zal',mx,b.y,b.w*0.5,b.h]]:[["Qozonxona / texnik",b.x,b.y,b.w*0.5,b.h],['Ombor',mx,b.y,b.w*0.5,b.h]];
+      if(rooms.length===3) box(g,b.w*0.5-0.4,Dp,0.15,X(b.x+b.w*0.25),-Dp/2,Z(b.y+b.h*0.5),conc);
+      rooms.forEach(([n,x,y,w,hh])=>{ const s=labelSprite(n,fmtA(Math.max(0,(w-0.4)*(hh-0.4)))+' m²'); s.position.set(X(x+w/2),-Dp+1.5,Z(y+hh/2)); lbl.add(s); });
+      const sx=b.x+b.w-1.4, sy=b.y+b.h-0.5; for(let i=0;i<14;i++){ const tp=(i+1)*Dp/14; box(g,1.0,0.18,0.28,X(sx+0.5),-Dp+tp-0.09,Z(sy-0.4-i*0.28),flr); } } });
+  // boiler + shelves
+  { const b=big; box(g,0.6,1.6,0.5,X(b.x+0.9),-Dp+0.8,Z(b.y+0.8),mat(0xEDEDED,{roughness:0.4})); for(let i=0;i<3;i++) box(g,1.8,0.04,0.45,X(b.x+1.5),-Dp+0.5+i*0.6,Z(b.y+b.h-0.7),M.wood); }
+  g.visible=false; return g; }
 function buildHouse(v,A){
   const S=v.style||A.style, lux=v.lux||'orta', WC=(w=>/^#[0-9a-fA-F]{6}$/.test(w)?w:(WALLC[w]||WALLC.oq))(v.wall||A.wall); const RF=v.roof||roofOf(S,A);
   const FAC=(v.facade&&v.facade!=='auto')?v.facade:((A.facade&&A.facade!=='auto')?A.facade:null);
@@ -1974,7 +2070,7 @@ function buildHouse(v,A){
     door:S==='zamonaviy'?mat(0x33383D,{roughness:0.5}):matT('wood',woodTex(),{roughness:0.6}),
     roof:matT('roof'+RF.mat+RF.hex,roofTexFor(RF.mat,RF.hex),{roughness:RF.mat==='keramik'?0.75:(RF.mat==='yumshoq'?0.9:0.5),metalness:(RF.mat==='metall'||RF.mat==='profnastil')?0.4:0.02,side:THREE.DoubleSide,envMapIntensity:0.8,bumpMap:roofTexFor(RF.mat,RF.hex),bumpScale:RF.mat==='keramik'?0.9:0.4}),
     trim:mat(S==='milliy'?0x1E5C9A:(S==='zamonaviy'?0x2A2F33:0xF7F6F2),{roughness:0.55}),
-    wood:matT('wood',woodTex(),{roughness:0.6}), inner:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#F3F1EC')).slice(1),16),{roughness:0.9}), lining:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#F1EEE8')).slice(1),16),{roughness:0.92}), rail:mat(0xC6DDEA,{transparent:true,opacity:0.32,roughness:0.05,metalness:0.2}),
+    wood:matT('wood',woodTex(),{roughness:0.6}), inner:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#E3D3BE')).slice(1),16),{roughness:0.9}), lining:mat(parseInt(((/^#[0-9a-fA-F]{6}$/.test(A.paint||'')?A.paint:'#E3D3BE')).slice(1),16),{roughness:0.92}), rail:mat(0xC6DDEA,{transparent:true,opacity:0.32,roughness:0.05,metalness:0.2}),
     steel:mat(0x2A2E32,{roughness:0.35,metalness:0.7}), grass:matT('grass',grassTex()), grass2:matT('grass2',grassTex('#5F7D45','grass2')),
     pave:matT('pave',paveTex(),{roughness:0.55,bumpMap:paveTex(),bumpScale:0.25}), asph:matT('asph',asphaltTex(),{roughness:0.95}), gdoor:matT('sect',sectTex(),{roughness:0.5,metalness:0.3}),
     led:new THREE.MeshStandardMaterial({color:0xFFFFFF,emissive:0xFFF6E8,emissiveIntensity:1.4}), hedge:matT('hedge',grassTex('#3F5F30','hedge'),{roughness:1}),
@@ -2015,21 +2111,34 @@ function buildHouse(v,A){
   Yd.items.filter(i=>i.type==='drive').forEach(i=>{ const [x,y]=PH(i.x,i.y); plane(site,i.w,i.h,x+i.w/2,0.022,Z(y+i.h/2),M.pave); });
   // fence along polygon edges
   const yardG=new THREE.Group(), fenceG=new THREE.Group(); site.add(yardG,fenceG);
-  const fenceH=lux==='oddiy'?1.8:2.1;
+  const fenceH=lux==='oddiy'?1.8:2.1; const gmF=mat(parseInt((/^#/.test(A.gateCol||'')?A.gateCol:(GATE_COL[A.gateCol]||'#2B2F33')).slice(1),16),{roughness:0.4,metalness:0.5});
   const pillar=(x,z,h)=>{ box(fenceG,0.45,h,0.45,x,h/2,z,wallMat); box(fenceG,0.56,0.08,0.56,x,h+0.04,z,M.white); };
   const fenceSeg=(ax,ay,bx,by,h,front)=>{ const [x0,y0]=PH(ax,ay),[x1,y1]=PH(bx,by); const X0=x0,Z0=Z(y0),X1=x1,Z1=Z(y1); const L=Math.hypot(X1-X0,Z1-Z0); if(L<0.3) return;
-    const n=Math.max(1,Math.round(L/3.2)); for(let i=0;i<=n;i++){ const t=i/n; pillar(X0+(X1-X0)*t,Z0+(Z1-Z0)*t,h+0.25); }
+    const n=Math.max(1,Math.round(L/3.2)); if((A.fence||'gisht')!=='yoq'&&A.fence!=='yaxlit') for(let i=0;i<=n;i++){ const t=i/n; pillar(X0+(X1-X0)*t,Z0+(Z1-Z0)*t,h+0.25); }
     const grp=new THREE.Group(); grp.position.set((X0+X1)/2,0,(Z0+Z1)/2); grp.rotation.y=-Math.atan2(Z1-Z0,X1-X0); fenceG.add(grp);
+    const FT=A.fence||'gisht'; if(FT==='yoq'){ return; }
+    if(FT==='panjara'&&!front){ box(grp,L,0.6,0.24,0,0.3,0,M.plinth); box(grp,L,0.05,0.05,0,h-0.05,0,gmF,false); for(let x=-L/2+0.15;x<L/2-0.1;x+=0.15) box(grp,0.025,h-0.6,0.05,x,0.6+(h-0.6)/2,0,gmF,false); return; }
+    if(FT==='yaxlit'){ box(grp,L,h,0.04,0,h/2,0,gmF); for(let x=-L/2+0.1;x<L/2;x+=0.2) box(grp,0.05,h,0.06,x,h/2,0,gmF,false); box(grp,L+0.02,0.3,0.2,0,0.15,0,M.plinth); return; }
     if(front){ box(grp,L,0.7,0.24,0,0.35,0,M.plinth); box(grp,L,1.1,0.05,0,1.25,0,M.steel,false); for(let x=-L/2+0.2;x<L/2-0.1;x+=0.18) box(grp,0.03,1.1,0.06,x,1.25,0,M.steel,false); }
     else { box(grp,L,h,0.22,0,h/2,0,wallMat); box(grp,L,0.06,0.3,0,h+0.03,0,M.white); box(grp,L+0.02,0.5,0.24,0,0.25,0,M.plinth); } };
   const kw=A.kalitka?1.0:0, gH=Math.max(1.8,Math.min(3.4,+A.gateH||2.4));
   const P=Yd.P, gx=Yd.gateX, gw=Math.max(2.6,Math.min(+A.gateW||4,pw*0.5,7)), gx0=Math.max(0.6,Math.min(gx-gw/2,pw-0.6-gw-kw-0.5)), gx1=gx0+gw;
   fenceSeg(0,0,gx0,0,fenceH,true); fenceSeg(gx1+(kw?kw+0.45:0),0,pw,0,fenceH,true);
   for(let i=1;i<P.length;i++){ const a=P[i], b=P[(i+1)%P.length]; fenceSeg(a[0],a[1],b[0],b[1],fenceH,false); }
-  { const [ga]=PH(gx0,0),[gb]=PH(gx1,0), zz=Z(fy0), ph=gH+0.35; pillar(ga,zz,ph); pillar(gb,zz,ph);
-    const L=gb-ga-0.5, x0=ga+0.25, gm=A.gateType==='naqshli'?M.wood:M.steel;
+  if((A.fence||'gisht')!=='yoq'){ const [ga]=PH(gx0,0),[gb]=PH(gx1,0), zz=Z(fy0), ph=gH+0.35; pillar(ga,zz,ph); pillar(gb,zz,ph);
+    const GC=/^#/.test(A.gateCol||'')?A.gateCol:(GATE_COL[A.gateCol]||'#1E2023'), PAT=A.gatePat||'oddiy';
+    const L=gb-ga-0.5, x0=ga+0.25, gm=A.gateType==='naqshli'?M.wood:mat(parseInt(GC.slice(1),16),{roughness:0.35,metalness:0.55}), gold=mat(0xB08A3E,{roughness:0.3,metalness:0.8}), bar=mat(new THREE.Color(GC).multiplyScalar(0.8).getHex(),{roughness:0.35,metalness:0.6});
+    const leafPat=(cx,lw,i)=>{ const y0=0.06, Fz=zz, fr=0.06; const frame=()=>{ box(fenceG,lw,fr,0.08,cx,y0+fr/2,Fz,gm); box(fenceG,lw,fr,0.08,cx,y0+gH-fr/2,Fz,gm); box(fenceG,fr,gH,0.08,cx-lw/2+fr/2,y0+gH/2,Fz,gm); box(fenceG,fr,gH,0.08,cx+lw/2-fr/2,y0+gH/2,Fz,gm); };
+      if(PAT==='yaxlit'){ box(fenceG,lw,gH,0.07,cx,y0+gH/2,Fz,gm); for(let y=0.3;y<gH;y+=0.3) box(fenceG,lw-0.04,0.02,0.09,cx,y0+y,Fz,bar,false); }
+      else if(PAT==='panjara'){ frame(); const sh=gH*0.42; box(fenceG,lw-0.04,sh,0.05,cx,y0+sh/2,Fz,gm); for(let x=-lw/2+0.12;x<lw/2-0.05;x+=0.13){ box(fenceG,0.025,gH-sh,0.05,cx+x,y0+sh+(gH-sh)/2,Fz,bar,false); box(fenceG,0.06,0.09,0.06,cx+x,y0+gH+0.04,Fz,gold,false); }
+        for(let x=-lw/2+0.3;x<lw/2-0.2;x+=0.5){ const t=new THREE.Mesh(new THREE.TorusGeometry(0.13,0.018,6,20),gold); t.position.set(cx+x,y0+sh+(gH-sh)*0.5,Fz+0.04); fenceG.add(t); } }
+      else if(PAT==='kvadrat'){ frame(); for(let x=-lw/2+0.25;x<lw/2-0.1;x+=0.25) box(fenceG,0.03,gH-0.1,0.05,cx+x,y0+gH/2,Fz,bar,false); for(let y=0.25;y<gH-0.1;y+=0.25) box(fenceG,lw-0.1,0.03,0.05,cx,y0+y,Fz,bar,false); box(fenceG,lw-0.1,gH*0.35,0.03,cx,y0+gH*0.18,Fz,gm); }
+      else if(PAT==='shamol'){ frame(); const sh=gH*0.5; box(fenceG,lw-0.04,sh,0.05,cx,y0+sh/2,Fz,gm); const ox=cx+(i?-lw/2:lw/2); for(let a=1;a<8;a++){ const t=Math.PI/2*a/8, Lr=Math.min(lw,gH-sh)*1.05; const m2=new THREE.Mesh(new THREE.BoxGeometry(Lr,0.028,0.04),bar); m2.position.set(ox+(i?1:-1)*Math.cos(t)*Lr/2,y0+sh+Math.sin(t)*Lr/2*0.9,Fz); m2.rotation.z=(i?1:-1)*t; fenceG.add(m2); } }
+      else if(PAT==='arka'){ const n=Math.max(6,Math.round(lw/0.12)); for(let j=0;j<n;j++){ const xx=cx-lw/2+(j+0.5)*lw/n, u=(xx-(ga+gb)/2)/((gb-ga)/2), hh=gH+0.5*Math.cos(Math.min(1,Math.abs(u))*Math.PI/2); box(fenceG,lw/n-0.012,hh,0.07,xx,y0+hh/2,Fz,gm); } }
+      else return false; return true; };
+
     if(A.gateType==='surma'){ box(fenceG,L,gH,0.07,(ga+gb)/2,0.08+gH/2,zz,gm); for(let y=0.35;y<gH;y+=0.22) box(fenceG,L,0.03,0.09,(ga+gb)/2,0.08+y,zz,M.gutter,false); box(fenceG,L*1.9,0.06,0.12,ga+L*0.95,0.03,zz,M.steel,false); }
-    else { const lw=L/2-0.02; [x0+lw/2,x0+L-lw/2].forEach((cx,i)=>{ box(fenceG,lw,gH,0.08,cx,0.06+gH/2,zz,gm);
+    else { const lw=L/2-0.02; [x0+lw/2,x0+L-lw/2].forEach((cx,i)=>{ if(A.gateType!=='naqshli'&&leafPat(cx,lw,i)){ box(fenceG,0.04,0.3,0.06,cx+(i?-1:1)*(lw/2-0.12),1.1,zz+0.08,gold,false); return; } box(fenceG,lw,gH,0.08,cx,0.06+gH/2,zz,gm);
       if(A.gateType==='naqshli'){ for(let r=0;r<3;r++) for(let c2=0;c2<2;c2++){ const pw2=lw/2-0.12, ph2=gH/3-0.16; box(fenceG,pw2,ph2,0.04,cx-lw/4+c2*lw/2,0.06+gH/6+r*gH/3,zz+0.05,M.trim,false); box(fenceG,pw2*0.55,ph2*0.55,0.05,cx-lw/4+c2*lw/2,0.06+gH/6+r*gH/3,zz+0.06,M.wood,false); } box(fenceG,lw,0.14,0.14,cx,gH+0.1,zz,M.wood); }
       else { for(let x=-lw/2+0.12;x<lw/2-0.05;x+=0.16) box(fenceG,0.035,gH*0.42,0.1,cx+x,0.06+gH*0.76,zz,M.gutter,false); box(fenceG,lw,0.06,0.11,cx,0.06+gH*0.55,zz,M.gutter,false); }
       box(fenceG,0.04,0.3,0.06,cx+(i?-1:1)*(lw/2-0.12),1.1,zz+0.08,M.gutter,false); }); }
@@ -2089,6 +2198,7 @@ function buildHouse(v,A){
         wp(cur,A1,base,base+H);
       });
     });
+    try{ remontFloor(f,k,inner,base,M,lux); }catch(e){ console.warn('remont',e); }
     // interior door leaves (open)
     { const dh=(f.doorH||2.1)-0.05; f.doors.forEach(dd=>{ const w=dd.w, h0=dd.c-w/2; if(dd.o==='v') box(inner,w,dh,0.04,X(dd.line+dd.side*w/2),base+dh/2,Z(h0+0.02),M.door,false); else box(inner,0.04,dh,w,X(h0+0.02),base+dh/2,Z(dd.line+dd.side*w/2),M.door,false); }); }
     // exterior walls with recessed openings
@@ -2121,7 +2231,14 @@ function buildHouse(v,A){
           const lh=o.h-0.05, two=w>1.4, lw=two?w/2:w; const lv=(pp,sg)=>{ if(hz) box(shell,0.05,lh,lw,X(pp),s0+lh/2,Z(off-nn*(WT/2+lw/2)),M.edoor,false); else box(shell,lw,lh,0.05,X(off-nn*(WT/2+lw/2)),s0+lh/2,Z(pp),M.edoor,false); void sg; };
           lv(p0+0.03,1); if(two) lv(p1-0.03,-1);
           if(o.h>2.45||two) at(c,dp0(),0.03,w,s1-0.02,s1,M.frame,null,false);
-          at(c,WT/2+0.3,0.6,w+1.2,base-0.05,base,M.plinth);
+          if(k===0){ // grand marble entrance: steps + stone-clad portico + canopy
+            for(let i=0;i<3;i++){ const t=0.75+i*0.38, y1=base-i*0.15; at(c,WT/2+t/2,t,w+2.2+i*0.8,Math.max(0,y1-0.15),y1,M.plinth); }
+            const cw=0.42, cd=WT/2+1.25, cx0=p0-0.55, cx1=p1+0.55, ch=s1+0.35;
+            [cx0,cx1].forEach(px=>{ at(px,cd,cw,cw,base,base+0.32,M.white); at(px,cd,cw-0.06,cw-0.06,base+0.32,ch-0.3,stoneMat); at(px,cd,cw+0.06,cw+0.06,ch-0.3,ch,M.white); });
+            at(c,WT/2+0.8,1.75,cx1-cx0+0.9,ch,ch+0.3,M.white); at(c,WT/2+0.8,1.65,cx1-cx0+0.7,ch-0.04,ch,M.wood,null,false);
+            at(c,WT/2+1.66,0.08,cx1-cx0+0.95,ch+0.3,ch+0.42,M.trim,null,false);
+            at(cx0+0.35,WT/2+0.06,0.1,0.14,s0+2.0,s0+2.3,M.led,null,false); at(cx1-0.35,WT/2+0.06,0.1,0.14,s0+2.0,s0+2.3,M.led,null,false);
+          } else at(c,WT/2+0.3,0.6,w+1.2,base-0.05,base,M.plinth);
           at(p1+0.35,WT/2+0.08,0.12,0.12,s0+2.0,s0+2.25,M.led,null,false); }
         cur=p1; });
       piece(cur,a1,base,top,wallM);
@@ -2202,7 +2319,8 @@ function buildHouse(v,A){
     const cm=new THREE.MeshBasicMaterial({map:ct,transparent:true,depthWrite:false,color:0x000000,opacity:0.85});
     v.floors[0].blocks.forEach(b=>{ const ext=1.3; const me=new THREE.Mesh(new THREE.PlaneGeometry((b.w+ext*2)*1.62,(b.h+ext*2)*1.62),cm); me.rotation.x=-Math.PI/2; me.position.set(X(b.x+b.w/2),0.025,Z(b.y+b.h/2)); me.renderOrder=1; g.add(me); }); }
   const plotPts=P.map(([a,b])=>PH(a,b));
-  return {plotPts,group:g,floors,roof,cx:v.W/2,cz:-((v.minY||0)+(v.maxY||v.D))/2,colliders,roomLights,spawns,outSpawn,inPlot,yardG,fenceG,M,S,lux,stairs};
+  let basement=null; if(A.podval){ try{ basement=buildBasement(v,A,M); g.add(basement); }catch(e){ console.warn('podval',e); } }
+  return {basement,plotPts,group:g,floors,roof,cx:v.W/2,cz:-((v.minY||0)+(v.maxY||v.D))/2,colliders,roomLights,spawns,outSpawn,inPlot,yardG,fenceG,M,S,lux,stairs};
 }
 
 </script>
@@ -2210,8 +2328,20 @@ function buildHouse(v,A){
 
 /* ================== Usta (builder) package ================== */
 const ART_URL='https://claude.ai/artifact/B8zyx7ev9s3vKLu8QknXbn';
-const FLAG_KEYS=['bigZal','darvoza','garage','ayvon','sauna','pool','gulzor','gazebo','tandir','playground','fountain','supa'];
-function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r',mansard:'s'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+(['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'].indexOf(A.massing||'auto')).toString(36)+Math.max(0,SUB_K.indexOf(A.sub||'')).toString(36)+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
+const FLAG_KEYS=['bigZal','darvoza','garage','ayvon','sauna','pool','gulzor','gazebo','tandir','playground','fountain','supa','podval'];
+function encProject(A,vi,st){ return ['q',{rect:'r',trap:'z',tri:'t'}[A.plotShape]||'r',A.plotW,A.plotL,A.plotBackW||0,A.floors,A.family,A.beds,A.targetArea||0,FLAG_KEYS.map(k=>A[k]?1:0).join(''),A.trees|0,({auto:'a',oddiy:'d',orta:'o',hashamatli:'h'})[A.lux||'auto']||'a',A.style[0],(/^#/.test(A.wall)?'x'+A.wall.slice(1):A.wall),Math.round(A.budget/1000),A.rateManual?A.rate:0,vi,(st||A.style)[0]+({auto:'a',tekis:'t',ikki:'i',tort:'r',mansard:'s'}[A.roofShape]||'a')+({metall:'m',keramik:'k',yumshoq:'y',profnastil:'p'}[A.roofMat]||'a')+({auto:'a',grafit:'g',jigar:'j',qizil:'q',yashil:'y',kok:'k'}[A.roofCol]||(/^#/.test(A.roofCol||'')?'x':'a'))+'.'+(A.seed|0).toString(36)+'.'+(/^#/.test(A.roofCol||'')?A.roofCol.slice(1):'')+'.'+({auto:'a',ixcham:'c',erker:'e',L:'l',U:'u',orqaL:'m',orqaU:'n',darvoza:'d'}[A.layout||'auto']||'a')+(A.styleFixed?1:0)+(A.wallFixed?1:0)+(['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'].indexOf(A.massing||'auto')).toString(36)+Math.max(0,SUB_K.indexOf(A.sub||'')).toString(36)+Math.max(0,GATE_PAT_K.indexOf(A.gatePat||'oddiy')).toString(36)+Math.max(0,GATE_COL_K.indexOf(A.gateCol||'qora')).toString(36)+Math.max(0,['gisht','panjara','yaxlit','yoq'].indexOf(A.fence||'gisht'))+'.'+encOpen(A)].join('-')+(hasEdits(A)?'-'+b64u(JSON.stringify(A.rooms)):''); }
+const GATE_PAT={oddiy:"Oddiy panjara",yaxlit:"Yaxlit list",panjara:"Kovka (bezakli)",kvadrat:"Katakli",shamol:"Quyosh nurlari",arka:"Arkasimon",naqsh:"Milliy naqsh"};
+const GATE_PAT_K=Object.keys(GATE_PAT), GATE_COL={qora:'#1E2023',grafit:'#3E4349',jigar:'#5A3A26',oq:'#EEEDE8',yashil:'#2F4A3A',kok:'#2A3F5E',oltin:'#9C7A3C',qizil:'#7A2E24'}, GATE_COL_K=Object.keys(GATE_COL);
+const GATE_COLN={qora:'Qora',grafit:'Grafit',jigar:'Jigarrang',oq:'Oq',yashil:"To'q yashil",kok:"To'q ko'k",oltin:'Oltin (bronza)',qizil:"To'q qizil"};
+function gatePatSVG(k){ const f='#3E4349'; let s=`<rect x="4" y="6" width="52" height="40" fill="none" stroke="${f}" stroke-width="2"/>`;
+  if(k==='oddiy') for(let x=8;x<56;x+=5) s+=`<line x1="${x}" y1="6" x2="${x}" y2="46" stroke="${f}" stroke-width="1.4"/>`;
+  else if(k==='yaxlit'){ s+=`<rect x="4" y="6" width="52" height="40" fill="${f}"/>`; for(let y=12;y<46;y+=6) s+=`<line x1="4" y1="${y}" x2="56" y2="${y}" stroke="#777" stroke-width=".8"/>`; }
+  else if(k==='panjara'){ s+=`<rect x="4" y="30" width="52" height="16" fill="${f}"/>`; for(let x=8;x<56;x+=6) s+=`<line x1="${x}" y1="6" x2="${x}" y2="30" stroke="${f}" stroke-width="1.3"/>`; [14,30,46].forEach(x=>s+=`<circle cx="${x}" cy="18" r="4.5" fill="none" stroke="#B08A3E" stroke-width="1.4"/>`); }
+  else if(k==='kvadrat'){ for(let x=4;x<=56;x+=8.6) s+=`<line x1="${x}" y1="6" x2="${x}" y2="46" stroke="${f}" stroke-width="1.3"/>`; for(let y=6;y<=46;y+=8) s+=`<line x1="4" y1="${y}" x2="56" y2="${y}" stroke="${f}" stroke-width="1.3"/>`; }
+  else if(k==='shamol'){ s+=`<rect x="4" y="26" width="52" height="20" fill="${f}"/>`; for(let a=0;a<=8;a++){ const t=Math.PI*a/8; s+=`<line x1="30" y1="26" x2="${30-Math.cos(t)*26}" y2="${26-Math.sin(t)*19}" stroke="${f}" stroke-width="1.3"/>`; } }
+  else if(k==='arka'){ s=`<path d="M4 46 V14 Q30 -2 56 14 V46 Z" fill="${f}"/>`; for(let x=8;x<56;x+=5) s+=`<line x1="${x}" y1="14" x2="${x}" y2="46" stroke="#666" stroke-width=".7"/>`; }
+  else if(k==='naqsh'){ s+=`<rect x="4" y="6" width="52" height="40" fill="#7A5232"/>`; [[10,10],[32,10],[10,28],[32,28]].forEach(([x,y])=>s+=`<rect x="${x}" y="${y}" width="18" height="14" fill="none" stroke="#E2C28A" stroke-width="1.3"/><circle cx="${x+9}" cy="${y+7}" r="3.5" fill="none" stroke="#E2C28A"/>`); }
+  return `<svg viewBox="0 0 60 50" width="60" height="50" aria-hidden="true">${s}</svg>`; }
 const OPC={winSize:['auto','kichik','orta','katta','panorama'],winCount:['orta','kam','kop'],winFrame:['auto','oq','antrasit','yogoch'],doorType:['bir','ikki','katta'],doorMat:['auto','yogoch','metall','shisha'],gateType:['ochiladigan','surma','naqshli']};
 function encOpen(A){ return Object.keys(OPC).map(k=>Math.max(0,OPC[k].indexOf(A[k]))).join('')+(A.intDoorH>2.2?1:0)+(A.kalitka?1:0)+'g'+Math.round((+A.gateW||4)*10)+'h'+Math.round((+A.gateH||2.4)*10)+'f'+Math.max(0,FAC_K.indexOf(A.facade))+['tor','mahalla','katta'].indexOf(A.street||'mahalla')+['ikki','bir','yoq'].indexOf(A.neighbors||'ikki')+['shahar','tog','dala'].indexOf(A.view||'shahar')+['janub','shimol','sharq','garb'].indexOf(A.facing||'janub')+'i'+Math.max(0,INT_K.indexOf(A.intStyle||'auto'))+Math.max(0,['auto','parket','laminat','marmar','kafel'].indexOf(A.floorType||'auto'))+Math.max(0,['oddiy','gips','ganch'].indexOf(A.ceiling||'oddiy'))+String(A.paint||'#efe8dc').slice(1)+'.'+[A.furnZal,A.furnBed,A.furnKit].map(s=>(s||'').split(',').filter(Boolean).map(x=>x.slice(0,2)).join('')).join('_'); }
 const INT_K=['auto','zamonaviy','neoklassik','klassik','milliy','skandinav','loft'];
@@ -2227,7 +2357,7 @@ function decProject(s){ const p=s.split('-'); if(p[0]!=='q'||p.length<18) return
   FLAG_KEYS.forEach((k,i)=>{ A[k]=(p[9]||'')[i]==='1'; });
   if(+p[15]>0){ A.rate=+p[15]; A.rateManual=true; } else A.rateManual=false;
   { const r=p[17]||''; A.roofShape={a:'auto',t:'tekis',i:'ikki',r:'tort',s:'mansard'}[r[1]]||'auto'; A.roofMat={m:'metall',k:'keramik',y:'yumshoq',p:'profnastil'}[r[2]]||'auto'; A.roofCol={a:'auto',g:'grafit',j:'jigar',q:'qizil',y:'yashil',k:'kok'}[r[3]]||'auto';
-    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; A.massing=['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'][parseInt(lc[3]||'0',36)]||'auto'; A.sub=SUB_K[parseInt(lc[4]||'0',36)]||''; if(A.sub&&SUBS[A.sub]) A.style=SUBS[A.sub].b; decOpen(A,ex[4]); decFurn(A,ex[5]); }
+    const ex=r.split('.'); A.seed=parseInt(ex[1]||'0',36)||0; if(r[3]==='x'&&/^[0-9a-fA-F]{6}$/.test(ex[2]||'')) A.roofCol='#'+ex[2].toLowerCase(); const lc=ex[3]||''; A.layout={a:'auto',c:'ixcham',e:'erker',l:'L',u:'U',m:'orqaL',n:'orqaU',d:'darvoza'}[lc[0]]||'auto'; A.styleFixed=lc[1]==='1'; A.wallFixed=lc[2]==='1'; A.massing=['auto','kub','porch','ayvon','erker','garaj','L','U','orqaL','orqaU','darvoza'][parseInt(lc[3]||'0',36)]||'auto'; A.sub=SUB_K[parseInt(lc[4]||'0',36)]||''; A.gatePat=GATE_PAT_K[parseInt(lc[5]||'0',36)]||'oddiy'; A.gateCol=GATE_COL_K[parseInt(lc[6]||'0',36)]||'qora'; A.fence=['gisht','panjara','yaxlit','yoq'][+(lc[7]||0)]||'gisht'; if(A.sub&&SUBS[A.sub]) A.style=SUBS[A.sub].b; decOpen(A,ex[4]); decFurn(A,ex[5]); }
   if(p[18]){ try{ const R=JSON.parse(ub64(p.slice(18).join('-'))); if(R&&typeof R==='object') A.rooms={adj:R.adj||{},base:R.base||{},del:Array.isArray(R.del)?R.del:[],add:Array.isArray(R.add)?R.add.filter(r=>r&&typeof r.n==='string'&&r.a>0).slice(0,12):[]}; }catch(e){} }
   if(!(A.plotW>=9&&A.plotW<=60&&A.plotL>=15&&A.plotL<=80)) return null; return {A,vi:Math.min(2,Math.max(0,+p[16]||0)),st:sty((p[17]||'')[0])}; }
 function shareUrl(){ const base=/claude/.test(location.hostname)||location.protocol==='about:'||!location.hostname ? ART_URL : location.origin+location.pathname; const v=S.variants[S.active]; return base+'#'+encProject(S.A,S.active,v&&v.style); }
@@ -2357,6 +2487,10 @@ async function makePdf(){
     doc.setFontSize(10); const info=[['Yer uchastkasi',`${fmt1(A.plotW)} × ${fmt1(A.plotL)} m, ${fmt1(plotArea(A))} m2`],['Gabarit',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)],['Umumiy maydon',fmtA(v.area)+' m2'],['Yotoqxonalar',String(v.bedCount)],['Uslub / daraja',stN(v)+' / '+LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)+` (${v.rate} $/m2)`],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)],['Buyurtmachi',S.user?`${S.user.name}, ${S.user.phone}, ${S.user.city}`:'-']];
     let y=30; info.forEach(([k,x])=>{ doc.setFont('helvetica','normal'); doc.text(pt(k),14,y); doc.setFont('helvetica','bold'); doc.text(pt(x),70,y); y+=7; });
     doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.text(pt("Eslatma: bu eskiz loyiha. Qurilishdan oldin arxitektor va konstruktor tayyorlagan ishchi loyiha (AR, KR) va tuproq tekshiruvi talab qilinadi."),14,H-14,{maxWidth:170});
+    // maket page
+    try{ const mm=MAKETS.find(x=>x.id===(v.mk||A.massing))||MAKETS[0], sb=SUBS[v.sub||''], wc=sb&&/^#/.test(sb.svg[1])?sb.svg[1]:({zamonaviy:'#ECEBE6',klassik:'#E8DCC4',milliy:'#D9C07C'}[v.style]||'#D9C07C');
+      const u=mkImage(styMaket(mm,v.style,v.sub||''),v.roof.shape,wc,'pdf_'+mm.id,{st:v.style,sub:v.sub||''}); if(u){ frame('Maket (3D massa modeli)','1.1 Maket'); doc.addImage(u,'JPEG',14,24,190,142.5);
+        table(214,30,['Maket','Qiymat'],[['Shakl',mm.n],['Uslub',stN(v)],['Tom',ROOFSH[v.roof.shape]||''],['Qavatlar',String(v.floors.length)],['Gabarit',`${fmt1(v.W)} x ${fmt1(v.D)} m`]],[24,46]); } }catch(e){ console.warn('pdf maket',e); }
     // plan pages
     { const ph=aiList().concat(S.photos||[]); for(let i=0;i<ph.length;i+=2){ frame('Uyning ko\'rinishi', i===0?'2. Uyning ko\'rinishi (rasmlar)':null); [ph[i],ph[i+1]].forEach((p,j)=>{ if(!p) return; const pw2=(W-36)/2, phh=pw2*9/16, x=14+j*(pw2+8), y=40; try{ doc.addImage(p.url,p.url.startsWith('data:image/png')?'PNG':'JPEG',x,y,pw2,phh); }catch(e){} doc.setFontSize(9); doc.text(pt(p.cap),x,y+phh+5); }); } }
     frame('Hovli rejasi','3. Hovli rejasi'); { const s=await svgToPng(siteSVG(v,A),2000); let h=H-46, w=h/s.ar; if(w>180){ w=180; h=w*s.ar; } doc.addImage(s.data,'JPEG',14,24,w,h); }
@@ -2368,6 +2502,8 @@ async function makePdf(){
         table(194,30,['Xona','Qiymat'],[['Qavat',String(k+1)],["O'lcham",`${fmt2(r.w)} x ${fmt2(r.h)} m`],['Maydon',fmtA(roomA(r,f))+' m2'],['Devor rangi',A.paint||''],['Pol',floorOf(r,v,A)],['Shift',CEIL_N[A.ceiling]||CEIL_N.oddiy]],[30,60]);
         const im=S.roomImgs[`${v.key}|${k}|${r.n}|${i}`]; if(im){ frame(`${i+1}. ${r.n} - ko'rinish`); doc.addImage(im.url,im.url.startsWith('data:image/png')?'PNG':'JPEG',14,24,W-28,(W-28)*9/16); } } }
     frame('Poydevor rejasi va kesim 1-1','7. Poydevor va kesim'); { const a=await svgToPng(foundSVG(v),2000); let w=135,h=w*a.ar; if(h>150){h=150;w=h/a.ar;} doc.addImage(a.data,'JPEG',12,26,w,h); const b=await svgToPng(sectionSVG(v,A),2000); let w2=135,h2=w2*b.ar; if(h2>120){h2=120;w2=h2/b.ar;} doc.addImage(b.data,'JPEG',152,26,w2,h2); }
+    if(v.podA){ frame("Podval (yerto'la)","7.1 Podval"); table(14,30,['Podval','Qiymat'],[['Maydoni',fmtA(v.podA)+' m2'],['Chuqurligi','2,8 m (shift balandligi 2,6 m)'],['Devorlar','Monolit temir-beton, 40 sm'],['Pol','Beton plita 25 sm, gidroizolyatsiya bilan'],['Gidroizolyatsiya','Tashqaridan bitumli membrana + drenaj'],['Yoritish','Priyamok derazalar 90x50 sm'],['Xonalar','Qozonxona / texnik, ombor'+(v.podA>60?', sport zal':'')],['Taxminiy narx',money(v.podCost)]],[50,140]);
+      doc.setFontSize(8); doc.text(pt("Podval uchun tuproq va yer osti suvi tekshiruvi (geologiya) majburiy."),14,H-14); }
     frame('Deraza va eshiklar jadvali','8. Deraza, eshik va darvozalar'); table(14,30,['Belgi','Turi','O\'lchami, mm','1-qavat','2-qavat','Jami'],openSchedule(v),[22,50,50,25,25,20]);
     frame('Materiallar ro\'yxati','9. Materiallar va narx'); table(14,30,['Material','Miqdor','Birlik','Izoh'],v.mat.map(r=>[r[0],r[1],r[2],r[3]]),[60,28,16,160]);
     frame('Ish bosqichlari','10. Qurilish bosqichlari'); { let y2=30; stageRows(v,A).forEach(s=>{ const need=8+s.items.length*4.8; if(y2+need>H-34){ frame('Ish bosqichlari (davomi)'); y2=30; } doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text(pt(`${s.name}  (~${money(s.sum)})`),14,y2); y2+=5.5; doc.setFont('helvetica','normal'); doc.setFontSize(9); s.items.forEach(it=>{ doc.text(pt(it[0]),20,y2); doc.text(pt(it[1]+' '+it[2]),110,y2); y2+=4.8; }); y2+=2; }); }
@@ -2444,6 +2580,7 @@ function syncInputs(){
   $$('.stepper').forEach(s=>s.querySelector('output').textContent=A[s.dataset.key]);
   $$('input[type=checkbox][data-key]').forEach(c=>c.checked=!!A[c.dataset.key]);
   $$('#styleCards .stylecard').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.style&&(b.dataset.sub||'')===(A.sub||''))));
+  $$('#gatePatSw button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===(A.gatePat||'oddiy')))); $$('#gateColSw .swatch').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===(A.gateCol||'qora'))));
   $$('#wallSw .swatch').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===A.wall)));
   $$('.optseg').forEach(s=>{ const k=s.dataset.key; s.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(String(A[k])===b.dataset.v||(s.dataset.num&&+A[k]===+b.dataset.v)))); });
   { const kc=$('#kalitkaChk'); if(kc) kc.checked=!!A.kalitka; }
@@ -2483,6 +2620,8 @@ $$('input[type=checkbox][data-key]').forEach(c=>c.addEventListener('change',()=>
 (()=>{ const host=$('#styleCards'); const grp={zamonaviy:'Zamonaviy oilasi',klassik:'Klassik oilasi',milliy:'Milliy va sharqona'};
   ['zamonaviy','klassik','milliy'].forEach(bk=>{ const base=host.querySelector(`.stylecard[data-v="${bk}"]:not([data-sub])`); const hd=document.createElement('div'); hd.className='stgrp'; hd.textContent=grp[bk]; host.insertBefore(hd,base);
     let after=base; SUBS_OF(bk).forEach(k=>{ const s=SUBS[k], b=document.createElement('button'); b.type='button'; b.className='stylecard'; b.dataset.v=s.b; b.dataset.sub=k; b.innerHTML=subSVG(k)+`<b>${s.n}</b><small>${s.d}</small>`; after.after(b); after=b; }); });
+  { const gp=$('#gatePatSw'), gc=$('#gateColSw'); if(gp){ gp.innerHTML=GATE_PAT_K.map(k=>`<button type="button" data-v="${k}">${gatePatSVG(k)}<span>${GATE_PAT[k]}</span></button>`).join(''); gp.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.gatePat=b.dataset.v; if(b.dataset.v==='naqsh') S.A.gateType='naqshli'; else if(S.A.gateType==='naqshli') S.A.gateType='ochiladigan'; syncInputs(); }); }
+    if(gc){ gc.innerHTML=GATE_COL_K.map(k=>`<button type="button" class="swatch" data-v="${k}"><i style="background:${GATE_COL[k]}"></i>${GATE_COLN[k]}</button>`).join('')+`<label class="swatch"><input type="color" id="gateColor" value="#3e4349" aria-label="Boshqa darvoza rangi">Boshqa rang</label>`; gc.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.gateCol=b.dataset.v; syncInputs(); }); $('#gateColor').addEventListener('input',e=>{ S.A.gateCol=e.target.value; syncInputs(); }); } }
   host.addEventListener('click',e=>{ const b=e.target.closest('button.stylecard'); if(!b) return; S.A.style=b.dataset.v; S.A.sub=b.dataset.sub||''; S.A.rateManual=false; syncInputs(); clearTimeout(S._mkT); S._mkT=setTimeout(()=>{ try{ renderMakets3D(); }catch(e){} },60); }); })();
 $('#wallSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.A.wall=b.dataset.v; S.A.wallFixed=false; syncInputs(); });
 $('#wallColor').addEventListener('input',e=>{ S.A.wall=e.target.value; S.A.wallFixed=true; syncInputs(); });
@@ -2760,7 +2899,7 @@ function renderVariant(){
   try{ aiAutoSoon(); }catch(e){ console.error(e); }
   try{ roomJob++; const rc=$('#roomCards'); if(rc) rc.innerHTML='<p class="note">Xonalar tayyorlanmoqda…</p>'; }catch(e){}
   const within=v.total<=A.budget;
-  const rows=[['Gabarit (eni × chuqurligi)',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)]].concat(v.floors.map((f,k)=>[`${k+1}-qavat maydoni`,fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))+' m²'])).concat([['Umumiy maydon',fmtA(v.area)+' m²'],['Yotoqxonalar',String(v.bedCount)],['Daraja',LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)],['Hovli obodonchiligi',money(v.yard.cost)],['Jami taxminiy narx',money(v.total)]]);
+  const rows=[['Gabarit (eni × chuqurligi)',`${fmt1(v.W)} × ${fmt1(v.D)} m`],['Qavatlar',String(v.floors.length)]].concat(v.floors.map((f,k)=>[`${k+1}-qavat maydoni`,fmtA(sum(f.rooms.filter(r=>r.t!=='garage'),r=>r.w*r.h))+' m²'])).concat([['Umumiy maydon',fmtA(v.area)+' m²'],['Yotoqxonalar',String(v.bedCount)],['Daraja',LUX_NAME[v.lux]],['Uy qurilishi',money(v.cost)],['Hovli obodonchiligi',money(v.yard.cost)]].concat(v.podA?[["Podval (yerto'la)",`${fmtA(v.podA)} m² · ${money(v.podCost)}`]]:[]).concat([['Jami taxminiy narx',money(v.total)]]));
   $('#summary').innerHTML=`<div class="eyebrow">Variant ${v.key}</div><h2 style="font-size:20px">${esc(v.name)}</h2>
     <div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Uslubni almashtirish</span><div class="stylesw" id="styleSw">${['klassik','zamonaviy','milliy',...Object.keys(SUBS)].map(s=>`<button type="button" data-s="${s}" aria-pressed="${SUBS[s]?v.sub===s:(s===v.style&&!v.sub)}">${SUBS[s]?SUBS[s].n:STYLE_NAME[s]}</button>`).join('')}</div></div>`+
     `<div class="field" style="gap:6px"><span class="flabel" style="font-size:13px">Tom</span><div class="stylesw" id="roofSw">${['tekis','ikki','tort','mansard'].map(s=>`<button type="button" data-r="${s}" aria-pressed="${s===v.roof.shape}">${ROOFSH[s]}</button>`).join('')}</div>`+
@@ -2775,7 +2914,7 @@ function renderVariant(){
   $('#styleSw').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b||b.dataset.s===(v.sub||v.style)) return; const nv=restyleNew(v,S.A,b.dataset.s); S.variants[S.active]=nv; const t=S.tabEls&&S.tabEls[S.active]; if(t) t.querySelector('b').textContent=`Variant ${nv.key}: ${nv.name}`, t.querySelector('span').textContent=`${stN(nv)} uslub · ${nv.desc}`, t.querySelector('.num').textContent=`${fmtA(nv.area)} m² · ${money(nv.total)}`; toast(`${stN(nv)} · ${nv.name} · ${ROOFSH[nv.roof.shape]}`); renderVariant(); });
   const sh=$('#sheets'); sh.innerHTML='';
   { const el=document.createElement('div'); el.className='sheet'; const Y=v.yard;
-    el.innerHTML=`<h3>HOVLI REJASI <span>yer ${fmt1(plotArea(A))} m²</span></h3><div class="svgbox">${siteSVG(v,A)}</div><table class="expl"><tbody>${[['Basseyn',Y.costs.pool],['Shiypon',Y.costs.gazebo],["So'ri",Y.costs.supa],['Favvora',Y.costs.fountain],['Bolalar maydonchasi',Y.costs.playground],['Tandir',Y.costs.tandir],['Gulzor',Y.costs.gulzor],[`Daraxtlar (${Y.trees} ta)`,Y.costs.trees],[`Darvoza ${fmt1(+A.gateW||4)} m${A.kalitka?' + kalitka':''}`,Y.costs.gate],['Hovli yo\'laklari',Y.costs.pave]].filter(r=>r[1]>0).map(r=>`<tr><td></td><td>${r[0]}</td><td></td><td>${money(r[1])}</td></tr>`).join('')}<tr class="tot"><td></td><td>Hovli jami</td><td></td><td>${money(Y.cost)}</td></tr></tbody></table>`; sh.appendChild(el); }
+    el.innerHTML=`<h3>HOVLI REJASI <span>yer ${fmt1(plotArea(A))} m²</span></h3><div class="svgbox">${siteSVG(v,A)}</div><table class="expl"><tbody>${[['Zabor',Y.costs.fence],['Darvoza',Y.costs.gate],['Basseyn',Y.costs.pool],['Shiypon',Y.costs.gazebo],["So'ri",Y.costs.supa],['Favvora',Y.costs.fountain],['Bolalar maydonchasi',Y.costs.playground],['Tandir',Y.costs.tandir],['Gulzor',Y.costs.gulzor],[`Daraxtlar (${Y.trees} ta)`,Y.costs.trees],[`Darvoza ${fmt1(+A.gateW||4)} m${A.kalitka?' + kalitka':''}`,Y.costs.gate],['Hovli yo\'laklari',Y.costs.pave]].filter(r=>r[1]>0).map(r=>`<tr><td></td><td>${r[0]}</td><td></td><td>${money(r[1])}</td></tr>`).join('')}<tr class="tot"><td></td><td>Hovli jami</td><td></td><td>${money(Y.cost)}</td></tr></tbody></table>`; sh.appendChild(el); }
   { const el=document.createElement('div'); el.className='sheet'; const R=v.roof;
     el.innerHTML=`<h3>TOM REJASI <span>${ROOFSH[R.shape]}${R.shape!=='tekis'?' · '+ROOFM[R.mat].n:''}</span></h3><div class="svgbox">${roofSVG(v,S.A)}</div><table class="expl"><tbody>${roofRows(v,S.A).map(r=>`<tr><td></td><td>${r[0]}</td><td></td><td>${r[1]}</td></tr>`).join('')}</tbody></table>`; sh.appendChild(el); }
   v.floors.forEach((f,k)=>{
@@ -2865,7 +3004,7 @@ function aiPrompt(v,A,night){
   const win={kichik:'small windows',orta:'medium windows',katta:'large windows',panorama:'floor-to-ceiling panoramic windows in the living room'}[A.winSize]||'windows';
   const frame={oq:'white frames',antrasit:'anthracite black frames',yogoch:'wooden frames'}[A.winFrame]||{oq:'white frames',antrasit:'anthracite black frames',yogoch:'wooden frames'}[(SUBS[v.sub]||{}).frame]||({zamonaviy:'anthracite black frames',milliy:'dark wooden frames',klassik:'white frames'}[v.style]);
   const door={bir:'single-leaf',ikki:'double-leaf',katta:'tall oversized'}[A.doorType]+' '+({yogoch:'wooden',metall:'dark metal',shisha:'glass'}[A.doorMat]||(v.style==='zamonaviy'?'dark metal':'wooden'))+' entrance door';
-  const gate=`${({ochiladigan:'double swing steel',surma:'sliding steel',naqshli:'traditional carved wooden Uzbek'})[A.gateType]} gate about ${A.gateW} m wide and ${A.gateH} m high${A.kalitka?' with a separate pedestrian door':''}`;
+  const gate=`${({ochiladigan:'double swing steel',surma:'sliding steel',naqshli:'traditional carved wooden Uzbek'})[A.gateType]} gate${A.gatePat&&A.gatePat!=='oddiy'?' with '+({yaxlit:'solid sheet panels',panjara:'wrought-iron forged ornaments, rings and gold spear tips',kvadrat:'square grid bars',shamol:'sunburst rays pattern',arka:'arched top',naqsh:'carved Uzbek ornaments'})[A.gatePat]:''}, color ${/^#/.test(A.gateCol||'')?A.gateCol:(GATE_COL[A.gateCol]||'#1E2023')}, about ${A.gateW} m wide and ${A.gateH} m high${A.kalitka?' with a separate pedestrian door':''}`;
   const Y=v.yard.costs, yard=[Y.pool&&'a swimming pool',Y.gazebo&&'a wooden gazebo',Y.supa&&'a traditional tapchan',Y.fountain&&'a small fountain',v.yard.trees&&`${v.yard.trees} fruit trees`,Y.gulzor&&'flower beds'].filter(Boolean).join(', ');
   const street={tor:'a narrow residential lane',mahalla:'a quiet mahalla street',katta:'a wide city street with sidewalks'}[A.street];
   const nb={ikki:'neighbouring houses on both sides',bir:'a neighbouring house on one side',yoq:'open land around'}[A.neighbors];
@@ -2873,7 +3012,7 @@ function aiPrompt(v,A,night){
   const lux=(v.sub&&v.sub!=='saroy')?'premium high-end execution of this exact style with refined authentic details, quality materials and warm exterior lighting':{klassik:'grand neoclassical luxury villa: columned entrance portico with Corinthian columns, balustraded balconies with black wrought-iron railings, rich cornices and window surrounds, arched windows with keystones, tall glazed entrance with a crystal chandelier glowing inside, warm wall sconces beside every window',zamonaviy:'luxury contemporary villa: travertine and dark metal accents, frameless glazing, warm hidden LED lines under cornices, glass balcony railings, dramatic entrance canopy',milliy:'luxury Uzbek palace-style villa: carved wooden columns on a deep aivan, ganch plaster ornaments, blue majolica tile accents, carved wooden doors, warm lanterns'}[v.style];
   const land=`grand stone-paved forecourt in light travertine with a ${Y.fountain||v.lux==='hashamatli'?'central round classical fountain':'central round flower island'}, sculpted topiary balls and slim cone cypresses in pairs, low clipped boxwood hedges, white roses and lavender beds, classic black lamp posts along the paving, manicured lawn`;
   const shape=`IMPORTANT: keep exactly this building shape and proportions — ${v.floors.length} storeys, footprint about ${Math.round(v.W)} x ${Math.round((v.maxY||v.D)-(v.minY||0))} m, ${lay||'rectangular volume'}, ${roof}`;
-  return `Ultra-realistic high-end architectural visualization (premium real-estate render, V-Ray / Corona quality) of a ${v.floors.length}-storey private villa in Uzbekistan. ${shape}. Style: ${st}, ${lux}. ${wall}, finished with ${fac}. ${win} with ${frame}, ${door}. Front: ${land}; a fence with pillars and a ${gate}, ${street}. Yard: ${yard||'paved paths and lawn'}. Surroundings: ${nb}, ${view}. ${night?'Blue hour dusk, every window glowing warm, chandeliers visible inside, wall lamps and lamp posts lit, soft reflections on wet-looking stone paving':'Late golden hour, soft warm sunlight, clear pale sky, gentle long shadows'}. Eye-level frontal view from the forecourt, slightly off-axis, symmetric composition, 24mm architectural lens with vertical lines corrected, crisp detail, realistic materials, no people, no text, no watermark.`;
+  return `Ultra-realistic high-end architectural visualization (premium real-estate render, V-Ray / Corona quality) of a ${v.floors.length}-storey private villa in Uzbekistan. ${shape}. Style: ${st}, ${lux}. ${wall}, finished with ${fac}. ${win} with ${frame}, ${door}. Front: ${land}; ${(S.A.fence||'gisht')==='yoq'?'no fence, open front lawn':({gisht:'a masonry fence with pillars',panjara:'a low wall with metal railing fence',yaxlit:'a solid metal sheet fence'})[S.A.fence||'gisht']+' and a '+gate}, ${street}. Yard: ${yard||'paved paths and lawn'}. Surroundings: ${nb}, ${view}. ${night?'Blue hour dusk, every window glowing warm, chandeliers visible inside, wall lamps and lamp posts lit, soft reflections on wet-looking stone paving':'Late golden hour, soft warm sunlight, clear pale sky, gentle long shadows'}. Eye-level frontal view from the forecourt, slightly off-axis, symmetric composition, 24mm architectural lens with vertical lines corrected, crisp detail, realistic materials, no people, no text, no watermark.`;
 }
 function aiPromptInt(v,A){
   const f=v.floors[0]; const z=mainRooms(f).filter(r=>r.t==='zal').sort((a,b)=>b.w*b.h-a.w*a.h)[0]||mainRooms(f)[0]; const ar=Math.round(z.w*z.h);
@@ -2987,13 +3126,13 @@ function roomSVG(v,k,r,A){
   o.push(`<text x="${W/2}" y="${-D-0.55}" font-size="0.32" text-anchor="middle" fill="#111" font-weight="600">${esc(r.n)} · ${fmtA(ar)} m²</text></svg>`);
   return o.join(''); }
 function roomPrompt(v,A,k,r){ const ist=intStyleOf(v,A), f=v.floors[k];
-  const SD={zamonaviy:'modern minimalist interior, handle-less furniture, linear LED lights, neutral palette with wood and black accents',klassik:'classic interior with mouldings, wall panelling, chandelier, carved furniture',neoklassik:'neoclassic interior: light wall panelling, elegant mouldings, crystal chandelier, soft upholstered furniture',milliy:'modern Uzbek interior: carved wood details, ganch plaster ornaments, suzani textiles, warm wood',skandinav:'Scandinavian interior: light oak, white and soft grey, cozy textiles, simple forms',loft:'loft interior: exposed brick accent wall, black metal, concrete texture, warm wood'}[ist];
+  const SD={zamonaviy:'modern minimalist interior, handle-less furniture, linear LED lights, neutral palette with wood and black accents',klassik:'classic interior with mouldings, wall panelling, chandelier, carved furniture',neoklassik:'luxury warm neoclassic interior in creamy beige and taupe: wall boiserie panels with carved acanthus corner ornaments, multi-step crown cornice, tray ceiling with warm hidden LED cove light, black magnetic track lights with bronze spots, built-in cream wardrobes with arched door grooves and curved bronze handles, walnut wood accents, velvet taupe upholstery, plush grey-beige carpet, slim vertical brass LED wall sconces',milliy:'modern Uzbek interior: carved wood details, ganch plaster ornaments, suzani textiles, warm wood',skandinav:'Scandinavian interior: light oak, white and soft grey, cozy textiles, simple forms',loft:'loft interior: exposed brick accent wall, black metal, concrete texture, warm wood'}[ist];
   const T={zal:'living room (mehmonxona)',bed:'bedroom',kitchen:'kitchen with dining area',wet:'bathroom',util:'laundry room',circ:'entrance hall',garage:'garage'}[r.t]||'room';
-  const fu=furnOf(r,A).map(x=>({tv:'TV media wall',divan:'large sofa',stol:'dining table',kamin:'fireplace',pianino:'piano',akvarium:'aquarium',garderob:'built-in wardrobe',ishstol:'work desk',orol:'kitchen island',bar:'bar counter',kreslo:'armchairs'}[x])).filter(Boolean).join(', ');
-  const ceil={oddiy:'flat white ceiling',gips:'multi-level gypsum ceiling with hidden LED strip',ganch:'ornamental carved ganch ceiling'}[A.ceiling]||'flat white ceiling';
+  const extra=ist==='neoklassik'?({bed:'built-in arched wardrobes on both sides of a walnut desk niche with an upholstered taupe chair, a vanity niche with an oval backlit LED mirror and a round boucle pouf, wall-mounted TV over a floating walnut console with LED underglow, bed with taupe throw and fringe',zal:'symmetric boiserie walls, marble TV or fireplace wall, crystal chandelier, curved velvet sofas, walnut coffee table',circ:'boiserie walls, console table with oval LED mirror, herringbone parquet',kitchen:'cream shaker cabinets with bronze handles, marble backsplash, island with fluted base'})[r.t]||'':''; const fu=furnOf(r,A).map(x=>({tv:'TV media wall',divan:'large sofa',stol:'dining table',kamin:'fireplace',pianino:'piano',akvarium:'aquarium',garderob:'built-in wardrobe',ishstol:'work desk',orol:'kitchen island',bar:'bar counter',kreslo:'armchairs'}[x])).filter(Boolean).join(', ');
+  const ceil=ist==='neoklassik'?'tray ceiling with warm hidden LED cove and track spot lights':{oddiy:'flat white ceiling',gips:'multi-level gypsum ceiling with hidden LED strip',ganch:'ornamental carved ganch ceiling'}[A.ceiling]||'flat white ceiling';
   const fl={parket:'oak parquet floor',laminat:'light laminate floor',marmar:'polished marble floor',kafel:'large porcelain tile floor'}[A.floorType]||(v.lux==='hashamatli'?'polished marble floor':'oak parquet floor');
   const wins=f.openings.filter(o=>o.room===r&&o.kind==='win').length;
-  return `Photorealistic interior design render of a ${T} in a private house in Uzbekistan, ${fmt1(r.w)} × ${fmt1(r.h)} m (${Math.round(roomA(r,f))} m²), ceiling 3.0 m. ${SD}. Walls painted in color ${A.paint||'#EFE8DC'}, ${r.t==='wet'?'large format wall tiles':fl}, ${ceil}. ${wins?wins+' window'+(wins>1?'s':'')+' with sheer curtains':'no windows, warm artificial light'}. ${fu?'Furniture: '+fu+'.':''} Professional 3D interior visualization like an interior design app render, wide angle 20mm, eye level, soft natural light, high detail, no people, no text, no watermark.`; }
+  return `Photorealistic interior design render of a ${T} in a private house in Uzbekistan, ${fmt1(r.w)} × ${fmt1(r.h)} m (${Math.round(roomA(r,f))} m²), ceiling 3.0 m. ${SD}. Walls painted in color ${A.paint||'#EFE8DC'}, ${r.t==='wet'?'large format wall tiles':fl}, ${ceil}. ${wins?wins+' window'+(wins>1?'s':'')+' with sheer curtains':'no windows, warm artificial light'}. ${fu?'Furniture: '+fu+'.':''} ${extra?extra+'. ':''}Professional V-Ray / Corona interior visualization, ultra realistic materials, warm evening lighting (3000K) with soft shadows, wide angle 24mm, eye level, high detail, no people, no text, no watermark.`; }
 S.roomImgs={}; let roomJob=0;
 function renderRooms(){
   const v=S.variants&&S.variants[S.active], el=$('#roomCards'); if(!v||!el) return; const A=S.A, list=roomList(v), ist=intStyleOf(v,A);
